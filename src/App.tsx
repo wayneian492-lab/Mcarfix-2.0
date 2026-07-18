@@ -20,6 +20,7 @@ import Footer from "./components/Footer";
 import BookingModal, { BookingRecord } from "./components/BookingModal";
 import SosModal from "./components/SosModal";
 import ActiveBookingsPanel from "./components/ActiveBookingsPanel";
+import FloatingDock from "./components/FloatingDock";
 import { Garage, MOCK_GARAGES } from "./types";
 
 export default function App() {
@@ -223,6 +224,12 @@ export default function App() {
         onClose={() => setIsBookingsListOpen(false)}
         bookings={bookings}
         onCancelBooking={handleCancelBooking}
+      />
+
+      {/* Floating Action Quick Dock */}
+      <FloatingDock
+        onOpenSos={() => setIsSosOpen(true)}
+        onScrollToSection={handleScrollToSection}
       />
 
     </div>

@@ -140,9 +140,16 @@ export default function Footer({ onScrollToSection, onOpenBookings, onOpenSos }:
         <div className="pt-8 flex flex-col sm:flex-row justify-between items-center text-2xs text-gray-500 gap-4">
           <div className="text-center sm:text-left">
             <p>&copy; {new Date().getFullYear()} mCarFix Kenya Ltd. All rights reserved.</p>
-            <p className="text-3xs text-gray-500 mt-1 font-mono uppercase tracking-wider">
-              Nairobi Central Node • GPS Ref: 1.2921° S, 36.8219° E
-            </p>
+            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-3 gap-y-1 mt-1">
+              <p className="text-3xs text-gray-500 font-mono uppercase tracking-wider">
+                Nairobi Central Node • GPS Ref: 1.2921° S, 36.8219° E
+              </p>
+              <span className="text-gray-300 hidden sm:inline">|</span>
+              <p className="text-3xs text-teal-600 font-mono uppercase tracking-wider font-bold flex items-center gap-1">
+                <span className="h-1.5 w-1.5 rounded-full bg-teal-500 animate-pulse" />
+                <span>450+ garages online</span>
+              </p>
+            </div>
           </div>
 
           <div className="flex space-x-4 font-mono uppercase tracking-wider text-3xs">

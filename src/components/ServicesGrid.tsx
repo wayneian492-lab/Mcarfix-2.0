@@ -6,20 +6,36 @@
 import React from "react";
 import * as Icons from "lucide-react";
 import { SERVICES_DATA, ServiceItem } from "../types";
+import { motion } from "motion/react";
+
+import serviceDiagnosticsImg from "../assets/images/service_diagnostics_1784380763546.jpg";
+import serviceRoadsideImg from "../assets/images/service_roadside_1784380778681.jpg";
 
 interface ServicesGridProps {
   onSelectServiceFilter: (serviceName: string) => void;
   onScrollToSection: (sectionId: string) => void;
 }
 
+// Map service IDs to code tags and imagery
+const SERVICE_METADATA: Record<string, { code: string; image?: string; isFeatured: boolean }> = {
+  "general-mechanics": { code: "MECH.01", isFeatured: false },
+  "roadside-assistance": { code: "EMER.02", image: serviceRoadsideImg, isFeatured: true },
+  "professional-towing": { code: "TOW.03", isFeatured: false },
+  "computer-diagnostics": { code: "DIAG.04", image: serviceDiagnosticsImg, isFeatured: true },
+  "genuine-spare-parts": { code: "OEM.05", isFeatured: false },
+  "tyre-battery-center": { code: "PWR.06", isFeatured: false },
+  "premium-car-wash": { code: "DETL.07", isFeatured: false },
+  "motor-insurance": { code: "INS.08", isFeatured: false },
+};
+
 export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection }: ServicesGridProps) {
   // Dynamic icon renderer helper
-  const renderIcon = (iconName: string) => {
+  const renderIcon = (iconName: string, className = "h-6 w-6 text-signal") => {
     const IconComponent = (Icons as any)[iconName];
     if (IconComponent) {
-      return <IconComponent className="h-6 w-6 text-signal" />;
+      return <IconComponent className={className} />;
     }
-    return <Icons.Wrench className="h-6 w-6 text-signal" />;
+    return <Icons.Wrench className={className} />;
   };
 
   const handleServiceClick = (serviceTitle: string) => {
@@ -31,37 +47,117 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
     <section id="services" className="bg-white py-20 text-gray-900 border-t border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
-        {/* Section Header */}
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="font-mono text-xs text-signal font-bold uppercase tracking-widest bg-gray-50 border border-gray-200 px-3.5 py-1.5 rounded-full">
-            Our Offerings
+        {/* Section Header with Scroll-triggered Animation */}
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-100px" }}
+          transition={{ duration: 0.6 }}
+          className="text-center max-w-3xl mx-auto mb-16"
+        >
+          <span className="font-mono text-xs text-signal font-bold uppercase tracking-widest bg-gray-50 border border-gray-200 px-3.5 py-1.5 rounded-full inline-flex items-center space-x-1.5">
+            <span className="h-1.5 w-1.5 rounded-full bg-signal" />
+            <span>SYS.OFFERINGS</span>
           </span>
           <h2 className="font-display font-bold text-3xl sm:text-4xl tracking-wide uppercase mt-4 text-gray-900">
             Comprehensive Car Services in Nairobi
           </h2>
           <div className="h-1 w-12 bg-signal mx-auto mt-4" />
-          <p className="font-sans text-gray-600 mt-4 leading-relaxed">
+          <p className="font-sans text-gray-600 mt-4 leading-relaxed font-light">
             Choose from our highly specialized network of mechanics and auto-care service centers. Click on any category below to immediately discover verified garages offering that service near you.
           </p>
-        </div>
+        </motion.div>
 
-        {/* 8-Card Services Grid */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {SERVICES_DATA.map((service: ServiceItem) => {
+        {/* Bento Grid Layout */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+          {SERVICES_DATA.map((service: ServiceItem, index: number) => {
+            const meta = SERVICE_METADATA[service.id] || { code: "SYS.00", isFeatured: false };
+
+            if (meta.isFeatured && meta.image) {
+              // FEATURED TILE WITH BACKGROUND PHOTO
+              return (
+                <motion.div
+                  key={service.id}
+                  initial={{ opacity: 0, y: 25 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.6, delay: index * 0.08 }}
+                  onClick={() => handleServiceClick(service.title)}
+                  className="col-span-1 md:col-span-2 lg:col-span-2 h-[340px] md:h-[380px] relative overflow-hidden rounded-2xl group cursor-pointer border border-gray-200/50 hover:border-signal/50 hover:shadow-2xl transition-all duration-500"
+                >
+                  {/* Photo Background */}
+                  <img
+                    src={meta.image}
+                    alt={service.title}
+                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                    referrerPolicy="no-referrer"
+                  />
+                  {/* Dark gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/70 to-black/30 z-10" />
+
+                  {/* Content Overlays */}
+                  <div className="absolute inset-0 z-20 p-6 flex flex-col justify-between text-white">
+                    {/* Header tags */}
+                    <div className="flex justify-between items-center">
+                      <div className="bg-white/10 backdrop-blur-xs border border-white/20 px-3 py-1 rounded-md text-[10px] font-mono font-bold text-signal flex items-center space-x-1.5">
+                        <span className="h-1.5 w-1.5 rounded-full bg-signal animate-pulse" />
+                        <span>{meta.code}</span>
+                      </div>
+                      <span className="text-[10px] font-mono font-bold tracking-widest text-teal-400 uppercase bg-teal-400/10 border border-teal-400/25 px-2.5 py-1 rounded-md">
+                        FEATURED SYSTEM
+                      </span>
+                    </div>
+
+                    {/* Footer Details */}
+                    <div>
+                      <div className="flex items-center space-x-3 mb-3">
+                        <div className="bg-signal/20 backdrop-blur-xs border border-signal/40 p-3 rounded-xl">
+                          {renderIcon(service.iconName, "h-7 w-7 text-signal")}
+                        </div>
+                        <h3 className="font-display font-bold text-xl md:text-2xl uppercase tracking-wide text-white leading-tight">
+                          {service.title}
+                        </h3>
+                      </div>
+                      <p className="font-sans text-xs md:text-sm text-gray-300 leading-relaxed font-light max-w-lg mb-4">
+                        {service.description}
+                      </p>
+                      
+                      <div className="pt-3 border-t border-white/10 flex items-center justify-between text-xs font-mono font-semibold text-signal group-hover:translate-x-1.5 transition-transform duration-300">
+                        <span>ACTIVATE DIRECTORY SCAN &rarr;</span>
+                        <span className="bg-signal text-white px-3 py-1 rounded-md text-3xs font-bold uppercase tracking-wider">
+                          VETTED BAYS ONLINE
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </motion.div>
+              );
+            }
+
+            // STANDARD LIGHT MINI-TILE
             return (
-              <div
+              <motion.div
                 key={service.id}
+                initial={{ opacity: 0, y: 25 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: "-50px" }}
+                transition={{ duration: 0.6, delay: index * 0.08 }}
                 onClick={() => handleServiceClick(service.title)}
-                className="bg-white border border-gray-200/80 rounded-xl p-6 transition-all duration-300 hover:border-signal/50 hover:shadow-md hover:-translate-y-1 cursor-pointer flex flex-col justify-between h-full group"
+                className="bg-white border border-gray-200 rounded-2xl p-6 transition-all duration-300 hover:border-signal/50 hover:shadow-xl hover:-translate-y-1 cursor-pointer flex flex-col justify-between h-full group"
               >
                 <div>
-                  {/* Icon Box */}
-                  <div className="bg-gray-50 border border-gray-100 p-3.5 rounded-lg w-fit mb-5 transition-transform duration-300 group-hover:scale-110">
-                    {renderIcon(service.iconName)}
+                  {/* Header Code and Icon row */}
+                  <div className="flex justify-between items-start mb-5">
+                    <div className="bg-gray-50 border border-gray-100 p-3 rounded-xl transition-transform duration-300 group-hover:scale-110">
+                      {renderIcon(service.iconName)}
+                    </div>
+                    <span className="font-mono text-2xs text-gray-400 border border-gray-100 px-2.5 py-1 rounded-md font-semibold tracking-wider">
+                      {meta.code}
+                    </span>
                   </div>
                   
                   {/* Title */}
-                  <h3 className="font-display font-bold text-lg uppercase tracking-wide text-gray-900 mb-2.5">
+                  <h3 className="font-display font-bold text-lg uppercase tracking-wide text-gray-900 mb-2">
                     {service.title}
                   </h3>
                   
@@ -72,19 +168,25 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
                 </div>
 
                 {/* Card footer indicator */}
-                <div className="mt-5 pt-4 border-t border-gray-100 flex items-center justify-between text-xs font-mono font-medium text-gray-400 group-hover:text-signal transition-colors">
+                <div className="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-xs font-mono font-medium text-gray-400 group-hover:text-signal transition-colors">
                   <span>Explore Garages</span>
                   <span>&rarr;</span>
                 </div>
-              </div>
+              </motion.div>
             );
           })}
         </div>
 
         {/* Live Diagnostics CTA Bar */}
-        <div className="mt-14 bg-gray-50 text-gray-900 p-6 sm:p-8 rounded-2xl border border-gray-200 flex flex-col md:flex-row items-center justify-between gap-6">
+        <motion.div 
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.6 }}
+          className="mt-14 bg-gray-50 text-gray-900 p-6 sm:p-8 rounded-2xl border border-gray-200 flex flex-col md:flex-row items-center justify-between gap-6"
+        >
           <div className="flex items-center space-x-4">
-            <div className="bg-white p-3 rounded-lg border border-gray-200 shrink-0 shadow-xs">
+            <div className="bg-white p-3 rounded-xl border border-gray-200 shrink-0 shadow-xs">
               <Icons.Activity className="h-6 w-6 text-teal-600 animate-pulse" />
             </div>
             <div>
@@ -98,11 +200,11 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
           </div>
           <button
             onClick={() => onScrollToSection("diagnostics-info")}
-            className="w-full md:w-auto bg-white border border-teal-600 hover:bg-teal-50/50 text-teal-700 font-display font-bold uppercase tracking-wider px-6 py-3 rounded-lg text-sm transition-all shadow-xs"
+            className="w-full md:w-auto bg-white border border-teal-600 hover:bg-teal-50/50 text-teal-700 font-display font-bold uppercase tracking-wider px-6 py-3 rounded-lg text-sm transition-all shadow-xs cursor-pointer"
           >
             Run Troubleshooting Guide
           </button>
-        </div>
+        </motion.div>
 
       </div>
     </section>

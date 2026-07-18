@@ -3,6 +3,16 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
+import garageApex from "./assets/images/garage_apex_1784380795986.jpg";
+import garageKilimani from "./assets/images/garage_kilimani_1784380809724.jpg";
+import garageExperts from "./assets/images/garage_experts_1784380823676.jpg";
+import garageKaren from "./assets/images/garage_karen_1784380837970.jpg";
+
+import avatarJane from "./assets/images/avatar_jane_1784380852392.jpg";
+import avatarBrian from "./assets/images/avatar_brian_1784380866341.jpg";
+import avatarDennis from "./assets/images/avatar_dennis_1784380880413.jpg";
+import avatarMercy from "./assets/images/avatar_mercy_1784380894244.jpg";
+
 export interface Garage {
   id: string;
   name: string;
@@ -22,6 +32,7 @@ export interface Testimonial {
   vehicle: string;
   rating: number;
   quote: string;
+  avatar?: string;
 }
 
 export interface ServiceItem {
@@ -92,6 +103,7 @@ export const MOCK_GARAGES: Garage[] = [
     verified: true,
     services: ["General Mechanics", "Computer Diagnostics", "Tyre & Battery Center"],
     phone: "+254 711 000184",
+    image: garageApex,
   },
   {
     id: "g2",
@@ -102,6 +114,7 @@ export const MOCK_GARAGES: Garage[] = [
     verified: true,
     services: ["General Mechanics", "Computer Diagnostics", "Genuine Spare Parts"],
     phone: "+254 722 000142",
+    image: garageKilimani,
   },
   {
     id: "g3",
@@ -112,6 +125,7 @@ export const MOCK_GARAGES: Garage[] = [
     verified: true,
     services: ["Professional Towing", "General Mechanics", "Premium Car Wash"],
     phone: "+254 733 000310",
+    image: garageExperts,
   },
   {
     id: "g4",
@@ -122,6 +136,7 @@ export const MOCK_GARAGES: Garage[] = [
     verified: true,
     services: ["Computer Diagnostics", "Genuine Spare Parts", "Motor Insurance"],
     phone: "+254 744 000089",
+    image: garageKaren,
   },
 ];
 
@@ -133,6 +148,7 @@ export const MOCK_TESTIMONIALS: Testimonial[] = [
     vehicle: "Toyota RAV4 (2018)",
     rating: 5,
     quote: "The diagnostics scan was unbelievably accurate. I knew exactly what was wrong before getting to the garage. Saved me KES 15,000 in unnecessary repairs!",
+    avatar: avatarJane,
   },
   {
     id: "t2",
@@ -141,6 +157,7 @@ export const MOCK_TESTIMONIALS: Testimonial[] = [
     vehicle: "Subaru Forester (2016)",
     rating: 5,
     quote: "Stranded on Mombasa Rd at 11 PM with a dead battery. Used the Emergency SOS, and roadside assistance arrived in 12 minutes flat. Life-saving service!",
+    avatar: avatarBrian,
   },
   {
     id: "t3",
@@ -149,6 +166,7 @@ export const MOCK_TESTIMONIALS: Testimonial[] = [
     vehicle: "Mazda CX-5 (2017)",
     rating: 5,
     quote: "Superb transparency. I got an upfront estimate of KES 5,500 for my brake pads, booked a verified garage, and paid exactly that amount. No hidden fees.",
+    avatar: avatarDennis,
   },
   {
     id: "t4",
@@ -157,5 +175,6 @@ export const MOCK_TESTIMONIALS: Testimonial[] = [
     vehicle: "Mercedes-Benz C200 (2019)",
     rating: 5,
     quote: "Finding specialized mechanics for continental cars in Nairobi used to be a gamble. mCarFix connected me with certified pros who solved my complex ECU issue.",
+    avatar: avatarMercy,
   },
 ];
