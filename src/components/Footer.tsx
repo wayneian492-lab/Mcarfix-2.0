@@ -94,28 +94,40 @@ export default function Footer({ onScrollToSection, onOpenBookings, onOpenSos }:
           </div>
 
           {/* Column 3: General Enquiries */}
-          <div className="md:col-span-2">
+          <div className="md:col-span-3">
             <h4 className="font-display font-bold text-xs uppercase tracking-widest text-gray-500 mb-4 border-l-2 border-signal pl-2">
-              General Enquiries
+              Contact & Support
             </h4>
             <ul className="space-y-3 text-xs">
-              <li className="flex items-center space-x-2 text-gray-600">
-                <Phone className="h-3.5 w-3.5 text-signal shrink-0" />
-                <span className="font-mono text-2xs tracking-tight">+254 700 000 999</span>
+              <li className="flex flex-col space-y-0.5 text-gray-600">
+                <span className="text-[9px] text-gray-400 font-mono uppercase tracking-widest">General Enquiries</span>
+                <div className="flex items-center space-x-2">
+                  <Phone className="h-3.5 w-3.5 text-signal shrink-0" />
+                  <span className="font-mono text-2xs tracking-tight">+254 704 804578</span>
+                </div>
+                <div className="flex items-center space-x-2 pl-5.5">
+                  <span className="font-mono text-2xs tracking-tight">enquiries@mcarfix.com</span>
+                </div>
               </li>
-              <li className="flex items-center space-x-2 text-gray-600">
-                <Mail className="h-3.5 w-3.5 text-signal shrink-0" />
-                <span className="font-mono text-2xs tracking-tight">ops@mcarfix.co.ke</span>
+              <li className="flex flex-col space-y-0.5 text-gray-600">
+                <span className="text-[9px] text-gray-400 font-mono uppercase tracking-widest">Technical Support</span>
+                <div className="flex items-center space-x-2">
+                  <Phone className="h-3.5 w-3.5 text-teal-600 shrink-0" />
+                  <span className="font-mono text-2xs tracking-tight">+254 704 804932</span>
+                </div>
+                <div className="flex items-center space-x-2 pl-5.5">
+                  <span className="font-mono text-2xs tracking-tight">support@mcarfix.com</span>
+                </div>
               </li>
-              <li className="flex items-center space-x-2 text-gray-600">
-                <MapPin className="h-3.5 w-3.5 text-signal shrink-0" />
-                <span className="leading-tight">Delta Corner Tower B, Westlands, Nairobi</span>
+              <li className="flex items-start space-x-2 text-gray-600 pt-1">
+                <MapPin className="h-3.5 w-3.5 text-signal shrink-0 mt-0.5" />
+                <span className="leading-tight">Global Trade Center, Waiyaki Way-Westlands Road, Nairobi</span>
               </li>
             </ul>
           </div>
 
           {/* Column 4: Partner CTA */}
-          <div className="md:col-span-3 flex flex-col justify-between">
+          <div className="md:col-span-2 flex flex-col justify-between">
             <div>
               <h4 className="font-display font-bold text-xs uppercase tracking-widest text-gray-500 mb-4 border-l-2 border-signal pl-2">
                 Garage Network
@@ -139,8 +151,13 @@ export default function Footer({ onScrollToSection, onOpenBookings, onOpenSos }:
         {/* Lower row: Copyright, location coordinate, and compliance info */}
         <div className="pt-8 flex flex-col sm:flex-row justify-between items-center text-2xs text-gray-500 gap-4">
           <div className="text-center sm:text-left">
-            <p>&copy; {new Date().getFullYear()} mCarFix Kenya Ltd. All rights reserved.</p>
-            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-3 gap-y-1 mt-1">
+            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
+              <p>&copy; {new Date().getFullYear()} mCarFix Kenya Ltd. All rights reserved.</p>
+              <span className="bg-amber-500/10 text-amber-600 border border-amber-500/20 px-2 py-0.5 rounded text-[9px] font-mono font-bold tracking-widest uppercase inline-block">
+                Alpha Preview
+              </span>
+            </div>
+            <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-3 gap-y-1 mt-1.5">
               <p className="text-3xs text-gray-500 font-mono uppercase tracking-wider">
                 Nairobi Central Node • GPS Ref: 1.2921° S, 36.8219° E
               </p>

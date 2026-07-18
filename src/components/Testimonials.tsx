@@ -71,7 +71,7 @@ export default function Testimonials() {
                     {t.avatar ? (
                       <img
                         src={t.avatar}
-                        alt={t.name}
+                        alt={`Profile picture of ${t.name}, a verified client from ${t.location}, Nairobi who managed service records for their ${t.vehicle} via mCarFix`}
                         className="h-11 w-11 rounded-full object-cover border border-gray-100 shadow-xs shrink-0"
                         referrerPolicy="no-referrer"
                       />

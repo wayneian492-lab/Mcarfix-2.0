@@ -88,7 +88,11 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
                   {/* Photo Background */}
                   <img
                     src={meta.image}
-                    alt={service.title}
+                    alt={
+                      service.id === "computer-diagnostics"
+                        ? "Professional mechanics executing computerized diagnostic OBD-II fault scan using high-precision digital tablets inside a modern Nairobi garage"
+                        : "Immediate roadside assistance towing vehicle and emergency dynamic mechanics dispatching along Waiyaki Way, Nairobi"
+                    }
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                     referrerPolicy="no-referrer"
                   />

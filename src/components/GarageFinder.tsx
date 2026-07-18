@@ -172,7 +172,7 @@ export default function GarageFinder({ onBookGarage, selectedServiceFilter, onCl
                       {garage.image ? (
                         <img
                           src={garage.image}
-                          alt={garage.name}
+                          alt={`${garage.name} professional automotive service center located in ${garage.location}, Nairobi equipped with certified mechanical and OBD-II diagnostic technologies`}
                           className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
                           referrerPolicy="no-referrer"
                         />
