@@ -28,15 +28,15 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
   };
 
   return (
-    <section id="services" className="bg-paper py-20 text-gray-900 border-t border-gray-200">
+    <section id="services" className="bg-white py-20 text-gray-900 border-t border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="font-mono text-xs text-signal font-bold uppercase tracking-widest bg-asphalt px-3 py-1 rounded">
+          <span className="font-mono text-xs text-signal font-bold uppercase tracking-widest bg-gray-50 border border-gray-200 px-3.5 py-1.5 rounded-full">
             Our Offerings
           </span>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl tracking-wide uppercase mt-4 text-asphalt">
+          <h2 className="font-display font-bold text-3xl sm:text-4xl tracking-wide uppercase mt-4 text-gray-900">
             Comprehensive Car Services in Nairobi
           </h2>
           <div className="h-1 w-12 bg-signal mx-auto mt-4" />
@@ -56,12 +56,12 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
               >
                 <div>
                   {/* Icon Box */}
-                  <div className="bg-asphalt p-3.5 rounded-lg w-fit mb-5 transition-transform duration-300 group-hover:scale-110">
+                  <div className="bg-gray-50 border border-gray-100 p-3.5 rounded-lg w-fit mb-5 transition-transform duration-300 group-hover:scale-110">
                     {renderIcon(service.iconName)}
                   </div>
                   
                   {/* Title */}
-                  <h3 className="font-display font-bold text-lg uppercase tracking-wide text-asphalt mb-2.5">
+                  <h3 className="font-display font-bold text-lg uppercase tracking-wide text-gray-900 mb-2.5">
                     {service.title}
                   </h3>
                   
@@ -82,23 +82,23 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
         </div>
 
         {/* Live Diagnostics CTA Bar */}
-        <div className="mt-14 bg-asphalt text-white p-6 sm:p-8 rounded-2xl border border-steel/60 flex flex-col md:flex-row items-center justify-between gap-6">
+        <div className="mt-14 bg-gray-50 text-gray-900 p-6 sm:p-8 rounded-2xl border border-gray-200 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center space-x-4">
-            <div className="bg-steel p-3 rounded-lg border border-steel-light shrink-0">
-              <Icons.Activity className="h-6 w-6 text-diagnostic animate-pulse" />
+            <div className="bg-white p-3 rounded-lg border border-gray-200 shrink-0 shadow-xs">
+              <Icons.Activity className="h-6 w-6 text-teal-600 animate-pulse" />
             </div>
             <div>
-              <h4 className="font-display text-lg font-bold tracking-wider uppercase text-white">
+              <h4 className="font-display text-lg font-bold tracking-wider uppercase text-gray-900">
                 Unsure why your vehicle is acting up?
               </h4>
-              <p className="font-sans text-xs text-gray-400 mt-1 max-w-xl">
+              <p className="font-sans text-xs text-gray-600 mt-1 max-w-xl">
                 Run our interactive OBD-II troubleshoot simulator. Enter your dashboard signs or symptoms to decode error logs and find localized fixes.
               </p>
             </div>
           </div>
           <button
             onClick={() => onScrollToSection("diagnostics-info")}
-            className="w-full md:w-auto bg-transparent border border-diagnostic hover:bg-diagnostic/10 text-diagnostic font-display font-bold uppercase tracking-wider px-6 py-3 rounded-lg text-sm transition-all"
+            className="w-full md:w-auto bg-white border border-teal-600 hover:bg-teal-50/50 text-teal-700 font-display font-bold uppercase tracking-wider px-6 py-3 rounded-lg text-sm transition-all shadow-xs"
           >
             Run Troubleshooting Guide
           </button>

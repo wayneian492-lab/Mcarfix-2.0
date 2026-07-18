@@ -42,15 +42,15 @@ export default function FaqAccordion() {
   };
 
   return (
-    <section id="faq" className="bg-paper py-20 text-gray-900 border-t border-gray-200">
+    <section id="faq" className="bg-white py-20 text-gray-900 border-t border-gray-100">
       <div className="max-w-4xl mx-auto px-4 sm:px-6">
         
         {/* Section Header */}
         <div className="text-center mb-12">
-          <span className="font-mono text-xs text-signal font-bold uppercase tracking-widest bg-asphalt px-3 py-1 rounded">
+          <span className="font-mono text-xs text-signal font-bold uppercase tracking-widest bg-gray-50 border border-gray-200 px-3.5 py-1.5 rounded-full">
             Frequently Asked
           </span>
-          <h2 className="font-display font-bold text-3xl tracking-wide uppercase mt-4 text-asphalt">
+          <h2 className="font-display font-bold text-3xl tracking-wide uppercase mt-4 text-gray-900">
             Support & Clarity
           </h2>
           <div className="h-1 w-12 bg-signal mx-auto mt-4" />
@@ -70,10 +70,10 @@ export default function FaqAccordion() {
                   onClick={() => toggleFaq(index)}
                   className="w-full text-left p-5 flex justify-between items-center space-x-4 cursor-pointer focus:outline-none"
                 >
-                  <span className="font-display font-bold text-sm sm:text-base uppercase tracking-wide text-asphalt leading-snug">
+                  <span className="font-display font-bold text-sm sm:text-base uppercase tracking-wide text-gray-900 leading-snug">
                     {faq.question}
                   </span>
-                  <div className="bg-paper p-1.5 rounded-full text-gray-500 shrink-0">
+                  <div className="bg-gray-100 p-1.5 rounded-full text-gray-500 shrink-0">
                     {isOpen ? <ChevronUp className="h-4 w-4 text-signal" /> : <ChevronDown className="h-4 w-4" />}
                   </div>
                 </button>

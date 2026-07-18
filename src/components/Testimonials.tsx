@@ -9,15 +9,15 @@ import { MOCK_TESTIMONIALS } from "../types";
 
 export default function Testimonials() {
   return (
-    <section id="testimonials" className="bg-paper py-20 text-gray-900 border-t border-gray-200">
+    <section id="testimonials" className="bg-white py-20 text-gray-900 border-t border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="font-mono text-xs text-signal font-bold uppercase tracking-widest bg-asphalt px-3 py-1 rounded">
+          <span className="font-mono text-xs text-signal font-bold uppercase tracking-widest bg-gray-50 border border-gray-200 px-3.5 py-1.5 rounded-full">
             Success Stories
           </span>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl tracking-wide uppercase mt-4 text-asphalt">
+          <h2 className="font-display font-bold text-3xl sm:text-4xl tracking-wide uppercase mt-4 text-gray-900">
             What Nairobi Drivers Say
           </h2>
           <div className="h-1 w-12 bg-signal mx-auto mt-4" />
@@ -32,10 +32,10 @@ export default function Testimonials() {
             return (
               <div
                 key={t.id}
-                className="bg-white border border-gray-200/80 rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:shadow-md hover:border-gray-300 transition-all duration-300 relative"
+                className="bg-white border border-gray-200/80 rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:shadow-lg hover:border-gray-300 transition-all duration-300 relative"
               >
                 {/* Quote Icon Overlay */}
-                <div className="absolute right-6 top-6 text-gray-100/70">
+                <div className="absolute right-6 top-6 text-gray-100/50">
                   <MessageSquareQuote className="h-14 w-14 shrink-0" />
                 </div>
 
@@ -43,7 +43,7 @@ export default function Testimonials() {
                   {/* Star Rating */}
                   <div className="flex items-center space-x-1.5 mb-5">
                     {Array.from({ length: t.rating }).map((_, idx) => (
-                      <Star key={idx} className="h-4.5 w-4.5 fill-signal text-signal" />
+                      <Star key={idx} className="h-4.5 w-4.5 fill-amber-400 text-amber-400" />
                     ))}
                   </div>
 
@@ -56,16 +56,16 @@ export default function Testimonials() {
                 {/* Author Info */}
                 <div className="border-t border-gray-100 pt-5 flex justify-between items-end">
                   <div>
-                    <h4 className="font-display font-bold text-base uppercase tracking-wide text-asphalt">
+                    <h4 className="font-display font-bold text-base uppercase tracking-wide text-gray-900">
                       {t.name}
                     </h4>
-                    <span className="block text-2xs text-gray-400 font-sans mt-0.5">
+                    <span className="block text-2xs text-gray-500 font-sans mt-0.5">
                       Verified Client • {t.location}
                     </span>
                   </div>
 
                   {/* Vehicle Tag */}
-                  <div className="bg-asphalt px-3 py-1.5 rounded-lg border border-steel/20 shrink-0">
+                  <div className="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-200 shrink-0">
                     <span className="font-mono text-2xs font-semibold text-signal uppercase tracking-wider">
                       {t.vehicle}
                     </span>

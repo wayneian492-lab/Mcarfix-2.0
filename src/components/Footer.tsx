@@ -14,28 +14,28 @@ interface FooterProps {
 
 export default function Footer({ onScrollToSection, onOpenBookings, onOpenSos }: FooterProps) {
   return (
-    <footer className="bg-asphalt border-t border-steel text-white pt-16 pb-8 font-sans">
+    <footer className="bg-gray-50 border-t border-gray-250 text-gray-900 pt-16 pb-8 font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Main Columns Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-steel/60">
+        <div className="grid grid-cols-1 md:grid-cols-12 gap-10 pb-12 border-b border-gray-200">
           
           {/* Column 1: Brand details */}
           <div className="md:col-span-4 flex flex-col space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="p-2 bg-steel border border-steel-light rounded-lg">
+              <div className="p-2 bg-white border border-gray-200 rounded-lg shadow-2xs">
                 <Car className="h-5 w-5 text-signal" />
               </div>
-              <span className="font-display text-xl font-bold tracking-wider uppercase text-white">
+              <span className="font-display text-xl font-bold tracking-wider uppercase text-gray-900">
                 m<span className="text-signal">Car</span>Fix
               </span>
             </div>
-            <p className="text-xs text-gray-400 leading-relaxed max-w-sm font-light">
+            <p className="text-xs text-gray-600 leading-relaxed max-w-sm font-light">
               Bridging the physical and digital automotive repair worlds in Kenya. Bringing data accuracy, transparent pricing, and trusted mechanics to Nairobi drivers.
             </p>
             <button
               onClick={onOpenSos}
-              className="mt-2 bg-warning/10 border border-warning/30 text-warning hover:bg-warning hover:text-white px-4 py-2 rounded-lg font-display text-2xs font-bold tracking-widest uppercase w-fit transition-all flex items-center space-x-1.5"
+              className="mt-2 bg-red-50 border border-red-200 text-red-600 hover:bg-red-600 hover:text-white px-4 py-2 rounded-lg font-display text-2xs font-bold tracking-widest uppercase w-fit transition-all flex items-center space-x-1.5 cursor-pointer"
             >
               <span>Dispatch Emergency SOS</span>
             </button>
@@ -43,14 +43,14 @@ export default function Footer({ onScrollToSection, onOpenBookings, onOpenSos }:
 
           {/* Column 2: Directory Links */}
           <div className="md:col-span-3">
-            <h4 className="font-display font-bold text-xs uppercase tracking-widest text-gray-400 mb-4 border-l-2 border-signal pl-2">
+            <h4 className="font-display font-bold text-xs uppercase tracking-widest text-gray-500 mb-4 border-l-2 border-signal pl-2">
               Directory Directory
             </h4>
             <ul className="space-y-2.5 text-xs">
               <li>
                 <button
                   onClick={() => onScrollToSection("garages")}
-                  className="text-gray-400 hover:text-signal transition-colors text-left"
+                  className="text-gray-600 hover:text-signal transition-colors text-left cursor-pointer"
                 >
                   Find Certified Garages
                 </button>
@@ -58,7 +58,7 @@ export default function Footer({ onScrollToSection, onOpenBookings, onOpenSos }:
               <li>
                 <button
                   onClick={() => onScrollToSection("estimator")}
-                  className="text-gray-400 hover:text-signal transition-colors text-left"
+                  className="text-gray-600 hover:text-signal transition-colors text-left cursor-pointer"
                 >
                   Cost Estimator Engine
                 </button>
@@ -66,7 +66,7 @@ export default function Footer({ onScrollToSection, onOpenBookings, onOpenSos }:
               <li>
                 <button
                   onClick={() => onScrollToSection("diagnostics-info")}
-                  className="text-gray-400 hover:text-signal transition-colors text-left"
+                  className="text-gray-600 hover:text-signal transition-colors text-left cursor-pointer"
                 >
                   OBD-II Troubleshooter
                 </button>
@@ -74,7 +74,7 @@ export default function Footer({ onScrollToSection, onOpenBookings, onOpenSos }:
               <li>
                 <button
                   onClick={onOpenBookings}
-                  className="text-gray-400 hover:text-signal transition-colors text-left font-mono font-medium flex items-center space-x-1"
+                  className="text-gray-600 hover:text-signal transition-colors text-left font-mono font-medium flex items-center space-x-1 cursor-pointer"
                 >
                   <span>📅 Active Service Reminders</span>
                 </button>
@@ -84,7 +84,7 @@ export default function Footer({ onScrollToSection, onOpenBookings, onOpenSos }:
                   onClick={() => {
                     alert("mCarFix URL Shortener is active. Shared receipts generated at mcf.co/ref-booking.");
                   }}
-                  className="text-gray-400 hover:text-signal transition-colors text-left flex items-center space-x-1.5"
+                  className="text-gray-600 hover:text-signal transition-colors text-left flex items-center space-x-1.5 cursor-pointer"
                 >
                   <span>Link Shortener Receipt</span>
                   <ExternalLink className="h-2.5 w-2.5" />
@@ -95,19 +95,19 @@ export default function Footer({ onScrollToSection, onOpenBookings, onOpenSos }:
 
           {/* Column 3: General Enquiries */}
           <div className="md:col-span-2">
-            <h4 className="font-display font-bold text-xs uppercase tracking-widest text-gray-400 mb-4 border-l-2 border-signal pl-2">
+            <h4 className="font-display font-bold text-xs uppercase tracking-widest text-gray-500 mb-4 border-l-2 border-signal pl-2">
               General Enquiries
             </h4>
             <ul className="space-y-3 text-xs">
-              <li className="flex items-center space-x-2 text-gray-400">
+              <li className="flex items-center space-x-2 text-gray-600">
                 <Phone className="h-3.5 w-3.5 text-signal shrink-0" />
                 <span className="font-mono text-2xs tracking-tight">+254 700 000 999</span>
               </li>
-              <li className="flex items-center space-x-2 text-gray-400">
+              <li className="flex items-center space-x-2 text-gray-600">
                 <Mail className="h-3.5 w-3.5 text-signal shrink-0" />
                 <span className="font-mono text-2xs tracking-tight">ops@mcarfix.co.ke</span>
               </li>
-              <li className="flex items-center space-x-2 text-gray-400">
+              <li className="flex items-center space-x-2 text-gray-600">
                 <MapPin className="h-3.5 w-3.5 text-signal shrink-0" />
                 <span className="leading-tight">Delta Corner Tower B, Westlands, Nairobi</span>
               </li>
@@ -117,10 +117,10 @@ export default function Footer({ onScrollToSection, onOpenBookings, onOpenSos }:
           {/* Column 4: Partner CTA */}
           <div className="md:col-span-3 flex flex-col justify-between">
             <div>
-              <h4 className="font-display font-bold text-xs uppercase tracking-widest text-gray-400 mb-4 border-l-2 border-signal pl-2">
+              <h4 className="font-display font-bold text-xs uppercase tracking-widest text-gray-500 mb-4 border-l-2 border-signal pl-2">
                 Garage Network
               </h4>
-              <p className="text-2xs text-gray-400 leading-relaxed font-light mb-4">
+              <p className="text-2xs text-gray-600 leading-relaxed font-light mb-4">
                 Are you a garage owner in Nairobi looking to receive mCarFix diagnosed vehicle bookings? Partner with us.
               </p>
             </div>
@@ -128,7 +128,7 @@ export default function Footer({ onScrollToSection, onOpenBookings, onOpenSos }:
               onClick={() => {
                 alert("mCarFix Partner Portal registration is opening soon. Contact partner-ops@mcarfix.co.ke to register interest.");
               }}
-              className="bg-steel hover:bg-steel-light border border-steel-light hover:border-signal text-white font-display text-2xs font-bold tracking-wider uppercase py-2.5 px-4 rounded-lg text-center transition-colors cursor-pointer"
+              className="bg-white hover:bg-gray-50 border border-gray-300 hover:border-signal text-gray-700 font-display text-2xs font-bold tracking-wider uppercase py-2.5 px-4 rounded-lg text-center transition-colors cursor-pointer"
             >
               Are you a garage owner?
             </button>
@@ -140,7 +140,7 @@ export default function Footer({ onScrollToSection, onOpenBookings, onOpenSos }:
         <div className="pt-8 flex flex-col sm:flex-row justify-between items-center text-2xs text-gray-500 gap-4">
           <div className="text-center sm:text-left">
             <p>&copy; {new Date().getFullYear()} mCarFix Kenya Ltd. All rights reserved.</p>
-            <p className="text-3xs text-gray-600 mt-1 font-mono uppercase tracking-wider">
+            <p className="text-3xs text-gray-500 mt-1 font-mono uppercase tracking-wider">
               Nairobi Central Node • GPS Ref: 1.2921° S, 36.8219° E
             </p>
           </div>

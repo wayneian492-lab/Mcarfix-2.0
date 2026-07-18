@@ -15,13 +15,13 @@ export default function PartnerBand() {
   ];
 
   return (
-    <section id="partner" className="bg-steel py-10 text-white border-y border-steel/60">
+    <section id="partner" className="bg-gray-50 py-10 text-gray-900 border-y border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header line */}
         <div className="flex items-center justify-center space-x-2 text-center mb-8">
-          <Award className="h-4 w-4 text-diagnostic" />
-          <span className="font-mono text-3xs text-gray-400 uppercase tracking-widest">
+          <Award className="h-4 w-4 text-teal-600" />
+          <span className="font-mono text-3xs text-gray-500 uppercase tracking-widest">
             TRUSTED BY KENYA'S LEADING AUTOMOTIVE INFRASTRUCTURE
           </span>
         </div>
@@ -31,15 +31,15 @@ export default function PartnerBand() {
           {partners.map((p, idx) => (
             <div
               key={idx}
-              className="bg-asphalt/60 border border-steel-light/20 hover:border-diagnostic/20 px-5 py-4 rounded-xl text-center transition-colors duration-300"
+              className="bg-white border border-gray-200 hover:border-signal/20 px-5 py-4 rounded-xl text-center transition-all duration-300 hover:shadow-xs"
             >
               {/* Partner Logo Representation */}
-              <div className="font-display font-extrabold text-base tracking-wider text-gray-200">
+              <div className="font-display font-extrabold text-base tracking-wider text-gray-800">
                 {p.name}
               </div>
               
               {/* Partner Subtitle */}
-              <div className="font-mono text-[9px] text-gray-500 uppercase tracking-widest mt-1">
+              <div className="font-mono text-[9px] text-gray-400 uppercase tracking-widest mt-1">
                 {p.subtitle}
               </div>
             </div>

@@ -139,19 +139,19 @@ export default function DiagnosticsHUD({ onBookService }: DiagnosticsHUDProps) {
   };
 
   return (
-    <section id="diagnostics-info" className="bg-asphalt py-20 text-white border-t border-steel/60">
+    <section id="diagnostics-info" className="bg-white py-20 text-gray-900 border-t border-gray-100">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <span className="font-mono text-xs text-diagnostic font-bold uppercase tracking-widest bg-steel px-3 py-1 rounded">
+          <span className="font-mono text-xs text-teal-600 font-bold uppercase tracking-widest bg-gray-50 border border-gray-200 px-3.5 py-1.5 rounded-full">
             Virtual Troubleshooter
           </span>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl tracking-wide uppercase mt-4 text-white">
+          <h2 className="font-display font-bold text-3xl sm:text-4xl tracking-wide uppercase mt-4 text-gray-900">
             mCarFix OBD-II Diagnostic Tool
           </h2>
-          <div className="h-1 w-12 bg-diagnostic mx-auto mt-4" />
-          <p className="font-sans text-gray-400 mt-4 leading-relaxed font-light">
+          <div className="h-1 w-12 bg-signal mx-auto mt-4" />
+          <p className="font-sans text-gray-600 mt-4 leading-relaxed font-light">
             Don't pay KES 3,000 for a simple scan. Select your vehicle's physical symptom below and initiate our simulator to decode the underlying fault logs instantly.
           </p>
         </div>
@@ -161,7 +161,7 @@ export default function DiagnosticsHUD({ onBookService }: DiagnosticsHUDProps) {
           
           {/* Symptoms List (Left Side) */}
           <div className="lg:col-span-5 space-y-4">
-            <h3 className="font-display font-bold text-base uppercase tracking-wider text-gray-400 mb-2 flex items-center space-x-2">
+            <h3 className="font-display font-bold text-base uppercase tracking-wider text-gray-500 mb-2 flex items-center space-x-2">
               <HelpCircle className="h-4 w-4 text-signal" />
               <span>Select Current Symptom</span>
             </h3>
@@ -179,17 +179,17 @@ export default function DiagnosticsHUD({ onBookService }: DiagnosticsHUDProps) {
                   disabled={isScanning}
                   className={`w-full text-left p-4 rounded-xl border transition-all flex items-center justify-between ${
                     selectedSymptom === s.id
-                      ? "border-diagnostic bg-diagnostic/5 ring-1 ring-diagnostic text-white font-semibold"
-                      : "border-steel/80 bg-steel/40 hover:border-steel hover:bg-steel/60 text-gray-300"
+                      ? "border-teal-600 bg-teal-50/50 ring-1 ring-teal-600 text-gray-900 font-semibold"
+                      : "border-gray-200 bg-white hover:border-gray-400 hover:bg-gray-50/30 text-gray-700"
                   } ${isScanning ? "opacity-50 cursor-not-allowed" : ""}`}
                 >
                   <div className="flex items-center space-x-3.5">
                     <span className="text-xl shrink-0">{s.icon}</span>
-                    <span className="font-display text-sm uppercase tracking-wider text-white">
+                    <span className="font-display text-sm uppercase tracking-wider text-gray-900">
                       {s.label}
                     </span>
                   </div>
-                  <ChevronRight className={`h-4 w-4 ${selectedSymptom === s.id ? "text-diagnostic" : "text-gray-500"}`} />
+                  <ChevronRight className={`h-4 w-4 ${selectedSymptom === s.id ? "text-teal-600" : "text-gray-400"}`} />
                 </button>
               ))}
             </div>
@@ -198,7 +198,7 @@ export default function DiagnosticsHUD({ onBookService }: DiagnosticsHUDProps) {
             <button
               onClick={startAnalysis}
               disabled={isScanning}
-              className={`w-full ${isScanning ? "bg-steel text-gray-500" : "bg-diagnostic hover:bg-diagnostic/90 text-asphalt"} font-display font-bold uppercase tracking-wider text-sm py-4 rounded-xl flex items-center justify-center space-x-2.5 mt-6 transition-all shadow-lg shadow-diagnostic/5 cursor-pointer`}
+              className={`w-full ${isScanning ? "bg-gray-100 text-gray-400 cursor-not-allowed" : "bg-signal hover:bg-signal/90 text-white shadow-md shadow-signal/15"} font-display font-bold uppercase tracking-wider text-sm py-4 rounded-xl flex items-center justify-center space-x-2.5 mt-6 transition-all cursor-pointer`}
             >
               <RefreshCw className={`h-4 w-4 ${isScanning ? "animate-spin" : ""}`} />
               <span>{isScanning ? "Scanning OBD Buses..." : "Initiate System Trace Scan"}</span>
@@ -206,30 +206,30 @@ export default function DiagnosticsHUD({ onBookService }: DiagnosticsHUDProps) {
           </div>
 
           {/* Trace Terminal Console (Right Side) */}
-          <div className="lg:col-span-7 bg-steel border-2 border-steel/80 rounded-2xl overflow-hidden shadow-2xl flex flex-col h-[460px]">
+          <div className="lg:col-span-7 bg-gray-950 border border-gray-800 rounded-2xl overflow-hidden shadow-2xl flex flex-col h-[460px]">
             
             {/* Terminal Top bar */}
-            <div className="bg-asphalt px-5 py-3 border-b border-steel/60 flex items-center justify-between">
+            <div className="bg-gray-900 px-5 py-3 border-b border-gray-850 flex items-center justify-between">
               <div className="flex items-center space-x-2">
-                <Terminal className="h-4.5 w-4.5 text-diagnostic" />
+                <Terminal className="h-4.5 w-4.5 text-teal-400" />
                 <span className="font-mono text-xs text-gray-300 uppercase tracking-wider font-semibold">
                   OBD-II Console - Trace Console
                 </span>
               </div>
               <div className="flex items-center space-x-1.5">
-                <span className="h-2 w-2 rounded-full bg-warning" />
-                <span className="h-2 w-2 rounded-full bg-signal" />
-                <span className="h-2 w-2 rounded-full bg-diagnostic" />
+                <span className="h-2 w-2 rounded-full bg-red-500" />
+                <span className="h-2 w-2 rounded-full bg-amber-500" />
+                <span className="h-2 w-2 rounded-full bg-teal-400" />
               </div>
             </div>
 
             {/* Terminal Body */}
-            <div className="flex-1 bg-black/85 p-5 font-mono text-xs overflow-y-auto leading-relaxed text-gray-300 space-y-1.5 select-text relative">
-              <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0)_96%,rgba(79,209,197,0.03)_96%)] bg-[size:100%_20px] pointer-events-none" />
+            <div className="flex-1 bg-black p-5 font-mono text-xs overflow-y-auto leading-relaxed text-gray-300 space-y-1.5 select-text relative">
+              <div className="absolute inset-0 bg-[linear-gradient(rgba(0,0,0,0)_96%,rgba(20,184,166,0.03)_96%)] bg-[size:100%_20px] pointer-events-none" />
               
               {scanLogs.length === 0 && !isScanning && !scanResult && (
                 <div className="h-full flex flex-col items-center justify-center text-center text-gray-500 py-16">
-                  <Cpu className="h-10 w-10 text-steel-light mb-3 animate-pulse" />
+                  <Cpu className="h-10 w-10 text-gray-850 mb-3 animate-pulse" />
                   <p>&gt; Connection idle.</p>
                   <p className="text-3xs mt-1">Select a symptom and run "Initiate System Trace Scan" above.</p>
                 </div>
@@ -238,27 +238,27 @@ export default function DiagnosticsHUD({ onBookService }: DiagnosticsHUDProps) {
               {/* Live Log Stream */}
               {scanLogs.map((log, index) => (
                 <div key={index} className="text-gray-300">
-                  <span className="text-diagnostic font-semibold">&gt;</span> {log}
+                  <span className="text-teal-400 font-semibold">&gt;</span> {log}
                 </div>
               ))}
 
               {/* scanning progress percentage */}
               {isScanning && (
-                <div className="pt-4 text-diagnostic">
+                <div className="pt-4 text-teal-400">
                   <span className="inline-block animate-pulse">■ Analyzing system data bus... {scanProgress}%</span>
-                  <div className="w-full bg-steel/30 h-1.5 rounded-full overflow-hidden mt-1 max-w-xs">
-                    <div className="h-full bg-diagnostic transition-all duration-200" style={{ width: `${scanProgress}%` }} />
+                  <div className="w-full bg-gray-800 h-1.5 rounded-full overflow-hidden mt-1 max-w-xs">
+                    <div className="h-full bg-teal-500 transition-all duration-200" style={{ width: `${scanProgress}%` }} />
                   </div>
                 </div>
               )}
 
               {/* Complete Diagnostic Output Card */}
               {scanResult && !isScanning && (
-                <div className="mt-4 pt-4 border-t border-steel/50 space-y-4 animate-fade-in">
+                <div className="mt-4 pt-4 border-t border-gray-800 space-y-4 animate-fade-in">
                   <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
                     <div>
                       <span className="text-gray-500 uppercase text-3xs tracking-wider">Detected Code</span>
-                      <div className="text-base text-warning font-bold flex items-center space-x-2">
+                      <div className="text-base text-amber-500 font-bold flex items-center space-x-2">
                         <span>{scanResult.code}</span>
                         <span className="text-white text-xs font-normal">|</span>
                         <span className="text-white text-sm font-semibold">{scanResult.name}</span>
@@ -270,7 +270,7 @@ export default function DiagnosticsHUD({ onBookService }: DiagnosticsHUDProps) {
                     </div>
                   </div>
 
-                  <p className="text-xs text-gray-400 leading-normal font-sans border-l-2 border-diagnostic pl-3 py-0.5">
+                  <p className="text-xs text-gray-400 leading-normal font-sans border-l-2 border-teal-500 pl-3 py-0.5">
                     {scanResult.explanation}
                   </p>
 
@@ -295,7 +295,7 @@ export default function DiagnosticsHUD({ onBookService }: DiagnosticsHUDProps) {
                     </div>
                   </div>
 
-                  <div className="pt-3 border-t border-steel/30 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
+                  <div className="pt-3 border-t border-gray-800 flex flex-col sm:flex-row justify-between items-start sm:items-center gap-3">
                     <div>
                       <span className="font-mono text-3xs text-gray-500 uppercase tracking-widest">Nairobi Price Range</span>
                       <div className="font-mono text-sm font-bold text-signal">{scanResult.estCost}</div>
@@ -303,7 +303,7 @@ export default function DiagnosticsHUD({ onBookService }: DiagnosticsHUDProps) {
 
                     <button
                       onClick={() => onBookService(scanResult.targetService, `OBD Code ${scanResult.code} (${scanResult.name}) decoded. Resolved from symptom: ${selectedSymptom}`)}
-                      className="bg-signal text-asphalt hover:bg-signal/90 font-display font-bold text-xs uppercase tracking-wider px-5 py-2.5 rounded-lg transition-all flex items-center space-x-1.5 cursor-pointer"
+                      className="bg-signal text-white hover:bg-signal/90 font-display font-bold text-xs uppercase tracking-wider px-5 py-2.5 rounded-lg transition-all flex items-center space-x-1.5 cursor-pointer shadow-md shadow-signal/15"
                     >
                       <span>Book Code Fix</span>
                       <ChevronRight className="h-3.5 w-3.5" />
