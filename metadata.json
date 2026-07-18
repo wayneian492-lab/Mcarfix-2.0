@@ -1,0 +1,6 @@
+{
+  "name": "mCarFix",
+  "description": "Your ultimate car companion - Garages, Diagnostics, Parts, and Roadside SOS.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
