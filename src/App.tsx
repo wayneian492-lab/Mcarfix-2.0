@@ -4,6 +4,7 @@
  */
 
 import React from "react";
+import { Truck } from "lucide-react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import LiveTicker from "./components/LiveTicker";
@@ -183,9 +184,10 @@ export default function App() {
               </button>
               <button
                 onClick={() => setIsSosOpen(true)}
-                className="w-full sm:w-auto pulse-red bg-warning text-white px-8 py-4 rounded-xl font-display text-sm font-bold tracking-wider uppercase flex items-center justify-center space-x-2 transition-all cursor-pointer"
+                className="w-full sm:w-auto border-2 border-signal bg-signal text-white hover:bg-transparent hover:text-signal px-8 py-4 rounded-xl font-display text-sm font-bold tracking-wider uppercase flex items-center justify-center space-x-2 transition-all duration-300 cursor-pointer shadow-lg shadow-signal/20"
               >
-                <span>Request Roadside SOS</span>
+                <Truck className="h-4.5 w-4.5" />
+                <span>Request Roadside Help</span>
               </button>
             </div>
           </div>

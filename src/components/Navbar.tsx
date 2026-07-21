@@ -4,7 +4,7 @@
  */
 
 import React from "react";
-import { Phone, AlertTriangle, Menu, X, Car } from "lucide-react";
+import { Phone, AlertTriangle, Menu, X, Car, Truck } from "lucide-react";
 
 interface NavbarProps {
   onOpenSos: () => void;
@@ -78,10 +78,10 @@ export default function Navbar({ onOpenSos, onScrollToSection, activeBookingsCou
             )}
             <button
               onClick={onOpenSos}
-              className="pulse-red bg-warning text-white px-5 py-2.5 rounded-lg font-display text-sm font-bold tracking-wider uppercase flex items-center space-x-2 transition-all cursor-pointer"
+              className="bg-signal text-white px-5 py-2.5 rounded-xl font-display text-sm font-bold tracking-wider uppercase flex items-center space-x-2 hover:bg-signal/90 transition-all duration-300 cursor-pointer shadow-md hover:shadow-lg shadow-signal/15"
             >
-              <AlertTriangle className="h-4 w-4 animate-bounce" />
-              <span>Emergency SOS</span>
+              <Truck className="h-4 w-4" />
+              <span>Roadside Help</span>
             </button>
           </div>
 
@@ -97,9 +97,9 @@ export default function Navbar({ onOpenSos, onScrollToSection, activeBookingsCou
             )}
             <button
               onClick={onOpenSos}
-              className="bg-warning text-white p-2 rounded-lg text-xs flex items-center"
+              className="bg-signal text-white p-2.5 rounded-xl text-xs flex items-center hover:bg-signal/90 transition-all duration-300 shadow-md"
             >
-              <AlertTriangle className="h-4 w-4" />
+              <Truck className="h-4 w-4" />
             </button>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -160,10 +160,10 @@ export default function Navbar({ onOpenSos, onScrollToSection, activeBookingsCou
                 onOpenSos();
                 setIsMenuOpen(false);
               }}
-              className="w-full bg-warning text-white py-3 rounded-lg font-display font-bold tracking-wider uppercase flex items-center justify-center space-x-2"
+              className="w-full bg-signal text-white py-3.5 rounded-xl font-display font-bold tracking-wider uppercase flex items-center justify-center space-x-2 shadow-md hover:bg-signal/95 transition-all duration-300"
             >
-              <AlertTriangle className="h-4 w-4" />
-              <span>EMERGENCY SOS</span>
+              <Truck className="h-4 w-4" />
+              <span>ROADSIDE HELP</span>
             </button>
           </div>
         </div>

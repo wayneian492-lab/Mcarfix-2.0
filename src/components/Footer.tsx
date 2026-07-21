@@ -4,7 +4,7 @@
  */
 
 import React from "react";
-import { Mail, Phone, MapPin, Car, HelpCircle, ExternalLink } from "lucide-react";
+import { Mail, Phone, MapPin, Car, HelpCircle, ExternalLink, Truck } from "lucide-react";
 
 interface FooterProps {
   onScrollToSection: (sectionId: string) => void;
@@ -35,9 +35,10 @@ export default function Footer({ onScrollToSection, onOpenBookings, onOpenSos }:
             </p>
             <button
               onClick={onOpenSos}
-              className="mt-2 bg-red-50 border border-red-200 text-red-600 hover:bg-red-600 hover:text-white px-4 py-2 rounded-lg font-display text-2xs font-bold tracking-widest uppercase w-fit transition-all flex items-center space-x-1.5 cursor-pointer"
+              className="mt-2 bg-orange-50 border border-orange-200 text-signal hover:bg-signal hover:text-white px-4 py-2.5 rounded-xl font-display text-2xs font-bold tracking-widest uppercase w-fit transition-all duration-300 flex items-center space-x-1.5 cursor-pointer shadow-xs"
             >
-              <span>Dispatch Emergency SOS</span>
+              <Truck className="h-3 w-3" />
+              <span>Request Roadside Help</span>
             </button>
           </div>
 

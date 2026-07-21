@@ -3,15 +3,15 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import garageApex from "./assets/images/garage_apex_1784380795986.jpg";
-import garageKilimani from "./assets/images/garage_kilimani_1784380809724.jpg";
-import garageExperts from "./assets/images/garage_experts_1784380823676.jpg";
-import garageKaren from "./assets/images/garage_karen_1784380837970.jpg";
+import garageApex from "./assets/images/garage_westlands_clean_1784611758216.jpg";
+import garageKilimani from "./assets/images/garage_kilimani_clean_1784611775397.jpg";
+import garageExperts from "./assets/images/garage_experts_clean_1784611791738.jpg";
+import garageKaren from "./assets/images/garage_karen_clean_1784611809462.jpg";
 
-import avatarJane from "./assets/images/avatar_jane_1784380852392.jpg";
-import avatarBrian from "./assets/images/avatar_brian_1784380866341.jpg";
-import avatarDennis from "./assets/images/avatar_dennis_1784380880413.jpg";
-import avatarMercy from "./assets/images/avatar_mercy_1784380894244.jpg";
+import avatarJane from "./assets/images/avatar_jane_nairobi_clean_1784612247770.jpg";
+import avatarBrian from "./assets/images/avatar_brian_nairobi_clean_1784612265183.jpg";
+import avatarDennis from "./assets/images/avatar_dennis_nairobi_clean_1784612280990.jpg";
+import avatarMercy from "./assets/images/avatar_mercy_nairobi_clean_1784612297408.jpg";
 
 export interface Garage {
   id: string;

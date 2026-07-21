@@ -90,7 +90,7 @@ export default function CostEstimator({ onBookDirect }: CostEstimatorProps) {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 items-stretch">
           
           {/* Controls Box (Left Side) */}
-          <div className="lg:col-span-7 bg-white border border-gray-200 rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:shadow-xs transition-shadow">
+          <div className="lg:col-span-7 bg-sky-50/30 border border-sky-300 rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-[0_0_25px_rgba(56,189,248,0.25)] hover:shadow-[0_0_35px_rgba(56,189,248,0.45)] hover:border-sky-400 transition-all duration-300">
             <div className="space-y-6">
               <div className="flex items-center space-x-3 mb-2">
                 <Calculator className="h-5 w-5 text-signal" />
@@ -167,7 +167,7 @@ export default function CostEstimator({ onBookDirect }: CostEstimatorProps) {
           </div>
 
           {/* Results Box (Right Side) */}
-          <div className="lg:col-span-5 bg-gray-50 text-gray-900 border border-gray-200 rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-md">
+          <div className="lg:col-span-5 bg-sky-50/70 text-gray-900 border border-sky-300 rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-[0_0_25px_rgba(56,189,248,0.3)] hover:shadow-[0_0_35px_rgba(56,189,248,0.45)] hover:border-sky-400 transition-all duration-300">
             <div>
               {/* Header */}
               <div className="flex items-center justify-between border-b border-gray-200 pb-4 mb-6">

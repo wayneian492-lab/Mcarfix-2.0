@@ -177,8 +177,9 @@ export default function GarageFinder({ onBookGarage, selectedServiceFilter, onCl
                           referrerPolicy="no-referrer"
                         />
                       ) : (
-                        <div className="w-full h-full bg-gray-100 flex items-center justify-center font-mono text-gray-400">
-                          IMAGE OFFLINE
+                        <div className="w-full h-full bg-gradient-to-br from-gray-50 to-gray-100 flex flex-col items-center justify-center p-6 text-center">
+                          <span className="font-display font-bold text-lg text-gray-900 uppercase tracking-wide">{garage.name}</span>
+                          <span className="font-mono text-[10px] text-gray-400 mt-2 uppercase tracking-widest bg-white border border-gray-200 px-2 py-0.5 rounded-sm">Visual Preview Offline</span>
                         </div>
                       )}
                       

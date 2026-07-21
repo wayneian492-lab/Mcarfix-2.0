@@ -8,8 +8,14 @@ import * as Icons from "lucide-react";
 import { SERVICES_DATA, ServiceItem } from "../types";
 import { motion } from "motion/react";
 
-import serviceDiagnosticsImg from "../assets/images/service_diagnostics_1784380763546.jpg";
-import serviceRoadsideImg from "../assets/images/service_roadside_1784380778681.jpg";
+import serviceDiagnosticsImg from "../assets/images/service_diagnostics_nairobi_clean_1784610103376.jpg";
+import serviceRoadsideImg from "../assets/images/service_roadside_assistance_nairobi_1784609874099.jpg";
+import serviceSparePartsImg from "../assets/images/service_spare_parts_nairobi_clean_1784610532383.jpg";
+import serviceTowingImg from "../assets/images/service_towing_nairobi_clean_1784610085342.jpg";
+import serviceMechanicsImg from "../assets/images/service_mechanics_nairobi_new_1784609691473.jpg";
+import serviceTyreBatteryImg from "../assets/images/service_tyres_batteries_nairobi_clean_1784611314540.jpg";
+import serviceCarwashImg from "../assets/images/service_car_wash_nairobi_clean_1784611334296.jpg";
+import serviceInsuranceImg from "../assets/images/service_insurance_nairobi_clean_1784611350899.jpg";
 
 interface ServicesGridProps {
   onSelectServiceFilter: (serviceName: string) => void;
@@ -18,14 +24,14 @@ interface ServicesGridProps {
 
 // Map service IDs to code tags and imagery
 const SERVICE_METADATA: Record<string, { code: string; image?: string; isFeatured: boolean }> = {
-  "general-mechanics": { code: "MECH.01", isFeatured: false },
+  "general-mechanics": { code: "MECH.01", image: serviceMechanicsImg, isFeatured: true },
   "roadside-assistance": { code: "EMER.02", image: serviceRoadsideImg, isFeatured: true },
-  "professional-towing": { code: "TOW.03", isFeatured: false },
+  "professional-towing": { code: "TOW.03", image: serviceTowingImg, isFeatured: true },
   "computer-diagnostics": { code: "DIAG.04", image: serviceDiagnosticsImg, isFeatured: true },
-  "genuine-spare-parts": { code: "OEM.05", isFeatured: false },
-  "tyre-battery-center": { code: "PWR.06", isFeatured: false },
-  "premium-car-wash": { code: "DETL.07", isFeatured: false },
-  "motor-insurance": { code: "INS.08", isFeatured: false },
+  "genuine-spare-parts": { code: "OEM.05", image: serviceSparePartsImg, isFeatured: true },
+  "tyre-battery-center": { code: "PWR.06", image: serviceTyreBatteryImg, isFeatured: true },
+  "premium-car-wash": { code: "DETL.07", image: serviceCarwashImg, isFeatured: true },
+  "motor-insurance": { code: "INS.08", image: serviceInsuranceImg, isFeatured: true },
 };
 
 export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection }: ServicesGridProps) {
@@ -53,19 +59,31 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-16"
+          className="text-center max-w-3xl mx-auto mb-16 overflow-hidden"
         >
-          <span className="font-mono text-xs text-signal font-bold uppercase tracking-widest bg-gray-50 border border-gray-200 px-3.5 py-1.5 rounded-full inline-flex items-center space-x-1.5">
+          <span className="font-mono text-xs text-signal font-bold uppercase tracking-widest bg-gray-50 border border-gray-200 px-3.5 py-1.5 rounded-full inline-flex items-center space-x-1.5 mb-4">
             <span className="h-1.5 w-1.5 rounded-full bg-signal" />
             <span>SYS.OFFERINGS</span>
           </span>
-          <h2 className="font-display font-bold text-3xl sm:text-4xl tracking-wide uppercase mt-4 text-gray-900">
+          <motion.h2 
+            initial={{ opacity: 0, x: -60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut" }}
+            className="font-display font-bold text-3xl sm:text-4xl tracking-wide uppercase text-gray-900"
+          >
             Comprehensive Car Services in Nairobi
-          </h2>
+          </motion.h2>
           <div className="h-1 w-12 bg-signal mx-auto mt-4" />
-          <p className="font-sans text-gray-600 mt-4 leading-relaxed font-light">
+          <motion.p 
+            initial={{ opacity: 0, x: 60 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
+            className="font-sans text-gray-600 mt-4 leading-relaxed font-light"
+          >
             Choose from our highly specialized network of mechanics and auto-care service centers. Click on any category below to immediately discover verified garages offering that service near you.
-          </p>
+          </motion.p>
         </motion.div>
 
         {/* Bento Grid Layout */}
@@ -89,8 +107,20 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
                   <img
                     src={meta.image}
                     alt={
-                      service.id === "computer-diagnostics"
+                      service.id === "general-mechanics"
+                        ? "A highly experienced diesel and petrol engine mechanic operating heavy machinery and rebuilding car engine components in a modern Nairobi workshop"
+                        : service.id === "computer-diagnostics"
                         ? "Professional mechanics executing computerized diagnostic OBD-II fault scan using high-precision digital tablets inside a modern Nairobi garage"
+                        : service.id === "genuine-spare-parts"
+                        ? "A clean studio showcase of verified OEM car spare parts including high-performance batteries, alternators, brakes, and spark plugs for Nairobi drivers"
+                        : service.id === "professional-towing"
+                        ? "A heavy-duty flatbed tow truck transporting an off-road 4x4 SUV vehicle securely along a tree-lined highway in Nairobi"
+                        : service.id === "tyre-battery-center"
+                        ? "Premium Apollo brand tires mounted on elegant alloy rims displayed alongside durable Willard batteries in a modern tire bay center"
+                        : service.id === "premium-car-wash"
+                        ? "A professional auto detailing studio where a specialist is washing a modern red sports coupe with thick active snow foam inside a clean, high-contrast spotlighted bay"
+                        : service.id === "motor-insurance"
+                        ? "A sleek red car in a modern presentation hall with a premium leather-bound motor insurance policy folder displaying custom coverage options"
                         : "Immediate roadside assistance towing vehicle and emergency dynamic mechanics dispatching along Waiyaki Way, Nairobi"
                     }
                     className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
@@ -100,7 +130,13 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/70 to-black/30 z-10" />
 
                   {/* Content Overlays */}
-                  <div className="absolute inset-0 z-20 p-6 flex flex-col justify-between text-white">
+                  <motion.div 
+                    initial={{ opacity: 0, x: -40 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.7, ease: "easeOut", delay: index * 0.05 }}
+                    className="absolute inset-0 z-20 p-6 flex flex-col justify-between text-white"
+                  >
                     {/* Header tags */}
                     <div className="flex justify-between items-center">
                       <div className="bg-white/10 backdrop-blur-xs border border-white/20 px-3 py-1 rounded-md text-[10px] font-mono font-bold text-signal flex items-center space-x-1.5">
@@ -122,9 +158,30 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
                           {service.title}
                         </h3>
                       </div>
-                      <p className="font-sans text-xs md:text-sm text-gray-300 leading-relaxed font-light max-w-lg mb-4">
-                        {service.description}
-                      </p>
+                      {service.id === "motor-insurance" ? (
+                        <div className="mt-2 mb-4 grid grid-cols-1 sm:grid-cols-2 gap-2.5 pt-3 border-t border-white/15">
+                          <div className="bg-black/55 border border-white/10 rounded-lg p-2.5 backdrop-blur-xs">
+                            <span className="block text-[10px] font-mono font-bold text-signal tracking-wider uppercase mb-1">
+                              🛡️ Comprehensive Cover
+                            </span>
+                            <span className="block text-[10px] text-gray-300 leading-normal font-light">
+                              Full protection against accident damage, vehicle loss, theft, fire, and third-party liabilities.
+                            </span>
+                          </div>
+                          <div className="bg-black/55 border border-white/10 rounded-lg p-2.5 backdrop-blur-xs">
+                            <span className="block text-[10px] font-mono font-bold text-gray-300 tracking-wider uppercase mb-1">
+                              ⚖️ Third-Party Cover
+                            </span>
+                            <span className="block text-[10px] text-gray-300 leading-normal font-light">
+                              Essential legal coverage safeguarding against injury, death, and property damage to others.
+                            </span>
+                          </div>
+                        </div>
+                      ) : (
+                        <p className="font-sans text-xs md:text-sm text-gray-300 leading-relaxed font-light max-w-lg mb-4">
+                          {service.description}
+                        </p>
+                      )}
                       
                       <div className="pt-3 border-t border-white/10 flex items-center justify-between text-xs font-mono font-semibold text-signal group-hover:translate-x-1.5 transition-transform duration-300">
                         <span>ACTIVATE DIRECTORY SCAN &rarr;</span>
@@ -133,7 +190,7 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
                         </span>
                       </div>
                     </div>
-                  </div>
+                  </motion.div>
                 </motion.div>
               );
             }
@@ -172,10 +229,16 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
                 </div>
 
                 {/* Card footer indicator */}
-                <div className="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-xs font-mono font-medium text-gray-400 group-hover:text-signal transition-colors">
+                <motion.div 
+                  initial={{ opacity: 0, x: -30 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.05 }}
+                  className="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-xs font-mono font-medium text-gray-400 group-hover:text-signal transition-colors"
+                >
                   <span>Explore Garages</span>
                   <span>&rarr;</span>
-                </div>
+                </motion.div>
               </motion.div>
             );
           })}
@@ -183,10 +246,10 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
 
         {/* Live Diagnostics CTA Bar */}
         <motion.div 
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: -80 }}
+          whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.8, type: "spring", stiffness: 60 }}
           className="mt-14 bg-gray-50 text-gray-900 p-6 sm:p-8 rounded-2xl border border-gray-200 flex flex-col md:flex-row items-center justify-between gap-6"
         >
           <div className="flex items-center space-x-4">

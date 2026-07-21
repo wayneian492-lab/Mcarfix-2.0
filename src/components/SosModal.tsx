@@ -101,10 +101,10 @@ export default function SosModal({ isOpen, onClose }: SosModalProps) {
   };
 
   const emergencies = [
-    { id: "mechanical-stall", label: "Mechanical Stalling / Engine Fault", icon: "⚙️" },
-    { id: "flat-tyre", label: "Flat Tyre / Double Puncture", icon: "🚘" },
-    { id: "dead-battery", label: "Dead Battery / Charging Fault", icon: "⚡" },
-    { id: "accident-towing", label: "Collision / Flatbed Towing Required", icon: "🚨" },
+    { id: "mechanical-stall", label: "Engine Trouble or Stall", icon: "⚙️" },
+    { id: "flat-tyre", label: "Flat Tyre or Puncture", icon: "🚘" },
+    { id: "dead-battery", label: "Dead Battery or Starter", icon: "⚡" },
+    { id: "accident-towing", label: "Towing or Recovery", icon: "🚨" },
   ];
 
   const districts = ["Westlands", "Nairobi CBD", "Mombasa Road", "Karen", "Kilimani", "Kiambu"];
@@ -113,24 +113,26 @@ export default function SosModal({ isOpen, onClose }: SosModalProps) {
     <div className="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-sm animate-fade-in">
       
       {/* Alert Modal Panel */}
-      <div className="relative bg-asphalt border-2 border-warning/50 rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden text-white flex flex-col max-h-[90vh]">
+      <div className="relative bg-slate-900 border-2 border-signal/40 rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden text-white flex flex-col max-h-[90vh]">
         
         {/* Urgent Warning Header */}
-        <div className="bg-warning/20 border-b border-warning/30 px-6 py-5 flex items-center justify-between">
-          <div className="flex items-center space-x-3 text-warning">
-            <AlertTriangle className="h-6 w-6 animate-pulse shrink-0" />
+        <div className="bg-slate-950 border-b border-white/5 px-6 py-5 flex items-center justify-between">
+          <div className="flex items-center space-x-3 text-signal">
+            <div className="p-2 bg-signal/10 rounded-xl">
+              <Truck className="h-6 w-6 text-signal" />
+            </div>
             <div>
-              <span className="font-mono text-3xs font-extrabold uppercase tracking-wider block">
-                Nairobi Central Emergency Node
+              <span className="font-mono text-[9px] font-extrabold uppercase tracking-widest text-gray-400 block">
+                mCarFix Support Network
               </span>
               <h3 className="font-display font-bold text-lg uppercase tracking-wider text-white mt-0.5">
-                {isDispatched ? "Dispatch Crew Assigned" : "Emergency Roadside SOS"}
+                {isDispatched ? "Assistance Dispatched" : "Roadside Assistance"}
               </h3>
             </div>
           </div>
           <button
             onClick={resetAndClose}
-            className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-steel transition-colors focus:outline-none"
+            className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-slate-800 transition-colors focus:outline-none"
           >
             <X className="h-5 w-5" />
           </button>
@@ -144,16 +146,16 @@ export default function SosModal({ isOpen, onClose }: SosModalProps) {
             <div className="space-y-6 text-center animate-fade-in">
               
               {/* Massive Countdown Dial */}
-              <div className="bg-steel/60 border border-steel-light/20 p-5 rounded-2xl max-w-xs mx-auto space-y-1.5 relative overflow-hidden">
+              <div className="bg-slate-950 border border-white/5 p-5 rounded-2xl max-w-xs mx-auto space-y-1.5 relative overflow-hidden">
                 <span className="text-[10px] text-gray-400 font-mono uppercase tracking-widest block">
-                  HELP ESTIMATED ARRIVAL TIME
+                  ESTIMATED ARRIVAL TIME
                 </span>
-                <div className="font-mono text-4xl sm:text-5xl font-extrabold text-warning tracking-tight">
+                <div className="font-mono text-4xl sm:text-5xl font-extrabold text-signal tracking-tight">
                   {formatTime(secondsLeft)}
                 </div>
-                <div className="flex items-center justify-center space-x-1.5 text-diagnostic text-2xs font-mono uppercase tracking-wider">
-                  <Navigation className="h-3 w-3 animate-spin" />
-                  <span>GPS Tracking Dispatch Vehicle...</span>
+                <div className="flex items-center justify-center space-x-1.5 text-teal-400 text-2xs font-mono uppercase tracking-wider">
+                  <Navigation className="h-3 w-3 animate-spin text-teal-400" />
+                  <span>Tracking support unit position...</span>
                 </div>
               </div>
 
@@ -162,68 +164,68 @@ export default function SosModal({ isOpen, onClose }: SosModalProps) {
                 <div className="space-y-3">
                   {/* Step 1: Received */}
                   <div className="flex items-center space-x-3.5 text-left">
-                    <div className={`h-6 w-6 rounded-full flex items-center justify-center font-mono text-xs font-bold ${dispatchStep >= 1 ? "bg-diagnostic text-asphalt" : "bg-steel border border-steel-light text-gray-400"}`}>
+                    <div className={`h-6 w-6 rounded-full flex items-center justify-center font-mono text-xs font-bold ${dispatchStep >= 1 ? "bg-teal-400 text-slate-900" : "bg-slate-800 border border-white/5 text-gray-400"}`}>
                       ✓
                     </div>
                     <div>
-                      <span className="block text-xs font-mono font-bold uppercase tracking-wider text-white">1. Emergency Signal Broadcasted</span>
-                      <span className="block text-3xs text-gray-400 font-sans mt-0.5">Secured handshakes with local AA Kenya cells.</span>
+                      <span className="block text-xs font-mono font-bold uppercase tracking-wider text-white">1. Assistance Request Received</span>
+                      <span className="block text-3xs text-gray-400 font-sans mt-0.5">Request registered with AA Kenya roadside dispatch.</span>
                     </div>
                   </div>
 
                   {/* Step 2: Assigned */}
                   <div className="flex items-center space-x-3.5 text-left">
-                    <div className={`h-6 w-6 rounded-full flex items-center justify-center font-mono text-xs font-bold ${dispatchStep >= 2 ? "bg-diagnostic text-asphalt" : "bg-steel border border-steel-light text-gray-400"}`}>
+                    <div className={`h-6 w-6 rounded-full flex items-center justify-center font-mono text-xs font-bold ${dispatchStep >= 2 ? "bg-teal-400 text-slate-900" : "bg-slate-800 border border-white/5 text-gray-400"}`}>
                       {dispatchStep >= 2 ? "✓" : "2"}
                     </div>
                     <div>
-                      <span className="block text-xs font-mono font-bold uppercase tracking-wider text-white">2. Standby Mobile Unit Dispatched</span>
+                      <span className="block text-xs font-mono font-bold uppercase tracking-wider text-white">2. Local Responder Assigned</span>
                       <span className="block text-3xs text-gray-400 font-sans mt-0.5">Assigned Responder: Kamau • License Plate: KDG 405X.</span>
                     </div>
                   </div>
 
                   {/* Step 3: Enroute */}
                   <div className="flex items-center space-x-3.5 text-left">
-                    <div className={`h-6 w-6 rounded-full flex items-center justify-center font-mono text-xs font-bold ${dispatchStep >= 3 ? "bg-diagnostic text-asphalt text-xs" : "bg-steel border border-steel-light text-gray-400"}`}>
+                    <div className={`h-6 w-6 rounded-full flex items-center justify-center font-mono text-xs font-bold ${dispatchStep >= 3 ? "bg-teal-400 text-slate-900" : "bg-slate-800 border border-white/5 text-gray-400"}`}>
                       {dispatchStep >= 3 ? "✓" : "3"}
                     </div>
                     <div>
-                      <span className="block text-xs font-mono font-bold uppercase tracking-wider text-white">3. Help En-route via Highway Nodes</span>
-                      <span className="block text-3xs text-gray-400 font-sans mt-0.5">Departed Westlands emergency bay, tracking via Bypass.</span>
+                      <span className="block text-xs font-mono font-bold uppercase tracking-wider text-white">3. Responder En-route to Your Location</span>
+                      <span className="block text-3xs text-gray-400 font-sans mt-0.5">Departed Westlands support bay, tracking via Expressway.</span>
                     </div>
                   </div>
 
                   {/* Step 4: Arrival */}
                   <div className="flex items-center space-x-3.5 text-left">
-                    <div className={`h-6 w-6 rounded-full flex items-center justify-center font-mono text-xs font-bold ${dispatchStep >= 4 ? "bg-diagnostic text-asphalt" : "bg-steel border border-steel-light text-gray-400"}`}>
+                    <div className={`h-6 w-6 rounded-full flex items-center justify-center font-mono text-xs font-bold ${dispatchStep >= 4 ? "bg-teal-400 text-slate-900" : "bg-slate-800 border border-white/5 text-gray-400"}`}>
                       {dispatchStep >= 4 ? "🏁" : "4"}
                     </div>
                     <div>
-                      <span className="block text-xs font-mono font-bold uppercase tracking-wider text-white">4. Final Approach / Arrival</span>
-                      <span className="block text-3xs text-gray-400 font-sans mt-0.5">Keep hazard indicators flashing and stay inside.</span>
+                      <span className="block text-xs font-mono font-bold uppercase tracking-wider text-white">4. Arrival & Support</span>
+                      <span className="block text-3xs text-gray-400 font-sans mt-0.5">Please turn on your hazard lights and stay safe inside.</span>
                     </div>
                   </div>
                 </div>
               </div>
 
               {/* Dispatch Crew card details */}
-              <div className="bg-steel/40 border border-steel/60 p-4 rounded-xl text-left flex items-center justify-between">
+              <div className="bg-slate-950 border border-white/5 p-4 rounded-xl text-left flex items-center justify-between">
                 <div>
-                  <span className="block text-[9px] text-gray-500 uppercase tracking-widest font-mono">Assigned Service Flatbed</span>
+                  <span className="block text-[9px] text-gray-500 uppercase tracking-widest font-mono">Assigned Support vehicle</span>
                   <span className="text-sm font-display font-bold uppercase tracking-wider text-white mt-1 block">
-                    Kamau • AA Mobile Unit 08
+                    Kamau • AA Support Unit 08
                   </span>
-                  <span className="text-2xs text-gray-400 font-sans mt-0.5 block">Contact Phone: +254 722 000 SOS</span>
+                  <span className="text-2xs text-gray-400 font-sans mt-0.5 block">Contact Phone: +254 722 000 999</span>
                 </div>
-                <div className="p-3 bg-asphalt border border-steel rounded-lg">
-                  <Truck className="h-6 w-6 text-warning" />
+                <div className="p-3 bg-slate-900 border border-white/5 rounded-lg">
+                  <Truck className="h-6 w-6 text-signal" />
                 </div>
               </div>
 
               {/* Action Button */}
               <button
                 onClick={resetAndClose}
-                className="w-full bg-steel hover:bg-steel-light border border-steel-light text-white font-display font-bold text-sm uppercase tracking-wider py-4 rounded-xl transition-all cursor-pointer"
+                className="w-full bg-slate-800 hover:bg-slate-755 border border-white/5 text-white font-display font-bold text-sm uppercase tracking-wider py-4 rounded-xl transition-all cursor-pointer"
               >
                 Close Tracking Dashboard
               </button>
@@ -233,16 +235,14 @@ export default function SosModal({ isOpen, onClose }: SosModalProps) {
             <form onSubmit={handleSosRequest} className="space-y-6">
               
               {/* Satellite GPS Reading Telemetry */}
-              <div className="bg-steel/80 border border-steel-light/10 p-4 rounded-xl flex items-center justify-between font-mono text-2xs">
+              <div className="bg-slate-950 border border-white/5 p-4 rounded-xl flex items-center justify-between font-mono text-xs">
                 <div className="space-y-1">
-                  <span className="text-gray-500 uppercase text-3xs font-bold tracking-widest block">SATELLITE GPS POLLED</span>
-                  <span className="text-diagnostic font-semibold block">LAT: {gpsCoords.lat.toFixed(4)}° S</span>
-                  <span className="text-diagnostic font-semibold block">LNG: {gpsCoords.lng.toFixed(4)}° E</span>
+                  <span className="text-gray-500 text-[9px] font-bold tracking-widest block uppercase">GPS LOCATION LOCKED</span>
+                  <span className="text-teal-400 font-semibold block">{gpsCoords.lat.toFixed(4)}° S, {gpsCoords.lng.toFixed(4)}° E</span>
                 </div>
                 <div className="text-right">
-                  <span className="text-gray-500 uppercase text-3xs font-bold tracking-widest block">TELEMETRY</span>
-                  <span className="text-white block">ACCURACY: 3 METERS</span>
-                  <span className="text-white block">NODE: NAV-EAST-NBO</span>
+                  <span className="text-gray-500 text-[9px] font-bold tracking-widest block uppercase">SATELLITE ACCURACY</span>
+                  <span className="text-white block font-semibold">±3 METERS</span>
                 </div>
               </div>
 
@@ -257,10 +257,10 @@ export default function SosModal({ isOpen, onClose }: SosModalProps) {
                       key={e.id}
                       type="button"
                       onClick={() => setEmergencyType(e.id)}
-                      className={`text-left p-3.5 rounded-xl border transition-all flex items-center space-x-3 ${
+                      className={`text-left p-3.5 rounded-xl border transition-all duration-300 flex items-center space-x-3 cursor-pointer ${
                         emergencyType === e.id
-                          ? "border-warning bg-warning/10 ring-1 ring-warning text-white font-semibold"
-                          : "border-steel/80 bg-steel/40 hover:border-steel text-gray-300"
+                          ? "border-signal bg-signal/5 ring-1 ring-signal text-white font-semibold"
+                          : "border-white/5 bg-slate-950/40 hover:border-white/10 text-gray-300"
                       }`}
                     >
                       <span className="text-xl shrink-0">{e.icon}</span>
@@ -281,7 +281,7 @@ export default function SosModal({ isOpen, onClose }: SosModalProps) {
                   required
                   value={district}
                   onChange={(e) => setDistrict(e.target.value)}
-                  className="w-full bg-asphalt border border-steel/80 hover:border-gray-600 focus:border-warning text-white px-4 py-3 rounded-xl font-sans text-xs outline-none transition-all cursor-pointer"
+                  className="w-full bg-slate-950 border border-white/5 hover:border-white/10 focus:border-signal text-white px-4 py-3 rounded-xl font-sans text-xs outline-none transition-all cursor-pointer"
                 >
                   {districts.map((d) => (
                     <option key={d} value={d}>{d}</option>
@@ -301,7 +301,7 @@ export default function SosModal({ isOpen, onClose }: SosModalProps) {
                     placeholder="E.g. Juma"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
-                    className="w-full bg-asphalt border border-steel/80 hover:border-gray-600 focus:border-warning text-white px-3.5 py-2.5 rounded-lg font-sans text-xs outline-none transition-all"
+                    className="w-full bg-slate-950 border border-white/5 hover:border-white/10 focus:border-signal text-white px-3.5 py-2.5 rounded-lg font-sans text-xs outline-none transition-all"
                   />
                 </div>
 
@@ -315,26 +315,26 @@ export default function SosModal({ isOpen, onClose }: SosModalProps) {
                     placeholder="+254 7XX XXX XXX"
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
-                    className="w-full bg-asphalt border border-steel/80 hover:border-gray-600 focus:border-warning text-white px-3.5 py-2.5 rounded-lg font-sans text-xs outline-none transition-all"
+                    className="w-full bg-slate-950 border border-white/5 hover:border-white/10 focus:border-signal text-white px-3.5 py-2.5 rounded-lg font-sans text-xs outline-none transition-all"
                   />
                 </div>
               </div>
 
-              {/* Emergency dispatch Disclaimer */}
-              <div className="bg-warning/10 border border-warning/20 p-4 rounded-xl text-left text-2xs space-y-1.5 flex items-start space-x-3">
-                <ShieldAlert className="h-5 w-5 text-warning shrink-0 mt-0.5" />
-                <div className="text-gray-400 leading-relaxed font-light">
-                  <span className="font-semibold text-white block uppercase font-mono tracking-wider mb-0.5">Emergency Dispatch Terms:</span>
-                  roadside dispatch is a premium service coordinated directly with AA Kenya partners. Live dispatch fees commencing at KES 3,500 will apply if tow hooks are physically engaged.
+              {/* Roadside assistance Terms */}
+              <div className="bg-slate-950 border border-white/5 p-4 rounded-xl text-left text-xs space-y-1.5 flex items-start space-x-3">
+                <ShieldAlert className="h-5 w-5 text-signal shrink-0 mt-0.5" />
+                <div className="text-gray-300 leading-relaxed font-light text-[10px]">
+                  <span className="font-semibold text-white block uppercase font-mono tracking-widest mb-1">Assistance Terms:</span>
+                  Roadside assistance is dispatched in partnership with AA Kenya. A dispatch fee of KES 3,500 applies if professional towing hooks or flatbeds are engaged. Let's make sure you stay safe inside your vehicle.
                 </div>
               </div>
 
               {/* Submit trigger */}
               <button
                 type="submit"
-                className="w-full bg-warning text-white hover:bg-warning/90 font-display font-bold text-sm uppercase tracking-wider py-4 rounded-xl flex items-center justify-center space-x-2 transition-all cursor-pointer shadow-lg shadow-warning/10"
+                className="w-full bg-signal text-white hover:bg-signal/90 font-display font-bold text-sm uppercase tracking-wider py-4 rounded-xl flex items-center justify-center space-x-2 transition-all duration-300 cursor-pointer shadow-lg shadow-signal/20"
               >
-                <span>Broadcast Roadside SOS Signal</span>
+                <span>Request Roadside Assistance</span>
               </button>
 
             </form>

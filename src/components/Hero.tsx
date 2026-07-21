@@ -7,6 +7,7 @@ import React from "react";
 import { Star, Shield, Cpu, Activity, AlertTriangle, ChevronRight } from "lucide-react";
 import { motion } from "motion/react";
 import workshopImage from "../assets/images/car_service_lift_1784380558464.jpg";
+import nairobiSkylineImg from "../assets/images/nairobi_skyline_expressway_1784392142062.jpg";
 import heroBgImage from "../assets/images/hero_garage_bg_1784380746194.jpg";
 
 interface HeroProps {
@@ -184,33 +185,33 @@ export default function Hero({ onOpenSos, onOpenDiagnostics, onScrollToSection }
           >
             <div className="relative h-56 overflow-hidden bg-gray-900">
               <img
-                src={workshopImage}
-                alt="A modern automotive service bay at Westlands Partner Hub in Nairobi showcasing vehicle lift and professional diagnostic tools"
+                src={nairobiSkylineImg}
+                alt="Beautiful aerial view of Nairobi skyline showcasing modern skyscrapers and the elevated Nairobi Expressway"
                 className="w-full h-full object-cover opacity-85 transition-transform duration-700 group-hover:scale-105"
                 referrerPolicy="no-referrer"
               />
-              <div className="absolute top-3 left-3 flex items-center space-x-1.5 bg-red-600/90 backdrop-blur-md text-white px-3 py-1 rounded-full text-[9px] font-mono font-bold tracking-widest animate-pulse">
+              <div className="absolute top-3 left-3 flex items-center space-x-1.5 bg-teal-500/90 backdrop-blur-md text-white px-3 py-1 rounded-full text-[9px] font-mono font-bold tracking-widest animate-pulse">
                 <span className="h-1.5 w-1.5 rounded-full bg-white" />
-                <span>LIVE FEED</span>
+                <span>METRO COVERAGE</span>
               </div>
               <div className="absolute top-3 right-3 bg-gray-950/80 backdrop-blur-md text-signal border border-signal/20 px-3 py-1 rounded-full text-[9px] font-mono font-bold tracking-wider">
-                BAY 04
+                NAIROBI
               </div>
               <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-5">
-                <span className="font-mono text-[9px] text-gray-300 uppercase tracking-widest font-semibold">Verified Location</span>
-                <h4 className="font-display text-lg font-bold text-white uppercase tracking-wide mt-0.5">Westlands Partner Hub</h4>
+                <span className="font-mono text-[9px] text-gray-300 uppercase tracking-widest font-semibold">Broad Coverage</span>
+                <h4 className="font-display text-lg font-bold text-white uppercase tracking-wide mt-0.5">Greater Nairobi Network</h4>
               </div>
             </div>
 
             <div className="p-6 flex-1 flex flex-col justify-between">
               <div className="space-y-3">
                 <p className="font-sans text-xs text-gray-300 leading-relaxed font-light">
-                  Continuous OBD-II diagnostic streams sync this physical service bay directly to our active Nairobi partner network. Protect your investment with high-precision mechanics.
+                  Our network of certified garages, rescue responders, and OBD-II support hubs extends across all major Nairobi nodes including Westlands, Kilimani, Mombasa Road, and Thika Road.
                 </p>
                 <div className="flex items-center space-x-2 text-[10px] text-gray-400 font-mono">
-                  <span className="text-teal-400 font-semibold">● 15 Bays Active</span>
+                  <span className="text-teal-400 font-semibold">● 450+ Garages Active</span>
                   <span>•</span>
-                  <span>99.4% SLA Vetted</span>
+                  <span>99.8% Response SLA</span>
                 </div>
               </div>
 
@@ -220,15 +221,15 @@ export default function Hero({ onOpenSos, onOpenDiagnostics, onScrollToSection }
                     <Activity className="h-4 w-4 text-teal-400 animate-pulse" />
                   </div>
                   <div>
-                    <span className="block text-[8px] text-gray-400 uppercase tracking-wider font-mono">Bay Status</span>
-                    <span className="text-[10px] text-teal-300 font-bold font-sans">Diagnostics Streaming</span>
+                    <span className="block text-[8px] text-gray-400 uppercase tracking-wider font-mono">Rescue Grid</span>
+                    <span className="text-[10px] text-teal-300 font-bold font-sans">Active Monitoring</span>
                   </div>
                 </div>
                 <button
                   onClick={() => onScrollToSection("garages")}
                   className="text-xs font-display font-bold uppercase tracking-wider text-signal hover:underline cursor-pointer"
                 >
-                  View Bays &rarr;
+                  Explore Network &rarr;
                 </button>
               </div>
             </div>

@@ -44,10 +44,10 @@ export default function Testimonials() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.6, delay: index * 0.08 }}
-                className="bg-white border border-gray-200/80 rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:shadow-2xl hover:border-gray-300 transition-all duration-300 relative shadow-lg"
+                className="bg-sky-50/30 border border-sky-200 rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:shadow-[0_0_30px_rgba(56,189,248,0.35)] hover:border-sky-400 shadow-[0_0_20px_rgba(56,189,248,0.15)] transition-all duration-300 relative"
               >
                 {/* Quote Icon Overlay */}
-                <div className="absolute right-6 top-6 text-gray-150 opacity-10">
+                <div className="absolute right-6 top-6 text-sky-400/20">
                   <MessageSquareQuote className="h-16 w-16 shrink-0" />
                 </div>
 
@@ -66,17 +66,17 @@ export default function Testimonials() {
                 </div>
 
                 {/* Author Info Section with Circular Avatar */}
-                <div className="border-t border-gray-100 pt-5 flex items-center justify-between gap-4">
+                <div className="border-t border-sky-200/50 pt-5 flex items-center justify-between gap-4">
                   <div className="flex items-center space-x-3">
                     {t.avatar ? (
                       <img
                         src={t.avatar}
                         alt={`Profile picture of ${t.name}, a verified client from ${t.location}, Nairobi who managed service records for their ${t.vehicle} via mCarFix`}
-                        className="h-11 w-11 rounded-full object-cover border border-gray-100 shadow-xs shrink-0"
+                        className="h-11 w-11 rounded-full object-cover border border-sky-200 shadow-xs shrink-0"
                         referrerPolicy="no-referrer"
                       />
                     ) : (
-                      <div className="h-11 w-11 rounded-full bg-gray-100 border border-gray-200 flex items-center justify-center font-display font-bold text-gray-400 shrink-0 uppercase text-xs">
+                      <div className="h-11 w-11 rounded-full bg-sky-100/50 border border-sky-200 flex items-center justify-center font-display font-bold text-sky-500 shrink-0 uppercase text-xs">
                         {t.name.split(" ").map(n => n[0]).join("")}
                       </div>
                     )}
@@ -91,7 +91,7 @@ export default function Testimonials() {
                   </div>
 
                   {/* Vehicle Tag */}
-                  <div className="bg-gray-50 px-3 py-1.5 rounded-lg border border-gray-200 shrink-0">
+                  <div className="bg-sky-50/50 px-3 py-1.5 rounded-lg border border-sky-200/60 shrink-0">
                     <span className="font-mono text-[10px] font-semibold text-signal uppercase tracking-wider">
                       {t.vehicle}
                     </span>
