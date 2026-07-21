@@ -235,7 +235,7 @@ export default function DiagnosticsHUD({ onBookService }: DiagnosticsHUDProps) {
                       }
                     }}
                     disabled={isScanning}
-                    className={`w-full text-left p-4 rounded-xl border transition-all flex items-center justify-between cursor-pointer ${
+                    className={`w-full text-left p-4 rounded-xl border transition flex items-center justify-between cursor-pointer ${
                       selectedSymptom === s.id
                         ? "border-sky-500 bg-sky-50/50 ring-1 ring-sky-500 text-gray-900 font-semibold shadow-[0_0_15px_rgba(56,189,248,0.2)]"
                         : "border-gray-200 bg-white hover:border-sky-400 hover:bg-sky-50/10 text-gray-700"
@@ -258,7 +258,7 @@ export default function DiagnosticsHUD({ onBookService }: DiagnosticsHUDProps) {
               onClick={startAnalysis}
               disabled={isScanning}
               id="initiate-scan-btn"
-              className={`w-full cursor-pointer ${isScanning ? "bg-gray-100 text-gray-400 cursor-not-allowed" : "bg-sky-500 hover:bg-sky-600 text-white shadow-[0_4px_20px_rgba(14,165,233,0.3)] hover:shadow-[0_4px_25px_rgba(14,165,233,0.45)]"} font-display font-bold uppercase tracking-wider text-sm py-4 rounded-xl flex items-center justify-center space-x-2.5 mt-6 transition-all`}
+              className={`w-full cursor-pointer ${isScanning ? "bg-gray-100 text-gray-400 cursor-not-allowed" : "bg-sky-500 hover:bg-sky-600 text-white shadow-[0_4px_20px_rgba(14,165,233,0.3)] hover:shadow-[0_4px_25px_rgba(14,165,233,0.45)]"} font-display font-bold uppercase tracking-wider text-sm py-4 rounded-xl flex items-center justify-center space-x-2.5 mt-6 transition`}
             >
               <RefreshCw className={`h-4.5 w-4.5 ${isScanning ? "animate-spin" : ""}`} />
               <span>{isScanning ? "Scanning OBD Buses..." : "Initiate System Trace Scan"}</span>
@@ -512,7 +512,7 @@ export default function DiagnosticsHUD({ onBookService }: DiagnosticsHUDProps) {
                     fill={selectedSymptom === "engine-overheating" ? "rgba(239, 68, 68, 0.25)" : "#0c111e"} 
                     stroke={selectedSymptom === "engine-overheating" ? "#f43f5e" : "#2d3748"}
                     strokeWidth={selectedSymptom === "engine-overheating" ? "1.8" : "1"}
-                    className={`transition-all duration-300 ${selectedSymptom === "engine-overheating" ? "animate-pulse" : ""}`}
+                    className={`transition duration-300 ${selectedSymptom === "engine-overheating" ? "animate-pulse" : ""}`}
                   />
                   {/* Dual Cooling Fan circles inside Radiator */}
                   <circle 
@@ -548,7 +548,7 @@ export default function DiagnosticsHUD({ onBookService }: DiagnosticsHUDProps) {
                     fill={selectedSymptom === "rough-idle" ? "rgba(249, 115, 22, 0.15)" : "#080c14"}
                     stroke={selectedSymptom === "rough-idle" ? "#f97316" : "#2d3748"}
                     strokeWidth={selectedSymptom === "rough-idle" ? "1.8" : "1"}
-                    className={`transition-all duration-300 ${selectedSymptom === "rough-idle" ? "animate-pulse" : ""}`}
+                    className={`transition duration-300 ${selectedSymptom === "rough-idle" ? "animate-pulse" : ""}`}
                   />
                   
                   {/* 4 Engine Cylinders lined up vertically */}
@@ -578,7 +578,7 @@ export default function DiagnosticsHUD({ onBookService }: DiagnosticsHUDProps) {
                     fill={selectedSymptom === "clicking-start" ? "rgba(234, 179, 8, 0.18)" : "#0c111e"}
                     stroke={selectedSymptom === "clicking-start" ? "#eab308" : "#2d3748"}
                     strokeWidth={selectedSymptom === "clicking-start" ? "1.8" : "1"}
-                    className={`transition-all duration-300 ${selectedSymptom === "clicking-start" ? "animate-pulse" : ""}`}
+                    className={`transition duration-300 ${selectedSymptom === "clicking-start" ? "animate-pulse" : ""}`}
                   />
                   {/* Battery positive/negative terminals */}
                   <rect x="58" y="78" width="3" height="2.5" fill={selectedSymptom === "clicking-start" ? "#ef4444" : "#334155"} />
@@ -600,7 +600,7 @@ export default function DiagnosticsHUD({ onBookService }: DiagnosticsHUDProps) {
                     fill={selectedSymptom === "check-engine" ? "rgba(14, 165, 233, 0.18)" : "#0c111e"}
                     stroke={selectedSymptom === "check-engine" ? "#38bdf8" : "#2d3748"}
                     strokeWidth={selectedSymptom === "check-engine" ? "1.8" : "1"}
-                    className={`transition-all duration-300 ${selectedSymptom === "check-engine" ? "animate-pulse" : ""}`}
+                    className={`transition duration-300 ${selectedSymptom === "check-engine" ? "animate-pulse" : ""}`}
                   />
                   {/* Air intake tube ducting leading to center manifold block */}
                   <path 
@@ -608,7 +608,7 @@ export default function DiagnosticsHUD({ onBookService }: DiagnosticsHUDProps) {
                     fill="none" 
                     stroke={selectedSymptom === "check-engine" ? "#38bdf8" : "#2d3748"} 
                     strokeWidth={selectedSymptom === "check-engine" ? "2.2" : "1.2"} 
-                    className={`transition-all duration-300 ${selectedSymptom === "check-engine" ? "animate-pulse" : ""}`}
+                    className={`transition duration-300 ${selectedSymptom === "check-engine" ? "animate-pulse" : ""}`}
                   />
                   {/* Detailed airbox element ridges */}
                   <line x1="129" y1="76" x2="138" y2="76" stroke={selectedSymptom === "check-engine" ? "#38bdf8" : "#273549"} strokeWidth="1" />
@@ -698,11 +698,11 @@ export default function DiagnosticsHUD({ onBookService }: DiagnosticsHUDProps) {
               {/* The Live Gauges Grid */}
               <div className="grid grid-cols-2 gap-4 mb-4">
                 {/* RPM Gauge */}
-                <div className="bg-slate-900 border border-slate-800 rounded-xl p-3 flex flex-col relative overflow-hidden group hover:border-slate-700 transition-all">
+                <div className="bg-slate-900 border border-slate-800 rounded-xl p-3 flex flex-col relative overflow-hidden group hover:border-slate-700 transition">
                   <span className="font-display text-[10px] text-sky-400 uppercase tracking-wider font-semibold">Engine Spin Speed</span>
                   <span className="text-[9px] text-slate-500 font-sans leading-tight mt-0.5">How fast the engine rotates (RPM)</span>
                   <div className="my-1.5 flex items-baseline space-x-1">
-                    <span className={`font-display font-bold text-xl transition-all ${selectedSymptom === "rough-idle" && scanResult ? "text-orange-500" : "text-white"}`}>
+                    <span className={`font-display font-bold text-xl transition ${selectedSymptom === "rough-idle" && scanResult ? "text-orange-500" : "text-white"}`}>
                       {rpm}
                     </span>
                     <span className="font-mono text-[9px] text-slate-400">RPM</span>
@@ -723,11 +723,11 @@ export default function DiagnosticsHUD({ onBookService }: DiagnosticsHUDProps) {
                 </div>
 
                 {/* Coolant Temp Gauge */}
-                <div className="bg-slate-900 border border-slate-800 rounded-xl p-3 flex flex-col relative overflow-hidden group hover:border-slate-700 transition-all">
+                <div className="bg-slate-900 border border-slate-800 rounded-xl p-3 flex flex-col relative overflow-hidden group hover:border-slate-700 transition">
                   <span className="font-display text-[10px] text-sky-400 uppercase tracking-wider font-semibold">Engine Heat Level</span>
                   <span className="text-[9px] text-slate-500 font-sans leading-tight mt-0.5">Water & coolant temperature</span>
                   <div className="my-1.5 flex items-baseline space-x-1">
-                    <span className={`font-display font-bold text-xl transition-all ${temp >= 100 ? "text-rose-500 animate-pulse" : "text-white"}`}>
+                    <span className={`font-display font-bold text-xl transition ${temp >= 100 ? "text-rose-500 animate-pulse" : "text-white"}`}>
                       {temp}°
                     </span>
                     <span className="font-mono text-[9px] text-slate-400">C</span>
@@ -747,11 +747,11 @@ export default function DiagnosticsHUD({ onBookService }: DiagnosticsHUDProps) {
                 </div>
 
                 {/* Battery Voltage Gauge */}
-                <div className="bg-slate-900 border border-slate-800 rounded-xl p-3 flex flex-col relative overflow-hidden group hover:border-slate-700 transition-all">
+                <div className="bg-slate-900 border border-slate-800 rounded-xl p-3 flex flex-col relative overflow-hidden group hover:border-slate-700 transition">
                   <span className="font-display text-[10px] text-sky-400 uppercase tracking-wider font-semibold">Battery Strength</span>
                   <span className="text-[9px] text-slate-500 font-sans leading-tight mt-0.5">Electrical power voltage</span>
                   <div className="my-1.5 flex items-baseline space-x-1">
-                    <span className={`font-display font-bold text-xl transition-all ${volts < 12 ? "text-amber-500 animate-pulse" : "text-white"}`}>
+                    <span className={`font-display font-bold text-xl transition ${volts < 12 ? "text-amber-500 animate-pulse" : "text-white"}`}>
                       {volts}
                     </span>
                     <span className="font-mono text-[9px] text-slate-400">V</span>
@@ -771,11 +771,11 @@ export default function DiagnosticsHUD({ onBookService }: DiagnosticsHUDProps) {
                 </div>
 
                 {/* MAF Flow Rate Gauge */}
-                <div className="bg-slate-900 border border-slate-800 rounded-xl p-3 flex flex-col relative overflow-hidden group hover:border-slate-700 transition-all">
+                <div className="bg-slate-900 border border-slate-800 rounded-xl p-3 flex flex-col relative overflow-hidden group hover:border-slate-700 transition">
                   <span className="font-display text-[10px] text-sky-400 uppercase tracking-wider font-semibold">Engine Air Breathing</span>
                   <span className="text-[9px] text-slate-500 font-sans leading-tight mt-0.5">Air entering for clean fuel combustion</span>
                   <div className="my-1.5 flex items-baseline space-x-1">
-                    <span className={`font-display font-bold text-xl transition-all ${selectedSymptom === "check-engine" && scanResult ? "text-amber-500 font-bold" : "text-white"}`}>
+                    <span className={`font-display font-bold text-xl transition ${selectedSymptom === "check-engine" && scanResult ? "text-amber-500 font-bold" : "text-white"}`}>
                       {maf}
                     </span>
                     <span className="font-mono text-[9px] text-slate-400">g/s</span>
@@ -931,7 +931,7 @@ export default function DiagnosticsHUD({ onBookService }: DiagnosticsHUDProps) {
 
                 <button
                   onClick={() => onBookService(scanResult.targetService, `OBD Code ${scanResult.code} (${scanResult.name}) decoded. Resolved from symptom: ${selectedSymptom}`)}
-                  className="bg-sky-500 hover:bg-sky-600 text-white font-display font-bold text-sm uppercase tracking-wider px-8 py-4 rounded-xl transition-all flex items-center justify-center space-x-2 cursor-pointer shadow-[0_4px_20px_rgba(14,165,233,0.3)] hover:shadow-[0_4px_25px_rgba(14,165,233,0.45)] shrink-0"
+                  className="bg-sky-500 hover:bg-sky-600 text-white font-display font-bold text-sm uppercase tracking-wider px-8 py-4 rounded-xl transition flex items-center justify-center space-x-2 cursor-pointer shadow-[0_4px_20px_rgba(14,165,233,0.3)] hover:shadow-[0_4px_25px_rgba(14,165,233,0.45)] shrink-0"
                 >
                   <BookOpen className="h-4.5 w-4.5" />
                   <span>Schedule Diagnostic Fix</span>

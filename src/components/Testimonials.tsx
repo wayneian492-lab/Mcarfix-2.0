@@ -47,8 +47,8 @@ export default function Testimonials() {
                 className="bg-sky-50/30 border border-sky-200 rounded-2xl p-6 sm:p-8 flex flex-col justify-between hover:shadow-[0_0_30px_rgba(56,189,248,0.35)] hover:border-sky-400 shadow-[0_0_20px_rgba(56,189,248,0.15)] transition-all duration-300 relative"
               >
                 {/* Quote Icon Overlay */}
-                <div className="absolute right-6 top-6 text-sky-400/20">
-                  <MessageSquareQuote className="h-16 w-16 shrink-0" />
+                <div className="absolute right-3 top-3 text-sky-400/40">
+                  <MessageSquareQuote className="h-5 w-5 shrink-0" />
                 </div>
 
                 <div className="relative z-10">
@@ -91,8 +91,8 @@ export default function Testimonials() {
                   </div>
 
                   {/* Vehicle Tag */}
-                  <div className="bg-sky-50/50 px-3 py-1.5 rounded-lg border border-sky-200/60 shrink-0">
-                    <span className="font-mono text-[10px] font-semibold text-signal uppercase tracking-wider">
+                  <div className="bg-orange-50 px-3 py-1.5 rounded-lg border border-orange-200 shrink-0">
+                    <span className="font-mono text-[10px] font-bold text-orange-600 uppercase tracking-wider">
                       {t.vehicle}
                     </span>
                   </div>

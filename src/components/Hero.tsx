@@ -6,9 +6,9 @@
 import React from "react";
 import { Star, Shield, Cpu, Activity, AlertTriangle, ChevronRight } from "lucide-react";
 import { motion } from "motion/react";
-import workshopImage from "../assets/images/car_service_lift_1784380558464.jpg";
-import nairobiSkylineImg from "../assets/images/nairobi_skyline_expressway_1784392142062.jpg";
-import heroBgImage from "../assets/images/hero_garage_bg_1784380746194.jpg";
+import workshopImage from "../assets/images/car_service_lift_1784614889346.jpg";
+import nairobiSkylineImg from "../assets/images/nairobi_skyline_expressway_1784614906687.jpg";
+import heroBgImage from "../assets/images/hero_garage_bg_1784614872137.jpg";
 
 interface HeroProps {
   onOpenSos: () => void;

@@ -43,48 +43,51 @@ export default function FloatingDock({ onOpenSos, onScrollToSection }: FloatingD
           className="fixed z-50 bottom-4 left-1/2 -translate-x-1/2 md:translate-x-0 md:left-5 md:top-1/2 md:-translate-y-1/2 md:bottom-auto select-none"
         >
           {!isExpanded ? (
-            /* Collapsed State: Sleek circular floating action trigger */
+            /* Collapsed State: Highly visible premium pill-shaped Quick Tools trigger */
             <motion.button
               layoutId="dock-container"
               onClick={() => setIsExpanded(true)}
-              className="w-14 h-14 bg-gray-950/95 backdrop-blur-md border border-white/15 shadow-2xl rounded-full flex flex-col items-center justify-center text-signal hover:text-white hover:border-signal/50 hover:bg-black transition-all duration-300 cursor-pointer focus:outline-none relative group"
+              className="px-5 py-3 bg-gray-950/95 backdrop-blur-md border border-white/15 shadow-[0_8px_32px_rgba(0,0,0,0.5)] rounded-full flex items-center justify-center space-x-2.5 text-signal hover:text-white hover:border-signal/50 hover:bg-black transition-all duration-300 cursor-pointer focus:outline-none relative group"
               title="Expand mCarFix Quick Tools"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              {/* Pulsing background ring */}
-              <span className="absolute inset-0 rounded-full bg-signal/10 animate-ping pointer-events-none" />
-              <Wrench className="h-5.5 w-5.5 animate-pulse" />
-              <span className="absolute -bottom-1 bg-signal text-asphalt font-mono font-bold text-[8px] uppercase tracking-widest px-1.5 py-0.5 rounded-full scale-75 opacity-0 group-hover:opacity-100 transition-opacity whitespace-nowrap">
-                Tools
+              {/* Pulsing background glow ring */}
+              <span className="absolute inset-0 rounded-full bg-signal/10 animate-pulse pointer-events-none" />
+              <Wrench className="h-5 w-5 text-signal group-hover:rotate-45 transition-transform duration-300" />
+              <span className="font-display font-extrabold text-xs uppercase tracking-wider text-white">
+                Quick Tools
               </span>
             </motion.button>
           ) : (
-            /* Expanded State: Highly polished centered control window */
+            /* Expanded State: Highly polished centered control window with premium animation states */
             <motion.div
               layoutId="dock-container"
-              className="bg-gray-950/95 backdrop-blur-md border border-white/15 shadow-2xl rounded-2xl p-4 w-72 md:w-20 transition-all duration-300 flex flex-col items-stretch"
-              initial={{ scale: 0.95 }}
-              animate={{ scale: 1 }}
+              className="bg-gray-950/98 backdrop-blur-md border border-white/20 shadow-[0_12px_48px_rgba(0,0,0,0.6)] rounded-2xl p-4 w-72 md:w-24 transition-all duration-300 flex flex-col items-stretch"
+              initial={{ scale: 0.9, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ type: "spring", damping: 20 }}
             >
-              {/* Header */}
-              <div className="flex items-center justify-between border-b border-white/10 pb-2 mb-3">
-                <span className="font-mono text-[9px] text-gray-400 uppercase tracking-widest font-bold">
+              {/* Header with a premium close button */}
+              <div className="flex items-center justify-between border-b border-white/10 pb-2.5 mb-3.5">
+                <span className="font-mono text-[9px] text-gray-400 uppercase tracking-widest font-extrabold">
                   Quick Panel
                 </span>
                 <button
                   onClick={() => setIsExpanded(false)}
-                  className="p-1 rounded-md text-gray-400 hover:text-white hover:bg-white/10 transition-colors cursor-pointer focus:outline-none"
-                  title="Minimize Panel"
+                  className="p-1.5 rounded-full bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/15 hover:border-white/25 transition-all duration-300 cursor-pointer focus:outline-none flex items-center justify-center group/close"
+                  title="Close Tools Panel"
                 >
-                  <X className="h-3.5 w-3.5" />
+                  <X className="h-3.5 w-3.5 transform group-hover/close:rotate-90 transition-transform duration-300" />
                 </button>
               </div>
 
-              {/* Centered Buttons Container */}
-              <div className="flex flex-row md:flex-col items-center justify-center gap-6 md:gap-5 py-1">
+              {/* Centered Buttons Container with staggered animations */}
+              <div className="flex flex-row md:flex-col items-center justify-center gap-6 md:gap-5.5 py-1">
                 {/* 1. Book Action */}
-                <button
+                <motion.button
+                  whileHover={{ scale: 1.08 }}
+                  whileTap={{ scale: 0.95 }}
                   onClick={() => {
                     onScrollToSection("garages");
                     setIsExpanded(false);
@@ -92,20 +95,22 @@ export default function FloatingDock({ onOpenSos, onScrollToSection }: FloatingD
                   className="flex flex-col items-center justify-center cursor-pointer group focus:outline-none"
                   title="Book verified mechanics"
                 >
-                  <div className="bg-amber-500/10 hover:bg-amber-500/20 text-amber-500 p-2.5 rounded-full transition-all duration-300 transform group-hover:scale-110 border border-amber-500/20 group-hover:border-amber-500/40 shrink-0">
+                  <div className="bg-amber-500/10 hover:bg-amber-500/20 text-amber-500 p-2.5 rounded-full transition-all duration-300 border border-amber-500/20 group-hover:border-amber-500/50 shrink-0 shadow-sm group-hover:shadow-amber-500/10">
                     <Calendar className="h-4.5 w-4.5" />
                   </div>
-                  <span className="text-[9px] font-mono text-gray-400 group-hover:text-amber-500 transition-colors uppercase tracking-wider font-semibold mt-1.5">
+                  <span className="text-[10px] font-sans text-gray-300 group-hover:text-amber-500 transition-colors uppercase tracking-wider font-bold mt-2">
                     Book
                   </span>
-                </button>
+                </motion.button>
 
                 {/* Vertical/Horizontal Dividers */}
                 <div className="w-[1px] h-8 bg-white/10 md:hidden" />
-                <div className="hidden md:block w-8 h-[1px] bg-white/10" />
+                <div className="hidden md:block w-10 h-[1px] bg-white/10 animate-pulse" />
 
                 {/* 2. Help Action */}
-                <button
+                <motion.button
+                  whileHover={{ scale: 1.08 }}
+                  whileTap={{ scale: 0.95 }}
                   onClick={() => {
                     onOpenSos();
                     setIsExpanded(false);
@@ -113,20 +118,22 @@ export default function FloatingDock({ onOpenSos, onScrollToSection }: FloatingD
                   className="flex flex-col items-center justify-center cursor-pointer group focus:outline-none"
                   title="Request quick roadside flatbed towing or mechanics"
                 >
-                  <div className="bg-signal/10 hover:bg-signal/20 text-signal p-2.5 rounded-full transition-all duration-300 transform group-hover:scale-115 border border-signal/20 group-hover:border-signal/50 shrink-0">
+                  <div className="bg-signal/15 hover:bg-signal/25 text-signal p-2.5 rounded-full transition-all duration-300 border border-signal/25 group-hover:border-signal/65 shrink-0 shadow-md group-hover:shadow-signal/15">
                     <Truck className="h-4.5 w-4.5" />
                   </div>
-                  <span className="text-[9px] font-mono text-gray-400 group-hover:text-signal transition-colors uppercase tracking-wider font-bold mt-1.5">
+                  <span className="text-[10px] font-sans text-gray-300 group-hover:text-signal transition-colors uppercase tracking-wider font-extrabold mt-2">
                     Help
                   </span>
-                </button>
+                </motion.button>
 
                 {/* Vertical/Horizontal Dividers */}
                 <div className="w-[1px] h-8 bg-white/10 md:hidden" />
-                <div className="hidden md:block w-8 h-[1px] bg-white/10" />
+                <div className="hidden md:block w-10 h-[1px] bg-white/10 animate-pulse" />
 
                 {/* 3. Diagnostics Action */}
-                <button
+                <motion.button
+                  whileHover={{ scale: 1.08 }}
+                  whileTap={{ scale: 0.95 }}
                   onClick={() => {
                     onScrollToSection("diagnostics-info");
                     setIsExpanded(false);
@@ -134,13 +141,13 @@ export default function FloatingDock({ onOpenSos, onScrollToSection }: FloatingD
                   className="flex flex-col items-center justify-center cursor-pointer group focus:outline-none"
                   title="Initiate virtual OBD diagnostics"
                 >
-                  <div className="bg-teal-500/10 hover:bg-teal-500/20 text-teal-400 p-2.5 rounded-full transition-all duration-300 transform group-hover:scale-110 border border-teal-500/20 group-hover:border-teal-500/40 shrink-0">
+                  <div className="bg-teal-500/10 hover:bg-teal-500/20 text-teal-400 p-2.5 rounded-full transition-all duration-300 border border-teal-500/20 group-hover:border-teal-500/50 shrink-0 shadow-sm group-hover:shadow-teal-400/10">
                     <Cpu className="h-4.5 w-4.5" />
                   </div>
-                  <span className="text-[9px] font-mono text-gray-400 group-hover:text-teal-400 transition-colors uppercase tracking-wider font-semibold mt-1.5">
+                  <span className="text-[10px] font-sans text-gray-300 group-hover:text-teal-400 transition-colors uppercase tracking-wider font-bold mt-2">
                     Diag
                   </span>
-                </button>
+                </motion.button>
               </div>
             </motion.div>
           )}

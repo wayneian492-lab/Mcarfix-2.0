@@ -20,21 +20,22 @@ export default function LiveTicker() {
   const repeatedItems = [...tickerItems, ...tickerItems, ...tickerItems];
 
   return (
-    <div className="bg-gray-50 border-y border-gray-100 py-3.5 overflow-hidden flex items-center select-none">
-      <div className="flex-shrink-0 flex items-center space-x-2 bg-white px-4 py-1.5 z-10 border border-gray-200 text-teal-600 font-mono text-xs uppercase tracking-wider font-semibold mr-4 rounded-md shadow-xs">
+    <div className="bg-gray-50 border-y border-gray-100 py-2.5 md:py-3.5 overflow-hidden flex items-center select-none">
+      <div className="flex-shrink-0 flex items-center space-x-1.5 sm:space-x-2 bg-white px-2.5 py-1 sm:px-4 sm:py-1.5 z-10 border border-gray-200 text-teal-600 font-mono text-[10px] sm:text-xs uppercase tracking-wider font-semibold mr-2 sm:mr-4 rounded-md shadow-xs">
         <Activity className="h-3.5 w-3.5 animate-pulse text-teal-600" />
-        <span>Live Feed</span>
+        <span className="hidden sm:inline">Live Feed</span>
+        <span className="sm:hidden">Live</span>
       </div>
 
       <div className="flex whitespace-nowrap overflow-hidden">
-        <div className="flex space-x-12 animate-[marquee_30s_linear_infinite] hover:[animation-play-state:paused] cursor-pointer">
+        <div className="flex space-x-8 sm:space-x-12 animate-[marquee_30s_linear_infinite] hover:[animation-play-state:paused] cursor-pointer">
           {repeatedItems.map((item, index) => (
-            <div key={index} className="flex items-center space-x-3 text-sm font-mono text-gray-600">
+            <div key={index} className="flex items-center space-x-2 sm:space-x-3 text-xs sm:text-sm font-mono text-gray-600">
               <span className="text-signal font-semibold">⚡ {item.location}</span>
               <span className="text-gray-300">•</span>
               <span className="text-gray-800">{item.text}</span>
               <span className="text-gray-300">•</span>
-              <span className="text-teal-600 text-xs">{item.time}</span>
+              <span className="text-teal-600 text-[10px] sm:text-xs">{item.time}</span>
             </div>
           ))}
         </div>
