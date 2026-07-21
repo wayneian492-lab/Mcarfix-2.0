@@ -4,8 +4,9 @@
  */
 
 import React from "react";
-import { MapPin, Star, ShieldCheck } from "lucide-react";
+import { MapPin, Star, ShieldCheck, Activity, Wifi, Users, Clock, Compass, AlertTriangle, ExternalLink } from "lucide-react";
 import { Garage } from "../types";
+import { APIProvider, Map, AdvancedMarker, Pin, useMap } from "@vis.gl/react-google-maps";
 
 interface NairobiMapProps {
   selectedLocation: string;
@@ -18,17 +19,66 @@ interface MapPinData {
   id: string;
   name: string;
   district: string;
-  x: number;
-  y: number;
+  lat: number;
+  lng: number;
+  garageId: string;
+}
+
+interface HubData {
+  id: string;
+  name: string;
+  district: string;
+  mechanicsCount: number;
+  avgResponseTime: string;
+  signalStrength: number;
+  status: "OPTIMAL" | "BUSY" | "STANDBY";
+  load: number;
   garageId: string;
 }
 
 const PIN_DATA: MapPinData[] = [
-  { id: "p1", name: "Apex Auto Care", district: "Westlands", x: 150, y: 110, garageId: "g1" },
-  { id: "p2", name: "Kilimani Elite", district: "Kilimani", x: 110, y: 180, garageId: "g2" },
-  { id: "p3", name: "Auto Experts", district: "Mombasa Road", x: 230, y: 250, garageId: "g3" },
-  { id: "p4", name: "Karen Luxury Autos", district: "Karen", x: 60, y: 290, garageId: "g4" },
+  { id: "p1", name: "Apex Auto Care", district: "Westlands", lat: -1.2682, lng: 36.8044, garageId: "g1" },
+  { id: "p2", name: "Kilimani Elite", district: "Kilimani", lat: -1.2912, lng: 36.7905, garageId: "g2" },
+  { id: "p3", name: "Auto Experts", district: "Mombasa Road", lat: -1.3218, lng: 36.8523, garageId: "g3" },
+  { id: "p4", name: "Karen Luxury Autos", district: "Karen", lat: -1.3200, lng: 36.7032, garageId: "g4" },
 ];
+
+const HUBS: HubData[] = [
+  { id: "h1", name: "Apex Dispatch Center", district: "Westlands", mechanicsCount: 4, avgResponseTime: "11 min", signalStrength: 98, status: "OPTIMAL", load: 65, garageId: "g1" },
+  { id: "h2", name: "Kilimani Response Unit", district: "Kilimani", mechanicsCount: 3, avgResponseTime: "14 min", signalStrength: 95, status: "OPTIMAL", load: 40, garageId: "g2" },
+  { id: "h3", name: "Automotive Experts Hub", district: "Mombasa Road", mechanicsCount: 2, avgResponseTime: "18 min", signalStrength: 88, status: "STANDBY", load: 25, garageId: "g3" },
+  { id: "h4", name: "Karen Luxury Fleet", district: "Karen", mechanicsCount: 2, avgResponseTime: "22 min", signalStrength: 91, status: "BUSY", load: 85, garageId: "g4" },
+];
+
+const API_KEY =
+  process.env.GOOGLE_MAPS_PLATFORM_KEY ||
+  (import.meta as any).env?.VITE_GOOGLE_MAPS_PLATFORM_KEY ||
+  (globalThis as any).GOOGLE_MAPS_PLATFORM_KEY ||
+  "";
+
+const hasValidKey = Boolean(API_KEY) && API_KEY !== "YOUR_API_KEY";
+
+// Helper component to control map panning and zooming based on the selection
+function MapController({ selectedLocation }: { selectedLocation: string }) {
+  const map = useMap();
+
+  React.useEffect(() => {
+    if (!map) return;
+    if (selectedLocation === "All") {
+      // General Nairobi center
+      map.panTo({ lat: -1.2921, lng: 36.8219 });
+      map.setZoom(12);
+    } else {
+      const pin = PIN_DATA.find((p) => p.district.toLowerCase() === selectedLocation.toLowerCase());
+      if (pin) {
+        map.panTo({ lat: pin.lat, lng: pin.lng });
+        map.setZoom(14);
+      }
+    }
+  }, [map, selectedLocation]);
+
+  return null;
+}
 
 export default function NairobiMap({
   selectedLocation,
@@ -36,6 +86,7 @@ export default function NairobiMap({
   filteredGarages,
   onBookGarage,
 }: NairobiMapProps) {
+  const [activeTab, setActiveTab] = React.useState<"radar" | "telemetry">("radar");
   const [hoveredPin, setHoveredPin] = React.useState<MapPinData | null>(null);
 
   // Find matching garage for pins
@@ -44,220 +95,245 @@ export default function NairobiMap({
   };
 
   return (
-    <div className="bg-white border border-gray-200 rounded-2xl p-4 sm:p-5 shadow-lg flex flex-col justify-between h-[450px] lg:h-[620px] transition-all duration-300">
+    <div className="bg-white border border-gray-200 rounded-2xl p-4 sm:p-5 shadow-lg flex flex-col justify-between h-[480px] lg:h-[620px] transition-all duration-300">
       {/* Map Header */}
-      <div className="border-b border-gray-100 pb-3 mb-3 flex justify-between items-center">
+      <div className="border-b border-gray-100 pb-3 mb-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
         <div>
           <h4 className="font-display font-bold text-sm uppercase tracking-wider text-gray-900">
-            Interactive Coverage Map
+            Interactive GPS System
           </h4>
           <span className="text-[10px] text-gray-500 font-mono block mt-0.5">
-            NAIROBI METROPOLITAN GPS COORDS
+            NAIROBI REGIONAL COMMAND PANEL
           </span>
         </div>
-        <div className="flex items-center space-x-1 bg-teal-50 border border-teal-100 px-2 py-0.5 rounded-full text-[9px] font-mono text-teal-700 font-bold">
-          <span className="h-1.5 w-1.5 rounded-full bg-teal-500 animate-pulse" />
-          <span>LIVE TRACKING</span>
+
+        {/* Tab Switcher */}
+        <div className="flex bg-gray-100 p-0.5 rounded-lg border border-gray-200 text-[10px] font-mono font-bold self-start sm:self-center">
+          <button
+            onClick={() => setActiveTab("radar")}
+            className={`px-3 py-1 rounded-md transition-all duration-200 ${
+              activeTab === "radar"
+                ? "bg-white text-signal shadow-xs"
+                : "text-gray-500 hover:text-gray-900"
+            }`}
+          >
+            RADAR MAP
+          </button>
+          <button
+            onClick={() => setActiveTab("telemetry")}
+            className={`px-3 py-1 rounded-md transition-all duration-200 ${
+              activeTab === "telemetry"
+                ? "bg-white text-signal shadow-xs"
+                : "text-gray-500 hover:text-gray-900"
+            }`}
+          >
+            LIVE HUD
+          </button>
         </div>
       </div>
 
-      {/* Map Canvas Box */}
-      <div className="relative flex-grow rounded-xl bg-slate-950 border border-slate-900 overflow-hidden flex items-center justify-center group/map">
-        {/* Background Grid Lines */}
-        <div className="absolute inset-0 opacity-[0.1] pointer-events-none"
-             style={{ backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)", backgroundSize: "16px 16px" }} />
-
-        {/* Outer Tech HUD Rings & Labels */}
-        <div className="absolute inset-x-2 bottom-2 flex justify-between text-[8px] font-mono text-gray-500 pointer-events-none select-none">
-          <span>LAT: 1.2921° S</span>
-          <span>LNG: 36.8219° E</span>
-        </div>
-
-        {/* Vector SVG Roads & Rivers */}
-        <svg
-          viewBox="0 0 300 400"
-          className="w-full h-full max-h-[340px] lg:max-h-[500px]"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          {/* Green Spaces (Karura Forest, Arboretum, Karen Plains) */}
-          <path
-            d="M 120,30 Q 180,10 240,40 Q 220,90 140,80 Z"
-            fill="#10b981"
-            fillOpacity="0.08"
-            stroke="#10b981"
-            strokeWidth="0.5"
-            strokeDasharray="2 2"
-          />
-          <path
-            d="M 20,310 Q 50,280 80,340 Q 40,380 10,330 Z"
-            fill="#10b981"
-            fillOpacity="0.06"
-            stroke="#10b981"
-            strokeWidth="0.5"
-          />
-
-          {/* Nairobi River Curve */}
-          <path
-            d="M 10,130 Q 90,120 160,160 T 290,150"
-            fill="none"
-            stroke="#38bdf8"
-            strokeWidth="1.5"
-            strokeOpacity="0.2"
-            strokeDasharray="4 4"
-          />
-
-          {/* Major Expressways / Arterial Highways */}
-          {/* Waiyaki Way to Mombasa Road */}
-          <path
-            d="M 10,80 Q 120,110 180,190 T 295,310"
-            fill="none"
-            stroke="#475569"
-            strokeWidth="1.5"
-            strokeOpacity="0.3"
-          />
-          {/* Ngong Road */}
-          <path
-            d="M 10,260 Q 100,240 180,190"
-            fill="none"
-            stroke="#475569"
-            strokeWidth="1"
-            strokeOpacity="0.25"
-          />
-          {/* Ring Road */}
-          <path
-            d="M 150,40 C 120,160 110,220 60,330"
-            fill="none"
-            stroke="#475569"
-            strokeWidth="1"
-            strokeOpacity="0.25"
-            strokeDasharray="2 2"
-          />
-
-          {/* SVG Map Text Labels */}
-          <text x="210" y="55" fill="#94a3b8" fillOpacity="0.4" fontSize="7" fontFamily="monospace">KARURA FOREST</text>
-          <text x="22" y="350" fill="#94a3b8" fillOpacity="0.4" fontSize="7" fontFamily="monospace">KAREN PLAINS</text>
-          <text x="220" y="325" fill="#4fd1c5" fillOpacity="0.4" fontSize="7" fontFamily="monospace" transform="rotate(25, 220, 325)">MOMBASA RD</text>
-          <text x="25" y="90" fill="#94a3b8" fillOpacity="0.4" fontSize="7" fontFamily="monospace" transform="rotate(10, 25, 90)">WAIYAKI WAY</text>
-
-          {/* Draw Map Pins */}
-          {PIN_DATA.map((pin) => {
-            const activeGarage = getGarageForPin(pin);
-            const isSelected = selectedLocation.toLowerCase() === pin.district.toLowerCase();
-            const isAnySelected = selectedLocation !== "All";
-            const isDimmed = isAnySelected && !isSelected;
-
-            // Determine display color
-            const pinColorClass = activeGarage ? "text-signal" : "text-gray-500";
-            const pulseColorClass = activeGarage ? "fill-signal" : "fill-gray-500";
-
-            return (
-              <g
-                key={pin.id}
-                className="cursor-pointer transition-all duration-300"
-                onClick={() => setSelectedLocation(isSelected ? "All" : pin.district)}
-                onMouseEnter={() => setHoveredPin(pin)}
-                onMouseLeave={() => setHoveredPin(null)}
-                opacity={isDimmed ? 0.35 : 1}
-              >
-                {/* Active Glowing Pulse */}
-                {activeGarage && (
-                  <>
-                    <circle
-                      cx={pin.x}
-                      cy={pin.y}
-                      r="12"
-                      className={`animate-ping origin-center opacity-25 ${pulseColorClass}`}
-                      style={{ animationDuration: "2s" }}
-                    />
-                    <circle
-                      cx={pin.x}
-                      cy={pin.y}
-                      r="6"
-                      className={`opacity-40 ${pulseColorClass}`}
-                    />
-                  </>
-                )}
-
-                {/* Pin Center Point */}
-                <circle
-                  cx={pin.x}
-                  cy={pin.y}
-                  r="4"
-                  fill={isSelected ? "#FF5E00" : activeGarage ? "#FF5E00" : "#475569"}
-                  stroke="#ffffff"
-                  strokeWidth="1"
-                />
-
-                {/* Visual anchor / marker flag */}
-                <line
-                  x1={pin.x}
-                  y1={pin.y}
-                  x2={pin.x}
-                  y2={pin.y - 14}
-                  stroke={isSelected ? "#FF5E00" : activeGarage ? "#4fd1c5" : "#475569"}
-                  strokeWidth="1"
-                />
-
-                {/* Little Badge Label */}
-                <rect
-                  x={pin.x - 30}
-                  y={pin.y - 25}
-                  width="60"
-                  height="10"
-                  rx="2"
-                  fill="#12151b"
-                  fillOpacity="0.85"
-                  stroke={isSelected ? "#FF5E00" : activeGarage ? "#4fd1c5" : "#334155"}
-                  strokeWidth="0.5"
-                />
-                <text
-                  x={pin.x}
-                  y={pin.y - 18}
-                  fill="#ffffff"
-                  fontSize="6"
-                  fontFamily="sans-serif"
-                  fontWeight="bold"
-                  textAnchor="middle"
+      {/* Map or Telemetry View */}
+      {activeTab === "radar" ? (
+        <div className="relative flex-grow rounded-xl bg-slate-950 border border-slate-900 overflow-hidden flex flex-col items-center justify-center">
+          {hasValidKey ? (
+            <APIProvider apiKey={API_KEY} version="weekly">
+              <div className="w-full h-full relative min-h-[300px]">
+                <Map
+                  defaultCenter={{ lat: -1.2921, lng: 36.8219 }}
+                  defaultZoom={12}
+                  mapId="DEMO_MAP_ID"
+                  internalUsageAttributionIds={["gmp_mcp_codeassist_v1_aistudio"]}
+                  style={{ width: "100%", height: "100%" }}
+                  gestureHandling="cooperative"
+                  disableDefaultUI={true}
                 >
-                  {pin.district.toUpperCase()}
-                </text>
-              </g>
-            );
-          })}
-        </svg>
+                  <MapController selectedLocation={selectedLocation} />
 
-        {/* Hover / Tooltip HUD display overlay */}
-        {hoveredPin && (() => {
-          const matchingGarage = getGarageForPin(hoveredPin);
-          return (
-            <div className="absolute top-4 inset-x-4 bg-slate-900/95 border border-white/10 backdrop-blur-md p-3 rounded-xl flex items-center justify-between pointer-events-none z-10 transition-all duration-300">
-              <div className="space-y-0.5">
-                <span className="block text-[8px] font-mono text-signal font-bold uppercase tracking-widest">
-                  LOCATED SYSTEM SPECIALIST
-                </span>
-                <span className="block text-xs font-display font-bold text-white uppercase tracking-wide">
-                  {hoveredPin.name}
-                </span>
-                <span className="block text-3xs font-mono text-gray-400">
-                  {hoveredPin.district} District • Vetted Unit
-                </span>
+                  {PIN_DATA.map((pin) => {
+                    const activeGarage = getGarageForPin(pin);
+                    const isSelected = selectedLocation.toLowerCase() === pin.district.toLowerCase();
+                    const isAnySelected = selectedLocation !== "All";
+                    const isDimmed = isAnySelected && !isSelected;
+
+                    if (!activeGarage) return null;
+
+                    return (
+                      <AdvancedMarker
+                        key={pin.id}
+                        position={{ lat: pin.lat, lng: pin.lng }}
+                        onClick={() => setSelectedLocation(isSelected ? "All" : pin.district)}
+                        title={pin.name}
+                      >
+                        <Pin
+                          background={isSelected ? "#FF5E00" : "#0d9488"}
+                          borderColor="#ffffff"
+                          glyphColor="#ffffff"
+                          scale={isSelected ? 1.25 : 1.0}
+                        />
+                      </AdvancedMarker>
+                    );
+                  })}
+                </Map>
+
+                {/* HUD Coordinates Display Overlay on Map */}
+                <div className="absolute bottom-2 inset-x-2 flex justify-between text-[8px] font-mono text-white bg-slate-950/70 backdrop-blur-xs px-2 py-1 rounded border border-white/5 pointer-events-none select-none">
+                  <span>LAT: 1.2921° S</span>
+                  <span>LNG: 36.8219° E</span>
+                </div>
               </div>
-              {matchingGarage ? (
-                <div className="flex items-center space-x-1.5 bg-signal/15 border border-signal/20 px-2 py-1 rounded-md">
-                  <Star className="h-3 w-3 fill-amber-400 text-amber-400" />
-                  <span className="font-mono text-2xs font-bold text-signal">
-                    {matchingGarage.rating.toFixed(1)}
+            </APIProvider>
+          ) : (
+            /* Splash instructions when no API key configured */
+            <div className="absolute inset-0 bg-slate-950 p-5 flex flex-col justify-between overflow-y-auto text-left">
+              <div className="space-y-4">
+                <div className="flex items-center space-x-2 text-amber-500">
+                  <AlertTriangle className="h-5 w-5 shrink-0" />
+                  <span className="font-mono text-xs font-black tracking-widest uppercase">
+                    GOOGLE MAPS KEY REQUIRED
                   </span>
                 </div>
-              ) : (
-                <span className="text-[9px] font-mono text-amber-500 font-bold bg-amber-500/10 border border-amber-500/20 px-2 py-0.5 rounded-sm">
-                  FILTER OUT
-                </span>
-              )}
+
+                <div className="space-y-3">
+                  <p className="text-gray-300 font-sans text-xs leading-relaxed font-light">
+                    An active API key is required to render the live Google Map of Nairobi. Follow these steps to provision and inject your key:
+                  </p>
+
+                  <div className="space-y-2 font-sans text-2xs text-gray-400">
+                    <div className="flex items-start gap-2 bg-slate-900 border border-white/5 p-2 rounded-lg">
+                      <span className="font-mono text-amber-500 font-bold shrink-0">STEP 1</span>
+                      <p>
+                        Get an API key with Maps JavaScript API enabled from the{" "}
+                        <a
+                          href="https://console.cloud.google.com/google/maps-apis/start?utm_campaign=gmp-code-assist-ais"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-signal hover:underline inline-flex items-center gap-0.5 font-bold"
+                        >
+                          Google Cloud Console <ExternalLink className="h-2.5 w-2.5 inline" />
+                        </a>
+                      </p>
+                    </div>
+
+                    <div className="flex items-start gap-2 bg-slate-900 border border-white/5 p-2 rounded-lg">
+                      <span className="font-mono text-amber-500 font-bold shrink-0">STEP 2</span>
+                      <p>
+                        Open <strong className="text-white font-medium">Settings</strong> (⚙️ gear icon, top-right corner) &rarr; <strong className="text-white font-medium">Secrets</strong>
+                      </p>
+                    </div>
+
+                    <div className="flex items-start gap-2 bg-slate-900 border border-white/5 p-2 rounded-lg">
+                      <span className="font-mono text-amber-500 font-bold shrink-0">STEP 3</span>
+                      <p>
+                        Add a secret named <code className="text-amber-400 bg-black/40 px-1 py-0.5 rounded font-mono">GOOGLE_MAPS_PLATFORM_KEY</code>, paste your key, and press Enter.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="mt-4 border-t border-white/5 pt-3">
+                <p className="text-[10px] font-mono text-gray-500 text-center">
+                  The application compiles automatically upon secret injection.
+                </p>
+              </div>
             </div>
-          );
-        })()}
-      </div>
+          )}
+        </div>
+      ) : (
+        /* Detailed dispatch HUD / Telemetry view alternative */
+        <div className="flex-grow flex flex-col justify-start gap-3 overflow-y-auto max-h-[340px] lg:max-h-[500px] pr-1">
+          <div className="bg-slate-950 border border-slate-900 rounded-xl p-3 text-white flex items-center justify-between">
+            <div className="flex items-center space-x-2">
+              <Activity className="h-4 w-4 text-diagnostic animate-pulse" />
+              <div>
+                <span className="block text-[9px] font-mono text-gray-400 uppercase leading-none">NETWORK CAPACITY</span>
+                <span className="block text-xs font-bold uppercase tracking-wider text-white">4 Active Regions Online</span>
+              </div>
+            </div>
+            <div className="text-right font-mono text-[9px] text-gray-400">
+              <span>LATENCY: 42ms</span>
+            </div>
+          </div>
+
+          <div className="grid grid-cols-1 gap-3">
+            {HUBS.map((hub) => {
+              const isSelected = selectedLocation.toLowerCase() === hub.district.toLowerCase();
+
+              return (
+                <div
+                  key={hub.id}
+                  onClick={() => setSelectedLocation(isSelected ? "All" : hub.district)}
+                  className={`border rounded-xl p-3.5 transition-all duration-300 cursor-pointer flex flex-col justify-between ${
+                    isSelected
+                      ? "bg-signal/5 border-signal shadow-md shadow-signal/5"
+                      : "bg-gray-50 border-gray-200/80 hover:bg-white hover:border-gray-400 hover:shadow-xs"
+                  }`}
+                >
+                  <div className="flex justify-between items-start">
+                    <div>
+                      <div className="flex items-center space-x-1.5">
+                        <span className={`h-1.5 w-1.5 rounded-full ${
+                          hub.status === "OPTIMAL" ? "bg-emerald-500" : hub.status === "BUSY" ? "bg-amber-500" : "bg-blue-500"
+                        }`} />
+                        <h5 className="font-display font-bold text-xs uppercase tracking-wide text-gray-900">
+                          {hub.name}
+                        </h5>
+                      </div>
+                      <span className="block text-[10px] font-mono text-gray-500 mt-0.5">
+                        {hub.district.toUpperCase()} DISTRICT
+                      </span>
+                    </div>
+
+                    <span className={`text-[8px] font-mono font-black px-2 py-0.5 rounded-sm uppercase ${
+                      hub.status === "OPTIMAL"
+                        ? "bg-emerald-50 text-emerald-700 border border-emerald-100"
+                        : hub.status === "BUSY"
+                        ? "bg-amber-50 text-amber-700 border border-amber-100"
+                        : "bg-blue-50 text-blue-700 border border-blue-100"
+                    }`}>
+                      {hub.status}
+                    </span>
+                  </div>
+
+                  {/* On-duty metrics & load bar */}
+                  <div className="mt-3.5 space-y-2">
+                    <div className="flex justify-between text-[9px] font-mono text-gray-500">
+                      <span>LOAD CAPACITY</span>
+                      <span className="font-bold text-gray-800">{hub.load}%</span>
+                    </div>
+                    
+                    {/* Visual custom load bar */}
+                    <div className="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
+                      <div
+                        className={`h-full rounded-full transition-all duration-500 ${
+                          hub.load > 80 ? "bg-signal" : hub.load > 50 ? "bg-amber-500" : "bg-diagnostic"
+                        }`}
+                        style={{ width: `${hub.load}%` }}
+                      />
+                    </div>
+
+                    {/* Meta Indicators */}
+                    <div className="flex items-center justify-between gap-1 pt-1 border-t border-gray-100 text-[9px] font-mono text-gray-500">
+                      <div className="flex items-center space-x-1">
+                        <Users className="h-3 w-3 text-gray-400" />
+                        <span>{hub.mechanicsCount} Staff</span>
+                      </div>
+                      <div className="flex items-center space-x-1">
+                        <Clock className="h-3 w-3 text-gray-400" />
+                        <span>{hub.avgResponseTime}</span>
+                      </div>
+                      <div className="flex items-center space-x-0.5">
+                        <Wifi className="h-3 w-3 text-diagnostic" />
+                        <span>{hub.signalStrength}%</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      )}
 
       {/* Map Legend & Filter Reset Button */}
       <div className="mt-4 border-t border-gray-100 pt-3 flex items-center justify-between gap-2">
@@ -279,7 +355,7 @@ export default function NairobiMap({
         {selectedLocation !== "All" && (
           <button
             onClick={() => setSelectedLocation("All")}
-            className="text-[10px] font-mono font-bold text-signal hover:underline uppercase tracking-wider shrink-0"
+            className="text-[10px] font-mono font-bold text-signal hover:underline uppercase tracking-wider shrink-0 animate-fade-in"
           >
             Show All &times;
           </button>
