@@ -8,6 +8,7 @@ import { Truck } from "lucide-react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
 import LiveTicker from "./components/LiveTicker";
+import HowItWorks from "./components/HowItWorks";
 import ServicesGrid from "./components/ServicesGrid";
 import GarageFinder from "./components/GarageFinder";
 import CostEstimator from "./components/CostEstimator";
@@ -135,6 +136,9 @@ export default function App() {
 
         {/* 3. Infinite Scrolling Live Ticker strip */}
         <LiveTicker />
+
+        {/* 3b. How It Works Workflow Step Section */}
+        <HowItWorks />
 
         {/* 4. Service Grid (Light Section) */}
         <ServicesGrid

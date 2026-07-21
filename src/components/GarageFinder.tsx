@@ -7,6 +7,7 @@ import React from "react";
 import { Search, MapPin, Star, ShieldCheck, X, Phone } from "lucide-react";
 import { MOCK_GARAGES, Garage } from "../types";
 import { motion } from "motion/react";
+import NairobiMap from "./NairobiMap";
 
 interface GarageFinderProps {
   onBookGarage: (garage: Garage) => void;
@@ -51,7 +52,7 @@ export default function GarageFinder({ onBookGarage, selectedServiceFilter, onCl
   });
 
   return (
-    <section id="garages" className="bg-white py-20 text-gray-900 border-t border-gray-100">
+    <section id="garages" className="bg-slate-100/70 py-20 text-gray-900 border-t border-b border-gray-200/50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Section Header with Animation */}
@@ -63,7 +64,7 @@ export default function GarageFinder({ onBookGarage, selectedServiceFilter, onCl
           className="flex flex-col md:flex-row md:items-end justify-between mb-12"
         >
           <div>
-            <span className="font-mono text-xs text-signal font-bold uppercase tracking-widest bg-gray-50 border border-gray-200 px-3.5 py-1.5 rounded-full inline-flex items-center space-x-1.5">
+            <span className="font-mono text-xs text-signal font-bold uppercase tracking-widest bg-white border border-gray-200 px-3.5 py-1.5 rounded-full inline-flex items-center space-x-1.5 shadow-xs">
               <span className="h-1.5 w-1.5 rounded-full bg-signal" />
               <span>SYS.PARTNERS</span>
             </span>
@@ -93,7 +94,7 @@ export default function GarageFinder({ onBookGarage, selectedServiceFilter, onCl
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.5 }}
-          className="bg-gray-50 border border-gray-200 rounded-2xl p-5 mb-8 grid grid-cols-1 md:grid-cols-12 gap-4 items-center"
+          className="bg-white border border-gray-200 rounded-2xl p-5 mb-8 grid grid-cols-1 md:grid-cols-12 gap-4 items-center shadow-md"
         >
           {/* Search Input */}
           <div className="md:col-span-5 relative">
@@ -152,146 +153,162 @@ export default function GarageFinder({ onBookGarage, selectedServiceFilter, onCl
           </div>
         </motion.div>
 
-        {/* Garages Grid with responsive photo & diagnostic card design */}
-        {filteredGarages.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {filteredGarages.map((garage, index) => {
-              const distanceText = GARAGE_DISTANCES[garage.id] || "Near you";
-              return (
-                <motion.div
-                  key={garage.id}
-                  initial={{ opacity: 0, y: 25 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: "-50px" }}
-                  transition={{ duration: 0.6, delay: index * 0.08 }}
-                  className="bg-white border border-gray-200 hover:border-signal/50 hover:shadow-2xl rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between group h-full shadow-lg"
-                >
-                  <div>
-                    {/* Garage Visual Header with Real Image */}
-                    <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-gray-100">
-                      {garage.image ? (
-                        <img
-                          src={garage.image}
-                          alt={`${garage.name} professional automotive service center located in ${garage.location}, Nairobi equipped with certified mechanical and OBD-II diagnostic technologies`}
-                          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
-                          referrerPolicy="no-referrer"
-                        />
-                      ) : (
-                        <div className="w-full h-full bg-gradient-to-br from-gray-50 to-gray-100 flex flex-col items-center justify-center p-6 text-center">
-                          <span className="font-display font-bold text-lg text-gray-900 uppercase tracking-wide">{garage.name}</span>
-                          <span className="font-mono text-[10px] text-gray-400 mt-2 uppercase tracking-widest bg-white border border-gray-200 px-2 py-0.5 rounded-full">Visual Preview Offline</span>
-                        </div>
-                      )}
-                      
-                      {/* Diagnostic Overlay Badges */}
-                      {/* Live Status Dot Overlay */}
-                      <div className="absolute top-3 left-3 bg-teal-500/90 text-white backdrop-blur-xs px-2.5 py-1 rounded-full text-[9px] font-mono font-bold tracking-wider flex items-center gap-1.5 shadow-sm">
-                        <span className="h-1.5 w-1.5 rounded-full bg-white animate-pulse" />
-                        <span>● AVAILABLE NOW</span>
-                      </div>
+        {/* Interactive Side-by-Side Map & Directory Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
+          
+          {/* Left Column: Interactive Map */}
+          <div className="lg:col-span-5 xl:col-span-4 lg:sticky lg:top-24">
+            <NairobiMap
+              selectedLocation={selectedLocation}
+              setSelectedLocation={setSelectedLocation}
+              filteredGarages={filteredGarages}
+              onBookGarage={onBookGarage}
+            />
+          </div>
 
-                      {/* Partner Vetted badge */}
-                      {garage.verified && (
-                        <div className="absolute top-3 right-3 bg-gray-900/90 text-signal border border-signal/30 backdrop-blur-xs px-2.5 py-1 rounded-full text-[9px] font-mono font-bold tracking-wider flex items-center gap-1.5 shadow-sm">
-                          <ShieldCheck className="h-3.5 w-3.5 text-signal" />
-                          <span>VETTED PARTNER</span>
-                        </div>
-                      )}
-
-                      <div className="absolute bottom-3 left-3 bg-gray-900/80 backdrop-blur-xs text-white px-3 py-1 rounded-full text-[9px] font-mono border border-white/10 flex items-center gap-1">
-                        <MapPin className="h-3 w-3 text-signal" />
-                        <span>{distanceText}</span>
-                      </div>
-                    </div>
-
-                    {/* Card Content body */}
-                    <div className="p-6">
-                      <div className="flex justify-between items-start gap-4">
-                        <h3 className="font-display font-bold text-xl uppercase tracking-wide text-gray-900 group-hover:text-signal transition-colors duration-200">
-                          {garage.name}
-                        </h3>
-                      </div>
-
-                      {/* Details row: coordinates & rating */}
-                      <div className="flex flex-wrap gap-2.5 mt-4">
-                        <div className="flex items-center space-x-1.5 bg-gray-50 border border-gray-100 px-3 py-1.5 rounded-2xl">
-                          <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
-                          <span className="font-mono text-xs font-bold text-gray-800">{garage.rating.toFixed(1)}</span>
-                          <span className="text-gray-300 font-sans text-2xs">|</span>
-                          <span className="font-mono text-[10px] text-gray-500">{garage.reviews} reviews</span>
-                        </div>
-
-                        <div className="flex items-center space-x-1.5 bg-teal-50 border border-teal-100 text-teal-800 px-3 py-1.5 rounded-full text-2xs font-mono font-bold">
-                          <span>LINK STATUS: ACTIVE</span>
-                        </div>
-                      </div>
-
-                      {/* Service Specialties tags */}
-                      <div className="mt-5">
-                        <span className="block text-4xs text-gray-400 uppercase tracking-widest font-mono font-bold mb-2">SERVICE CODES:</span>
-                        <div className="flex flex-wrap gap-2">
-                          {garage.services.map((tag) => (
-                            <span
-                              key={tag}
-                              className={`font-mono text-[10px] px-2.5 py-1 rounded-full border transition-colors ${
-                                selectedServiceFilter.toLowerCase() === tag.toLowerCase()
-                                  ? "bg-signal/15 border-signal text-signal font-bold shadow-xs"
-                                  : "border-gray-200 bg-gray-50 text-gray-600 font-medium"
-                              }`}
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Booking Trigger Button & Footer */}
-                  <div className="px-6 pb-6 pt-4 border-t border-gray-100 flex items-center justify-between">
-                    <div className="text-left">
-                      <span className="block text-4xs text-gray-400 uppercase tracking-widest font-mono font-bold">CONTACT SYNC</span>
-                      <a 
-                        href={`tel:${garage.phone}`}
-                        className="text-2xs text-gray-600 font-mono hover:text-signal transition-colors flex items-center gap-1 mt-1"
-                      >
-                        <Phone className="h-3 w-3" />
-                        <span>{garage.phone}</span>
-                      </a>
-                    </div>
-                    
-                    <button
-                      onClick={() => onBookGarage(garage)}
-                      className="bg-signal hover:bg-signal/90 text-white font-display font-bold text-xs uppercase tracking-wider px-5 py-3.5 rounded-lg transition-all duration-200 transform active:scale-95 cursor-pointer shadow-md shadow-signal/10"
+          {/* Right Column: Garages Directory */}
+          <div className="lg:col-span-7 xl:col-span-8">
+            {filteredGarages.length > 0 ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-6">
+                {filteredGarages.map((garage, index) => {
+                  const distanceText = GARAGE_DISTANCES[garage.id] || "Near you";
+                  return (
+                    <motion.div
+                      key={garage.id}
+                      initial={{ opacity: 0, y: 25 }}
+                      whileInView={{ opacity: 1, y: 0 }}
+                      viewport={{ once: true, margin: "-50px" }}
+                      transition={{ duration: 0.6, delay: index * 0.08 }}
+                      className="bg-white border border-gray-200 hover:border-signal/50 hover:shadow-2xl rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between group h-full shadow-lg"
                     >
-                      Book a Mechanic
-                    </button>
-                  </div>
-                </motion.div>
-              );
-            })}
+                      <div>
+                        {/* Garage Visual Header with Real Image */}
+                        <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-gray-100">
+                          {garage.image ? (
+                            <img
+                              src={garage.image}
+                              alt={`${garage.name} professional automotive service center located in ${garage.location}, Nairobi equipped with certified mechanical and OBD-II diagnostic technologies`}
+                              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                              referrerPolicy="no-referrer"
+                            />
+                          ) : (
+                            <div className="w-full h-full bg-gradient-to-br from-gray-50 to-gray-100 flex flex-col items-center justify-center p-6 text-center">
+                              <span className="font-display font-bold text-lg text-gray-900 uppercase tracking-wide">{garage.name}</span>
+                              <span className="font-mono text-[10px] text-gray-400 mt-2 uppercase tracking-widest bg-white border border-gray-200 px-2 py-0.5 rounded-full">Visual Preview Offline</span>
+                            </div>
+                          )}
+                          
+                          {/* Diagnostic Overlay Badges */}
+                          {/* Live Status Dot Overlay */}
+                          <div className="absolute top-3 left-3 bg-teal-500/90 text-white backdrop-blur-xs px-2.5 py-1 rounded-full text-[9px] font-mono font-bold tracking-wider flex items-center gap-1.5 shadow-sm">
+                            <span className="h-1.5 w-1.5 rounded-full bg-white animate-pulse" />
+                            <span>● AVAILABLE NOW</span>
+                          </div>
+
+                          {/* Partner Vetted badge */}
+                          {garage.verified && (
+                            <div className="absolute top-3 right-3 bg-gray-900/90 text-signal border border-signal/30 backdrop-blur-xs px-2.5 py-1 rounded-full text-[9px] font-mono font-bold tracking-wider flex items-center gap-1.5 shadow-sm">
+                              <ShieldCheck className="h-3.5 w-3.5 text-signal" />
+                              <span>VETTED PARTNER</span>
+                            </div>
+                          )}
+
+                          <div className="absolute bottom-3 left-3 bg-gray-900/80 backdrop-blur-xs text-white px-3 py-1 rounded-full text-[9px] font-mono border border-white/10 flex items-center gap-1">
+                            <MapPin className="h-3 w-3 text-signal" />
+                            <span>{distanceText}</span>
+                          </div>
+                        </div>
+
+                        {/* Card Content body */}
+                        <div className="p-6">
+                          <div className="flex justify-between items-start gap-4">
+                            <h3 className="font-display font-bold text-xl uppercase tracking-wide text-gray-900 group-hover:text-signal transition-colors duration-200">
+                              {garage.name}
+                            </h3>
+                          </div>
+
+                          {/* Details row: coordinates & rating */}
+                          <div className="flex flex-wrap gap-2.5 mt-4">
+                            <div className="flex items-center space-x-1.5 bg-gray-50 border border-gray-100 px-3 py-1.5 rounded-2xl">
+                              <Star className="h-3.5 w-3.5 fill-amber-400 text-amber-400" />
+                              <span className="font-mono text-xs font-bold text-gray-800">{garage.rating.toFixed(1)}</span>
+                              <span className="text-gray-300 font-sans text-2xs">|</span>
+                              <span className="font-mono text-[10px] text-gray-500">{garage.reviews} reviews</span>
+                            </div>
+
+                            <div className="flex items-center space-x-1.5 bg-teal-50 border border-teal-100 text-teal-800 px-3 py-1.5 rounded-full text-2xs font-mono font-bold">
+                              <span>LINK STATUS: ACTIVE</span>
+                            </div>
+                          </div>
+
+                          {/* Service Specialties tags */}
+                          <div className="mt-5">
+                            <span className="block text-4xs text-gray-400 uppercase tracking-widest font-mono font-bold mb-2">SERVICE CODES:</span>
+                            <div className="flex flex-wrap gap-2">
+                              {garage.services.map((tag) => (
+                                <span
+                                  key={tag}
+                                  className={`font-mono text-[10px] px-2.5 py-1 rounded-full border transition-colors ${
+                                    selectedServiceFilter.toLowerCase() === tag.toLowerCase()
+                                      ? "bg-signal/15 border-signal text-signal font-bold shadow-xs"
+                                      : "border-gray-200 bg-gray-50 text-gray-600 font-medium"
+                                  }`}
+                                >
+                                  {tag}
+                                </span>
+                              ))}
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Booking Trigger Button & Footer */}
+                      <div className="px-6 pb-6 pt-4 border-t border-gray-100 flex items-center justify-between">
+                        <div className="text-left">
+                          <span className="block text-4xs text-gray-400 uppercase tracking-widest font-mono font-bold">CONTACT SYNC</span>
+                          <a 
+                            href={`tel:${garage.phone}`}
+                            className="text-2xs text-gray-600 font-mono hover:text-signal transition-colors flex items-center gap-1 mt-1"
+                          >
+                            <Phone className="h-3 w-3" />
+                            <span>{garage.phone}</span>
+                          </a>
+                        </div>
+                        
+                        <button
+                          onClick={() => onBookGarage(garage)}
+                          className="bg-signal hover:bg-signal/90 text-white font-display font-bold text-xs uppercase tracking-wider px-5 py-3.5 rounded-lg transition-all duration-200 transform active:scale-95 cursor-pointer shadow-md shadow-signal/10"
+                        >
+                          Book a Mechanic
+                        </button>
+                      </div>
+                    </motion.div>
+                  );
+                })}
+              </div>
+            ) : (
+              <div className="bg-white border border-gray-200 rounded-2xl p-12 text-center max-w-xl mx-auto shadow-sm">
+                <span className="text-3xl">🔍</span>
+                <h4 className="font-display font-bold text-lg uppercase mt-4 text-gray-900">
+                  No matching garages found
+                </h4>
+                <p className="font-sans text-xs text-gray-500 mt-2">
+                  We couldn't find any garage in "{selectedLocation}" matching your query. Try resetting your search filter or selecting another district in Nairobi.
+                </p>
+                <button
+                  onClick={() => {
+                    setSearchQuery("");
+                    setSelectedLocation("All");
+                    onClearServiceFilter();
+                  }}
+                  className="mt-6 bg-white border border-gray-300 hover:border-gray-800 text-gray-700 font-display text-xs uppercase tracking-wider px-4 py-2.5 rounded-lg transition-colors cursor-pointer"
+                >
+                  Reset All Filters
+                </button>
+              </div>
+            )}
           </div>
-        ) : (
-          <div className="bg-gray-50 border border-gray-200 rounded-2xl p-12 text-center max-w-xl mx-auto">
-            <span className="text-3xl">🔍</span>
-            <h4 className="font-display font-bold text-lg uppercase mt-4 text-gray-900">
-              No matching garages found
-            </h4>
-            <p className="font-sans text-xs text-gray-500 mt-2">
-              We couldn't find any garage in "{selectedLocation}" matching your query. Try resetting your search filter or selecting another district in Nairobi.
-            </p>
-            <button
-              onClick={() => {
-                setSearchQuery("");
-                setSelectedLocation("All");
-                onClearServiceFilter();
-              }}
-              className="mt-6 bg-white border border-gray-300 hover:border-gray-800 text-gray-700 font-display text-xs uppercase tracking-wider px-4 py-2.5 rounded-lg transition-colors cursor-pointer"
-            >
-              Reset All Filters
-            </button>
-          </div>
-        )}
+        </div>
 
         {/* Bottom indicator link */}
         <div className="mt-12 text-center">
