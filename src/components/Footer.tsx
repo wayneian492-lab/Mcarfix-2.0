@@ -4,7 +4,7 @@
  */
 
 import React from "react";
-import { Mail, Phone, MapPin, Car, HelpCircle, ExternalLink, Truck } from "lucide-react";
+import { Mail, Phone, MapPin, Car, HelpCircle, ExternalLink, Truck, Copy, Check } from "lucide-react";
 
 interface FooterProps {
   onScrollToSection: (sectionId: string) => void;
@@ -13,6 +13,16 @@ interface FooterProps {
 }
 
 export default function Footer({ onScrollToSection, onOpenBookings, onOpenSos }: FooterProps) {
+  const [copiedLabel, setCopiedLabel] = React.useState<string | null>(null);
+
+  const handleCopyToClipboard = (text: string, label: string) => {
+    navigator.clipboard.writeText(text);
+    setCopiedLabel(label);
+    setTimeout(() => {
+      setCopiedLabel(null);
+    }, 1500);
+  };
+
   return (
     <footer className="bg-gray-50 border-t border-gray-250 text-gray-900 pt-16 pb-8 font-sans">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -31,7 +41,7 @@ export default function Footer({ onScrollToSection, onOpenBookings, onOpenSos }:
               </span>
             </div>
             <p className="text-xs text-gray-600 leading-relaxed max-w-sm font-light">
-              Bridging the physical and digital automotive repair worlds in Kenya. Bringing data accuracy, transparent pricing, and trusted mechanics to Nairobi drivers.
+              mCarFix is part of a larger verified vehicle-safety network across Kenya—connecting motorists, garages, and emergency responders under a unified ecosystem.
             </p>
             <button
               onClick={onOpenSos}
@@ -105,9 +115,31 @@ export default function Footer({ onScrollToSection, onOpenBookings, onOpenSos }:
                 <div className="flex items-center space-x-2">
                   <Phone className="h-3.5 w-3.5 text-signal shrink-0" />
                   <span className="font-mono text-2xs tracking-tight">+254 704 804578</span>
+                  <button
+                    onClick={() => handleCopyToClipboard("+254 704 804578", "enq-phone")}
+                    className="p-1 rounded text-gray-400 hover:text-signal hover:bg-gray-100 transition-all cursor-pointer"
+                    title="Copy Phone Number"
+                  >
+                    {copiedLabel === "enq-phone" ? (
+                      <Check className="h-3 w-3 text-emerald-600" />
+                    ) : (
+                      <Copy className="h-3 w-3" />
+                    )}
+                  </button>
                 </div>
                 <div className="flex items-center space-x-2 pl-5.5">
                   <span className="font-mono text-2xs tracking-tight">enquiries@mcarfix.com</span>
+                  <button
+                    onClick={() => handleCopyToClipboard("enquiries@mcarfix.com", "enq-email")}
+                    className="p-1 rounded text-gray-400 hover:text-signal hover:bg-gray-100 transition-all cursor-pointer"
+                    title="Copy Email"
+                  >
+                    {copiedLabel === "enq-email" ? (
+                      <Check className="h-3 w-3 text-emerald-600" />
+                    ) : (
+                      <Copy className="h-3 w-3" />
+                    )}
+                  </button>
                 </div>
               </li>
               <li className="flex flex-col space-y-0.5 text-gray-600">
@@ -115,9 +147,31 @@ export default function Footer({ onScrollToSection, onOpenBookings, onOpenSos }:
                 <div className="flex items-center space-x-2">
                   <Phone className="h-3.5 w-3.5 text-teal-600 shrink-0" />
                   <span className="font-mono text-2xs tracking-tight">+254 704 804932</span>
+                  <button
+                    onClick={() => handleCopyToClipboard("+254 704 804932", "tech-phone")}
+                    className="p-1 rounded text-gray-400 hover:text-signal hover:bg-gray-100 transition-all cursor-pointer"
+                    title="Copy Phone Number"
+                  >
+                    {copiedLabel === "tech-phone" ? (
+                      <Check className="h-3 w-3 text-emerald-600" />
+                    ) : (
+                      <Copy className="h-3 w-3" />
+                    )}
+                  </button>
                 </div>
                 <div className="flex items-center space-x-2 pl-5.5">
                   <span className="font-mono text-2xs tracking-tight">support@mcarfix.com</span>
+                  <button
+                    onClick={() => handleCopyToClipboard("support@mcarfix.com", "tech-email")}
+                    className="p-1 rounded text-gray-400 hover:text-signal hover:bg-gray-100 transition-all cursor-pointer"
+                    title="Copy Email"
+                  >
+                    {copiedLabel === "tech-email" ? (
+                      <Check className="h-3 w-3 text-emerald-600" />
+                    ) : (
+                      <Copy className="h-3 w-3" />
+                    )}
+                  </button>
                 </div>
               </li>
               <li className="flex items-start space-x-2 text-gray-600 pt-1">

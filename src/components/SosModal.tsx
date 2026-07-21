@@ -9,9 +9,10 @@ import { X, AlertTriangle, MapPin, Navigation, Phone, ShieldAlert, Truck, Chevro
 interface SosModalProps {
   isOpen: boolean;
   onClose: () => void;
+  onSosRequested?: (message: string) => void;
 }
 
-export default function SosModal({ isOpen, onClose }: SosModalProps) {
+export default function SosModal({ isOpen, onClose, onSosRequested }: SosModalProps) {
   const [emergencyType, setEmergencyType] = React.useState("mechanical-stall");
   const [district, setDistrict] = React.useState("Westlands");
   const [phone, setPhone] = React.useState("");
@@ -90,6 +91,7 @@ export default function SosModal({ isOpen, onClose }: SosModalProps) {
     setIsDispatched(true);
     setDispatchStep(1);
     setSecondsLeft(480); // Reset countdown timer to 8:00
+    onSosRequested?.("Request sent — a verified AA emergency responder will contact you shortly!");
   };
 
   const resetAndClose = () => {
@@ -243,6 +245,19 @@ export default function SosModal({ isOpen, onClose }: SosModalProps) {
                 <div className="text-right">
                   <span className="text-gray-500 text-[9px] font-bold tracking-widest block uppercase">SATELLITE ACCURACY</span>
                   <span className="text-white block font-semibold">±3 METERS</span>
+                </div>
+              </div>
+
+              {/* Uber for emergencies info banner */}
+              <div className="bg-signal/10 border border-signal/20 p-4 rounded-xl flex items-start space-x-3 text-left">
+                <span className="text-lg leading-none select-none mt-0.5">🚀</span>
+                <div>
+                  <span className="block text-[9px] text-signal font-bold font-mono uppercase tracking-widest mb-1">
+                    UBER FOR EMERGENCIES DISPATCH
+                  </span>
+                  <p className="text-gray-300 font-sans text-2xs leading-relaxed font-light">
+                    mCarFix roadside operates like an <strong className="text-white font-medium">"Uber for emergencies."</strong> Your location is locked instantly via GPS telemetry, summoning the nearest vetted recovery towing truck or mechanic responder to your exact coordinates.
+                  </p>
                 </div>
               </div>
 

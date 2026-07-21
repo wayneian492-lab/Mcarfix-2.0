@@ -149,7 +149,7 @@ export default function Hero({ onOpenSos, onOpenDiagnostics, onScrollToSection }
             transition={{ duration: 0.6, delay: 0.2 }}
             className="font-sans text-gray-300 text-lg sm:text-xl leading-relaxed font-light max-w-3xl"
           >
-            Don't guess what your check engine light means. mCarFix bridges the gap between OBD diagnostics and Nairobi's most trusted certified garages. Protect your vehicle's resale value with our <span className="text-teal-400 font-semibold font-mono">DIGITAL DNA</span> engine — a permanent, verified digital service history that follows your vehicle wherever you go.
+            Don't guess what your check engine light means. mCarFix is part of a larger verified vehicle-safety network across Kenya—connecting motorists, certified garages, and emergency responders under a unified ecosystem. Protect your vehicle's resale value with our <span className="text-teal-400 font-semibold font-mono">DIGITAL DNA</span> engine — a permanent, verified digital service history that follows your vehicle wherever you go.
           </motion.p>
 
           <motion.div 
@@ -158,18 +158,22 @@ export default function Hero({ onOpenSos, onOpenDiagnostics, onScrollToSection }
             transition={{ duration: 0.6, delay: 0.3 }}
             className="flex flex-col sm:flex-row gap-4 pt-4"
           >
-            <button
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => onScrollToSection("estimator")}
-              className="bg-signal text-white hover:bg-signal/90 font-display font-bold text-sm tracking-wider uppercase px-8 py-4 rounded-lg flex items-center justify-center space-x-2 border-2 border-transparent hover:scale-[1.02] active:scale-[0.98] transition-all cursor-pointer shadow-xl shadow-signal/20"
+              className="bg-signal text-white hover:bg-signal/90 font-display font-bold text-sm tracking-wider uppercase px-8 py-4 rounded-lg flex items-center justify-center space-x-2 border-2 border-transparent transition-all cursor-pointer shadow-xl shadow-signal/20"
             >
               <span>Instantly Estimate Cost</span>
-            </button>
-            <button
+            </motion.button>
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.95 }}
               onClick={() => onScrollToSection("garages")}
               className="bg-white/10 backdrop-blur-md border border-white/20 hover:border-white text-white hover:bg-white/20 font-display font-bold text-sm tracking-wider uppercase px-8 py-4 rounded-lg flex items-center justify-center space-x-2 transition-all cursor-pointer"
             >
               <span>Find a Garage</span>
-            </button>
+            </motion.button>
           </motion.div>
         </div>
 
@@ -206,7 +210,7 @@ export default function Hero({ onOpenSos, onOpenDiagnostics, onScrollToSection }
             <div className="p-6 flex-1 flex flex-col justify-between">
               <div className="space-y-3">
                 <p className="font-sans text-xs text-gray-300 leading-relaxed font-light">
-                  Our network of certified garages, rescue responders, and OBD-II support hubs extends across all major Nairobi nodes including Westlands, Kilimani, Mombasa Road, and Thika Road.
+                  mCarFix is integrated directly into a wider verified vehicle-safety network across Kenya—connecting motorists, vetted garages, and AA emergency responders under a single, highly coordinated protective ecosystem.
                 </p>
                 <div className="flex items-center space-x-2 text-[10px] text-gray-400 font-mono">
                   <span className="text-teal-400 font-semibold">● 450+ Garages Active</span>

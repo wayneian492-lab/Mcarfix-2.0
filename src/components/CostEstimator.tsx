@@ -6,6 +6,7 @@
 import React from "react";
 import { Calculator, ArrowRight, FileText, Info, CheckCircle2 } from "lucide-react";
 import { Garage } from "../types";
+import { motion } from "motion/react";
 
 interface CostEstimatorProps {
   onBookDirect: (serviceName: string, estimatedCost: string) => void;
@@ -14,9 +15,18 @@ interface CostEstimatorProps {
 export default function CostEstimator({ onBookDirect }: CostEstimatorProps) {
   const [vehicleClass, setVehicleClass] = React.useState("economy");
   const [serviceType, setServiceType] = React.useState("brakes");
+  const [isCalculating, setIsCalculating] = React.useState(false);
   
   // Custom states for showing the generated breakdown details
   const [showDetails, setShowDetails] = React.useState(false);
+
+  React.useEffect(() => {
+    setIsCalculating(true);
+    const timer = setTimeout(() => {
+      setIsCalculating(false);
+    }, 500);
+    return () => clearTimeout(timer);
+  }, [vehicleClass, serviceType]);
 
   const vehicleClasses = [
     { id: "economy", name: "Economy", desc: "Toyota, Nissan, Mazda, Honda", factor: 1.0 },
@@ -168,92 +178,135 @@ export default function CostEstimator({ onBookDirect }: CostEstimatorProps) {
 
           {/* Results Box (Right Side) */}
           <div className="lg:col-span-5 bg-sky-50/70 text-gray-900 border border-sky-300 rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-[0_0_25px_rgba(56,189,248,0.3)] hover:shadow-[0_0_35px_rgba(56,189,248,0.45)] hover:border-sky-400 transition-all duration-300">
-            <div>
-              {/* Header */}
-              <div className="flex items-center justify-between border-b border-gray-200 pb-4 mb-6">
-                <span className="font-display text-sm font-bold uppercase tracking-widest text-gray-500">
-                  mCarFix Quote Engine
-                </span>
-                <span className="bg-teal-50 border border-teal-200 text-teal-800 font-mono text-3xs font-semibold px-2 py-0.5 rounded tracking-wider">
-                  UPFRONT FARE
-                </span>
-              </div>
+            {isCalculating ? (
+              <div className="flex-grow flex flex-col justify-between h-full animate-pulse">
+                <div>
+                  {/* Header */}
+                  <div className="flex items-center justify-between border-b border-gray-200 pb-4 mb-6">
+                    <div className="h-4 w-32 bg-sky-200 rounded" />
+                    <div className="h-4 w-16 bg-sky-200 rounded" />
+                  </div>
 
-              {/* Big Price Output */}
-              <div className="space-y-1">
-                <span className="block text-3xs text-gray-500 uppercase tracking-widest font-mono">
-                  Calculated Estimate Range
-                </span>
-                <h3 className="font-mono text-2xl sm:text-3xl font-bold tracking-tight text-signal mt-1">
-                  {estimate.formattedTotal}
-                </h3>
-                <span className="block text-3xs text-gray-500 font-mono mt-0.5">
-                  Currency: Kenya Shillings (KES)
-                </span>
-              </div>
+                  {/* Big Price Output */}
+                  <div className="space-y-2.5">
+                    <div className="h-3 w-28 bg-sky-200 rounded" />
+                    <div className="h-10 w-full bg-sky-200 rounded-lg" />
+                    <div className="h-3 w-36 bg-sky-200 rounded" />
+                  </div>
 
-              {/* Divider */}
-              <div className="my-6 border-t border-gray-200" />
+                  {/* Divider */}
+                  <div className="my-6 border-t border-gray-200" />
 
-              {/* Service Summary Breakdown */}
-              <div className="space-y-4">
-                <div className="flex justify-between items-center text-xs font-mono">
-                  <span className="text-gray-500">Selected Service:</span>
-                  <span className="text-gray-900 text-right font-medium truncate max-w-[180px] uppercase font-display">
-                    {selectedServiceObj.name}
-                  </span>
-                </div>
-                <div className="flex justify-between items-center text-xs font-mono">
-                  <span className="text-gray-500">Vehicle Class:</span>
-                  <span className="text-gray-900 font-medium uppercase font-display">
-                    {getSelectedVehicle().name}
-                  </span>
-                </div>
-
-                <div className="pt-2">
-                  <button 
-                    onClick={() => setShowDetails(!showDetails)}
-                    className="text-2xs font-mono text-teal-700 hover:text-teal-800 transition-all flex items-center space-x-1"
-                  >
-                    <span>{showDetails ? "Hide Itemized Breakdown" : "View Itemized Breakdown"}</span>
-                    <span>{showDetails ? "▲" : "▼"}</span>
-                  </button>
-                </div>
-
-                {showDetails && (
-                  <div className="bg-white border border-gray-200 p-3 rounded-2xl space-y-2 mt-2 shadow-xs">
-                    <div className="flex justify-between items-center text-3xs font-mono">
-                      <span className="text-gray-500">Estimated Parts Cost:</span>
-                      <span className="text-gray-700">KES {estimate.partsRange}</span>
+                  {/* Service Summary Breakdown */}
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center">
+                      <div className="h-4 w-24 bg-sky-200 rounded" />
+                      <div className="h-4 w-32 bg-sky-200 rounded" />
                     </div>
-                    <div className="flex justify-between items-center text-3xs font-mono">
-                      <span className="text-gray-500">Estimated Fair Labor:</span>
-                      <span className="text-gray-700">KES {estimate.laborRange}</span>
-                    </div>
-                    <div className="flex justify-between items-center text-3xs font-mono pt-1 border-t border-gray-100">
-                      <span className="text-teal-700 font-semibold">Diagnostic Protocol:</span>
-                      <span className="text-teal-700">ISO 15765 Checked</span>
+                    <div className="flex justify-between items-center">
+                      <div className="h-4 w-24 bg-sky-200 rounded" />
+                      <div className="h-4 w-24 bg-sky-200 rounded" />
                     </div>
                   </div>
-                )}
-              </div>
-            </div>
+                </div>
 
-            {/* Action Buttons */}
-            <div className="mt-8 pt-6 border-t border-gray-200 space-y-3">
-              <button
-                onClick={handleBookWithEstimate}
-                className="w-full bg-signal hover:bg-signal/90 text-white font-display font-bold text-sm uppercase tracking-wider py-4 rounded-lg flex items-center justify-center space-x-2 transition-all cursor-pointer shadow-lg shadow-signal/20"
-              >
-                <span>Book a Mechanic</span>
-                <ArrowRight className="h-4 w-4" />
-              </button>
-              
-              <div className="flex justify-center items-center space-x-1.5 text-2xs font-sans text-gray-500">
-                <CheckCircle2 className="h-3.5 w-3.5 text-teal-600 shrink-0" />
-                <span>Locked pricing: guaranteed by 450+ garages</span>
+                <div className="mt-8 pt-6 border-t border-gray-200 space-y-3">
+                  <div className="h-12 w-full bg-sky-200 rounded-lg" />
+                  <div className="h-4 w-48 bg-sky-200 rounded mx-auto" />
+                </div>
               </div>
-            </div>
+            ) : (
+              <>
+                <div>
+                  {/* Header */}
+                  <div className="flex items-center justify-between border-b border-gray-200 pb-4 mb-6">
+                    <span className="font-display text-sm font-bold uppercase tracking-widest text-gray-500">
+                      mCarFix Quote Engine
+                    </span>
+                    <span className="bg-teal-50 border border-teal-200 text-teal-800 font-mono text-3xs font-semibold px-2 py-0.5 rounded tracking-wider">
+                      UPFRONT FARE
+                    </span>
+                  </div>
+
+                  {/* Big Price Output */}
+                  <div className="space-y-1">
+                    <span className="block text-3xs text-gray-500 uppercase tracking-widest font-mono">
+                      Calculated Estimate Range
+                    </span>
+                    <h3 className="font-mono text-2xl sm:text-3xl font-bold tracking-tight text-signal mt-1">
+                      {estimate.formattedTotal}
+                    </h3>
+                    <span className="block text-3xs text-gray-500 font-mono mt-0.5">
+                      Currency: Kenya Shillings (KES)
+                    </span>
+                  </div>
+
+                  {/* Divider */}
+                  <div className="my-6 border-t border-gray-200" />
+
+                  {/* Service Summary Breakdown */}
+                  <div className="space-y-4">
+                    <div className="flex justify-between items-center text-xs font-mono">
+                      <span className="text-gray-500">Selected Service:</span>
+                      <span className="text-gray-900 text-right font-medium truncate max-w-[180px] uppercase font-display">
+                        {selectedServiceObj.name}
+                      </span>
+                    </div>
+                    <div className="flex justify-between items-center text-xs font-mono">
+                      <span className="text-gray-500">Vehicle Class:</span>
+                      <span className="text-gray-900 font-medium uppercase font-display">
+                        {getSelectedVehicle().name}
+                      </span>
+                    </div>
+
+                    <div className="pt-2">
+                      <button 
+                        onClick={() => setShowDetails(!showDetails)}
+                        className="text-2xs font-mono text-teal-700 hover:text-teal-800 transition-all flex items-center space-x-1"
+                      >
+                        <span>{showDetails ? "Hide Itemized Breakdown" : "View Itemized Breakdown"}</span>
+                        <span>{showDetails ? "▲" : "▼"}</span>
+                      </button>
+                    </div>
+
+                    {showDetails && (
+                      <div className="bg-white border border-gray-200 p-3 rounded-2xl space-y-2 mt-2 shadow-xs">
+                        <div className="flex justify-between items-center text-3xs font-mono">
+                          <span className="text-gray-500">Estimated Parts Cost:</span>
+                          <span className="text-gray-700">KES {estimate.partsRange}</span>
+                        </div>
+                        <div className="flex justify-between items-center text-3xs font-mono">
+                          <span className="text-gray-500">Estimated Fair Labor:</span>
+                          <span className="text-gray-700">KES {estimate.laborRange}</span>
+                        </div>
+                        <div className="flex justify-between items-center text-3xs font-mono pt-1 border-t border-gray-100">
+                          <span className="text-teal-700 font-semibold">Diagnostic Protocol:</span>
+                          <span className="text-teal-700">ISO 15765 Checked</span>
+                        </div>
+                      </div>
+                    )}
+                  </div>
+                </div>
+
+                {/* Action Buttons */}
+                <div className="mt-8 pt-6 border-t border-gray-200 space-y-3">
+                  <motion.button
+                    whileHover={{ scale: 1.01 }}
+                    whileTap={{ scale: 0.97 }}
+                    onClick={handleBookWithEstimate}
+                    className="w-full bg-signal hover:bg-signal/90 text-white font-display font-bold text-sm uppercase tracking-wider py-4 rounded-lg flex items-center justify-center space-x-2 transition-all cursor-pointer shadow-lg shadow-signal/20"
+                  >
+                    <span>Book a Mechanic</span>
+                    <ArrowRight className="h-4 w-4" />
+                  </motion.button>
+                  
+                  <div className="flex justify-center items-center space-x-1.5 text-2xs font-sans text-gray-500">
+                    <CheckCircle2 className="h-3.5 w-3.5 text-teal-600 shrink-0" />
+                    <span>Locked pricing: guaranteed by 450+ garages</span>
+                  </div>
+                </div>
+              </>
+            )}
 
           </div>
 

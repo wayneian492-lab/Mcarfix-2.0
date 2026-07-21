@@ -7,7 +7,48 @@ import React from "react";
 import { Search, MapPin, Star, ShieldCheck, X, Phone } from "lucide-react";
 import { MOCK_GARAGES, Garage } from "../types";
 import { motion } from "motion/react";
-import NairobiMap from "./NairobiMap";
+
+const NairobiMap = React.lazy(() => import("./NairobiMap"));
+
+function MapSkeleton() {
+  return (
+    <div className="bg-white border border-gray-200 rounded-2xl p-5 h-[480px] lg:h-[620px] flex flex-col justify-center items-center shadow-lg w-full">
+      <div className="flex flex-col items-center space-y-4">
+        <div className="h-10 w-10 border-4 border-signal border-t-transparent rounded-full animate-spin"></div>
+        <span className="font-mono text-xs text-gray-500 uppercase tracking-widest font-bold">LOADING GPS RADAR SYSTEM...</span>
+      </div>
+    </div>
+  );
+}
+
+function GarageSkeleton() {
+  return (
+    <div className="bg-white border border-gray-200 rounded-2xl overflow-hidden flex flex-col justify-between h-full shadow-lg animate-pulse">
+      <div>
+        <div className="h-48 sm:h-52 w-full bg-gray-200" />
+        <div className="p-6 space-y-4">
+          <div className="h-6 w-3/4 bg-gray-100 rounded-lg" />
+          <div className="h-4 w-1/2 bg-gray-100 rounded-lg" />
+          <div className="space-y-2 pt-2">
+            <div className="h-3 w-1/4 bg-gray-100 rounded-md" />
+            <div className="flex gap-2">
+              <div className="h-5 w-16 bg-gray-100 rounded-full" />
+              <div className="h-5 w-16 bg-gray-100 rounded-full" />
+              <div className="h-5 w-16 bg-gray-100 rounded-full" />
+            </div>
+          </div>
+        </div>
+      </div>
+      <div className="px-6 pb-6 pt-4 border-t border-gray-100 flex items-center justify-between">
+        <div className="space-y-2">
+          <div className="h-3 w-12 bg-gray-100 rounded-md" />
+          <div className="h-4 w-24 bg-gray-100 rounded-md" />
+        </div>
+        <div className="h-10 w-28 bg-gray-100 rounded-lg" />
+      </div>
+    </div>
+  );
+}
 
 interface GarageFinderProps {
   onBookGarage: (garage: Garage) => void;
@@ -26,6 +67,16 @@ const GARAGE_DISTANCES: Record<string, string> = {
 export default function GarageFinder({ onBookGarage, selectedServiceFilter, onClearServiceFilter }: GarageFinderProps) {
   const [searchQuery, setSearchQuery] = React.useState("");
   const [selectedLocation, setSelectedLocation] = React.useState("All");
+  const [hoveredGarageId, setHoveredGarageId] = React.useState<string | null>(null);
+  const [isSearching, setIsSearching] = React.useState(false);
+
+  React.useEffect(() => {
+    setIsSearching(true);
+    const timer = setTimeout(() => {
+      setIsSearching(false);
+    }, 600);
+    return () => clearTimeout(timer);
+  }, [searchQuery, selectedLocation, selectedServiceFilter]);
 
   const locations = ["All", "Westlands", "Kilimani", "Karen", "Mombasa Road"];
 
@@ -158,20 +209,32 @@ export default function GarageFinder({ onBookGarage, selectedServiceFilter, onCl
           
           {/* Left Column: Interactive Map */}
           <div className="lg:col-span-5 xl:col-span-4 lg:sticky lg:top-24">
-            <NairobiMap
-              selectedLocation={selectedLocation}
-              setSelectedLocation={setSelectedLocation}
-              filteredGarages={filteredGarages}
-              onBookGarage={onBookGarage}
-            />
+            <React.Suspense fallback={<MapSkeleton />}>
+              <NairobiMap
+                selectedLocation={selectedLocation}
+                setSelectedLocation={setSelectedLocation}
+                filteredGarages={filteredGarages}
+                onBookGarage={onBookGarage}
+                hoveredGarageId={hoveredGarageId}
+                setHoveredGarageId={setHoveredGarageId}
+              />
+            </React.Suspense>
           </div>
 
           {/* Right Column: Garages Directory */}
           <div className="lg:col-span-7 xl:col-span-8">
-            {filteredGarages.length > 0 ? (
+            {isSearching ? (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-6">
+                <GarageSkeleton />
+                <GarageSkeleton />
+                <GarageSkeleton />
+                <GarageSkeleton />
+              </div>
+            ) : filteredGarages.length > 0 ? (
               <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-1 xl:grid-cols-2 gap-6">
                 {filteredGarages.map((garage, index) => {
                   const distanceText = GARAGE_DISTANCES[garage.id] || "Near you";
+                  const isHovered = hoveredGarageId === garage.id;
                   return (
                     <motion.div
                       key={garage.id}
@@ -179,7 +242,13 @@ export default function GarageFinder({ onBookGarage, selectedServiceFilter, onCl
                       whileInView={{ opacity: 1, y: 0 }}
                       viewport={{ once: true, margin: "-50px" }}
                       transition={{ duration: 0.6, delay: index * 0.08 }}
-                      className="bg-white border border-gray-200 hover:border-signal/50 hover:shadow-2xl rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between group h-full shadow-lg"
+                      onMouseEnter={() => setHoveredGarageId(garage.id)}
+                      onMouseLeave={() => setHoveredGarageId(null)}
+                      className={`bg-white border rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between group h-full shadow-lg ${
+                        isHovered 
+                          ? "border-signal ring-2 ring-signal/50 shadow-2xl scale-[1.01]" 
+                          : "border-gray-200 hover:border-signal/50 hover:shadow-2xl"
+                      }`}
                     >
                       <div>
                         {/* Garage Visual Header with Real Image */}

@@ -13,6 +13,8 @@ interface NairobiMapProps {
   setSelectedLocation: (loc: string) => void;
   filteredGarages: Garage[];
   onBookGarage: (garage: Garage) => void;
+  hoveredGarageId?: string | null;
+  setHoveredGarageId?: (id: string | null) => void;
 }
 
 interface MapPinData {
@@ -85,6 +87,8 @@ export default function NairobiMap({
   setSelectedLocation,
   filteredGarages,
   onBookGarage,
+  hoveredGarageId = null,
+  setHoveredGarageId,
 }: NairobiMapProps) {
   const [activeTab, setActiveTab] = React.useState<"radar" | "telemetry">("radar");
   const [hoveredPin, setHoveredPin] = React.useState<MapPinData | null>(null);
@@ -152,8 +156,9 @@ export default function NairobiMap({
                   {PIN_DATA.map((pin) => {
                     const activeGarage = getGarageForPin(pin);
                     const isSelected = selectedLocation.toLowerCase() === pin.district.toLowerCase();
+                    const isHovered = hoveredGarageId === pin.garageId;
                     const isAnySelected = selectedLocation !== "All";
-                    const isDimmed = isAnySelected && !isSelected;
+                    const isDimmed = isAnySelected && !isSelected && !isHovered;
 
                     if (!activeGarage) return null;
 
@@ -164,12 +169,18 @@ export default function NairobiMap({
                         onClick={() => setSelectedLocation(isSelected ? "All" : pin.district)}
                         title={pin.name}
                       >
-                        <Pin
-                          background={isSelected ? "#FF5E00" : "#0d9488"}
-                          borderColor="#ffffff"
-                          glyphColor="#ffffff"
-                          scale={isSelected ? 1.25 : 1.0}
-                        />
+                        <div
+                          onMouseEnter={() => setHoveredGarageId?.(pin.garageId)}
+                          onMouseLeave={() => setHoveredGarageId?.(null)}
+                          className="cursor-pointer transition-transform duration-200"
+                        >
+                          <Pin
+                            background={isSelected || isHovered ? "#FF5E00" : "#0d9488"}
+                            borderColor="#ffffff"
+                            glyphColor="#ffffff"
+                            scale={isSelected || isHovered ? 1.35 : 1.0}
+                          />
+                        </div>
                       </AdvancedMarker>
                     );
                   })}
@@ -258,14 +269,17 @@ export default function NairobiMap({
           <div className="grid grid-cols-1 gap-3">
             {HUBS.map((hub) => {
               const isSelected = selectedLocation.toLowerCase() === hub.district.toLowerCase();
+              const isHovered = hoveredGarageId === hub.garageId;
 
               return (
                 <div
                   key={hub.id}
                   onClick={() => setSelectedLocation(isSelected ? "All" : hub.district)}
+                  onMouseEnter={() => setHoveredGarageId?.(hub.garageId)}
+                  onMouseLeave={() => setHoveredGarageId?.(null)}
                   className={`border rounded-xl p-3.5 transition-all duration-300 cursor-pointer flex flex-col justify-between ${
-                    isSelected
-                      ? "bg-signal/5 border-signal shadow-md shadow-signal/5"
+                    isSelected || isHovered
+                      ? "bg-signal/5 border-signal shadow-md shadow-signal/5 ring-1 ring-signal/30"
                       : "bg-gray-50 border-gray-200/80 hover:bg-white hover:border-gray-400 hover:shadow-xs"
                   }`}
                 >
