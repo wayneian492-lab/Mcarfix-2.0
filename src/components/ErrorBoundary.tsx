@@ -58,7 +58,7 @@ export class ErrorBoundary extends React.Component<Props, State> {
             </p>
 
             {this.state.error && (
-              <div className="bg-slate-950 border border-white/5 rounded-xl p-3 mb-6 text-left max-h-32 overflow-y-auto">
+              <div className="bg-slate-950 border border-white/5 rounded-2xl p-3 mb-6 text-left max-h-32 overflow-y-auto">
                 <p className="font-mono text-[10px] text-red-400 leading-normal break-all">
                   {this.state.error.toString()}
                 </p>
@@ -67,7 +67,7 @@ export class ErrorBoundary extends React.Component<Props, State> {
 
             <button
               onClick={this.handleReload}
-              className="w-full bg-signal text-white hover:bg-signal/90 font-display font-bold text-sm uppercase tracking-wider py-3.5 rounded-xl flex items-center justify-center space-x-2 transition-all duration-300 cursor-pointer shadow-lg shadow-signal/20"
+              className="w-full bg-signal text-white hover:bg-signal/90 font-display font-bold text-sm uppercase tracking-wider py-3.5 rounded-lg flex items-center justify-center space-x-2 transition-all duration-300 cursor-pointer shadow-lg shadow-signal/20"
             >
               <RefreshCw className="h-4 w-4" />
               <span>Reload Application</span>

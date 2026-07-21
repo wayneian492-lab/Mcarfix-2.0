@@ -40,7 +40,7 @@ export default function FloatingDock({ onOpenSos, onScrollToSection }: FloatingD
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 50, scale: 0.9 }}
           transition={{ type: "spring", stiffness: 300, damping: 25 }}
-          className="fixed z-50 bottom-4 left-1/2 -translate-x-1/2 md:translate-x-0 md:left-5 md:top-1/2 md:-translate-y-1/2 md:bottom-auto select-none"
+          className="fixed z-30 bottom-4 left-1/2 -translate-x-1/2 md:translate-x-0 md:left-5 md:top-1/2 md:-translate-y-1/2 md:bottom-auto select-none"
         >
           {!isExpanded ? (
             /* Collapsed State: Highly visible premium pill-shaped Quick Tools trigger */

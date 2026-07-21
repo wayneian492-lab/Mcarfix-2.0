@@ -8,14 +8,14 @@ import * as Icons from "lucide-react";
 import { SERVICES_DATA, ServiceItem } from "../types";
 import { motion } from "motion/react";
 
-import serviceDiagnosticsImg from "../assets/images/service_diagnostics_1784615981816.jpg";
+import serviceDiagnosticsImg from "../assets/images/service_diagnostics_new_1784617553637.jpg";
 import serviceRoadsideImg from "../assets/images/service_roadside_1784615967497.jpg";
-import serviceSparePartsImg from "../assets/images/service_spare_parts_1784615981817.jpg";
+import serviceSparePartsImg from "../assets/images/service_spare_parts_new_1784617522364.jpg";
 import serviceTowingImg from "../assets/images/service_towing_1784615981815.jpg";
-import serviceMechanicsImg from "../assets/images/service_mechanics_1784615954124.jpg";
-import serviceTyreBatteryImg from "../assets/images/service_tyre_battery_1784615981818.jpg";
-import serviceCarwashImg from "../assets/images/service_car_wash_1784615981819.jpg";
-import serviceInsuranceImg from "../assets/images/service_insurance_1784615981820.jpg";
+import serviceMechanicsImg from "../assets/images/service_mechanics_new_1784617568316.jpg";
+import serviceTyreBatteryImg from "../assets/images/service_tyre_battery_new_1784617536519.jpg";
+import serviceCarwashImg from "../assets/images/service_car_wash_new_1784617495226.jpg";
+import serviceInsuranceImg from "../assets/images/service_insurance_new_1784617510250.jpg";
 
 interface ServicesGridProps {
   onSelectServiceFilter: (serviceName: string) => void;
@@ -139,11 +139,11 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
                   >
                     {/* Header tags */}
                     <div className="flex justify-between items-center">
-                      <div className="bg-white/10 backdrop-blur-xs border border-white/20 px-3 py-1 rounded-md text-[10px] font-mono font-bold text-signal flex items-center space-x-1.5">
+                      <div className="bg-white/10 backdrop-blur-xs border border-white/20 px-3 py-1 rounded-full text-[10px] font-mono font-bold text-signal flex items-center space-x-1.5">
                         <span className="h-1.5 w-1.5 rounded-full bg-signal animate-pulse" />
                         <span>{meta.code}</span>
                       </div>
-                      <span className="text-[10px] font-mono font-bold tracking-widest text-teal-400 uppercase bg-teal-400/10 border border-teal-400/25 px-2.5 py-1 rounded-md">
+                      <span className="text-[10px] font-mono font-bold tracking-widest text-teal-400 uppercase bg-teal-400/10 border border-teal-400/25 px-2.5 py-1 rounded-full">
                         FEATURED SYSTEM
                       </span>
                     </div>
@@ -151,7 +151,7 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
                     {/* Footer Details */}
                     <div>
                       <div className="flex items-center space-x-3 mb-3">
-                        <div className="bg-signal/20 backdrop-blur-xs border border-signal/40 p-3 rounded-xl">
+                        <div className="bg-signal/20 backdrop-blur-xs border border-signal/40 p-3 rounded-2xl">
                           {renderIcon(service.iconName, "h-7 w-7 text-signal")}
                         </div>
                         <h3 className="font-display font-bold text-xl md:text-2xl uppercase tracking-wide text-white leading-tight">
@@ -185,7 +185,7 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
                       
                       <div className="pt-3 border-t border-white/10 flex items-center justify-between text-xs font-mono font-semibold text-signal group-hover:translate-x-1.5 transition-transform duration-300">
                         <span>ACTIVATE DIRECTORY SCAN &rarr;</span>
-                        <span className="bg-signal text-white px-3 py-1 rounded-md text-3xs font-bold uppercase tracking-wider">
+                        <span className="bg-signal text-white px-3 py-1 rounded-full text-3xs font-bold uppercase tracking-wider">
                           VETTED BAYS ONLINE
                         </span>
                       </div>
@@ -209,10 +209,10 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
                 <div>
                   {/* Header Code and Icon row */}
                   <div className="flex justify-between items-start mb-5">
-                    <div className="bg-gray-50 border border-gray-100 p-3 rounded-xl transition-transform duration-300 group-hover:scale-110">
+                    <div className="bg-gray-50 border border-gray-100 p-3 rounded-2xl transition-transform duration-300 group-hover:scale-110">
                       {renderIcon(service.iconName)}
                     </div>
-                    <span className="font-mono text-2xs text-gray-400 border border-gray-100 px-2.5 py-1 rounded-md font-semibold tracking-wider">
+                    <span className="font-mono text-2xs text-gray-400 border border-gray-100 px-2.5 py-1 rounded-full font-semibold tracking-wider">
                       {meta.code}
                     </span>
                   </div>
@@ -253,7 +253,7 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
           className="mt-14 bg-gray-50 text-gray-900 p-6 sm:p-8 rounded-2xl border border-gray-200 flex flex-col md:flex-row items-center justify-between gap-6"
         >
           <div className="flex items-center space-x-4">
-            <div className="bg-white p-3 rounded-xl border border-gray-200 shrink-0 shadow-xs">
+            <div className="bg-white p-3 rounded-2xl border border-gray-200 shrink-0 shadow-xs">
               <Icons.Activity className="h-6 w-6 text-teal-600 animate-pulse" />
             </div>
             <div>

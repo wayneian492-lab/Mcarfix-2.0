@@ -155,7 +155,7 @@ export default function BookingModal({ isOpen, onClose, garage, preselectedServi
               </p>
 
               {/* Receipt Details Box */}
-              <div className="bg-asphalt border border-steel/80 p-5 rounded-xl text-left space-y-3.5">
+              <div className="bg-asphalt border border-steel/80 p-5 rounded-2xl text-left space-y-3.5">
                 <div className="flex justify-between items-center text-xs font-mono border-b border-steel/40 pb-2.5">
                   <span className="text-gray-400">Workshop Terminal:</span>
                   <span className="text-white font-semibold font-display uppercase tracking-wide">
@@ -183,7 +183,7 @@ export default function BookingModal({ isOpen, onClose, garage, preselectedServi
               </div>
 
               {/* Instructions Panel */}
-              <div className="bg-steel/40 border border-steel/60 p-4 rounded-lg text-left text-2xs space-y-2 flex items-start space-x-3">
+              <div className="bg-steel/40 border border-steel/60 p-4 rounded-2xl text-left text-2xs space-y-2 flex items-start space-x-3">
                 <ShieldCheck className="h-5 w-5 text-diagnostic shrink-0 mt-0.5" />
                 <div className="text-gray-400 leading-relaxed font-light">
                   <span className="font-semibold text-white block uppercase font-mono tracking-wider mb-1">Driver Instructions:</span>
@@ -194,7 +194,7 @@ export default function BookingModal({ isOpen, onClose, garage, preselectedServi
               {/* Action Button */}
               <button
                 onClick={resetAndClose}
-                className="w-full bg-signal hover:bg-signal/90 text-asphalt font-display font-bold text-sm uppercase tracking-wider py-4 rounded-xl transition-all cursor-pointer"
+                className="w-full bg-signal hover:bg-signal/90 text-asphalt font-display font-bold text-sm uppercase tracking-wider py-4 rounded-lg transition-all cursor-pointer"
               >
                 Done
               </button>
@@ -204,7 +204,7 @@ export default function BookingModal({ isOpen, onClose, garage, preselectedServi
             <form onSubmit={handleSubmit} className="space-y-5">
               
               {/* Selected Workshop Display */}
-              <div className="bg-asphalt border border-steel-light/20 p-4 rounded-xl flex items-center justify-between">
+              <div className="bg-asphalt border border-steel-light/20 p-4 rounded-2xl flex items-center justify-between">
                 <div>
                   <span className="block text-3xs text-gray-500 uppercase tracking-widest font-mono">Selected Garage</span>
                   <span className="text-base font-display font-bold uppercase tracking-wider text-signal mt-1 block">
@@ -212,7 +212,7 @@ export default function BookingModal({ isOpen, onClose, garage, preselectedServi
                   </span>
                   <span className="text-2xs text-gray-400 font-sans mt-0.5 block">{garage?.location}</span>
                 </div>
-                <div className="bg-steel/80 border border-steel/50 rounded-lg p-2 font-mono text-center shrink-0">
+                <div className="bg-steel/80 border border-steel/50 rounded-2xl p-2 font-mono text-center shrink-0">
                   <span className="block text-3xs text-gray-500 uppercase tracking-widest font-bold">REVIEWS</span>
                   <span className="text-sm font-bold text-white">⭐ {garage?.rating.toFixed(1)}</span>
                 </div>
@@ -366,9 +366,9 @@ export default function BookingModal({ isOpen, onClose, garage, preselectedServi
               <div className="pt-3">
                 <button
                   type="submit"
-                  className="w-full bg-signal hover:bg-signal/90 text-asphalt font-display font-bold text-sm uppercase tracking-wider py-4 rounded-xl flex items-center justify-center space-x-2 transition-all cursor-pointer"
+                  className="w-full bg-signal hover:bg-signal/90 text-asphalt font-display font-bold text-sm uppercase tracking-wider py-4 rounded-lg flex items-center justify-center space-x-2 transition-all cursor-pointer"
                 >
-                  <span>Transmit Booking to Workshop</span>
+                  <span>Book a Mechanic</span>
                 </button>
               </div>
 

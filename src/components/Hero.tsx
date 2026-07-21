@@ -168,7 +168,7 @@ export default function Hero({ onOpenSos, onOpenDiagnostics, onScrollToSection }
               onClick={() => onScrollToSection("garages")}
               className="bg-white/10 backdrop-blur-md border border-white/20 hover:border-white text-white hover:bg-white/20 font-display font-bold text-sm tracking-wider uppercase px-8 py-4 rounded-lg flex items-center justify-center space-x-2 transition-all cursor-pointer"
             >
-              <span>Find Verified Garages</span>
+              <span>Find a Garage</span>
             </button>
           </motion.div>
         </div>
@@ -259,9 +259,9 @@ export default function Hero({ onOpenSos, onOpenDiagnostics, onScrollToSection }
               </div>
 
               {/* Screen Display Area */}
-              <div className="bg-black/90 border border-white/10 rounded-xl p-4 font-mono text-xs space-y-3 shadow-inner relative">
+              <div className="bg-black/90 border border-white/10 rounded-2xl p-4 font-mono text-xs space-y-3 shadow-inner relative">
                 {/* Simulated Grid Scan Overlay */}
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(18,21,27,0)_95%,rgba(20,184,166,0.03)_95%)] bg-[size:100%_16px] pointer-events-none rounded-xl" />
+                <div className="absolute inset-0 bg-[linear-gradient(rgba(18,21,27,0)_95%,rgba(20,184,166,0.03)_95%)] bg-[size:100%_16px] pointer-events-none rounded-2xl" />
 
                 {/* HUD Grid Stats */}
                 <div className="grid grid-cols-2 gap-2.5">

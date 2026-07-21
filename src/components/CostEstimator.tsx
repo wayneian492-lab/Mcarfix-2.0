@@ -109,7 +109,7 @@ export default function CostEstimator({ onBookDirect }: CostEstimatorProps) {
                     <button
                       key={vc.id}
                       onClick={() => setVehicleClass(vc.id)}
-                      className={`text-left p-4 rounded-xl border transition-all ${
+                      className={`text-left p-4 rounded-lg border transition-all ${
                         vehicleClass === vc.id
                           ? "border-signal bg-signal/5 ring-1 ring-signal text-gray-900 font-semibold"
                           : "border-gray-200 bg-white hover:border-gray-400 text-gray-600 hover:shadow-2xs"
@@ -136,7 +136,7 @@ export default function CostEstimator({ onBookDirect }: CostEstimatorProps) {
                     <button
                       key={sp.id}
                       onClick={() => setServiceType(sp.id)}
-                      className={`w-full text-left p-3.5 px-4 rounded-xl border transition-all flex items-center justify-between ${
+                      className={`w-full text-left p-3.5 px-4 rounded-lg border transition-all flex items-center justify-between ${
                         serviceType === sp.id
                           ? "border-signal bg-signal/5 ring-1 ring-signal text-gray-900 font-semibold"
                           : "border-gray-200 bg-white hover:border-gray-400 text-gray-700 hover:shadow-2xs"
@@ -221,7 +221,7 @@ export default function CostEstimator({ onBookDirect }: CostEstimatorProps) {
                 </div>
 
                 {showDetails && (
-                  <div className="bg-white border border-gray-200 p-3 rounded-lg space-y-2 mt-2 shadow-xs">
+                  <div className="bg-white border border-gray-200 p-3 rounded-2xl space-y-2 mt-2 shadow-xs">
                     <div className="flex justify-between items-center text-3xs font-mono">
                       <span className="text-gray-500">Estimated Parts Cost:</span>
                       <span className="text-gray-700">KES {estimate.partsRange}</span>
@@ -245,7 +245,7 @@ export default function CostEstimator({ onBookDirect }: CostEstimatorProps) {
                 onClick={handleBookWithEstimate}
                 className="w-full bg-signal hover:bg-signal/90 text-white font-display font-bold text-sm uppercase tracking-wider py-4 rounded-lg flex items-center justify-center space-x-2 transition-all cursor-pointer shadow-lg shadow-signal/20"
               >
-                <span>Book This Quote Now</span>
+                <span>Book a Mechanic</span>
                 <ArrowRight className="h-4 w-4" />
               </button>
               

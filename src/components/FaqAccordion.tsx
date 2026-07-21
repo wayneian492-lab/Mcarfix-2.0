@@ -63,7 +63,7 @@ export default function FaqAccordion() {
             return (
               <div
                 key={index}
-                className="bg-white border border-gray-200 rounded-xl overflow-hidden transition-all duration-200 hover:border-gray-300"
+                className="bg-white border border-gray-200 rounded-2xl overflow-hidden transition-all duration-200 hover:border-gray-300"
               >
                 {/* Header Toggle */}
                 <button

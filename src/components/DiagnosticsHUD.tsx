@@ -235,7 +235,7 @@ export default function DiagnosticsHUD({ onBookService }: DiagnosticsHUDProps) {
                       }
                     }}
                     disabled={isScanning}
-                    className={`w-full text-left p-4 rounded-xl border transition flex items-center justify-between cursor-pointer ${
+                    className={`w-full text-left p-4 rounded-lg border transition flex items-center justify-between cursor-pointer ${
                       selectedSymptom === s.id
                         ? "border-sky-500 bg-sky-50/50 ring-1 ring-sky-500 text-gray-900 font-semibold shadow-[0_0_15px_rgba(56,189,248,0.2)]"
                         : "border-gray-200 bg-white hover:border-sky-400 hover:bg-sky-50/10 text-gray-700"
@@ -258,7 +258,7 @@ export default function DiagnosticsHUD({ onBookService }: DiagnosticsHUDProps) {
               onClick={startAnalysis}
               disabled={isScanning}
               id="initiate-scan-btn"
-              className={`w-full cursor-pointer ${isScanning ? "bg-gray-100 text-gray-400 cursor-not-allowed" : "bg-sky-500 hover:bg-sky-600 text-white shadow-[0_4px_20px_rgba(14,165,233,0.3)] hover:shadow-[0_4px_25px_rgba(14,165,233,0.45)]"} font-display font-bold uppercase tracking-wider text-sm py-4 rounded-xl flex items-center justify-center space-x-2.5 mt-6 transition`}
+              className={`w-full cursor-pointer ${isScanning ? "bg-gray-100 text-gray-400 cursor-not-allowed" : "bg-sky-500 hover:bg-sky-600 text-white shadow-[0_4px_20px_rgba(14,165,233,0.3)] hover:shadow-[0_4px_25px_rgba(14,165,233,0.45)]"} font-display font-bold uppercase tracking-wider text-sm py-4 rounded-lg flex items-center justify-center space-x-2.5 mt-6 transition`}
             >
               <RefreshCw className={`h-4.5 w-4.5 ${isScanning ? "animate-spin" : ""}`} />
               <span>{isScanning ? "Scanning OBD Buses..." : "Initiate System Trace Scan"}</span>
@@ -653,14 +653,14 @@ export default function DiagnosticsHUD({ onBookService }: DiagnosticsHUDProps) {
               </svg>
 
               {/* Float Panel Tooltip on Hover */}
-              <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-slate-900/90 border border-slate-700 px-3 py-1.5 rounded-lg text-[10px] text-slate-300 font-mono flex items-center space-x-1.5 shadow-lg backdrop-blur-md">
+              <div className="absolute bottom-2 left-1/2 transform -translate-x-1/2 bg-slate-900/90 border border-slate-700 px-3 py-1.5 rounded-full text-[10px] text-slate-300 font-mono flex items-center space-x-1.5 shadow-lg backdrop-blur-md">
                 <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
                 <span>ACTIVE OBD CONNECTION</span>
               </div>
             </div>
 
             {/* Glowing System Diagnostics Status */}
-            <div className="w-full bg-slate-900 border border-slate-800 rounded-xl p-3 flex items-center justify-between z-10">
+            <div className="w-full bg-slate-900 border border-slate-800 rounded-2xl p-3 flex items-center justify-between z-10">
               <div className="flex items-center space-x-2">
                 <div className={`w-2.5 h-2.5 rounded-full ${isScanning ? "bg-amber-500 animate-ping" : selectedSymptom === "clicking-start" ? "bg-amber-500" : selectedSymptom === "engine-overheating" ? "bg-red-500" : "bg-sky-400"} shrink-0`} />
                 <span className="font-mono text-[10px] text-slate-400 uppercase tracking-widest">
@@ -698,11 +698,11 @@ export default function DiagnosticsHUD({ onBookService }: DiagnosticsHUDProps) {
               {/* The Live Gauges Grid */}
               <div className="grid grid-cols-2 gap-4 mb-4">
                 {/* RPM Gauge */}
-                <div className="bg-slate-900 border border-slate-800 rounded-xl p-3 flex flex-col relative overflow-hidden group hover:border-slate-700 transition">
+                <div className="bg-slate-900 border border-slate-800 rounded-2xl p-3 flex flex-col relative overflow-hidden group hover:border-slate-700 transition">
                   <span className="font-display text-[10px] text-sky-400 uppercase tracking-wider font-semibold">Engine Spin Speed</span>
                   <span className="text-[9px] text-slate-500 font-sans leading-tight mt-0.5">How fast the engine rotates (RPM)</span>
                   <div className="my-1.5 flex items-baseline space-x-1">
-                    <span className={`font-display font-bold text-xl transition ${selectedSymptom === "rough-idle" && scanResult ? "text-orange-500" : "text-white"}`}>
+                    <span className={`font-display font-bold text-xl transition ${selectedSymptom === "rough-idle" && scanResult ? "text-amber-500" : "text-white"}`}>
                       {rpm}
                     </span>
                     <span className="font-mono text-[9px] text-slate-400">RPM</span>
@@ -710,7 +710,7 @@ export default function DiagnosticsHUD({ onBookService }: DiagnosticsHUDProps) {
                   {/* Min/Max indicators */}
                   <div className="w-full bg-slate-950 h-1 rounded-full overflow-hidden mt-1">
                     <div 
-                      className={`h-full transition-all duration-200 ${selectedSymptom === "rough-idle" && scanResult ? "bg-orange-500" : "bg-sky-400"}`} 
+                      className={`h-full transition-all duration-200 ${selectedSymptom === "rough-idle" && scanResult ? "bg-amber-500" : "bg-sky-400"}`} 
                       style={{ width: `${Math.min((rpm / 4000) * 100, 100)}%` }} 
                     />
                   </div>
@@ -723,7 +723,7 @@ export default function DiagnosticsHUD({ onBookService }: DiagnosticsHUDProps) {
                 </div>
 
                 {/* Coolant Temp Gauge */}
-                <div className="bg-slate-900 border border-slate-800 rounded-xl p-3 flex flex-col relative overflow-hidden group hover:border-slate-700 transition">
+                <div className="bg-slate-900 border border-slate-800 rounded-2xl p-3 flex flex-col relative overflow-hidden group hover:border-slate-700 transition">
                   <span className="font-display text-[10px] text-sky-400 uppercase tracking-wider font-semibold">Engine Heat Level</span>
                   <span className="text-[9px] text-slate-500 font-sans leading-tight mt-0.5">Water & coolant temperature</span>
                   <div className="my-1.5 flex items-baseline space-x-1">
@@ -747,7 +747,7 @@ export default function DiagnosticsHUD({ onBookService }: DiagnosticsHUDProps) {
                 </div>
 
                 {/* Battery Voltage Gauge */}
-                <div className="bg-slate-900 border border-slate-800 rounded-xl p-3 flex flex-col relative overflow-hidden group hover:border-slate-700 transition">
+                <div className="bg-slate-900 border border-slate-800 rounded-2xl p-3 flex flex-col relative overflow-hidden group hover:border-slate-700 transition">
                   <span className="font-display text-[10px] text-sky-400 uppercase tracking-wider font-semibold">Battery Strength</span>
                   <span className="text-[9px] text-slate-500 font-sans leading-tight mt-0.5">Electrical power voltage</span>
                   <div className="my-1.5 flex items-baseline space-x-1">
@@ -771,7 +771,7 @@ export default function DiagnosticsHUD({ onBookService }: DiagnosticsHUDProps) {
                 </div>
 
                 {/* MAF Flow Rate Gauge */}
-                <div className="bg-slate-900 border border-slate-800 rounded-xl p-3 flex flex-col relative overflow-hidden group hover:border-slate-700 transition">
+                <div className="bg-slate-900 border border-slate-800 rounded-2xl p-3 flex flex-col relative overflow-hidden group hover:border-slate-700 transition">
                   <span className="font-display text-[10px] text-sky-400 uppercase tracking-wider font-semibold">Engine Air Breathing</span>
                   <span className="text-[9px] text-slate-500 font-sans leading-tight mt-0.5">Air entering for clean fuel combustion</span>
                   <div className="my-1.5 flex items-baseline space-x-1">
@@ -796,7 +796,7 @@ export default function DiagnosticsHUD({ onBookService }: DiagnosticsHUDProps) {
               </div>
 
               {/* Relatable Quick Guide Box */}
-              <div className="bg-slate-900/60 border border-slate-800/80 rounded-xl p-3.5 mb-4 text-xs">
+              <div className="bg-slate-900/60 border border-slate-800/80 rounded-2xl p-3.5 mb-4 text-xs">
                 <span className="font-display text-[10px] text-sky-400 font-bold uppercase tracking-wider block mb-1">
                   💡 How does this relate to your drive?
                 </span>
@@ -806,7 +806,7 @@ export default function DiagnosticsHUD({ onBookService }: DiagnosticsHUDProps) {
               </div>
 
               {/* Logs / Console area inside gauge card */}
-              <div className="bg-slate-950 border border-slate-900 p-3 rounded-xl font-mono text-[9px] text-slate-300 leading-normal max-h-[160px] overflow-y-auto space-y-1">
+              <div className="bg-slate-950 border border-slate-900 p-3 rounded-2xl font-mono text-[9px] text-slate-300 leading-normal max-h-[160px] overflow-y-auto space-y-1">
                 {scanLogs.length === 0 && !isScanning && !scanResult && (
                   <div className="py-8 text-center text-slate-600">
                     <Cpu className="h-6 w-6 text-slate-800 mx-auto mb-1" />
@@ -857,7 +857,7 @@ export default function DiagnosticsHUD({ onBookService }: DiagnosticsHUDProps) {
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, y: 30 }}
-              className="mt-8 bg-sky-50/20 border border-sky-300 rounded-3xl p-6 sm:p-8 shadow-[0_0_35px_rgba(56,189,248,0.2)]"
+              className="mt-8 bg-sky-50/20 border border-sky-300 rounded-2xl p-6 sm:p-8 shadow-[0_0_35px_rgba(56,189,248,0.2)]"
             >
               <div className="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-6 border-b border-sky-200/40">
                 <div className="flex items-center space-x-4">
@@ -874,7 +874,7 @@ export default function DiagnosticsHUD({ onBookService }: DiagnosticsHUDProps) {
                   </div>
                 </div>
 
-                <div className={`px-4 py-2 rounded-xl text-xs font-bold font-mono tracking-widest uppercase text-center border shrink-0 ${getSeverityStyle(scanResult.severity)}`}>
+                <div className={`px-4 py-2 rounded-full text-xs font-bold font-mono tracking-widest uppercase text-center border shrink-0 ${getSeverityStyle(scanResult.severity)}`}>
                   {scanResult.severity} SEVERITY
                 </div>
               </div>
@@ -916,7 +916,7 @@ export default function DiagnosticsHUD({ onBookService }: DiagnosticsHUDProps) {
               {/* Action Banner */}
               <div className="mt-8 pt-6 border-t border-sky-200/40 flex flex-col sm:flex-row justify-between items-stretch sm:items-center gap-4">
                 <div className="flex items-center space-x-3.5">
-                  <div className="bg-sky-100/60 border border-sky-200/50 px-4 py-2 rounded-xl text-center">
+                  <div className="bg-sky-100/60 border border-sky-200/50 px-4 py-2 rounded-2xl text-center">
                     <span className="font-mono text-[9px] text-sky-600 uppercase tracking-widest block">
                       Nairobi Price Guide
                     </span>
@@ -931,7 +931,7 @@ export default function DiagnosticsHUD({ onBookService }: DiagnosticsHUDProps) {
 
                 <button
                   onClick={() => onBookService(scanResult.targetService, `OBD Code ${scanResult.code} (${scanResult.name}) decoded. Resolved from symptom: ${selectedSymptom}`)}
-                  className="bg-sky-500 hover:bg-sky-600 text-white font-display font-bold text-sm uppercase tracking-wider px-8 py-4 rounded-xl transition flex items-center justify-center space-x-2 cursor-pointer shadow-[0_4px_20px_rgba(14,165,233,0.3)] hover:shadow-[0_4px_25px_rgba(14,165,233,0.45)] shrink-0"
+                  className="bg-sky-500 hover:bg-sky-600 text-white font-display font-bold text-sm uppercase tracking-wider px-8 py-4 rounded-lg transition flex items-center justify-center space-x-2 cursor-pointer shadow-[0_4px_20px_rgba(14,165,233,0.3)] hover:shadow-[0_4px_25px_rgba(14,165,233,0.45)] shrink-0"
                 >
                   <BookOpen className="h-4.5 w-4.5" />
                   <span>Schedule Diagnostic Fix</span>

@@ -118,7 +118,7 @@ export default function SosModal({ isOpen, onClose }: SosModalProps) {
         {/* Urgent Warning Header */}
         <div className="bg-slate-950 border-b border-white/5 px-6 py-5 flex items-center justify-between">
           <div className="flex items-center space-x-3 text-signal">
-            <div className="p-2 bg-signal/10 rounded-xl">
+            <div className="p-2 bg-signal/10 rounded-lg">
               <Truck className="h-6 w-6 text-signal" />
             </div>
             <div>
@@ -209,7 +209,7 @@ export default function SosModal({ isOpen, onClose }: SosModalProps) {
               </div>
 
               {/* Dispatch Crew card details */}
-              <div className="bg-slate-950 border border-white/5 p-4 rounded-xl text-left flex items-center justify-between">
+              <div className="bg-slate-950 border border-white/5 p-4 rounded-2xl text-left flex items-center justify-between">
                 <div>
                   <span className="block text-[9px] text-gray-500 uppercase tracking-widest font-mono">Assigned Support vehicle</span>
                   <span className="text-sm font-display font-bold uppercase tracking-wider text-white mt-1 block">
@@ -217,7 +217,7 @@ export default function SosModal({ isOpen, onClose }: SosModalProps) {
                   </span>
                   <span className="text-2xs text-gray-400 font-sans mt-0.5 block">Contact Phone: +254 722 000 999</span>
                 </div>
-                <div className="p-3 bg-slate-900 border border-white/5 rounded-lg">
+                <div className="p-3 bg-slate-900 border border-white/5 rounded-2xl">
                   <Truck className="h-6 w-6 text-signal" />
                 </div>
               </div>
@@ -225,7 +225,7 @@ export default function SosModal({ isOpen, onClose }: SosModalProps) {
               {/* Action Button */}
               <button
                 onClick={resetAndClose}
-                className="w-full bg-slate-800 hover:bg-slate-755 border border-white/5 text-white font-display font-bold text-sm uppercase tracking-wider py-4 rounded-xl transition-all cursor-pointer"
+                className="w-full bg-slate-800 hover:bg-slate-755 border border-white/5 text-white font-display font-bold text-sm uppercase tracking-wider py-4 rounded-lg transition-all cursor-pointer"
               >
                 Close Tracking Dashboard
               </button>
@@ -235,7 +235,7 @@ export default function SosModal({ isOpen, onClose }: SosModalProps) {
             <form onSubmit={handleSosRequest} className="space-y-6">
               
               {/* Satellite GPS Reading Telemetry */}
-              <div className="bg-slate-950 border border-white/5 p-4 rounded-xl flex items-center justify-between font-mono text-xs">
+              <div className="bg-slate-950 border border-white/5 p-4 rounded-2xl flex items-center justify-between font-mono text-xs">
                 <div className="space-y-1">
                   <span className="text-gray-500 text-[9px] font-bold tracking-widest block uppercase">GPS LOCATION LOCKED</span>
                   <span className="text-teal-400 font-semibold block">{gpsCoords.lat.toFixed(4)}° S, {gpsCoords.lng.toFixed(4)}° E</span>
@@ -257,7 +257,7 @@ export default function SosModal({ isOpen, onClose }: SosModalProps) {
                       key={e.id}
                       type="button"
                       onClick={() => setEmergencyType(e.id)}
-                      className={`text-left p-3.5 rounded-xl border transition-all duration-300 flex items-center space-x-3 cursor-pointer ${
+                      className={`text-left p-3.5 rounded-lg border transition-all duration-300 flex items-center space-x-3 cursor-pointer ${
                         emergencyType === e.id
                           ? "border-signal bg-signal/5 ring-1 ring-signal text-white font-semibold"
                           : "border-white/5 bg-slate-950/40 hover:border-white/10 text-gray-300"
@@ -281,7 +281,7 @@ export default function SosModal({ isOpen, onClose }: SosModalProps) {
                   required
                   value={district}
                   onChange={(e) => setDistrict(e.target.value)}
-                  className="w-full bg-slate-950 border border-white/5 hover:border-white/10 focus:border-signal text-white px-4 py-3 rounded-xl font-sans text-xs outline-none transition-all cursor-pointer"
+                  className="w-full bg-slate-950 border border-white/5 hover:border-white/10 focus:border-signal text-white px-4 py-3 rounded-lg font-sans text-xs outline-none transition-all cursor-pointer"
                 >
                   {districts.map((d) => (
                     <option key={d} value={d}>{d}</option>
@@ -321,7 +321,7 @@ export default function SosModal({ isOpen, onClose }: SosModalProps) {
               </div>
 
               {/* Roadside assistance Terms */}
-              <div className="bg-slate-950 border border-white/5 p-4 rounded-xl text-left text-xs space-y-1.5 flex items-start space-x-3">
+              <div className="bg-slate-950 border border-white/5 p-4 rounded-2xl text-left text-xs space-y-1.5 flex items-start space-x-3">
                 <ShieldAlert className="h-5 w-5 text-signal shrink-0 mt-0.5" />
                 <div className="text-gray-300 leading-relaxed font-light text-[10px]">
                   <span className="font-semibold text-white block uppercase font-mono tracking-widest mb-1">Assistance Terms:</span>
@@ -332,7 +332,7 @@ export default function SosModal({ isOpen, onClose }: SosModalProps) {
               {/* Submit trigger */}
               <button
                 type="submit"
-                className="w-full bg-signal text-white hover:bg-signal/90 font-display font-bold text-sm uppercase tracking-wider py-4 rounded-xl flex items-center justify-center space-x-2 transition-all duration-300 cursor-pointer shadow-lg shadow-signal/20"
+                className="w-full bg-signal text-white hover:bg-signal/90 font-display font-bold text-sm uppercase tracking-wider py-4 rounded-lg flex items-center justify-center space-x-2 transition-all duration-300 cursor-pointer shadow-lg shadow-signal/20"
               >
                 <span>Request Roadside Assistance</span>
               </button>

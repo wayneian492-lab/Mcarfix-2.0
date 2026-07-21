@@ -78,7 +78,7 @@ export default function Navbar({ onOpenSos, onScrollToSection, activeBookingsCou
             )}
             <button
               onClick={onOpenSos}
-              className="bg-signal text-white px-5 py-2.5 rounded-xl font-display text-sm font-bold tracking-wider uppercase flex items-center space-x-2 hover:bg-signal/90 transition-all duration-300 cursor-pointer shadow-md hover:shadow-lg shadow-signal/15"
+              className="bg-signal text-white px-5 py-2.5 rounded-lg font-display text-sm font-bold tracking-wider uppercase flex items-center space-x-2 hover:bg-signal/90 transition-all duration-300 cursor-pointer shadow-md hover:shadow-lg shadow-signal/15"
             >
               <Truck className="h-4 w-4" />
               <span>Roadside Help</span>
@@ -97,7 +97,7 @@ export default function Navbar({ onOpenSos, onScrollToSection, activeBookingsCou
             )}
             <button
               onClick={onOpenSos}
-              className="bg-signal text-white p-2.5 rounded-xl text-xs flex items-center hover:bg-signal/90 transition-all duration-300 shadow-md"
+              className="bg-signal text-white p-2.5 rounded-lg text-xs flex items-center hover:bg-signal/90 transition-all duration-300 shadow-md"
             >
               <Truck className="h-4 w-4" />
             </button>
@@ -160,7 +160,7 @@ export default function Navbar({ onOpenSos, onScrollToSection, activeBookingsCou
                 onOpenSos();
                 setIsMenuOpen(false);
               }}
-              className="w-full bg-signal text-white py-3.5 rounded-xl font-display font-bold tracking-wider uppercase flex items-center justify-center space-x-2 shadow-md hover:bg-signal/95 transition-all duration-300"
+              className="w-full bg-signal text-white py-3.5 rounded-lg font-display font-bold tracking-wider uppercase flex items-center justify-center space-x-2 shadow-md hover:bg-signal/95 transition-all duration-300"
             >
               <Truck className="h-4 w-4" />
               <span>ROADSIDE HELP</span>

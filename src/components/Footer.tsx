@@ -35,7 +35,7 @@ export default function Footer({ onScrollToSection, onOpenBookings, onOpenSos }:
             </p>
             <button
               onClick={onOpenSos}
-              className="mt-2 bg-orange-50 border border-orange-200 text-signal hover:bg-signal hover:text-white px-4 py-2.5 rounded-xl font-display text-2xs font-bold tracking-widest uppercase w-fit transition-all duration-300 flex items-center space-x-1.5 cursor-pointer shadow-xs"
+              className="mt-2 bg-amber-50 border border-amber-200 text-signal hover:bg-signal hover:text-white px-4 py-2.5 rounded-lg font-display text-2xs font-bold tracking-widest uppercase w-fit transition-all duration-300 flex items-center space-x-1.5 cursor-pointer shadow-xs"
             >
               <Truck className="h-3 w-3" />
               <span>Request Roadside Help</span>
@@ -53,7 +53,7 @@ export default function Footer({ onScrollToSection, onOpenBookings, onOpenSos }:
                   onClick={() => onScrollToSection("garages")}
                   className="text-gray-600 hover:text-signal transition-colors text-left cursor-pointer"
                 >
-                  Find Certified Garages
+                  Find a Garage
                 </button>
               </li>
               <li>
@@ -154,7 +154,7 @@ export default function Footer({ onScrollToSection, onOpenBookings, onOpenSos }:
           <div className="text-center sm:text-left">
             <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
               <p>&copy; {new Date().getFullYear()} mCarFix Kenya Ltd. All rights reserved.</p>
-              <span className="bg-amber-500/10 text-amber-600 border border-amber-500/20 px-2 py-0.5 rounded text-[9px] font-mono font-bold tracking-widest uppercase inline-block">
+              <span className="bg-amber-500/10 text-amber-600 border border-amber-500/20 px-2 py-0.5 rounded-full text-[9px] font-mono font-bold tracking-widest uppercase inline-block">
                 Alpha Preview
               </span>
             </div>

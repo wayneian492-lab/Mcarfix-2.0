@@ -47,7 +47,7 @@ export default function ActiveBookingsPanel({ isOpen, onClose, bookings, onCance
             bookings.map((b) => (
               <div
                 key={b.id}
-                className="bg-asphalt border border-steel-light/10 hover:border-diagnostic/20 rounded-xl p-5 space-y-4 transition-all duration-200"
+                className="bg-asphalt border border-steel-light/10 hover:border-diagnostic/20 rounded-2xl p-5 space-y-4 transition-all duration-200"
               >
                 {/* Header: ID & Status */}
                 <div className="flex justify-between items-center border-b border-steel/40 pb-3">
@@ -85,7 +85,7 @@ export default function ActiveBookingsPanel({ isOpen, onClose, bookings, onCance
                 </div>
 
                 {/* Schedule banner */}
-                <div className="bg-steel/60 p-2.5 rounded-lg flex items-center justify-between text-2xs text-gray-300 font-mono">
+                <div className="bg-steel/60 p-2.5 rounded-2xl flex items-center justify-between text-2xs text-gray-300 font-mono">
                   <div className="flex items-center space-x-1.5">
                     <Calendar className="h-3.5 w-3.5 text-signal" />
                     <span>{b.date}</span>
@@ -117,7 +117,7 @@ export default function ActiveBookingsPanel({ isOpen, onClose, bookings, onCance
               <span className="text-4xl block">📅</span>
               <h4 className="font-display font-bold text-sm uppercase text-white">No Upcoming Service Reminders</h4>
               <p className="font-sans text-xs text-gray-400 max-w-xs mx-auto leading-normal">
-                You do not have any pending workshop reservations. Click "Book now" on any of our verified garages to secure your repair slot.
+                You do not have any pending workshop reservations. Click "Book a Mechanic" on any of our verified garages to secure your repair slot.
               </p>
             </div>
           )}

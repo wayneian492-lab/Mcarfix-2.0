@@ -178,13 +178,13 @@ export default function App() {
             <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">
               <button
                 onClick={() => handleScrollToSection("garages")}
-                className="w-full sm:w-auto bg-signal text-asphalt hover:bg-signal/90 font-display font-bold text-sm uppercase tracking-wider px-8 py-4 rounded-xl transition-all cursor-pointer"
+                className="w-full sm:w-auto bg-signal text-asphalt hover:bg-signal/90 font-display font-bold text-sm uppercase tracking-wider px-8 py-4 rounded-lg transition-all cursor-pointer"
               >
-                Book a Verified Mechanic
+                Book a Mechanic
               </button>
               <button
                 onClick={() => setIsSosOpen(true)}
-                className="w-full sm:w-auto border-2 border-signal bg-signal text-white hover:bg-transparent hover:text-signal px-8 py-4 rounded-xl font-display text-sm font-bold tracking-wider uppercase flex items-center justify-center space-x-2 transition-all duration-300 cursor-pointer shadow-lg shadow-signal/20"
+                className="w-full sm:w-auto border-2 border-signal bg-signal text-white hover:bg-transparent hover:text-signal px-8 py-4 rounded-lg font-display text-sm font-bold tracking-wider uppercase flex items-center justify-center space-x-2 transition-all duration-300 cursor-pointer shadow-lg shadow-signal/20"
               >
                 <Truck className="h-4.5 w-4.5" />
                 <span>Request Roadside Help</span>

@@ -31,7 +31,7 @@ export default function PartnerBand() {
           {partners.map((p, idx) => (
             <div
               key={idx}
-              className="bg-white border border-gray-200 hover:border-signal/20 px-5 py-4 rounded-xl text-center transition-all duration-300 hover:shadow-xs"
+              className="bg-white border border-gray-200 hover:border-signal/20 px-5 py-4 rounded-2xl text-center transition-all duration-300 hover:shadow-xs"
             >
               {/* Partner Logo Representation */}
               <div className="font-display font-extrabold text-base tracking-wider text-gray-800">

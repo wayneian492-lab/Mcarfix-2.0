@@ -91,8 +91,8 @@ export default function Testimonials() {
                   </div>
 
                   {/* Vehicle Tag */}
-                  <div className="bg-orange-50 px-3 py-1.5 rounded-lg border border-orange-200 shrink-0">
-                    <span className="font-mono text-[10px] font-bold text-orange-600 uppercase tracking-wider">
+                  <div className="bg-amber-50 px-3 py-1.5 rounded-full border border-amber-200 shrink-0">
+                    <span className="font-mono text-[10px] font-bold text-amber-600 uppercase tracking-wider">
                       {t.vehicle}
                     </span>
                   </div>
