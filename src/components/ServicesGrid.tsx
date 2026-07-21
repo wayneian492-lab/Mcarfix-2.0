@@ -8,14 +8,14 @@ import * as Icons from "lucide-react";
 import { SERVICES_DATA, ServiceItem } from "../types";
 import { motion } from "motion/react";
 
-import serviceDiagnosticsImg from "../assets/images/service_diagnostics_nairobi_clean_1784610103376.jpg";
-import serviceRoadsideImg from "../assets/images/service_roadside_assistance_nairobi_1784609874099.jpg";
-import serviceSparePartsImg from "../assets/images/service_spare_parts_nairobi_clean_1784610532383.jpg";
-import serviceTowingImg from "../assets/images/service_towing_nairobi_clean_1784610085342.jpg";
-import serviceMechanicsImg from "../assets/images/service_mechanics_nairobi_new_1784609691473.jpg";
-import serviceTyreBatteryImg from "../assets/images/service_tyres_batteries_nairobi_clean_1784611314540.jpg";
-import serviceCarwashImg from "../assets/images/service_car_wash_nairobi_clean_1784611334296.jpg";
-import serviceInsuranceImg from "../assets/images/service_insurance_nairobi_clean_1784611350899.jpg";
+import serviceDiagnosticsImg from "../assets/images/service_diagnostics_1784615981816.jpg";
+import serviceRoadsideImg from "../assets/images/service_roadside_1784615967497.jpg";
+import serviceSparePartsImg from "../assets/images/service_spare_parts_1784615981817.jpg";
+import serviceTowingImg from "../assets/images/service_towing_1784615981815.jpg";
+import serviceMechanicsImg from "../assets/images/service_mechanics_1784615954124.jpg";
+import serviceTyreBatteryImg from "../assets/images/service_tyre_battery_1784615981818.jpg";
+import serviceCarwashImg from "../assets/images/service_car_wash_1784615981819.jpg";
+import serviceInsuranceImg from "../assets/images/service_insurance_1784615981820.jpg";
 
 interface ServicesGridProps {
   onSelectServiceFilter: (serviceName: string) => void;
