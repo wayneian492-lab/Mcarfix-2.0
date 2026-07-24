@@ -7,6 +7,7 @@ import React from "react";
 import * as Icons from "lucide-react";
 import { SERVICES_DATA, ServiceItem } from "../types";
 import { motion } from "motion/react";
+import { TiltCard } from "./TiltCard";
 
 import serviceDiagnosticsImg from "../assets/images/service_diagnostics_new_1784617553637.jpg";
 import serviceRoadsideImg from "../assets/images/service_roadside_1784615967497.jpg";
@@ -100,9 +101,13 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.6, delay: index * 0.08 }}
-                  onClick={() => handleServiceClick(service.title)}
-                  className="col-span-1 md:col-span-2 lg:col-span-2 h-[340px] md:h-[380px] relative overflow-hidden rounded-2xl group cursor-pointer border border-gray-200/50 hover:border-signal/50 hover:shadow-2xl transition-all duration-500"
+                  className="col-span-1 md:col-span-2 lg:col-span-2"
                 >
+                  <TiltCard
+                    maxTilt={4}
+                    onClick={() => handleServiceClick(service.title)}
+                    className="h-[340px] md:h-[380px] relative overflow-hidden rounded-2xl group cursor-pointer border border-gray-200/50 hover:border-signal/50 hover:shadow-2xl transition-all duration-500 w-full"
+                  >
                   {/* Photo Background */}
                   <img
                     src={meta.image}
@@ -191,6 +196,7 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
                       </div>
                     </div>
                   </motion.div>
+                  </TiltCard>
                 </motion.div>
               );
             }
@@ -203,42 +209,47 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
                 transition={{ duration: 0.6, delay: index * 0.08 }}
-                onClick={() => handleServiceClick(service.title)}
-                className="bg-white border border-gray-200 rounded-2xl p-6 transition-all duration-300 hover:border-signal/50 hover:shadow-xl hover:-translate-y-1 cursor-pointer flex flex-col justify-between h-full group"
+                className="h-full"
               >
-                <div>
-                  {/* Header Code and Icon row */}
-                  <div className="flex justify-between items-start mb-5">
-                    <div className="bg-gray-50 border border-gray-100 p-3 rounded-2xl transition-transform duration-300 group-hover:scale-110">
-                      {renderIcon(service.iconName)}
-                    </div>
-                    <span className="font-mono text-2xs text-gray-400 border border-gray-100 px-2.5 py-1 rounded-full font-semibold tracking-wider">
-                      {meta.code}
-                    </span>
-                  </div>
-                  
-                  {/* Title */}
-                  <h3 className="font-display font-bold text-lg uppercase tracking-wide text-gray-900 mb-2">
-                    {service.title}
-                  </h3>
-                  
-                  {/* Description */}
-                  <p className="font-sans text-xs text-gray-500 leading-relaxed font-light">
-                    {service.description}
-                  </p>
-                </div>
-
-                {/* Card footer indicator */}
-                <motion.div 
-                  initial={{ opacity: 0, x: -30 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.05 }}
-                  className="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-xs font-mono font-medium text-gray-400 group-hover:text-signal transition-colors"
+                <TiltCard
+                  maxTilt={4}
+                  onClick={() => handleServiceClick(service.title)}
+                  className="bg-white border border-gray-200 rounded-2xl p-6 transition-all duration-300 hover:border-signal/50 hover:shadow-xl hover:-translate-y-1 cursor-pointer flex flex-col justify-between h-full group"
                 >
-                  <span>Explore Garages</span>
-                  <span>&rarr;</span>
-                </motion.div>
+                  <div>
+                    {/* Header Code and Icon row */}
+                    <div className="flex justify-between items-start mb-5">
+                      <div className="bg-gray-50 border border-gray-100 p-3 rounded-2xl transition-transform duration-300 group-hover:scale-110">
+                        {renderIcon(service.iconName)}
+                      </div>
+                      <span className="font-mono text-2xs text-gray-400 border border-gray-100 px-2.5 py-1 rounded-full font-semibold tracking-wider">
+                        {meta.code}
+                      </span>
+                    </div>
+                    
+                    {/* Title */}
+                    <h3 className="font-display font-bold text-lg uppercase tracking-wide text-gray-900 mb-2">
+                      {service.title}
+                    </h3>
+                    
+                    {/* Description */}
+                    <p className="font-sans text-xs text-gray-500 leading-relaxed font-light">
+                      {service.description}
+                    </p>
+                  </div>
+
+                  {/* Card footer indicator */}
+                  <motion.div 
+                    initial={{ opacity: 0, x: -30 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.05 }}
+                    className="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-xs font-mono font-medium text-gray-400 group-hover:text-signal transition-colors"
+                  >
+                    <span>Explore Garages</span>
+                    <span>&rarr;</span>
+                  </motion.div>
+                </TiltCard>
               </motion.div>
             );
           })}

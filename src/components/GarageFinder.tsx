@@ -7,6 +7,7 @@ import React from "react";
 import { Search, MapPin, Star, ShieldCheck, X, Phone } from "lucide-react";
 import { MOCK_GARAGES, Garage } from "../types";
 import { motion } from "motion/react";
+import { TiltCard } from "./TiltCard";
 
 const NairobiMap = React.lazy(() => import("./NairobiMap"));
 
@@ -244,12 +245,16 @@ export default function GarageFinder({ onBookGarage, selectedServiceFilter, onCl
                       transition={{ duration: 0.6, delay: index * 0.08 }}
                       onMouseEnter={() => setHoveredGarageId(garage.id)}
                       onMouseLeave={() => setHoveredGarageId(null)}
-                      className={`bg-white border rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between group h-full shadow-lg ${
-                        isHovered 
-                          ? "border-signal ring-2 ring-signal/50 shadow-2xl scale-[1.01]" 
-                          : "border-gray-200 hover:border-signal/50 hover:shadow-2xl"
-                      }`}
+                      className="h-full"
                     >
+                      <TiltCard
+                        maxTilt={4}
+                        className={`bg-white border rounded-2xl overflow-hidden transition-all duration-300 flex flex-col justify-between group h-full shadow-lg ${
+                          isHovered 
+                            ? "border-signal ring-2 ring-signal/50 shadow-2xl scale-[1.01]" 
+                            : "border-gray-200 hover:border-signal/50 hover:shadow-2xl"
+                        }`}
+                      >
                       <div>
                         {/* Garage Visual Header with Real Image */}
                         <div className="relative h-48 sm:h-52 w-full overflow-hidden bg-gray-100">
@@ -351,7 +356,8 @@ export default function GarageFinder({ onBookGarage, selectedServiceFilter, onCl
                           Book a Mechanic
                         </button>
                       </div>
-                    </motion.div>
+                    </TiltCard>
+                  </motion.div>
                   );
                 })}
               </div>

@@ -29,10 +29,12 @@ function CountUp({ end, suffix = "", duration = 1500, decimals = 0 }: { end: num
           let startTime: number | null = null;
           const animate = (timestamp: number) => {
             if (!startTime) startTime = timestamp;
-            const progress = Math.min((timestamp - startTime) / duration, 1);
-            const currentCount = progress * end;
+            const linearProgress = Math.min((timestamp - startTime) / duration, 1);
+            // Ease-out cubic formula for smooth deceleration
+            const easedProgress = 1 - Math.pow(1 - linearProgress, 3);
+            const currentCount = easedProgress * end;
             setCount(currentCount);
-            if (progress < 1) {
+            if (linearProgress < 1) {
               requestAnimationFrame(animate);
             } else {
               setCount(end);
@@ -239,13 +241,17 @@ export default function Hero({ onOpenSos, onOpenDiagnostics, onScrollToSection }
             </div>
           </motion.div>
 
-          {/* Right Glass Card: Diagnostic HUD */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3 }}
-            className="col-span-1 lg:col-span-6 bg-gray-950/60 backdrop-blur-xl border border-white/10 rounded-2xl p-6 shadow-2xl relative overflow-hidden transition-all duration-300 hover:border-signal/50 hover:shadow-signal/10 flex flex-col justify-between text-white"
-          >
+          {/* Right Glass Card: Diagnostic HUD with Ambient Glow */}
+          <div className="col-span-1 lg:col-span-6 relative">
+            {/* Subtle animated gradient glow behind HUD panel (8-10s loop) */}
+            <div className="absolute -inset-3 bg-gradient-to-r from-teal-500/20 via-cyan-500/15 to-amber-500/20 rounded-3xl blur-2xl pointer-events-none animate-hud-glow" />
+
+            <motion.div 
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
+              className="bg-gray-950/60 backdrop-blur-xl border border-white/10 rounded-2xl p-6 shadow-2xl relative overflow-hidden transition-all duration-300 hover:border-signal/50 hover:shadow-signal/10 flex flex-col justify-between text-white h-full"
+            >
             {/* Glass Glare */}
             <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-white/5 transform rotate-12 pointer-events-none" />
             
@@ -336,6 +342,7 @@ export default function Hero({ onOpenSos, onOpenDiagnostics, onScrollToSection }
               </div>
             </div>
           </motion.div>
+        </div>
 
         </div>
 

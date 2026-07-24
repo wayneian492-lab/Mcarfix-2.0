@@ -50,4 +50,46 @@ html {
   }
 }
 
+/* Subtle 8-10s slow-moving glow behind Hero HUD (transform + opacity only) */
+@keyframes hudGlow {
+  0%, 100% {
+    opacity: 0.35;
+    transform: scale(0.98) translate(0px, 0px);
+  }
+  50% {
+    opacity: 0.65;
+    transform: scale(1.03) translate(8px, -6px);
+  }
+}
+
+.animate-hud-glow {
+  animation: hudGlow 9s ease-in-out infinite;
+  will-change: transform, opacity;
+}
+
+/* Refined custom scrollbar (thin, amber accent on hover) */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: #12151b;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #232935;
+  border-radius: 9999px;
+  transition: background-color 0.2s ease;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #FF5E00; /* Refined amber/signal accent on hover */
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: #232935 #12151b;
+}
+
 

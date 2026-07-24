@@ -11,9 +11,6 @@ import Hero from "./components/Hero";
 import LiveTicker from "./components/LiveTicker";
 import HowItWorks from "./components/HowItWorks";
 import ServicesGrid from "./components/ServicesGrid";
-import GarageFinder from "./components/GarageFinder";
-import CostEstimator from "./components/CostEstimator";
-import Testimonials from "./components/Testimonials";
 import PartnerBand from "./components/PartnerBand";
 import FaqAccordion from "./components/FaqAccordion";
 import Footer from "./components/Footer";
@@ -25,7 +22,10 @@ import ActiveBookingsPanel from "./components/ActiveBookingsPanel";
 import FloatingDock from "./components/FloatingDock";
 import { Garage, MOCK_GARAGES } from "./types";
 
+const GarageFinder = React.lazy(() => import("./components/GarageFinder"));
+const CostEstimator = React.lazy(() => import("./components/CostEstimator"));
 const DiagnosticsHUD = React.lazy(() => import("./components/DiagnosticsHUD"));
+const Testimonials = React.lazy(() => import("./components/Testimonials"));
 
 export default function App() {
   // Toast notifications state
@@ -165,14 +165,28 @@ export default function App() {
         />
 
         {/* 5. Garage Finder directory (Dark Section) */}
-        <GarageFinder
-          onBookGarage={handleBookGarage}
-          selectedServiceFilter={selectedServiceFilter}
-          onClearServiceFilter={handleClearServiceFilter}
-        />
+        <React.Suspense fallback={
+          <div className="bg-slate-950 py-20 border-t border-slate-900 flex flex-col items-center justify-center min-h-[400px]">
+            <div className="h-8 w-8 border-4 border-signal border-t-transparent rounded-full animate-spin mb-4" />
+            <span className="font-mono text-xs text-gray-500 uppercase tracking-widest font-bold">LOADING GARAGE DIRECTORY...</span>
+          </div>
+        }>
+          <GarageFinder
+            onBookGarage={handleBookGarage}
+            selectedServiceFilter={selectedServiceFilter}
+            onClearServiceFilter={handleClearServiceFilter}
+          />
+        </React.Suspense>
 
         {/* 6. Price Estimator Engine (Light Section) */}
-        <CostEstimator onBookDirect={handleBookDirect} />
+        <React.Suspense fallback={
+          <div className="bg-slate-900 py-20 border-t border-slate-800 flex flex-col items-center justify-center min-h-[350px]">
+            <div className="h-8 w-8 border-4 border-signal border-t-transparent rounded-full animate-spin mb-4" />
+            <span className="font-mono text-xs text-gray-500 uppercase tracking-widest font-bold">LOADING COST ESTIMATOR...</span>
+          </div>
+        }>
+          <CostEstimator onBookDirect={handleBookDirect} />
+        </React.Suspense>
 
         {/* 7. OBD-II Troubleshooter console (Dark Section) */}
         <React.Suspense fallback={
@@ -185,7 +199,14 @@ export default function App() {
         </React.Suspense>
 
         {/* 8. Drivers Testimonials (Light Section) */}
-        <Testimonials />
+        <React.Suspense fallback={
+          <div className="bg-slate-950 py-16 border-t border-slate-900 flex flex-col items-center justify-center min-h-[300px]">
+            <div className="h-8 w-8 border-4 border-signal border-t-transparent rounded-full animate-spin mb-4" />
+            <span className="font-mono text-xs text-gray-500 uppercase tracking-widest font-bold">LOADING DRIVER REVIEWS...</span>
+          </div>
+        }>
+          <Testimonials />
+        </React.Suspense>
 
         {/* 9. Minimalist Trust Partner band */}
         <PartnerBand />
