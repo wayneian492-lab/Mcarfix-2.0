@@ -112,11 +112,14 @@ export default function SosModal({ isOpen, onClose, onSosRequested }: SosModalPr
   const districts = ["Westlands", "Nairobi CBD", "Mombasa Road", "Karen", "Kilimani", "Kiambu"];
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4 sm:p-6 bg-black/85 backdrop-blur-sm animate-fade-in">
+    <div className="fixed inset-0 z-50 overflow-y-auto flex items-end md:items-center justify-center p-0 md:p-6 bg-black/85 backdrop-blur-sm animate-fade-in">
       
-      {/* Alert Modal Panel */}
-      <div className="relative bg-slate-900 border-2 border-signal/40 rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden text-white flex flex-col max-h-[90vh]">
+      {/* Alert Modal / Bottom-sheet Panel */}
+      <div className="relative bg-slate-900 border-t-2 md:border-2 border-signal/40 rounded-t-3xl md:rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden text-white flex flex-col max-h-[90vh] animate-slide-up-mobile md:animate-none pb-[env(safe-area-inset-bottom,0px)] md:pb-0">
         
+        {/* Mobile Sheet Drag Handle */}
+        <div className="w-12 h-1.5 bg-gray-500/40 rounded-full mx-auto my-2.5 md:hidden shrink-0" />
+
         {/* Urgent Warning Header */}
         <div className="bg-slate-950 border-b border-white/5 px-6 py-5 flex items-center justify-between">
           <div className="flex items-center space-x-3 text-signal">
@@ -134,7 +137,8 @@ export default function SosModal({ isOpen, onClose, onSosRequested }: SosModalPr
           </div>
           <button
             onClick={resetAndClose}
-            className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-slate-800 transition-colors focus:outline-none"
+            className="p-2.5 rounded-lg text-gray-400 hover:text-white hover:bg-slate-800 transition-colors focus:outline-none min-w-[44px] min-h-[44px] flex items-center justify-center shrink-0"
+            title="Close Modal"
           >
             <X className="h-5 w-5" />
           </button>

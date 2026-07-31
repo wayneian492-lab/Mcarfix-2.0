@@ -86,24 +86,27 @@ export default function Navbar({ onOpenSos, onScrollToSection, activeBookingsCou
           </div>
 
           {/* Mobile Menu Button */}
-          <div className="md:hidden flex items-center space-x-4">
+          <div className="md:hidden flex items-center space-x-2.5">
             {activeBookingsCount > 0 && (
               <button
                 onClick={onOpenBookings}
-                className="relative bg-gray-100 border border-gray-200 p-2 rounded-lg text-xs font-mono text-gray-800"
+                className="relative bg-gray-100 border border-gray-200 px-3 py-2.5 rounded-lg text-xs font-mono text-gray-800 min-w-[44px] min-h-[44px] flex items-center justify-center font-bold shrink-0"
+                title="View Active Bookings"
               >
                 <span>📅 {activeBookingsCount}</span>
               </button>
             )}
             <button
               onClick={onOpenSos}
-              className="bg-signal text-white p-2.5 rounded-lg text-xs flex items-center hover:bg-signal/90 transition-all duration-300 shadow-md"
+              className="bg-signal text-white p-2.5 rounded-lg text-xs flex items-center justify-center min-w-[44px] min-h-[44px] hover:bg-signal/90 transition-all duration-300 shadow-md shrink-0"
+              title="Request Emergency Roadside Help"
             >
-              <Truck className="h-4 w-4" />
+              <Truck className="h-5 w-5" />
             </button>
             <button
               onClick={() => setIsMenuOpen(!isMenuOpen)}
-              className="p-2 rounded-lg text-gray-500 hover:text-gray-900 focus:outline-none"
+              className="p-2.5 rounded-lg text-gray-500 hover:text-gray-900 focus:outline-none min-w-[44px] min-h-[44px] flex items-center justify-center shrink-0"
+              title="Toggle Menu"
             >
               {isMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
             </button>

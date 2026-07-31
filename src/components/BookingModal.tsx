@@ -108,11 +108,14 @@ export default function BookingModal({ isOpen, onClose, garage, preselectedServi
   ];
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto flex items-center justify-center p-4 sm:p-6 bg-black/75 backdrop-blur-sm animate-fade-in">
+    <div className="fixed inset-0 z-50 overflow-y-auto flex items-end md:items-center justify-center p-0 md:p-6 bg-black/75 backdrop-blur-sm animate-fade-in">
       
-      {/* Modal Container */}
-      <div className="relative bg-steel border border-steel-light rounded-2xl w-full max-w-xl shadow-2xl overflow-hidden text-white flex flex-col max-h-[90vh]">
+      {/* Modal / Bottom-sheet Container */}
+      <div className="relative bg-steel border-t md:border border-steel-light rounded-t-3xl md:rounded-2xl w-full max-w-xl shadow-2xl overflow-hidden text-white flex flex-col max-h-[90vh] animate-slide-up-mobile md:animate-none pb-[env(safe-area-inset-bottom,0px)] md:pb-0">
         
+        {/* Mobile Sheet Drag Handle */}
+        <div className="w-12 h-1.5 bg-gray-500/40 rounded-full mx-auto my-2.5 md:hidden shrink-0" />
+
         {/* Header */}
         <div className="bg-asphalt px-6 py-4 border-b border-steel/60 flex items-center justify-between">
           <div>
@@ -125,7 +128,8 @@ export default function BookingModal({ isOpen, onClose, garage, preselectedServi
           </div>
           <button
             onClick={resetAndClose}
-            className="p-2 rounded-lg text-gray-400 hover:text-white hover:bg-steel transition-colors focus:outline-none"
+            className="p-2.5 rounded-lg text-gray-400 hover:text-white hover:bg-steel transition-colors focus:outline-none min-w-[44px] min-h-[44px] flex items-center justify-center shrink-0"
+            title="Close Modal"
           >
             <X className="h-5 w-5" />
           </button>

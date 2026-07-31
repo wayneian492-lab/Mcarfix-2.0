@@ -40,14 +40,14 @@ export default function FloatingDock({ onOpenSos, onScrollToSection }: FloatingD
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 50, scale: 0.9 }}
           transition={{ type: "spring", stiffness: 300, damping: 25 }}
-          className="fixed z-30 bottom-4 left-1/2 -translate-x-1/2 md:translate-x-0 md:left-5 md:top-1/2 md:-translate-y-1/2 md:bottom-auto select-none"
+          className="fixed z-30 bottom-[calc(1rem+env(safe-area-inset-bottom,0px))] left-1/2 -translate-x-1/2 md:translate-x-0 md:left-5 md:top-1/2 md:-translate-y-1/2 md:bottom-auto select-none"
         >
           {!isExpanded ? (
             /* Collapsed State: Highly visible premium pill-shaped Quick Tools trigger */
             <motion.button
               layoutId="dock-container"
               onClick={() => setIsExpanded(true)}
-              className="px-5 py-3 bg-gray-950/95 backdrop-blur-md border border-white/15 shadow-[0_8px_32px_rgba(0,0,0,0.5)] rounded-full flex items-center justify-center space-x-2.5 text-signal hover:text-white hover:border-signal/50 hover:bg-black transition-all duration-300 cursor-pointer focus:outline-none relative group"
+              className="px-5 py-3.5 min-h-[44px] bg-gray-950/95 backdrop-blur-md border border-white/15 shadow-[0_8px_32px_rgba(0,0,0,0.5)] rounded-full flex items-center justify-center space-x-2.5 text-signal hover:text-white hover:border-signal/50 hover:bg-black transition-all duration-300 cursor-pointer focus:outline-none relative group"
               title="Expand mCarFix Quick Tools"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
@@ -75,10 +75,10 @@ export default function FloatingDock({ onOpenSos, onScrollToSection }: FloatingD
                 </span>
                 <button
                   onClick={() => setIsExpanded(false)}
-                  className="p-1.5 rounded-full bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/15 hover:border-white/25 transition-all duration-300 cursor-pointer focus:outline-none flex items-center justify-center group/close"
+                  className="p-2 rounded-full bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/15 hover:border-white/25 transition-all duration-300 cursor-pointer focus:outline-none flex items-center justify-center min-w-[44px] min-h-[44px] shrink-0 group/close"
                   title="Close Tools Panel"
                 >
-                  <X className="h-3.5 w-3.5 transform group-hover/close:rotate-90 transition-transform duration-300" />
+                  <X className="h-4 w-4 transform group-hover/close:rotate-90 transition-transform duration-300" />
                 </button>
               </div>
 
@@ -92,13 +92,13 @@ export default function FloatingDock({ onOpenSos, onScrollToSection }: FloatingD
                     onScrollToSection("garages");
                     setIsExpanded(false);
                   }}
-                  className="flex flex-col items-center justify-center cursor-pointer group focus:outline-none"
+                  className="flex flex-col items-center justify-center cursor-pointer group focus:outline-none min-w-[44px] min-h-[44px]"
                   title="Book verified mechanics"
                 >
                   <div className="bg-amber-500/10 hover:bg-amber-500/20 text-amber-500 p-2.5 rounded-full transition-all duration-300 border border-amber-500/20 group-hover:border-amber-500/50 shrink-0 shadow-sm group-hover:shadow-amber-500/10">
                     <Calendar className="h-4.5 w-4.5" />
                   </div>
-                  <span className="text-[10px] font-sans text-gray-300 group-hover:text-amber-500 transition-colors uppercase tracking-wider font-bold mt-2">
+                  <span className="text-[10px] font-sans text-gray-300 group-hover:text-amber-500 transition-colors uppercase tracking-wider font-bold mt-1.5">
                     Book
                   </span>
                 </motion.button>
@@ -115,7 +115,7 @@ export default function FloatingDock({ onOpenSos, onScrollToSection }: FloatingD
                     onOpenSos();
                     setIsExpanded(false);
                   }}
-                  className="flex flex-col items-center justify-center cursor-pointer group focus:outline-none"
+                  className="flex flex-col items-center justify-center cursor-pointer group focus:outline-none min-w-[44px] min-h-[44px]"
                   title="Request quick roadside flatbed towing or mechanics"
                 >
                   <div className="bg-signal/15 hover:bg-signal/25 text-signal p-2.5 rounded-full transition-all duration-300 border border-signal/25 group-hover:border-signal/65 shrink-0 shadow-md group-hover:shadow-signal/15">
@@ -138,7 +138,7 @@ export default function FloatingDock({ onOpenSos, onScrollToSection }: FloatingD
                     onScrollToSection("diagnostics-info");
                     setIsExpanded(false);
                   }}
-                  className="flex flex-col items-center justify-center cursor-pointer group focus:outline-none"
+                  className="flex flex-col items-center justify-center cursor-pointer group focus:outline-none min-w-[44px] min-h-[44px]"
                   title="Initiate virtual OBD diagnostics"
                 >
                   <div className="bg-teal-500/10 hover:bg-teal-500/20 text-teal-400 p-2.5 rounded-full transition-all duration-300 border border-teal-500/20 group-hover:border-teal-500/50 shrink-0 shadow-sm group-hover:shadow-teal-400/10">

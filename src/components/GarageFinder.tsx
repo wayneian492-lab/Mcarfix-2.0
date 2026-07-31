@@ -161,7 +161,8 @@ export default function GarageFinder({ onBookGarage, selectedServiceFilter, onCl
             {searchQuery && (
               <button 
                 onClick={() => setSearchQuery("")}
-                className="absolute right-3 top-3.5 text-gray-400 hover:text-gray-900"
+                className="absolute right-1 top-1 text-gray-400 hover:text-gray-900 min-w-[44px] min-h-[44px] flex items-center justify-center"
+                title="Clear search"
               >
                 <X className="h-4 w-4" />
               </button>
@@ -191,10 +192,10 @@ export default function GarageFinder({ onBookGarage, selectedServiceFilter, onCl
                 <span className="text-signal uppercase font-bold">Specialty: {selectedServiceFilter}</span>
                 <button 
                   onClick={onClearServiceFilter}
-                  className="text-gray-400 hover:text-signal transition-colors ml-1"
+                  className="text-gray-400 hover:text-signal transition-colors ml-1 min-w-[44px] min-h-[44px] flex items-center justify-center p-1"
                   title="Clear filter"
                 >
-                  <X className="h-3 w-3" />
+                  <X className="h-3.5 w-3.5" />
                 </button>
               </div>
             ) : (

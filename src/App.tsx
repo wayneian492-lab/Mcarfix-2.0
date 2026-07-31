@@ -132,7 +132,7 @@ export default function App() {
   };
 
   return (
-    <div className="min-h-screen bg-asphalt text-white font-sans flex flex-col justify-between selection:bg-signal selection:text-asphalt">
+    <div className="min-h-screen bg-asphalt text-white font-sans flex flex-col justify-between selection:bg-signal selection:text-asphalt overflow-x-hidden max-w-full">
       
       {/* 1. Sticky Navigation Bar */}
       <Navbar
@@ -293,7 +293,7 @@ export default function App() {
         href="https://wa.me/254704804578?text=Hi%20mCarFix,%20I%20need%20assistance%20with%20my%20vehicle."
         target="_blank"
         rel="noopener noreferrer"
-        className="fixed bottom-6 right-6 z-40 bg-[#25D366] hover:bg-[#20BA56] text-white p-3 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 group border border-white/10"
+        className="fixed bottom-[calc(1.5rem+env(safe-area-inset-bottom,0px))] right-6 z-40 bg-[#25D366] hover:bg-[#20BA56] text-white min-w-[44px] min-h-[44px] p-3 rounded-full shadow-2xl flex items-center justify-center transition-all duration-300 hover:scale-110 active:scale-95 group border border-white/10"
         title="Chat on WhatsApp"
       >
         <svg
@@ -314,7 +314,7 @@ export default function App() {
           initial={{ opacity: 0, y: 50, scale: 0.9 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           exit={{ opacity: 0, y: 20, scale: 0.95 }}
-          className="fixed bottom-6 left-6 z-50 bg-slate-950 border border-signal/20 text-white px-5 py-4 rounded-xl shadow-2xl flex items-center space-x-3.5 max-w-sm"
+          className="fixed bottom-[calc(1.5rem+env(safe-area-inset-bottom,0px))] left-6 z-50 bg-slate-950 border border-signal/20 text-white px-5 py-4 rounded-xl shadow-2xl flex items-center space-x-3.5 max-w-sm"
         >
           <div className="h-7 w-7 rounded-full bg-emerald-500/10 border border-emerald-500/30 flex items-center justify-center shrink-0">
             <span className="text-emerald-500 font-bold select-none text-xs">✓</span>
