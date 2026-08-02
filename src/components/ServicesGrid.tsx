@@ -148,8 +148,8 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     referrerPolicy="no-referrer"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent flex items-end justify-center p-2.5 text-center">
-                    <span className="font-mono text-[10px] font-bold text-orange-300 uppercase tracking-wider">Oil & Fluid Top Up</span>
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-950/95 via-gray-950/40 to-transparent flex items-end justify-center pb-6 sm:pb-8 px-2 text-center">
+                    <span className="font-mono text-[11px] sm:text-xs font-bold text-white bg-gray-950/90 border border-orange-500/50 px-2.5 py-1 rounded-full uppercase tracking-wider shadow-xl backdrop-blur-md">Oil & Fluid Top Up</span>
                   </div>
                 </div>
               </div>
@@ -166,8 +166,8 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     referrerPolicy="no-referrer"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent flex items-end justify-center p-2.5 text-center">
-                    <span className="font-mono text-[10px] font-bold text-orange-300 uppercase tracking-wider">Hydraulic Lift Bays</span>
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-950/95 via-gray-950/40 to-transparent flex items-end justify-center pb-6 sm:pb-8 px-2 text-center">
+                    <span className="font-mono text-[11px] sm:text-xs font-bold text-white bg-gray-950/90 border border-orange-500/50 px-2.5 py-1 rounded-full uppercase tracking-wider shadow-xl backdrop-blur-md">Hydraulic Lift Bays</span>
                   </div>
                 </div>
               </div>
@@ -184,8 +184,8 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     referrerPolicy="no-referrer"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent flex items-end justify-center p-2.5 text-center">
-                    <span className="font-mono text-[10px] font-bold text-orange-300 uppercase tracking-wider">Under-Hood Repairs</span>
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-950/95 via-gray-950/40 to-transparent flex items-end justify-center pb-6 sm:pb-8 px-2 text-center">
+                    <span className="font-mono text-[11px] sm:text-xs font-bold text-white bg-gray-950/90 border border-orange-500/50 px-2.5 py-1 rounded-full uppercase tracking-wider shadow-xl backdrop-blur-md">Under-Hood Repairs</span>
                   </div>
                 </div>
               </div>
@@ -202,8 +202,8 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     referrerPolicy="no-referrer"
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/20 to-transparent flex items-end justify-center p-2.5 text-center">
-                    <span className="font-mono text-[10px] font-bold text-orange-300 uppercase tracking-wider">Certified Techs</span>
+                  <div className="absolute inset-0 bg-gradient-to-t from-gray-950/95 via-gray-950/40 to-transparent flex items-end justify-center pb-6 sm:pb-8 px-2 text-center">
+                    <span className="font-mono text-[11px] sm:text-xs font-bold text-white bg-gray-950/90 border border-orange-500/50 px-2.5 py-1 rounded-full uppercase tracking-wider shadow-xl backdrop-blur-md">Certified Techs</span>
                   </div>
                 </div>
               </div>
