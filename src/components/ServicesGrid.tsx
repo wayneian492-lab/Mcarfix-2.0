@@ -9,14 +9,14 @@ import { SERVICES_DATA, ServiceItem } from "../types";
 import { motion } from "motion/react";
 import { TiltCard } from "./TiltCard";
 
-import serviceDiagnosticsImg from "../assets/images/service_diagnostics_new_1784617553637.jpg";
-import serviceRoadsideImg from "../assets/images/service_roadside_1784615967497.jpg";
-import serviceSparePartsImg from "../assets/images/service_spare_parts_new_1784617522364.jpg";
-import serviceTowingImg from "../assets/images/service_towing_1784615981815.jpg";
-import serviceMechanicsImg from "../assets/images/service_mechanics_new_1784617568316.jpg";
-import serviceTyreBatteryImg from "../assets/images/service_tyre_battery_new_1784617536519.jpg";
-import serviceCarwashImg from "../assets/images/service_car_wash_new_1784617495226.jpg";
-import serviceInsuranceImg from "../assets/images/service_insurance_new_1784617510250.jpg";
+const serviceDiagnosticsImg = "https://raw.githubusercontent.com/wayneian492-lab/Mcarfix-2.0/11b7dae/src/assets/images/service_diagnostics_new_1784617553637.jpg";
+const serviceRoadsideImg = "https://raw.githubusercontent.com/wayneian492-lab/Mcarfix-2.0/11b7dae/src/assets/images/service_roadside_1784615967497.jpg";
+const serviceSparePartsImg = "https://raw.githubusercontent.com/wayneian492-lab/Mcarfix-2.0/11b7dae/src/assets/images/service_spare_parts_new_1784617522364.jpg";
+const serviceTowingImg = "https://raw.githubusercontent.com/wayneian492-lab/Mcarfix-2.0/11b7dae/src/assets/images/service_towing_1784615981815.jpg";
+const serviceMechanicsImg = "https://raw.githubusercontent.com/wayneian492-lab/Mcarfix-2.0/11b7dae/src/assets/images/service_mechanics_new_1784617568316.jpg";
+const serviceTyreBatteryImg = "https://raw.githubusercontent.com/wayneian492-lab/Mcarfix-2.0/11b7dae/src/assets/images/service_tyre_battery_new_1784617536519.jpg";
+const serviceCarwashImg = "https://raw.githubusercontent.com/wayneian492-lab/Mcarfix-2.0/11b7dae/src/assets/images/service_car_wash_new_1784617495226.jpg";
+const serviceInsuranceImg = "https://raw.githubusercontent.com/wayneian492-lab/Mcarfix-2.0/11b7dae/src/assets/images/service_insurance_new_1784617510250.jpg";
 
 interface ServicesGridProps {
   onSelectServiceFilter: (serviceName: string) => void;
@@ -51,8 +51,14 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
   };
 
   return (
-    <section id="services" className="bg-white py-20 text-gray-900 border-t border-gray-100">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="services" className="relative bg-[#0c0e12] py-20 text-white border-t border-gray-800/80 overflow-hidden">
+      {/* Background radial glow & dark texture matching hero */}
+      <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-orange-500/5 blur-[120px] rounded-full" />
+        <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#0a0c0e] to-transparent" />
+      </div>
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header with Scroll-triggered Animation */}
         <motion.div 
@@ -62,8 +68,8 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16 overflow-hidden"
         >
-          <span className="font-mono text-xs text-signal font-bold uppercase tracking-widest bg-gray-50 border border-gray-200 px-3.5 py-1.5 rounded-full inline-flex items-center space-x-1.5 mb-4">
-            <span className="h-1.5 w-1.5 rounded-full bg-signal" />
+          <span className="font-mono text-xs text-orange-400 font-bold uppercase tracking-widest bg-white/5 border border-white/10 px-4 py-1.5 rounded-full inline-flex items-center space-x-2 mb-4 backdrop-blur-md">
+            <span className="h-1.5 w-1.5 rounded-full bg-orange-400 animate-pulse" />
             <span>SYS.OFFERINGS</span>
           </span>
           <motion.h2 
@@ -71,17 +77,17 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="font-display font-bold text-3xl sm:text-4xl tracking-wide uppercase text-gray-900"
+            className="font-display font-bold text-3xl sm:text-4xl tracking-wide uppercase text-white"
           >
             Comprehensive Car Services in Nairobi
           </motion.h2>
-          <div className="h-1 w-12 bg-signal mx-auto mt-4" />
+          <div className="h-1 w-12 bg-orange-500 mx-auto mt-4 rounded-full" />
           <motion.p 
             initial={{ opacity: 0, x: 60 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.15 }}
-            className="font-sans text-gray-600 mt-4 leading-relaxed font-light"
+            className="font-sans text-gray-300 mt-4 leading-relaxed font-light text-base sm:text-lg"
           >
             Choose from our highly specialized network of mechanics and auto-care service centers. Click on any category below to immediately discover verified garages offering that service near you.
           </motion.p>
@@ -106,7 +112,7 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
                   <TiltCard
                     maxTilt={4}
                     onClick={() => handleServiceClick(service.title)}
-                    className="h-[340px] md:h-[380px] relative overflow-hidden rounded-2xl group cursor-pointer border border-gray-200/50 hover:border-signal/50 hover:shadow-2xl transition-all duration-500 w-full"
+                    className="h-[340px] md:h-[380px] relative overflow-hidden rounded-2xl group cursor-pointer border border-white/15 hover:border-orange-500/60 hover:shadow-2xl transition-all duration-500 w-full bg-gray-900"
                   >
                   {/* Photo Background */}
                   <img
@@ -128,11 +134,11 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
                         ? "A sleek red car in a modern presentation hall with a premium leather-bound motor insurance policy folder displaying custom coverage options"
                         : "Immediate roadside assistance towing vehicle and emergency dynamic mechanics dispatching along Waiyaki Way, Nairobi"
                     }
-                    className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-[1.03]"
+                    className="absolute inset-0 w-full h-full object-cover object-center transition-transform duration-700 group-hover:scale-105 z-0"
                     referrerPolicy="no-referrer"
                   />
-                  {/* Dark gradient overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/70 to-black/30 z-10" />
+                  {/* Balanced gradient overlay to ensure image is brightly visible while preserving text contrast */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/10 z-10 pointer-events-none" />
 
                   {/* Content Overlays */}
                   <motion.div 
@@ -201,7 +207,7 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
               );
             }
 
-            // STANDARD LIGHT MINI-TILE
+            // STANDARD MINI-TILE - DARK GLASSMORPHIC STYLE
             return (
               <motion.div
                 key={service.id}
@@ -214,26 +220,26 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
                 <TiltCard
                   maxTilt={4}
                   onClick={() => handleServiceClick(service.title)}
-                  className="bg-white border border-gray-200 rounded-2xl p-6 transition-all duration-300 hover:border-signal/50 hover:shadow-xl hover:-translate-y-1 cursor-pointer flex flex-col justify-between h-full group"
+                  className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:border-orange-500/50 hover:bg-white/[0.08] hover:shadow-xl hover:-translate-y-1 cursor-pointer flex flex-col justify-between h-full group"
                 >
                   <div>
                     {/* Header Code and Icon row */}
                     <div className="flex justify-between items-start mb-5">
-                      <div className="bg-gray-50 border border-gray-100 p-3 rounded-2xl transition-transform duration-300 group-hover:scale-110">
-                        {renderIcon(service.iconName)}
+                      <div className="bg-white/10 border border-white/15 p-3 rounded-2xl transition-transform duration-300 group-hover:scale-110">
+                        {renderIcon(service.iconName, "h-6 w-6 text-orange-400")}
                       </div>
-                      <span className="font-mono text-2xs text-gray-400 border border-gray-100 px-2.5 py-1 rounded-full font-semibold tracking-wider">
+                      <span className="font-mono text-2xs text-gray-400 border border-white/10 bg-white/5 px-2.5 py-1 rounded-full font-semibold tracking-wider">
                         {meta.code}
                       </span>
                     </div>
                     
                     {/* Title */}
-                    <h3 className="font-display font-bold text-lg uppercase tracking-wide text-gray-900 mb-2">
+                    <h3 className="font-display font-bold text-lg uppercase tracking-wide text-white mb-2">
                       {service.title}
                     </h3>
                     
                     {/* Description */}
-                    <p className="font-sans text-xs text-gray-500 leading-relaxed font-light">
+                    <p className="font-sans text-xs text-gray-300 leading-relaxed font-light">
                       {service.description}
                     </p>
                   </div>
@@ -244,7 +250,7 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.05 }}
-                    className="mt-6 pt-4 border-t border-gray-100 flex items-center justify-between text-xs font-mono font-medium text-gray-400 group-hover:text-signal transition-colors"
+                    className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono font-medium text-gray-400 group-hover:text-orange-400 transition-colors"
                   >
                     <span>Explore Garages</span>
                     <span>&rarr;</span>
@@ -255,30 +261,30 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
           })}
         </div>
 
-        {/* Live Diagnostics CTA Bar */}
+        {/* Live Diagnostics CTA Bar - Dark Theme */}
         <motion.div 
           initial={{ opacity: 0, x: -80 }}
           whileInView={{ opacity: 1, x: 0 }}
           viewport={{ once: true, margin: "-50px" }}
           transition={{ duration: 0.8, type: "spring", stiffness: 60 }}
-          className="mt-14 bg-gray-50 text-gray-900 p-6 sm:p-8 rounded-2xl border border-gray-200 flex flex-col md:flex-row items-center justify-between gap-6"
+          className="mt-14 bg-gradient-to-r from-teal-950/50 via-gray-900 to-black text-white p-6 sm:p-8 rounded-2xl border border-teal-500/30 backdrop-blur-xl flex flex-col md:flex-row items-center justify-between gap-6 shadow-2xl"
         >
           <div className="flex items-center space-x-4">
-            <div className="bg-white p-3 rounded-2xl border border-gray-200 shrink-0 shadow-xs">
-              <Icons.Activity className="h-6 w-6 text-teal-600 animate-pulse" />
+            <div className="bg-teal-500/20 p-3 rounded-2xl border border-teal-500/40 shrink-0 shadow-xs">
+              <Icons.Activity className="h-6 w-6 text-teal-400 animate-pulse" />
             </div>
             <div>
-              <h4 className="font-display text-lg font-bold tracking-wider uppercase text-gray-900">
+              <h4 className="font-display text-lg font-bold tracking-wider uppercase text-white">
                 Unsure why your vehicle is acting up?
               </h4>
-              <p className="font-sans text-xs text-gray-600 mt-1 max-w-xl">
+              <p className="font-sans text-xs text-gray-300 mt-1 max-w-xl font-light">
                 Run our interactive OBD-II troubleshoot simulator. Enter your dashboard signs or symptoms to decode error logs and find localized fixes.
               </p>
             </div>
           </div>
           <button
             onClick={() => onScrollToSection("diagnostics-info")}
-            className="w-full md:w-auto bg-white border border-teal-600 hover:bg-teal-50/50 text-teal-700 font-display font-bold uppercase tracking-wider px-6 py-3 rounded-lg text-sm transition-all shadow-xs cursor-pointer"
+            className="w-full md:w-auto bg-teal-500 hover:bg-teal-400 text-gray-950 font-display font-bold uppercase tracking-wider px-6 py-3 rounded-xl text-sm transition-all shadow-lg hover:shadow-teal-500/20 cursor-pointer"
           >
             Run Troubleshooting Guide
           </button>

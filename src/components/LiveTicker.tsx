@@ -16,28 +16,47 @@ export default function LiveTicker() {
     { location: "Kilimani", text: "Wheel alignment completed", time: "15m ago" },
   ];
 
-  // Repeat items to make it scroll infinitely
-  const repeatedItems = [...tickerItems, ...tickerItems, ...tickerItems];
-
   return (
-    <div className="bg-gray-50 border-y border-gray-100 py-2.5 md:py-3.5 overflow-hidden flex items-center select-none">
-      <div className="flex-shrink-0 flex items-center space-x-1.5 sm:space-x-2 bg-white px-2.5 py-1 sm:px-4 sm:py-1.5 z-10 border border-gray-200 text-teal-600 font-mono text-[10px] sm:text-xs uppercase tracking-wider font-semibold mr-2 sm:mr-4 rounded-full shadow-xs">
-        <Activity className="h-3.5 w-3.5 animate-pulse text-teal-600" />
-        <span className="hidden sm:inline">Live Feed</span>
-        <span className="sm:hidden">Live</span>
+    <div className="w-full bg-[#0a0c0e] border-y border-white/10 py-3 overflow-hidden flex items-center select-none backdrop-blur-md relative z-20">
+      {/* Live Badge indicator */}
+      <div className="flex-shrink-0 flex items-center space-x-2 bg-orange-500/10 border border-orange-500/30 px-3.5 py-1.5 z-20 text-orange-400 font-mono text-[10px] sm:text-xs uppercase tracking-widest font-bold ml-4 sm:ml-8 mr-3 sm:mr-6 rounded-full shadow-[0_0_15px_rgba(255,107,0,0.25)] backdrop-blur-md">
+        <Activity className="h-3.5 w-3.5 animate-pulse text-orange-400" />
+        <span className="hidden sm:inline">LIVE NETWORK FEED</span>
+        <span className="sm:hidden">LIVE</span>
       </div>
 
-      <div className="flex whitespace-nowrap overflow-hidden">
-        <div className="flex space-x-8 sm:space-x-12 animate-[marquee_30s_linear_infinite] hover:[animation-play-state:paused] cursor-pointer">
-          {repeatedItems.map((item, index) => (
-            <div key={index} className="flex items-center space-x-2 sm:space-x-3 text-xs sm:text-sm font-mono text-gray-600">
-              <span className="text-signal font-semibold">⚡ {item.location}</span>
-              <span className="text-gray-300">•</span>
-              <span className="text-gray-800">{item.text}</span>
-              <span className="text-gray-300">•</span>
-              <span className="text-teal-600 text-[10px] sm:text-xs">{item.time}</span>
-            </div>
-          ))}
+      {/* Ticker marquee container strictly bound within flex layout */}
+      <div className="flex-1 min-w-0 overflow-hidden relative flex items-center">
+        {/* Edge Gradient Mask Overlays */}
+        <div className="pointer-events-none absolute inset-y-0 left-0 w-6 sm:w-12 bg-gradient-to-r from-[#0a0c0e] to-transparent z-10" />
+        <div className="pointer-events-none absolute inset-y-0 right-0 w-6 sm:w-12 bg-gradient-to-l from-[#0a0c0e] to-transparent z-10" />
+
+        <div className="flex whitespace-nowrap animate-[marquee_25s_linear_infinite] hover:[animation-play-state:paused] cursor-pointer">
+          {/* First track copy */}
+          <div className="flex items-center space-x-8 sm:space-x-12 pr-8 sm:pr-12 shrink-0">
+            {tickerItems.map((item, index) => (
+              <div key={`track1-${index}`} className="flex items-center space-x-2.5 sm:space-x-3 text-xs sm:text-sm font-mono text-gray-300">
+                <span className="text-orange-400 font-semibold tracking-wide">⚡ {item.location}</span>
+                <span className="text-gray-600">•</span>
+                <span className="text-gray-200">{item.text}</span>
+                <span className="text-gray-600">•</span>
+                <span className="text-teal-400 text-[10px] sm:text-xs font-medium">{item.time}</span>
+              </div>
+            ))}
+          </div>
+
+          {/* Second identical track copy for 100% smooth loop */}
+          <div className="flex items-center space-x-8 sm:space-x-12 pr-8 sm:pr-12 shrink-0" aria-hidden="true">
+            {tickerItems.map((item, index) => (
+              <div key={`track2-${index}`} className="flex items-center space-x-2.5 sm:space-x-3 text-xs sm:text-sm font-mono text-gray-300">
+                <span className="text-orange-400 font-semibold tracking-wide">⚡ {item.location}</span>
+                <span className="text-gray-600">•</span>
+                <span className="text-gray-200">{item.text}</span>
+                <span className="text-gray-600">•</span>
+                <span className="text-teal-400 text-[10px] sm:text-xs font-medium">{item.time}</span>
+              </div>
+            ))}
+          </div>
         </div>
       </div>
     </div>

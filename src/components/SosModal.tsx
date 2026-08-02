@@ -240,6 +240,29 @@ export default function SosModal({ isOpen, onClose, onSosRequested }: SosModalPr
             /* SOS Request Form UI */
             <form onSubmit={handleSosRequest} className="space-y-6">
               
+              {/* Emergency Rescue Hero Image Banner */}
+              <div className="relative h-44 sm:h-52 rounded-2xl overflow-hidden border border-white/10 shadow-xl group">
+                <img 
+                  src="/mcarfix_sos_rescue.jpg" 
+                  alt="mCarFix Emergency Services - Responders locating motorist holding phone with mCarFix active beacon" 
+                  className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/40 to-transparent" />
+                <div className="absolute top-3 left-3 bg-red-600 text-white font-mono text-[9px] font-extrabold uppercase tracking-widest px-3 py-1 rounded-full shadow-lg flex items-center space-x-1.5 animate-pulse">
+                  <span className="h-2 w-2 rounded-full bg-white" />
+                  <span>LIVE SOS BEACON ACTIVE</span>
+                </div>
+                <div className="absolute bottom-3 left-3 right-3 flex items-center justify-between text-white">
+                  <div>
+                    <span className="block text-[10px] font-mono text-teal-400 uppercase font-bold tracking-wider">mCarFix Emergency Network</span>
+                    <h4 className="font-display font-bold text-sm uppercase tracking-wide">Instant Location Rescue</h4>
+                  </div>
+                  <div className="bg-slate-900/90 backdrop-blur-md px-2.5 py-1 rounded-lg border border-white/10 text-[10px] font-mono text-gray-300">
+                    GPS Beacon ±3m
+                  </div>
+                </div>
+              </div>
+
               {/* Satellite GPS Reading Telemetry */}
               <div className="bg-slate-950 border border-white/5 p-4 rounded-2xl flex items-center justify-between font-mono text-xs">
                 <div className="space-y-1">

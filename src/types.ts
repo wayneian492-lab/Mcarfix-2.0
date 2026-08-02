@@ -3,15 +3,15 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import garageApex from "./assets/images/garage_westlands_1784615895344.jpg";
-import garageKilimani from "./assets/images/garage_kilimani_1784615910011.jpg";
-import garageExperts from "./assets/images/garage_experts_1784615923238.jpg";
-import garageKaren from "./assets/images/garage_karen_1784615937639.jpg";
+const garageApex = "https://raw.githubusercontent.com/wayneian492-lab/Mcarfix-2.0/11b7dae/src/assets/images/garage_westlands_1784615895344.jpg";
+const garageKilimani = "https://raw.githubusercontent.com/wayneian492-lab/Mcarfix-2.0/11b7dae/src/assets/images/garage_kilimani_1784615910011.jpg";
+const garageExperts = "https://raw.githubusercontent.com/wayneian492-lab/Mcarfix-2.0/11b7dae/src/assets/images/garage_experts_1784615923238.jpg";
+const garageKaren = "https://raw.githubusercontent.com/wayneian492-lab/Mcarfix-2.0/11b7dae/src/assets/images/garage_karen_1784615937639.jpg";
 
-import avatarJane from "./assets/images/avatar_jane_1784615835675.jpg";
-import avatarBrian from "./assets/images/avatar_brian_1784615851353.jpg";
-import avatarDennis from "./assets/images/avatar_dennis_1784615865852.jpg";
-import avatarMercy from "./assets/images/avatar_mercy_1784615878155.jpg";
+const avatarJane = "https://raw.githubusercontent.com/wayneian492-lab/Mcarfix-2.0/11b7dae/src/assets/images/avatar_jane_1784615835675.jpg";
+const avatarBrian = "https://raw.githubusercontent.com/wayneian492-lab/Mcarfix-2.0/11b7dae/src/assets/images/avatar_brian_1784615851353.jpg";
+const avatarDennis = "https://raw.githubusercontent.com/wayneian492-lab/Mcarfix-2.0/11b7dae/src/assets/images/avatar_dennis_1784615865852.jpg";
+const avatarMercy = "https://raw.githubusercontent.com/wayneian492-lab/Mcarfix-2.0/11b7dae/src/assets/images/avatar_mercy_1784615878155.jpg";
 
 export interface Garage {
   id: string;

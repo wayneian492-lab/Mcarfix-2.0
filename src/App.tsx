@@ -15,6 +15,8 @@ import PartnerBand from "./components/PartnerBand";
 import FaqAccordion from "./components/FaqAccordion";
 import Footer from "./components/Footer";
 
+const mcarfixSosRescueImg = "https://raw.githubusercontent.com/wayneian492-lab/Mcarfix-2.0/11b7dae/src/assets/images/mcarfix_sos_rescue_1785586664899.jpg";
+
 // Modals and panels
 import BookingModal, { BookingRecord } from "./components/BookingModal";
 import SosModal from "./components/SosModal";
@@ -218,28 +220,77 @@ export default function App() {
         <section className="bg-asphalt py-16 text-center border-t border-steel/60 relative overflow-hidden">
           <div className="absolute inset-0 opacity-[0.02] pointer-events-none" 
                style={{ backgroundImage: "radial-gradient(#eceef2 1px, transparent 1px)", backgroundSize: "24px 24px" }} />
-          <div className="max-w-4xl mx-auto px-4 sm:px-6 relative z-10 space-y-6">
-            <h2 className="font-display font-bold text-3xl sm:text-4xl tracking-wider uppercase">
-              Get back on the road <span className="text-signal">immediately</span>
-            </h2>
-            <p className="font-sans text-gray-300 text-sm max-w-xl mx-auto leading-relaxed font-light">
-              Don't compromise on automotive safety. Secure a pre-diagnosed certified mechanic slot or trigger immediate roadside flatbed towing.
-            </p>
-            <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-4">
-              <button
-                onClick={() => handleScrollToSection("garages")}
-                className="w-full sm:w-auto bg-signal text-asphalt hover:bg-signal/90 font-display font-bold text-sm uppercase tracking-wider px-8 py-4 rounded-lg transition-all cursor-pointer"
-              >
-                Book a Mechanic
-              </button>
-              <button
-                onClick={() => setIsSosOpen(true)}
-                className="w-full sm:w-auto border-2 border-signal bg-signal text-white hover:bg-transparent hover:text-signal px-8 py-4 rounded-lg font-display text-sm font-bold tracking-wider uppercase flex items-center justify-center space-x-2 transition-all duration-300 cursor-pointer shadow-lg shadow-signal/20"
-              >
-                <Truck className="h-4.5 w-4.5" />
-                <span>Request Roadside Help</span>
-              </button>
+          <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10 space-y-8">
+            
+            {/* Realistic mCarFix Emergency SOS Image Showcase Banner */}
+            <div className="relative rounded-2xl overflow-hidden border-2 border-orange-500/40 shadow-[0_10px_35px_rgba(255,107,0,0.25)] group text-left max-w-4xl mx-auto">
+              <img 
+                src={mcarfixSosRescueImg} 
+                alt="mCarFix Emergency Rescue Services - Motorist holding phone with mCarFix active beacon" 
+                className="w-full h-64 sm:h-80 md:h-96 object-cover object-center group-hover:scale-105 transition-transform duration-700"
+                referrerPolicy="no-referrer"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-asphalt via-asphalt/60 to-transparent z-10" />
+              
+              {/* Live Badge Overlay */}
+              <div className="absolute top-4 left-4 z-20 flex flex-wrap items-center gap-2">
+                <span className="bg-red-600 text-white font-mono text-[10px] font-black uppercase tracking-widest px-3 py-1.5 rounded-full shadow-lg flex items-center space-x-2 animate-pulse">
+                  <span className="h-2 w-2 rounded-full bg-white" />
+                  <span>EMERGENCY SOS BEACON ACTIVE</span>
+                </span>
+                <span className="bg-black/70 backdrop-blur-md text-teal-400 border border-teal-500/30 font-mono text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full">
+                  GPS BROADCAST ±3M ACCURACY
+                </span>
+              </div>
+
+              {/* Banner Text overlay */}
+              <div className="absolute bottom-6 left-6 right-6 z-20 flex flex-col md:flex-row md:items-end justify-between gap-4 text-white">
+                <div className="max-w-xl">
+                  <span className="text-xs font-mono text-signal uppercase tracking-widest font-extrabold block mb-1">
+                    mCarFix Global Safety Network
+                  </span>
+                  <h3 className="font-display font-bold text-xl sm:text-2xl md:text-3xl uppercase tracking-tight text-white leading-tight">
+                    Instant Rescue & Roadside Dispatch
+                  </h3>
+                  <p className="font-sans text-xs sm:text-sm text-gray-200 mt-1 font-light leading-relaxed">
+                    When stranded on the road, mCarFix instantly broadcasts your exact satellite coordinates to verified AA emergency responders, towing fleets, and nearby helpful citizens.
+                  </p>
+                </div>
+                
+                <button
+                  onClick={() => setIsSosOpen(true)}
+                  className="shrink-0 bg-signal text-white hover:bg-orange-600 font-display font-extrabold text-xs sm:text-sm uppercase tracking-wider px-6 py-3.5 rounded-xl shadow-xl shadow-signal/30 flex items-center justify-center space-x-2 transition-all cursor-pointer border border-orange-400"
+                >
+                  <Truck className="h-5 w-5" />
+                  <span>Launch SOS Rescue</span>
+                </button>
+              </div>
             </div>
+
+            <div className="space-y-4 pt-2">
+              <h2 className="font-display font-bold text-3xl sm:text-4xl tracking-wider uppercase">
+                Get back on the road <span className="text-signal">immediately</span>
+              </h2>
+              <p className="font-sans text-gray-300 text-sm max-w-xl mx-auto leading-relaxed font-light">
+                Don't compromise on automotive safety. Secure a pre-diagnosed certified mechanic slot or trigger immediate roadside flatbed towing.
+              </p>
+              <div className="flex flex-col sm:flex-row justify-center items-center gap-4 pt-2">
+                <button
+                  onClick={() => handleScrollToSection("garages")}
+                  className="w-full sm:w-auto bg-signal text-asphalt hover:bg-signal/90 font-display font-bold text-sm uppercase tracking-wider px-8 py-4 rounded-lg transition-all cursor-pointer"
+                >
+                  Book a Vetted Garage
+                </button>
+                <button
+                  onClick={() => setIsSosOpen(true)}
+                  className="w-full sm:w-auto border-2 border-signal bg-signal text-white hover:bg-transparent hover:text-signal px-8 py-4 rounded-lg font-display text-sm font-bold tracking-wider uppercase flex items-center justify-center space-x-2 transition-all duration-300 cursor-pointer shadow-lg shadow-signal/20"
+                >
+                  <Truck className="h-4.5 w-4.5" />
+                  <span>Request Roadside Help</span>
+                </button>
+              </div>
+            </div>
+
           </div>
         </section>
 

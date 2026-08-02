@@ -99,36 +99,36 @@ export default function NairobiMap({
   };
 
   return (
-    <div className="bg-white border border-gray-200 rounded-2xl p-4 sm:p-5 shadow-lg flex flex-col justify-between h-[480px] lg:h-[620px] transition-all duration-300">
+    <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-4 sm:p-5 shadow-2xl flex flex-col justify-between h-[480px] lg:h-[620px] transition-all duration-500">
       {/* Map Header */}
-      <div className="border-b border-gray-100 pb-3 mb-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+      <div className="border-b border-white/10 pb-3 mb-3 flex flex-col sm:flex-row sm:items-center justify-between gap-2">
         <div>
-          <h4 className="font-display font-bold text-sm uppercase tracking-wider text-gray-900">
+          <h4 className="font-display font-bold text-sm uppercase tracking-wider text-white">
             Interactive GPS System
           </h4>
-          <span className="text-[10px] text-gray-500 font-mono block mt-0.5">
+          <span className="text-[10px] text-gray-400 font-mono block mt-0.5">
             NAIROBI REGIONAL COMMAND PANEL
           </span>
         </div>
 
         {/* Tab Switcher */}
-        <div className="flex bg-gray-100 p-0.5 rounded-lg border border-gray-200 text-[10px] font-mono font-bold self-start sm:self-center">
+        <div className="flex bg-white/5 p-1 rounded-xl border border-white/10 text-[10px] font-mono font-bold self-start sm:self-center">
           <button
             onClick={() => setActiveTab("radar")}
-            className={`px-3 py-1 rounded-md transition-all duration-200 ${
+            className={`px-3.5 py-1.5 rounded-lg transition-all duration-300 ${
               activeTab === "radar"
-                ? "bg-white text-signal shadow-xs"
-                : "text-gray-500 hover:text-gray-900"
+                ? "bg-orange-500 text-white shadow-lg"
+                : "text-gray-400 hover:text-white"
             }`}
           >
             RADAR MAP
           </button>
           <button
             onClick={() => setActiveTab("telemetry")}
-            className={`px-3 py-1 rounded-md transition-all duration-200 ${
+            className={`px-3.5 py-1.5 rounded-lg transition-all duration-300 ${
               activeTab === "telemetry"
-                ? "bg-white text-signal shadow-xs"
-                : "text-gray-500 hover:text-gray-900"
+                ? "bg-orange-500 text-white shadow-lg"
+                : "text-gray-400 hover:text-white"
             }`}
           >
             LIVE HUD
@@ -279,31 +279,31 @@ export default function NairobiMap({
                   onMouseLeave={() => setHoveredGarageId?.(null)}
                   className={`border rounded-xl p-3.5 transition-all duration-300 cursor-pointer flex flex-col justify-between ${
                     isSelected || isHovered
-                      ? "bg-signal/5 border-signal shadow-md shadow-signal/5 ring-1 ring-signal/30"
-                      : "bg-gray-50 border-gray-200/80 hover:bg-white hover:border-gray-400 hover:shadow-xs"
+                      ? "bg-orange-500/10 border-orange-500/60 shadow-lg ring-1 ring-orange-500/30"
+                      : "bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20"
                   }`}
                 >
                   <div className="flex justify-between items-start">
                     <div>
                       <div className="flex items-center space-x-1.5">
                         <span className={`h-1.5 w-1.5 rounded-full ${
-                          hub.status === "OPTIMAL" ? "bg-emerald-500" : hub.status === "BUSY" ? "bg-amber-500" : "bg-blue-500"
+                          hub.status === "OPTIMAL" ? "bg-emerald-400" : hub.status === "BUSY" ? "bg-amber-400" : "bg-blue-400"
                         }`} />
-                        <h5 className="font-display font-bold text-xs uppercase tracking-wide text-gray-900">
+                        <h5 className="font-display font-bold text-xs uppercase tracking-wide text-white">
                           {hub.name}
                         </h5>
                       </div>
-                      <span className="block text-[10px] font-mono text-gray-500 mt-0.5">
+                      <span className="block text-[10px] font-mono text-gray-400 mt-0.5">
                         {hub.district.toUpperCase()} DISTRICT
                       </span>
                     </div>
 
                     <span className={`text-[8px] font-mono font-black px-2 py-0.5 rounded-sm uppercase ${
                       hub.status === "OPTIMAL"
-                        ? "bg-emerald-50 text-emerald-700 border border-emerald-100"
+                        ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/30"
                         : hub.status === "BUSY"
-                        ? "bg-amber-50 text-amber-700 border border-amber-100"
-                        : "bg-blue-50 text-blue-700 border border-blue-100"
+                        ? "bg-amber-500/10 text-amber-400 border border-amber-500/30"
+                        : "bg-blue-500/10 text-blue-400 border border-blue-500/30"
                     }`}>
                       {hub.status}
                     </span>
@@ -311,23 +311,23 @@ export default function NairobiMap({
 
                   {/* On-duty metrics & load bar */}
                   <div className="mt-3.5 space-y-2">
-                    <div className="flex justify-between text-[9px] font-mono text-gray-500">
+                    <div className="flex justify-between text-[9px] font-mono text-gray-400">
                       <span>LOAD CAPACITY</span>
-                      <span className="font-bold text-gray-800">{hub.load}%</span>
+                      <span className="font-bold text-white">{hub.load}%</span>
                     </div>
                     
                     {/* Visual custom load bar */}
-                    <div className="h-1.5 w-full bg-gray-100 rounded-full overflow-hidden">
+                    <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
                       <div
                         className={`h-full rounded-full transition-all duration-500 ${
-                          hub.load > 80 ? "bg-signal" : hub.load > 50 ? "bg-amber-500" : "bg-diagnostic"
+                          hub.load > 80 ? "bg-orange-500" : hub.load > 50 ? "bg-amber-400" : "bg-teal-400"
                         }`}
                         style={{ width: `${hub.load}%` }}
                       />
                     </div>
 
                     {/* Meta Indicators */}
-                    <div className="flex items-center justify-between gap-1 pt-1 border-t border-gray-100 text-[9px] font-mono text-gray-500">
+                    <div className="flex items-center justify-between gap-1 pt-1 border-t border-white/10 text-[9px] font-mono text-gray-400">
                       <div className="flex items-center space-x-1">
                         <Users className="h-3 w-3 text-gray-400" />
                         <span>{hub.mechanicsCount} Staff</span>
@@ -337,7 +337,7 @@ export default function NairobiMap({
                         <span>{hub.avgResponseTime}</span>
                       </div>
                       <div className="flex items-center space-x-0.5">
-                        <Wifi className="h-3 w-3 text-diagnostic" />
+                        <Wifi className="h-3 w-3 text-teal-400" />
                         <span>{hub.signalStrength}%</span>
                       </div>
                     </div>
@@ -350,17 +350,17 @@ export default function NairobiMap({
       )}
 
       {/* Map Legend & Filter Reset Button */}
-      <div className="mt-4 border-t border-gray-100 pt-3 flex items-center justify-between gap-2">
+      <div className="mt-4 border-t border-white/10 pt-3 flex items-center justify-between gap-2">
         <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5">
           <div className="flex items-center space-x-1.5">
-            <span className="h-2 w-2 rounded-full bg-signal inline-block animate-pulse" />
-            <span className="text-3xs text-gray-600 font-sans font-medium uppercase tracking-wider">
+            <span className="h-2 w-2 rounded-full bg-orange-500 inline-block animate-pulse" />
+            <span className="text-3xs text-gray-300 font-sans font-medium uppercase tracking-wider">
               Vetted Partner
             </span>
           </div>
           <div className="flex items-center space-x-1.5">
-            <span className="h-2 w-2 rounded-full bg-slate-500 inline-block" />
-            <span className="text-3xs text-gray-600 font-sans font-medium uppercase tracking-wider">
+            <span className="h-2 w-2 rounded-full bg-gray-500 inline-block" />
+            <span className="text-3xs text-gray-400 font-sans font-medium uppercase tracking-wider">
               Inactive District
             </span>
           </div>

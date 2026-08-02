@@ -4,7 +4,7 @@
  */
 
 import React from "react";
-import { Mail, Phone, MapPin, Car, HelpCircle, ExternalLink, Truck, Copy, Check } from "lucide-react";
+import { Mail, Phone, MapPin, HelpCircle, ExternalLink, Truck, Copy, Check } from "lucide-react";
 
 interface FooterProps {
   onScrollToSection: (sectionId: string) => void;
@@ -33,12 +33,11 @@ export default function Footer({ onScrollToSection, onOpenBookings, onOpenSos }:
           {/* Column 1: Brand details */}
           <div className="md:col-span-4 flex flex-col space-y-4">
             <div className="flex items-center space-x-2">
-              <div className="p-2 bg-white border border-gray-200 rounded-lg shadow-2xs">
-                <Car className="h-5 w-5 text-signal" />
-              </div>
-              <span className="font-display text-xl font-bold tracking-wider uppercase text-gray-900">
-                m<span className="text-signal">Car</span>Fix
-              </span>
+              <img 
+                src="/mcarfix_logo.svg" 
+                alt="mCarFix Global Logo" 
+                className="h-12 w-auto object-contain" 
+              />
             </div>
             <p className="text-xs text-gray-600 leading-relaxed max-w-sm font-light">
               mCarFix is part of a larger verified vehicle-safety network across Kenya—connecting motorists, garages, and emergency responders under a unified ecosystem.

@@ -4,7 +4,7 @@
  */
 
 import React from "react";
-import { Phone, AlertTriangle, Menu, X, Car, Truck } from "lucide-react";
+import { Phone, AlertTriangle, Menu, X, Truck } from "lucide-react";
 
 interface NavbarProps {
   onOpenSos: () => void;
@@ -17,17 +17,18 @@ export default function Navbar({ onOpenSos, onScrollToSection, activeBookingsCou
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   return (
-    <nav id="app-navbar" className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-gray-100 text-gray-900 transition-all duration-300 shadow-xs">
+    <nav id="app-navbar" className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b-2 border-orange-500 shadow-[0_4px_25px_rgba(255,107,0,0.45)] text-gray-900 transition-all duration-300">
+      {/* Shiny Glowing Orange Top Accent Strip */}
+      <div className="h-1 w-full bg-gradient-to-r from-orange-600 via-amber-400 to-orange-500 shadow-[0_0_15px_rgba(255,107,0,0.9)]" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <div className="flex-shrink-0 flex items-center space-x-2 cursor-pointer" onClick={() => onScrollToSection("hero")}>
-            <div className="p-2 bg-gray-50 border border-gray-200 rounded-lg">
-              <Car className="h-6 w-6 text-signal" />
-            </div>
-            <span className="font-display text-2xl font-bold tracking-wider uppercase text-gray-900">
-              m<span className="text-signal">Car</span>Fix
-            </span>
+          <div className="flex-shrink-0 flex items-center cursor-pointer" onClick={() => onScrollToSection("hero")}>
+            <img 
+              src="/mcarfix_logo.svg" 
+              alt="mCarFix Global Logo" 
+              className="h-14 w-auto object-contain hover:scale-105 transition-transform duration-200" 
+            />
           </div>
 
           {/* Desktop Links */}

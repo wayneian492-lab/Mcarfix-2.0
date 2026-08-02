@@ -4,11 +4,9 @@
  */
 
 import React from "react";
-import { Star, Shield, Cpu, Activity, AlertTriangle, ChevronRight } from "lucide-react";
-import { motion } from "motion/react";
-import workshopImage from "../assets/images/car_service_lift_1784614889346.jpg";
-import nairobiSkylineImg from "../assets/images/nairobi_skyline_expressway_1784614906687.jpg";
-import heroBgImage from "../assets/images/hero_garage_bg_1784614872137.jpg";
+import { Star } from "lucide-react";
+const workshopImage = "https://raw.githubusercontent.com/wayneian492-lab/Mcarfix-2.0/11b7dae/src/assets/images/car_service_lift_1784614889346.jpg";
+const heroBgImage = "https://raw.githubusercontent.com/wayneian492-lab/Mcarfix-2.0/11b7dae/src/assets/images/hero_garage_bg_1784614872137.jpg";
 
 interface HeroProps {
   onOpenSos: () => void;
@@ -64,317 +62,163 @@ function CountUp({ end, suffix = "", duration = 1500, decimals = 0 }: { end: num
 }
 
 export default function Hero({ onOpenSos, onOpenDiagnostics, onScrollToSection }: HeroProps) {
-  const [hudStatus, setHudStatus] = React.useState("IDLE");
-  const [hudProgress, setHudProgress] = React.useState(0);
-  const [hudLog, setHudLog] = React.useState<string[]>([
-    "SYSINIT: OBD-II Connection active",
-    "VOLTAGE: 14.2V - Alternator stable",
-    "ECU STATUS: Active (0xFFFF)",
-  ]);
-
-  const runHudScan = () => {
-    if (hudStatus === "SCANNING") return;
-    setHudStatus("SCANNING");
-    setHudProgress(0);
-    setHudLog(["SYSINIT: OBD-II Connection active", "COMM: Negotiating protocol ISO 15765-4..."]);
-
-    const interval = setInterval(() => {
-      setHudProgress((prev) => {
-        const next = prev + 10;
-        if (next === 30) {
-          setHudLog((prevLog) => [...prevLog, "QUERY: Querying PID 0x01 (Current Data)..."]);
-        } else if (next === 60) {
-          setHudLog((prevLog) => [...prevLog, "ERR: P0101 Detected in ECU (Mass Air Flow)"]);
-        } else if (next === 80) {
-          setHudLog((prevLog) => [...prevLog, "SYS: Coolant sensor returned 92°C"]);
-        } else if (next >= 100) {
-          clearInterval(interval);
-          setHudStatus("DONE");
-          setHudLog((prevLog) => [
-            ...prevLog,
-            "SCAN COMPLETE: OBD-II Code P0101 Active",
-            "REMEDY: Clean or replace MAF sensor.",
-          ]);
-          return 100;
-        }
-        return next;
-      });
-    }, 300);
-  };
-
   return (
-    <section id="hero" className="relative min-h-screen flex flex-col justify-center bg-gray-950 text-white py-24 lg:py-32 overflow-hidden">
-      {/* 1. Full-Bleed Photographic Background with Overlay */}
-      <div className="absolute inset-0 z-0">
+    <section id="hero" className="relative min-h-[88vh] flex flex-col justify-center bg-[#0a0c0e] text-white py-16 lg:py-24 overflow-hidden border-b border-gray-800/60">
+      {/* 1. Ultra-Luxury Dark Studio Background with subtle radial spotlighting */}
+      <div className="absolute inset-0 z-0 overflow-hidden pointer-events-none">
         <img 
           src={heroBgImage} 
-          alt="Clean professional automotive workshop in Westlands, Nairobi equipped with advanced OBD diagnostic systems" 
-          className="w-full h-full object-cover opacity-95"
+          alt="Luxury Automotive Studio Background" 
+          className="w-full h-full object-cover object-center opacity-70 filter brightness-90 contrast-105 transition-all duration-1000"
         />
-        {/* Dark radial and gradient overlays to keep typography pristine and contrast ultra-high */}
-        <div className="absolute inset-0 bg-gradient-to-b from-gray-950/80 via-gray-950/95 to-gray-950 z-10" />
-        {/* Subtle decorative grid layer over photo */}
-        <div 
-          className="absolute inset-0 opacity-[0.04] pointer-events-none z-10" 
-          style={{ backgroundImage: "radial-gradient(#ffffff 1px, transparent 1px)", backgroundSize: "32px 32px" }} 
-        />
+        {/* Deep luxury radial spotlight gradient */}
+        <div className="absolute inset-0 bg-radial from-transparent via-[#0a0c0e]/70 to-[#0a0c0e] z-10" />
+        {/* Smooth horizontal gradient from rich dark left to transparent right */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0a0c0e] via-[#0a0c0e]/85 to-transparent z-10" />
+        {/* Subtle top & bottom shadow vignettes for framing */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0c0e]/80 via-transparent to-[#0a0c0e] z-10" />
       </div>
 
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full flex flex-col items-center">
-        
-        {/* Centered high-impact hero statement */}
-        <div className="text-center max-w-4xl mx-auto flex flex-col items-center space-y-6 mb-16">
-          <motion.div 
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center space-x-2 bg-teal-500/10 border border-teal-500/30 px-4 py-2 rounded-full"
-          >
-            <Shield className="h-4 w-4 text-teal-400" />
-            <span className="font-mono text-xs text-teal-300 font-bold tracking-widest uppercase">
-              AI-Powered OBD-II Diagnostic Network
-            </span>
-          </motion.div>
-
-          <motion.h1 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="font-display font-black text-4xl sm:text-6xl lg:text-7xl tracking-tight uppercase leading-[1.05] text-white"
-          >
-            Your car, <span className="text-signal">fully diagnosed</span> <br /> before it fails.
-          </motion.h1>
-
-          <motion.p 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="font-sans text-gray-300 text-lg sm:text-xl leading-relaxed font-light max-w-3xl"
-          >
-            Don't guess what your check engine light means. mCarFix is part of a larger verified vehicle-safety network across Kenya—connecting motorists, certified garages, and emergency responders under a unified ecosystem. Protect your vehicle's resale value with our <span className="text-teal-400 font-semibold font-mono">DIGITAL DNA</span> engine — a permanent, verified digital service history that follows your vehicle wherever you go.
-          </motion.p>
-
-          <motion.div 
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
-            className="flex flex-col sm:flex-row gap-4 pt-4"
-          >
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => onScrollToSection("estimator")}
-              className="bg-signal text-white hover:bg-signal/90 font-display font-bold text-sm tracking-wider uppercase px-8 py-4 rounded-lg flex items-center justify-center space-x-2 border-2 border-transparent transition-all cursor-pointer shadow-xl shadow-signal/20"
-            >
-              <span>Instantly Estimate Cost</span>
-            </motion.button>
-            <motion.button
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.95 }}
-              onClick={() => onScrollToSection("garages")}
-              className="bg-white/10 backdrop-blur-md border border-white/20 hover:border-white text-white hover:bg-white/20 font-display font-bold text-sm tracking-wider uppercase px-8 py-4 rounded-lg flex items-center justify-center space-x-2 transition-all cursor-pointer"
-            >
-              <span>Find a Garage</span>
-            </motion.button>
-          </motion.div>
-        </div>
-
-        {/* Overlapping, glassy layered cards with premium enterprise design */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-stretch w-full max-w-6xl mt-6">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
           
-          {/* Left Glass Card: Workshop Showcase */}
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            className="col-span-1 lg:col-span-6 bg-gray-950/60 backdrop-blur-xl border border-white/10 rounded-2xl overflow-hidden shadow-2xl flex flex-col justify-between hover:border-teal-500/30 hover:shadow-teal-500/5 transition-all duration-300 group"
-          >
-            <div className="relative h-56 overflow-hidden bg-gray-900">
-              <img
-                src={nairobiSkylineImg}
-                alt="Beautiful aerial view of Nairobi skyline showcasing modern skyscrapers and the elevated Nairobi Expressway"
-                className="w-full h-full object-cover opacity-85 transition-transform duration-700 group-hover:scale-105"
-                referrerPolicy="no-referrer"
-              />
-              <div className="absolute top-3 left-3 flex items-center space-x-1.5 bg-teal-500/90 backdrop-blur-md text-white px-3 py-1 rounded-full text-[9px] font-mono font-bold tracking-widest animate-pulse">
-                <span className="h-1.5 w-1.5 rounded-full bg-white" />
-                <span>METRO COVERAGE</span>
-              </div>
-              <div className="absolute top-3 right-3 bg-gray-950/80 backdrop-blur-md text-signal border border-signal/20 px-3 py-1 rounded-full text-[9px] font-mono font-bold tracking-wider">
-                NAIROBI
-              </div>
-              <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent p-5">
-                <span className="font-mono text-[9px] text-gray-300 uppercase tracking-widest font-semibold">Broad Coverage</span>
-                <h4 className="font-display text-lg font-bold text-white uppercase tracking-wide mt-0.5">Greater Nairobi Network</h4>
-              </div>
+          {/* Left Column: Premium Typography, Badges, CTAs */}
+          <div className="lg:col-span-7 flex flex-col space-y-7 text-left">
+            {/* Subtle Luxury Eyebrow Badge */}
+            <div className="inline-flex items-center space-x-2.5 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md w-fit">
+              <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
+              <span className="font-mono text-xs text-gray-300 tracking-wider uppercase font-medium">
+                mCarFix® Global Operating System
+              </span>
             </div>
 
-            <div className="p-6 flex-1 flex flex-col justify-between">
-              <div className="space-y-3">
-                <p className="font-sans text-xs text-gray-300 leading-relaxed font-light">
-                  mCarFix is integrated directly into a wider verified vehicle-safety network across Kenya—connecting motorists, vetted garages, and AA emergency responders under a single, highly coordinated protective ecosystem.
-                </p>
-                <div className="flex items-center space-x-2 text-[10px] text-gray-400 font-mono">
-                  <span className="text-teal-400 font-semibold">● 450+ Garages Active</span>
-                  <span>•</span>
-                  <span>99.8% Response SLA</span>
-                </div>
-              </div>
-
-              <div className="pt-5 mt-5 border-t border-white/10 flex items-center justify-between">
-                <div className="flex items-center space-x-2.5">
-                  <div className="bg-teal-500/10 border border-teal-500/20 p-2 rounded-lg shrink-0">
-                    <Activity className="h-4 w-4 text-teal-400 animate-pulse" />
-                  </div>
-                  <div>
-                    <span className="block text-[8px] text-gray-400 uppercase tracking-wider font-mono">Rescue Grid</span>
-                    <span className="text-[10px] text-teal-300 font-bold font-sans">Active Monitoring</span>
-                  </div>
-                </div>
-                <button
-                  onClick={() => onScrollToSection("garages")}
-                  className="text-xs font-display font-bold uppercase tracking-wider text-signal hover:underline cursor-pointer"
-                >
-                  Explore Network &rarr;
-                </button>
-              </div>
-            </div>
-          </motion.div>
-
-          {/* Right Glass Card: Diagnostic HUD with Ambient Glow */}
-          <div className="col-span-1 lg:col-span-6 relative">
-            {/* Subtle animated gradient glow behind HUD panel (8-10s loop) */}
-            <div className="absolute -inset-3 bg-gradient-to-r from-teal-500/20 via-cyan-500/15 to-amber-500/20 rounded-3xl blur-2xl pointer-events-none animate-hud-glow" />
-
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, delay: 0.3 }}
-              className="bg-gray-950/60 backdrop-blur-xl border border-white/10 rounded-2xl p-6 shadow-2xl relative overflow-hidden transition-all duration-300 hover:border-signal/50 hover:shadow-signal/10 flex flex-col justify-between text-white h-full"
-            >
-            {/* Glass Glare */}
-            <div className="absolute -top-1/2 -left-1/2 w-full h-full bg-white/5 transform rotate-12 pointer-events-none" />
-            
-            <div>
-              <div className="flex items-center justify-between border-b border-white/10 pb-4 mb-4">
-                <div className="flex items-center space-x-2">
-                  <Cpu className="h-5 w-5 text-teal-400" />
-                  <span className="font-display text-sm font-bold tracking-wider uppercase text-white">mCarFix HUD v4.1</span>
-                </div>
-                <div className="flex items-center space-x-2">
-                  <span className="h-2 w-2 rounded-full bg-teal-400 animate-ping" />
-                  <span className="h-2 w-2 rounded-full bg-teal-400" />
-                  <span className="font-mono text-[9px] text-teal-300 uppercase tracking-wider">OBD Link OK</span>
-                </div>
-              </div>
-
-              {/* Screen Display Area */}
-              <div className="bg-black/90 border border-white/10 rounded-2xl p-4 font-mono text-xs space-y-3 shadow-inner relative">
-                {/* Simulated Grid Scan Overlay */}
-                <div className="absolute inset-0 bg-[linear-gradient(rgba(18,21,27,0)_95%,rgba(20,184,166,0.03)_95%)] bg-[size:100%_16px] pointer-events-none rounded-2xl" />
-
-                {/* HUD Grid Stats */}
-                <div className="grid grid-cols-2 gap-2.5">
-                  <div className="bg-white/5 border border-white/5 p-2 rounded-lg">
-                    <div className="text-[9px] text-gray-400 uppercase tracking-widest">ECU Status</div>
-                    <div className="text-2xs font-bold text-white mt-1 flex items-center space-x-1">
-                      <span className="h-1.5 w-1.5 rounded-full bg-teal-400" />
-                      <span>OPTIMAL</span>
-                    </div>
-                  </div>
-                  <div className="bg-white/5 border border-white/5 p-2 rounded-lg">
-                    <div className="text-[9px] text-gray-400 uppercase tracking-widest">OBD-II Code</div>
-                    <div className={`text-2xs font-bold mt-1 ${hudStatus === "DONE" || hudProgress >= 60 ? 'text-amber-500' : 'text-teal-300'}`}>
-                      {hudStatus === "DONE" || hudProgress >= 60 ? "P0101 MAF" : "NO CODES"}
-                    </div>
-                  </div>
-                  <div className="bg-white/5 border border-white/5 p-2 rounded-lg">
-                    <div className="text-[9px] text-gray-400 uppercase tracking-widest">Temp / Coolant</div>
-                    <div className="text-2xs font-bold text-white mt-1">92°C <span className="text-[10px] text-gray-300">/ 4.2 Bar</span></div>
-                  </div>
-                  <div className="bg-white/5 border border-white/5 p-2 rounded-lg">
-                    <div className="text-[9px] text-gray-400 uppercase tracking-widest">Engine Load</div>
-                    <div className="text-2xs font-bold text-white mt-1">21.4% <span className="text-[10px] text-gray-300">@ 850 RPM</span></div>
-                  </div>
-                </div>
-
-                {/* Live Console Output Log */}
-                <div className="bg-black border border-white/5 rounded-lg p-2.5 h-24 overflow-y-auto text-[9px] leading-relaxed text-gray-300 select-all space-y-1">
-                  {hudLog.map((log, index) => (
-                    <div key={index} className={log.includes("ERR") || log.includes("OBD-II Code") ? "text-amber-400" : log.includes("COMPLETE") ? "text-teal-400 font-semibold" : "text-gray-300"}>
-                      &gt; {log}
-                    </div>
-                  ))}
-                </div>
-
-                {/* Scanning Progress Bar */}
-                {hudStatus === "SCANNING" && (
-                  <div className="space-y-1">
-                    <div className="flex justify-between text-[9px] text-teal-400 uppercase tracking-widest font-semibold">
-                      <span>Analyzing OBD Bus</span>
-                      <span>{hudProgress}%</span>
-                    </div>
-                    <div className="w-full h-1.5 bg-white/10 rounded-full overflow-hidden">
-                      <div className="h-full bg-teal-400 transition-all duration-300" style={{ width: `${hudProgress}%` }} />
-                    </div>
-                  </div>
-                )}
-              </div>
+            <div className="space-y-3">
+              <h1 className="font-serif font-medium text-4xl sm:text-6xl lg:text-6xl text-white tracking-tight leading-[1.15] drop-shadow-md">
+                The World’s 1<sup className="text-2xl sm:text-3xl font-normal text-orange-400">st</sup> Operating System
+              </h1>
+              <p className="font-serif text-2xl sm:text-3xl text-gray-300 font-normal tracking-wide">
+                For the Motor Vehicle Sector
+              </p>
             </div>
 
-            {/* Action and extra links */}
-            <div className="mt-5 space-y-3">
+            <p className="font-sans text-gray-300 text-base sm:text-lg leading-relaxed max-w-xl font-light">
+              Connecting Motorists, Passengers, Regulators, and Service Providers on a unified, high-security global automotive safety network.
+            </p>
+
+            {/* Premium Interactive Buttons */}
+            <div className="flex flex-wrap items-center gap-4 pt-3">
               <button
-                onClick={runHudScan}
-                disabled={hudStatus === "SCANNING"}
-                className={`w-full ${hudStatus === "SCANNING" ? 'bg-white/5 text-gray-400 cursor-not-allowed' : 'bg-white/10 hover:bg-white/20 border border-white/20 hover:border-signal text-signal'} font-display font-bold uppercase tracking-wider text-xs py-3.5 rounded-lg flex items-center justify-center space-x-2 transition-all cursor-pointer`}
+                onClick={() => onScrollToSection("services")}
+                className="bg-white text-gray-950 hover:bg-gray-100 font-sans font-semibold text-sm sm:text-base px-8 py-3.5 rounded-xl transition-all duration-300 cursor-pointer shadow-xl hover:shadow-2xl hover:scale-[1.02] active:scale-[0.98] border border-white"
               >
-                <Activity className={`h-4 w-4 ${hudStatus === "SCANNING" ? 'animate-spin' : ''}`} />
-                <span>{hudStatus === "SCANNING" ? "Running Scanner..." : hudStatus === "DONE" ? "Scan Again" : "Trigger Live Diagnostics"}</span>
+                Click to Explore
               </button>
-              <div className="text-center">
-                <button 
-                  onClick={onOpenDiagnostics}
-                  className="text-[10px] font-mono text-gray-300 hover:text-signal transition-colors underline decoration-dotted"
-                >
-                  Launch Full Troubleshooter &rarr;
-                </button>
+              <button
+                onClick={() => onScrollToSection("estimator")}
+                className="bg-white/10 hover:bg-white/20 text-white font-sans font-medium text-sm sm:text-base px-8 py-3.5 rounded-xl border border-white/20 backdrop-blur-md transition-all duration-300 cursor-pointer hover:border-white/40 shadow-lg hover:scale-[1.02] active:scale-[0.98]"
+              >
+                Download mCarFix
+              </button>
+            </div>
+          </div>
+
+          {/* Right Column: High-Res Glassmorphic mCarFix Shield Logo Banner */}
+          <div className="lg:col-span-5 relative flex justify-center items-center">
+            <div className="relative w-full max-w-lg aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-b from-white/10 via-black/40 to-black/80 border border-white/15 backdrop-blur-xl flex items-center justify-center p-6 group hover:border-orange-500/40 transition-all duration-500">
+              {/* Subtle background glow */}
+              <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 via-transparent to-black/60 opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
+
+              {/* Official mCarFix Shield Logo Graphic */}
+              <div className="relative z-10 w-full max-w-md p-2 flex flex-col items-center transform group-hover:scale-[1.02] transition-transform duration-500">
+                <svg viewBox="0 0 600 520" className="w-full h-auto filter drop-shadow-[0_15px_25px_rgba(0,0,0,0.7)]">
+                  {/* Outer Shield / Triangle Border */}
+                  <path 
+                    d="M 300 30 C 365 30, 515 340, 555 395 C 580 430, 550 480, 485 480 L 115 480 C 50 480, 20 430, 45 395 C 85 340, 235 30, 300 30 Z" 
+                    fill="rgba(255, 255, 255, 0.96)" 
+                    stroke="#FF6B00" 
+                    strokeWidth="26" 
+                    strokeLinejoin="round" 
+                    strokeLinecap="round" 
+                  />
+
+                  {/* CAR SILHOUETTE (Orange) */}
+                  <g transform="translate(195, 110)">
+                    {/* Roof / Cabin */}
+                    <path d="M 45 65 C 55 25, 75 15, 100 15 C 125 15, 145 25, 155 65 Z" fill="#FF6B00" />
+                    {/* Windshield cut */}
+                    <path d="M 53 62 C 60 32, 75 22, 100 22 C 125 22, 140 32, 147 62 Z" fill="#FFFFFF" />
+                    {/* Rearview mirror */}
+                    <rect x="94" y="22" width="12" height="6" rx="2" fill="#FF6B00" />
+                    
+                    {/* Car Body */}
+                    <path d="M 20 70 C 20 62, 35 62, 45 65 L 155 65 C 165 62, 180 62, 180 70 L 188 100 C 192 120, 185 140, 180 155 L 20 155 C 15 140, 8 120, 12 100 Z" fill="#FF6B00" />
+                    
+                    {/* Headlights */}
+                    <path d="M 25 80 C 25 72, 55 72, 60 85 C 62 95, 30 102, 25 80 Z" fill="#FFFFFF" />
+                    <path d="M 175 80 C 175 72, 145 72, 140 85 C 138 95, 170 102, 175 80 Z" fill="#FFFFFF" />
+                    
+                    {/* Grille Lines */}
+                    <path d="M 65 110 L 135 110 M 68 118 L 132 118 M 72 126 L 128 126 M 78 134 L 122 134" stroke="#FFFFFF" strokeWidth="3.5" strokeLinecap="round" />
+                    
+                    {/* Wheels base */}
+                    <rect x="22" y="150" width="30" height="12" rx="4" fill="#FF6B00" />
+                    <rect x="148" y="150" width="30" height="12" rx="4" fill="#FF6B00" />
+                  </g>
+
+                  {/* WRENCH GRAPHIC (Dark Navy) */}
+                  <g transform="translate(290, 100)">
+                    <path d="M 25 0 C 42 0, 55 12, 55 28 C 55 38, 48 46, 40 50 L 40 145 C 48 149, 55 158, 55 168 C 55 184, 42 196, 25 196 C 8 196, -5 184, -5 168 C -5 158, 2 149, 10 145 L 10 50 C 2 46, -5 38, -5 28 C -5 12, 8 0, 25 0 Z" fill="#002B49" />
+                    <path d="M 25 8 L 36 28 L 14 28 Z" fill="#FFFFFF" />
+                    <circle cx="25" cy="28" r="12" fill="#FFFFFF" />
+                    <rect x="16" y="0" width="18" height="28" fill="#FFFFFF" />
+                    <polygon points="25,155 33,160 33,170 25,175 17,170 17,160" fill="#FFFFFF" />
+                  </g>
+
+                  {/* BRAND NAME TEXT: mCarFix® */}
+                  <g transform="translate(300, 350)">
+                    <text textAnchor="middle" fontFamily="Arial Black, Trebuchet MS, sans-serif" fontWeight="900" fontSize="78">
+                      <tspan fill="#002B49">m</tspan><tspan fill="#FF6B00">Car</tspan><tspan fill="#002B49">Fix</tspan>
+                    </text>
+                    <text x="215" y="-38" fill="#FF6B00" fontFamily="Arial Black, sans-serif" fontWeight="900" fontSize="24">®</text>
+                  </g>
+
+                  {/* SUBTITLE: —— Take Charge! —— */}
+                  <g transform="translate(300, 395)">
+                    <line x1="-200" y1="-6" x2="-80" y2="-6" stroke="#FF6B00" strokeWidth="2.5" />
+                    <text x="0" y="0" textAnchor="middle" fill="#002B49" fontFamily="Arial, sans-serif" fontWeight="700" fontStyle="italic" fontSize="22">Take Charge!</text>
+                    <line x1="80" y1="-6" x2="200" y2="-6" stroke="#FF6B00" strokeWidth="2.5" />
+                  </g>
+                </svg>
               </div>
             </div>
-          </motion.div>
-        </div>
+          </div>
 
         </div>
 
-        {/* Bottom statistics row in spacious margin */}
-        <motion.div 
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
-          className="w-full max-w-4xl border-t border-white/10 pt-10 mt-16 grid grid-cols-3 gap-6 text-center"
-        >
-          <div className="flex flex-col">
+        {/* Premium Stats Strip with Glassmorphic Framing */}
+        <div className="w-full border-t border-white/10 pt-8 mt-14 grid grid-cols-3 gap-6 text-center divide-x divide-white/10 bg-white/[0.02] backdrop-blur-md rounded-2xl p-6 border border-white/5">
+          <div className="flex flex-col px-2">
             <span className="font-mono text-3xl sm:text-4xl font-bold text-white tracking-tight">
               <CountUp end={12000} suffix="+" />
             </span>
-            <span className="font-display text-2xs sm:text-xs text-gray-400 uppercase tracking-widest mt-1">Vehicles Serviced</span>
+            <span className="font-sans text-xs sm:text-sm text-gray-400 mt-1 uppercase tracking-wider font-medium">Vehicles Serviced</span>
           </div>
-          <div className="flex flex-col">
+          <div className="flex flex-col px-2">
             <span className="font-mono text-3xl sm:text-4xl font-bold text-white tracking-tight">
               <CountUp end={450} suffix="+" />
             </span>
-            <span className="font-display text-2xs sm:text-xs text-gray-400 uppercase tracking-widest mt-1">Verified Garages</span>
+            <span className="font-sans text-xs sm:text-sm text-gray-400 mt-1 uppercase tracking-wider font-medium">Verified Garages</span>
           </div>
-          <div className="flex flex-col">
-            <div className="flex items-center justify-center space-x-1">
+          <div className="flex flex-col px-2">
+            <div className="flex items-center justify-center space-x-1.5">
               <span className="font-mono text-3xl sm:text-4xl font-bold text-white tracking-tight">
                 <CountUp end={4.9} decimals={1} />
               </span>
-              <Star className="h-4 w-4 fill-amber-400 text-amber-400 inline" />
+              <Star className="h-5 w-5 fill-amber-400 text-amber-400 inline" />
             </div>
-            <span className="font-display text-2xs sm:text-xs text-gray-400 uppercase tracking-widest mt-1">Google Rating</span>
+            <span className="font-sans text-xs sm:text-sm text-gray-400 mt-1 uppercase tracking-wider font-medium">User Rating</span>
           </div>
-        </motion.div>
+        </div>
 
       </div>
     </section>
