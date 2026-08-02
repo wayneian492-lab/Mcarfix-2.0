@@ -15,7 +15,7 @@ import PartnerBand from "./components/PartnerBand";
 import FaqAccordion from "./components/FaqAccordion";
 import Footer from "./components/Footer";
 
-const mcarfixSosRescueImg = "https://raw.githubusercontent.com/wayneian492-lab/Mcarfix-2.0/11b7dae/src/assets/images/mcarfix_sos_rescue_1785586664899.jpg";
+const mcarfixSosRescueImg = "https://raw.githubusercontent.com/wayneian492-lab/Mcarfix-2.0/11b7dae/src/assets/images/hero_garage_bg_1784614872137.jpg";
 
 // Modals and panels
 import BookingModal, { BookingRecord } from "./components/BookingModal";

@@ -243,7 +243,7 @@ export default function SosModal({ isOpen, onClose, onSosRequested }: SosModalPr
               {/* Emergency Rescue Hero Image Banner */}
               <div className="relative h-44 sm:h-52 rounded-2xl overflow-hidden border border-white/10 shadow-xl group">
                 <img 
-                  src="/mcarfix_sos_rescue.jpg" 
+                  src="https://raw.githubusercontent.com/wayneian492-lab/Mcarfix-2.0/11b7dae/src/assets/images/hero_garage_bg_1784614872137.jpg" 
                   alt="mCarFix Emergency Services - Responders locating motorist holding phone with mCarFix active beacon" 
                   className="w-full h-full object-cover object-center group-hover:scale-105 transition-transform duration-500"
                 />
