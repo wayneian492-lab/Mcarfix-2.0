@@ -289,8 +289,8 @@ export default function GarageFinder({ onBookGarage, selectedServiceFilter, onCl
 
                           {/* Partner Vetted badge */}
                           {garage.verified && (
-                            <div className="absolute top-3 right-3 bg-gray-950/90 text-orange-400 border border-orange-500/40 backdrop-blur-md px-3 py-1 rounded-full text-[9px] font-mono font-bold tracking-wider flex items-center gap-1.5 shadow-lg">
-                              <ShieldCheck className="h-3.5 w-3.5 text-orange-400" />
+                            <div className="absolute top-3 right-3 bg-gray-950/90 text-whitegold border border-whitegold/40 backdrop-blur-md px-3 py-1 rounded-full text-[9px] font-mono font-bold tracking-wider flex items-center gap-1.5 shadow-lg">
+                              <ShieldCheck className="h-3.5 w-3.5 text-whitegold" />
                               <span>VETTED PARTNER</span>
                             </div>
                           )}

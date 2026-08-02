@@ -50,8 +50,8 @@ export default function HowItWorks() {
               {/* Step Image Thumbnail with Badge Overlay */}
               <div className="relative h-44 w-full rounded-xl overflow-hidden mb-5 border border-white/10 group-hover:border-orange-500/40 transition-all duration-500 bg-gray-950">
                 <img
-                  src="/step_1_female_mechanic.jpg"
-                  alt="Female mechanic performing engine oil dipstick inspection in workshop"
+                  src="https://raw.githubusercontent.com/wayneian492-lab/Mcarfix-2.0/11b7dae/src/assets/images/service_diagnostics_new_1784617553637.jpg"
+                  alt="Mechanic performing computerized engine fault scan in workshop"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   referrerPolicy="no-referrer"
                 />
@@ -99,8 +99,8 @@ export default function HowItWorks() {
               {/* Step Image Thumbnail with Badge Overlay */}
               <div className="relative h-44 w-full rounded-xl overflow-hidden mb-5 border border-white/10 group-hover:border-orange-500/40 transition-all duration-500 bg-gray-950">
                 <img
-                  src="/step_2_organized_garage.jpg"
-                  alt="Organized motorcycle and auto repair garage workshop with checkered tiles"
+                  src="https://raw.githubusercontent.com/wayneian492-lab/Mcarfix-2.0/11b7dae/src/assets/images/garage_westlands_1784615895344.jpg"
+                  alt="Organized auto repair garage workshop in Westlands Nairobi"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   referrerPolicy="no-referrer"
                 />
@@ -148,7 +148,7 @@ export default function HowItWorks() {
               {/* Step Image Thumbnail with Badge Overlay */}
               <div className="relative h-44 w-full rounded-xl overflow-hidden mb-5 border border-white/10 group-hover:border-orange-500/40 transition-all duration-500 bg-gray-950">
                 <img
-                  src="/step_3_mechanic_lift.jpg"
+                  src="https://raw.githubusercontent.com/wayneian492-lab/Mcarfix-2.0/11b7dae/src/assets/images/car_service_lift_1784614889346.jpg"
                   alt="Mechanic working on car suspension under hydraulic lift"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   referrerPolicy="no-referrer"
@@ -197,8 +197,8 @@ export default function HowItWorks() {
               {/* Step Image Thumbnail with Badge Overlay */}
               <div className="relative h-44 w-full rounded-xl overflow-hidden mb-5 border border-white/10 group-hover:border-orange-500/40 transition-all duration-500 bg-gray-950">
                 <img
-                  src="/step_4_workshop_wide.jpg"
-                  alt="Auto repair workshop interior with mechanic servicing yellow car"
+                  src="https://raw.githubusercontent.com/wayneian492-lab/Mcarfix-2.0/11b7dae/src/assets/images/garage_experts_1784615923238.jpg"
+                  alt="Auto repair workshop interior with mechanic team"
                   className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
                   referrerPolicy="no-referrer"
                 />

@@ -201,14 +201,14 @@ export default function DiagnosticsHUD({ onBookService }: DiagnosticsHUDProps) {
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="font-mono text-xs text-sky-600 font-bold uppercase tracking-widest bg-sky-50 border border-sky-200 px-3.5 py-1.5 rounded-full">
-            Virtual Troubleshooter
+            Live Diagnostic Preview & Troubleshooter
           </span>
           <h2 className="font-display font-bold text-3xl sm:text-4xl tracking-wide uppercase mt-4 text-gray-900">
-            mCarFix OBD-II Diagnostic Tool
+            mCarFix Interactive Diagnostic Console
           </h2>
           <div className="h-1 w-12 bg-sky-500 mx-auto mt-4" />
           <p className="font-sans text-gray-600 mt-4 leading-relaxed font-light">
-            Don't pay KES 3,000 for a simple scan. Select your vehicle's physical symptom below and initiate our simulator to decode the underlying fault logs with our interactive systems visualizer.
+            Don't pay KES 3,000 for a simple scan. Select your vehicle's physical symptom below to run an illustrative scan, decode sample fault logs, and match your vehicle directly to verified specialists equipped with OEM scanners.
           </p>
         </div>
 
@@ -801,7 +801,7 @@ export default function DiagnosticsHUD({ onBookService }: DiagnosticsHUDProps) {
                   💡 How does this relate to your drive?
                 </span>
                 <p className="text-[11px] text-slate-300 font-sans leading-relaxed">
-                  These numbers are read directly from your car's central computer. When a part fails, it behaves abnormally (like an engine shaking with irregular spins, or running extremely hot). Repairing early stops minor issues from turning into major breakdowns!
+                  These illustrative telemetry readings demonstrate how your car's central computer transmits fault data. When a real component fails in your vehicle, bringing it to a verified mCarFix partner ensures certified OBD-II hardware pinpoints the exact issue!
                 </p>
               </div>
 

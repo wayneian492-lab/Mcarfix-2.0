@@ -56,8 +56,8 @@ export default function Testimonials() {
           transition={{ duration: 0.7 }}
           className="text-center max-w-3xl mx-auto mb-16"
         >
-          <span className="font-mono text-xs text-orange-400 font-bold uppercase tracking-widest bg-white/5 border border-white/10 px-4 py-1.5 rounded-full inline-flex items-center space-x-2 mb-4 backdrop-blur-md">
-            <Sparkles className="h-3.5 w-3.5 text-orange-400 animate-spin" style={{ animationDuration: '8s' }} />
+          <span className="font-mono text-xs text-whitegold font-bold uppercase tracking-widest bg-whitegold/10 border border-whitegold/30 px-4 py-1.5 rounded-full inline-flex items-center space-x-2 mb-4 backdrop-blur-md shadow-sm">
+            <Sparkles className="h-3.5 w-3.5 text-whitegold animate-spin" style={{ animationDuration: '8s' }} />
             <span>DRIVERS.VERIFIED_FEEDBACK</span>
           </span>
           <h2 className="font-serif font-medium text-3xl sm:text-5xl tracking-tight text-white mt-2">
@@ -106,8 +106,8 @@ export default function Testimonials() {
                       <span className="font-mono text-xs font-bold text-amber-400 ml-1">5.0</span>
                     </div>
 
-                    <div className="flex items-center space-x-1.5 text-teal-400 bg-teal-500/10 border border-teal-500/30 px-3 py-1 rounded-full text-xs font-mono">
-                      <ShieldCheck className="h-3.5 w-3.5" />
+                    <div className="flex items-center space-x-1.5 text-whitegold bg-whitegold/10 border border-whitegold/30 px-3 py-1 rounded-full text-xs font-mono">
+                      <ShieldCheck className="h-3.5 w-3.5 text-whitegold" />
                       <span>Verified Driver</span>
                     </div>
                   </div>

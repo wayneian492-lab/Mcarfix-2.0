@@ -85,9 +85,9 @@ export default function Hero({ onOpenSos, onOpenDiagnostics, onScrollToSection }
           {/* Left Column: Premium Typography, Badges, CTAs */}
           <div className="lg:col-span-7 flex flex-col space-y-7 text-left">
             {/* Subtle Luxury Eyebrow Badge */}
-            <div className="inline-flex items-center space-x-2.5 px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 backdrop-blur-md w-fit">
-              <span className="w-2 h-2 rounded-full bg-orange-500 animate-pulse" />
-              <span className="font-mono text-xs text-gray-300 tracking-wider uppercase font-medium">
+            <div className="inline-flex items-center space-x-2.5 px-3.5 py-1.5 rounded-full bg-whitegold/10 border border-whitegold/30 backdrop-blur-md w-fit shadow-md">
+              <span className="w-2 h-2 rounded-full bg-whitegold animate-pulse" />
+              <span className="font-mono text-xs text-whitegold tracking-wider uppercase font-semibold">
                 mCarFix® Global Operating System
               </span>
             </div>
@@ -196,7 +196,7 @@ export default function Hero({ onOpenSos, onOpenDiagnostics, onScrollToSection }
         </div>
 
         {/* Premium Stats Strip with Glassmorphic Framing */}
-        <div className="w-full border-t border-white/10 pt-8 mt-14 grid grid-cols-3 gap-6 text-center divide-x divide-white/10 bg-white/[0.02] backdrop-blur-md rounded-2xl p-6 border border-white/5">
+        <div className="w-full border-t border-whitegold/20 pt-8 mt-14 grid grid-cols-3 gap-6 text-center divide-x divide-whitegold/15 bg-white/[0.02] backdrop-blur-md rounded-2xl p-6 border border-whitegold/15 shadow-xl">
           <div className="flex flex-col px-2">
             <span className="font-mono text-3xl sm:text-4xl font-bold text-white tracking-tight">
               <CountUp end={12000} suffix="+" />

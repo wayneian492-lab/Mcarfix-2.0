@@ -103,8 +103,8 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
         >
           {/* Left Description & Badges */}
           <div className="flex-1 max-w-xl">
-            <div className="inline-flex items-center space-x-2 bg-orange-500/10 border border-orange-500/30 px-3.5 py-1.5 rounded-full text-xs font-mono text-orange-400 mb-4">
-              <span className="h-2 w-2 rounded-full bg-orange-500 animate-pulse" />
+            <div className="inline-flex items-center space-x-2 bg-whitegold/10 border border-whitegold/30 px-3.5 py-1.5 rounded-full text-xs font-mono text-whitegold mb-4 shadow-sm">
+              <span className="h-2 w-2 rounded-full bg-whitegold animate-pulse" />
               <span>CERTIFIED WORKSHOP BAYS</span>
             </div>
             <h3 className="font-display text-2xl sm:text-3xl font-bold uppercase tracking-wide text-white mb-4">
