@@ -179,7 +179,7 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
                   style={{ clipPath: "polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)" }}
                 >
                   <img 
-                    src="/step_3_mechanic_lift.jpg"
+                    src="https://raw.githubusercontent.com/wayneian492-lab/Mcarfix-2.0/11b7dae/src/assets/images/garage_experts_1784615923238.jpg"
                     alt="Mechanic servicing engine under open hood"
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
                     referrerPolicy="no-referrer"
