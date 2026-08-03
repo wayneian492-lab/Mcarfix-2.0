@@ -191,12 +191,10 @@ export default function Footer({ onScrollToSection, onOpenBookings, onOpenSos }:
               </p>
             </div>
             <button
-              onClick={() => {
-                alert("mCarFix Partner Portal registration is opening soon. Contact partner-ops@mcarfix.co.ke to register interest.");
-              }}
+              onClick={() => onScrollToSection("become-partner")}
               className="bg-white hover:bg-gray-50 border border-gray-300 hover:border-signal text-gray-700 font-display text-2xs font-bold tracking-wider uppercase py-2.5 px-4 rounded-lg text-center transition-colors cursor-pointer"
             >
-              Are you a garage owner?
+              Partner With mCarFix &rarr;
             </button>
           </div>
 
@@ -206,19 +204,19 @@ export default function Footer({ onScrollToSection, onOpenBookings, onOpenSos }:
         <div className="pt-8 flex flex-col sm:flex-row justify-between items-center text-2xs text-gray-500 gap-4">
           <div className="text-center sm:text-left">
             <div className="flex flex-wrap items-center justify-center sm:justify-start gap-2">
-              <p>&copy; {new Date().getFullYear()} mCarFix Kenya Ltd. All rights reserved.</p>
+              <p>&copy; {new Date().getFullYear()} mCarFix Kenya Ltd. All rights reserved. • Founded 2019, Nairobi</p>
               <span className="bg-amber-500/10 text-amber-600 border border-amber-500/20 px-2 py-0.5 rounded-full text-[9px] font-mono font-bold tracking-widest uppercase inline-block">
                 Alpha Preview
               </span>
             </div>
             <div className="flex flex-wrap items-center justify-center sm:justify-start gap-x-3 gap-y-1 mt-1.5">
               <p className="text-3xs text-gray-500 font-mono uppercase tracking-wider">
-                Nairobi Central Node • GPS Ref: 1.2921° S, 36.8219° E
+                Nairobi HQ • GPS Ref: 1.2921° S, 36.8219° E
               </p>
               <span className="text-gray-300 hidden sm:inline">|</span>
               <p className="text-3xs text-teal-600 font-mono uppercase tracking-wider font-bold flex items-center gap-1">
                 <span className="h-1.5 w-1.5 rounded-full bg-teal-500 animate-pulse" />
-                <span>450+ garages online</span>
+                <span>400,000+ Users • 450+ Garages Online</span>
               </p>
             </div>
           </div>

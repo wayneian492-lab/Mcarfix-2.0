@@ -104,7 +104,7 @@ export default function Hero({ onOpenSos, onOpenDiagnostics, onScrollToSection }
             </div>
 
             <p className="font-sans text-gray-300 text-base sm:text-lg leading-relaxed max-w-xl font-light">
-              Connecting Motorists, Passengers, Regulators, and Service Providers on a unified, high-security global automotive safety network.
+              Founded in Nairobi in 2019, mCarFix is part of a growing platform serving motorists, garages, parts suppliers, vehicle dealers, insurers, and emergency services across Kenya.
             </p>
 
             {/* Premium Interactive Buttons */}
@@ -198,20 +198,26 @@ export default function Hero({ onOpenSos, onOpenDiagnostics, onScrollToSection }
         </div>
 
         {/* Premium Stats Strip with Glassmorphic Framing */}
-        <div className="w-full border-t border-whitegold/20 pt-8 mt-14 grid grid-cols-3 gap-6 text-center divide-x divide-whitegold/15 bg-white/[0.02] backdrop-blur-md rounded-2xl p-6 border border-whitegold/15 shadow-xl">
+        <div className="w-full border-t border-whitegold/20 pt-8 mt-14 grid grid-cols-2 sm:grid-cols-4 gap-6 text-center divide-x-0 sm:divide-x divide-whitegold/15 bg-white/[0.02] backdrop-blur-md rounded-2xl p-6 border border-whitegold/15 shadow-xl">
           <div className="flex flex-col px-2">
             <span className="font-mono text-3xl sm:text-4xl font-bold text-white tracking-tight">
-              <CountUp end={12000} suffix="+" />
+              <CountUp end={400000} suffix="+" />
             </span>
-            <span className="font-sans text-xs sm:text-sm text-gray-400 mt-1 uppercase tracking-wider font-medium">Vehicles Serviced</span>
+            <span className="font-sans text-xs sm:text-sm text-gray-400 mt-1 uppercase tracking-wider font-medium">Registered Users</span>
           </div>
-          <div className="flex flex-col px-2">
+          <div className="flex flex-col px-2 border-l sm:border-l-0 border-whitegold/15">
             <span className="font-mono text-3xl sm:text-4xl font-bold text-white tracking-tight">
               <CountUp end={450} suffix="+" />
             </span>
             <span className="font-sans text-xs sm:text-sm text-gray-400 mt-1 uppercase tracking-wider font-medium">Verified Garages</span>
           </div>
-          <div className="flex flex-col px-2">
+          <div className="flex flex-col px-2 border-t sm:border-t-0 border-whitegold/15 pt-4 sm:pt-0">
+            <span className="font-mono text-3xl sm:text-4xl font-bold text-whitegold tracking-tight">
+              2019
+            </span>
+            <span className="font-sans text-xs sm:text-sm text-gray-400 mt-1 uppercase tracking-wider font-medium">Founded in Nairobi</span>
+          </div>
+          <div className="flex flex-col px-2 border-t sm:border-t-0 border-whitegold/15 pt-4 sm:pt-0">
             <div className="flex items-center justify-center space-x-1.5">
               <span className="font-mono text-3xl sm:text-4xl font-bold text-white tracking-tight">
                 <CountUp end={4.9} decimals={1} />

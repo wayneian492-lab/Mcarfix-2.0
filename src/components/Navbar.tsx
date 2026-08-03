@@ -57,6 +57,12 @@ export default function Navbar({ onOpenSos, onScrollToSection, activeBookingsCou
             >
               Diagnostics
             </button>
+            <button
+              onClick={() => onScrollToSection("become-partner")}
+              className="font-display font-medium tracking-wide text-sm uppercase text-gray-600 hover:text-signal transition-colors duration-200"
+            >
+              Partners
+            </button>
           </div>
 
           {/* Contact & SOS */}
@@ -150,9 +156,18 @@ export default function Navbar({ onOpenSos, onScrollToSection, activeBookingsCou
               onScrollToSection("diagnostics-info");
               setIsMenuOpen(false);
             }}
-            className="block w-full text-left font-display text-base font-bold uppercase tracking-wider text-gray-700 py-2"
+            className="block w-full text-left font-display text-base font-bold uppercase tracking-wider text-gray-700 py-2 border-b border-gray-100"
           >
             Diagnostics OBD
+          </button>
+          <button
+            onClick={() => {
+              onScrollToSection("become-partner");
+              setIsMenuOpen(false);
+            }}
+            className="block w-full text-left font-display text-base font-bold uppercase tracking-wider text-gray-700 py-2"
+          >
+            Become a Partner
           </button>
           <div className="pt-2 flex flex-col space-y-3">
             <div className="flex items-center space-x-2 text-gray-500 px-1 py-1">

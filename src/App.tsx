@@ -8,10 +8,12 @@ import { Truck } from "lucide-react";
 import { motion } from "motion/react";
 import Navbar from "./components/Navbar";
 import Hero from "./components/Hero";
+import EcosystemCarousel from "./components/EcosystemCarousel";
 import LiveTicker from "./components/LiveTicker";
 import HowItWorks from "./components/HowItWorks";
 import ServicesGrid from "./components/ServicesGrid";
 import PartnerBand from "./components/PartnerBand";
+import BecomePartner from "./components/BecomePartner";
 import FaqAccordion from "./components/FaqAccordion";
 import Footer from "./components/Footer";
 
@@ -154,6 +156,9 @@ export default function App() {
           onScrollToSection={handleScrollToSection}
         />
 
+        {/* 2b. Ecosystem Carousel */}
+        <EcosystemCarousel />
+
         {/* 3. Infinite Scrolling Live Ticker strip */}
         <LiveTicker />
 
@@ -212,6 +217,9 @@ export default function App() {
 
         {/* 9. Minimalist Trust Partner band */}
         <PartnerBand />
+
+        {/* 9b. Become a Partner Section */}
+        <BecomePartner />
 
         {/* 10. Frequently Asked Questions Accordion (Light Section) */}
         <FaqAccordion />
