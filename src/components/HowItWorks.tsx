@@ -65,8 +65,8 @@ export default function HowItWorks() {
                 </div>
 
                 {/* Step Number over image */}
-                <div className="absolute top-2 right-3">
-                  <span className="font-mono text-3xl font-black text-white/50 group-hover:text-amber-400 transition-colors duration-300 drop-shadow-md">
+                <div className="absolute top-3 right-3">
+                  <span className="font-mono text-xl font-black text-white bg-gray-950/90 border border-white/20 px-3 py-1 rounded-xl shadow-lg backdrop-blur-md group-hover:border-amber-400 group-hover:text-amber-400 transition-all">
                     01
                   </span>
                 </div>
@@ -114,8 +114,8 @@ export default function HowItWorks() {
                 </div>
 
                 {/* Step Number over image */}
-                <div className="absolute top-2 right-3">
-                  <span className="font-mono text-3xl font-black text-white/50 group-hover:text-amber-400 transition-colors duration-300 drop-shadow-md">
+                <div className="absolute top-3 right-3">
+                  <span className="font-mono text-xl font-black text-white bg-gray-950/90 border border-white/20 px-3 py-1 rounded-xl shadow-lg backdrop-blur-md group-hover:border-amber-400 group-hover:text-amber-400 transition-all">
                     02
                   </span>
                 </div>
@@ -163,8 +163,8 @@ export default function HowItWorks() {
                 </div>
 
                 {/* Step Number over image */}
-                <div className="absolute top-2 right-3">
-                  <span className="font-mono text-3xl font-black text-white/50 group-hover:text-amber-400 transition-colors duration-300 drop-shadow-md">
+                <div className="absolute top-3 right-3">
+                  <span className="font-mono text-xl font-black text-white bg-gray-950/90 border border-white/20 px-3 py-1 rounded-xl shadow-lg backdrop-blur-md group-hover:border-amber-400 group-hover:text-amber-400 transition-all">
                     03
                   </span>
                 </div>
@@ -212,8 +212,8 @@ export default function HowItWorks() {
                 </div>
 
                 {/* Step Number over image */}
-                <div className="absolute top-2 right-3">
-                  <span className="font-mono text-3xl font-black text-white/50 group-hover:text-amber-400 transition-colors duration-300 drop-shadow-md">
+                <div className="absolute top-3 right-3">
+                  <span className="font-mono text-xl font-black text-white bg-gray-950/90 border border-white/20 px-3 py-1 rounded-xl shadow-lg backdrop-blur-md group-hover:border-amber-400 group-hover:text-amber-400 transition-all">
                     04
                   </span>
                 </div>
