@@ -8,15 +8,12 @@ import {
   Store, 
   ChevronLeft, 
   ChevronRight,
-  ArrowRight,
-  Play,
-  X,
-  Sparkles
+  ArrowRight
 } from "lucide-react";
-import { motion, AnimatePresence } from "motion/react";
+import { motion } from "motion/react";
 import motoristsBikersImg from "../assets/images/motorists_bikers_card_1785740110667.jpg";
 import garageMechanicImg from "../assets/images/garage_mechanic_card_1785740255989.jpg";
-import fleetsIllustrationImg from "../assets/images/fleets_illustration_card_1785740451463.jpg";
+import fleetManufacturersPhotoImg from "../assets/images/fleet_manufacturers_photo_1785740762813.jpg";
 import governmentEnforcementImg from "../assets/images/government_enforcement_card_1785740462698.jpg";
 import emergencyAmbulanceImg from "../assets/images/emergency_ambulance_card_1785740475473.jpg";
 import showroomsCarYardImg from "../assets/images/showrooms_caryard_card_1785740487343.jpg";
@@ -30,7 +27,6 @@ interface EcosystemCard {
   badge: string;
   accentColor: "amber" | "teal" | "gold" | "signal";
   image?: string;
-  hasVideo?: boolean;
 }
 
 const CARDS: EcosystemCard[] = [
@@ -52,8 +48,7 @@ const CARDS: EcosystemCard[] = [
     icon: Wrench,
     badge: "PARTNER NETWORK",
     accentColor: "teal",
-    image: garageMechanicImg,
-    hasVideo: true
+    image: garageMechanicImg
   },
   {
     id: "fleets",
@@ -63,7 +58,7 @@ const CARDS: EcosystemCard[] = [
     icon: Truck,
     badge: "ENTERPRISE",
     accentColor: "gold",
-    image: fleetsIllustrationImg
+    image: fleetManufacturersPhotoImg
   },
   {
     id: "government",
@@ -83,8 +78,7 @@ const CARDS: EcosystemCard[] = [
     icon: Ambulance,
     badge: "24/7 DISPATCH",
     accentColor: "signal",
-    image: emergencyAmbulanceImg,
-    hasVideo: true
+    image: emergencyAmbulanceImg
   },
   {
     id: "showrooms",
@@ -102,7 +96,6 @@ export default function EcosystemCarousel() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const [canScrollLeft, setCanScrollLeft] = useState(false);
   const [canScrollRight, setCanScrollRight] = useState(true);
-  const [activeVideoModal, setActiveVideoModal] = useState<EcosystemCard | null>(null);
 
   const checkScroll = () => {
     if (!scrollContainerRef.current) return;
@@ -173,6 +166,86 @@ export default function EcosystemCarousel() {
 
   return (
     <section className="relative py-16 bg-[#0a0c0e] text-white border-t border-b border-gray-800/80 overflow-hidden">
+      {/* Repeating Automotive Icon Pattern Background */}
+      <div className="absolute inset-0 pointer-events-none opacity-[0.08] overflow-hidden">
+        <svg className="w-full h-full" width="100%" height="100%">
+          <pattern id="automotive-pattern" width="160" height="160" patternUnits="userSpaceOnUse">
+            {/* Row 1 */}
+            <g transform="translate(10, 10)" stroke="currentColor" fill="none" strokeWidth="1.2" className="text-amber-400">
+              <path d="M5 12h14M12 5l7 7-7 7" />
+              <rect x="2" y="2" width="20" height="20" rx="4" />
+            </g>
+            <g transform="translate(50, 10)" stroke="currentColor" fill="none" strokeWidth="1.2" className="text-teal-400">
+              <circle cx="12" cy="12" r="9" />
+              <path d="M12 7v5l3 3" />
+            </g>
+            <g transform="translate(90, 10)" stroke="currentColor" fill="none" strokeWidth="1.2" className="text-amber-200">
+              <path d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
+            </g>
+            <g transform="translate(130, 10)" stroke="currentColor" fill="none" strokeWidth="1.2" className="text-red-400">
+              <path d="M19 17h2c.6 0 1-.4 1-1v-3c0-.9-.7-1.7-1.5-1.9C18.7 10.6 16 10 16 10s-1.3-1.4-2.2-2.3c-.5-.4-1.1-.7-1.8-.7H5c-.6 0-1.1.4-1.4.9l-1.5 2.8C2.1 10.7 2 10.8 2 11v5c0 .6.4 1 1 1h2" />
+              <circle cx="7" cy="17" r="2" />
+              <circle cx="17" cy="17" r="2" />
+            </g>
+
+            {/* Row 2 */}
+            <g transform="translate(10, 50)" stroke="currentColor" fill="none" strokeWidth="1.2" className="text-teal-400">
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </g>
+            <g transform="translate(50, 50)" stroke="currentColor" fill="none" strokeWidth="1.2" className="text-amber-400">
+              <path d="M10 2v2a2 2 0 0 0 2 2h0a2 2 0 0 0 2-2V2" />
+              <path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8" />
+              <path d="M4 8h16" />
+            </g>
+            <g transform="translate(90, 50)" stroke="currentColor" fill="none" strokeWidth="1.2" className="text-amber-300">
+              <circle cx="12" cy="12" r="10" />
+              <path d="M12 6v6l4 2" />
+            </g>
+            <g transform="translate(130, 50)" stroke="currentColor" fill="none" strokeWidth="1.2" className="text-emerald-400">
+              <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+            </g>
+
+            {/* Row 3 */}
+            <g transform="translate(10, 90)" stroke="currentColor" fill="none" strokeWidth="1.2" className="text-amber-200">
+              <rect x="1" y="3" width="15" height="13" rx="2" />
+              <polygon points="16 8 20 8 23 11 23 16 16 16 16 8" />
+              <circle cx="5.5" cy="18.5" r="2.5" />
+              <circle cx="18.5" cy="18.5" r="2.5" />
+            </g>
+            <g transform="translate(50, 90)" stroke="currentColor" fill="none" strokeWidth="1.2" className="text-red-400">
+              <path d="M12 2a8 8 0 0 0-8 8c0 5.25 8 12 8 12s8-6.75 8-12a8 8 0 0 0-8-8z" />
+              <circle cx="12" cy="10" r="3" />
+            </g>
+            <g transform="translate(90, 90)" stroke="currentColor" fill="none" strokeWidth="1.2" className="text-teal-400">
+              <rect x="2" y="7" width="20" height="14" rx="2" ry="2" />
+              <path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" />
+            </g>
+            <g transform="translate(130, 90)" stroke="currentColor" fill="none" strokeWidth="1.2" className="text-amber-400">
+              <path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
+            </g>
+
+            {/* Row 4 */}
+            <g transform="translate(10, 130)" stroke="currentColor" fill="none" strokeWidth="1.2" className="text-amber-400">
+              <circle cx="12" cy="12" r="10" />
+              <line x1="12" y1="8" x2="12" y2="12" />
+              <line x1="12" y1="16" x2="12.01" y2="16" />
+            </g>
+            <g transform="translate(50, 130)" stroke="currentColor" fill="none" strokeWidth="1.2" className="text-amber-200">
+              <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z" />
+            </g>
+            <g transform="translate(90, 130)" stroke="currentColor" fill="none" strokeWidth="1.2" className="text-teal-300">
+              <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
+              <path d="M13.73 21a2 2 0 0 1-3.46 0" />
+            </g>
+            <g transform="translate(130, 130)" stroke="currentColor" fill="none" strokeWidth="1.2" className="text-orange-400">
+              <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+              <path d="M7 11V7a5 5 0 0 1 10 0v4" />
+            </g>
+          </pattern>
+          <rect width="100%" height="100%" fill="url(#automotive-pattern)" />
+        </svg>
+      </div>
+
       {/* Background ambient lighting */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         <div className="absolute top-1/2 left-1/4 -translate-y-1/2 w-[600px] h-[350px] bg-amber-500/5 blur-[120px] rounded-full" />
@@ -184,7 +257,7 @@ export default function EcosystemCarousel() {
         {/* Section Header */}
         <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
           <div className="max-w-2xl">
-            <span className="font-mono text-xs text-amber-400 font-bold uppercase tracking-widest bg-amber-500/10 border border-amber-500/30 px-3.5 py-1.5 rounded-full inline-flex items-center space-x-2 mb-3 shadow-sm">
+            <span className="font-mono text-xs text-amber-400 font-bold uppercase tracking-widest bg-amber-500/10 border border-amber-500/30 px-3.5 py-1.5 rounded-full inline-flex items-center space-x-2 mb-3 shadow-sm backdrop-blur-md">
               <span className="h-1.5 w-1.5 rounded-full bg-amber-400 animate-pulse" />
               <span>MCARFIX ECOSYSTEM</span>
             </span>
@@ -248,14 +321,9 @@ export default function EcosystemCarousel() {
                 <div className={`absolute -top-12 -right-12 w-28 h-28 ${styles.glow} blur-2xl rounded-full pointer-events-none group-hover:scale-150 transition-transform duration-500`} />
 
                 <div>
-                  {/* Optional Featured Image Header */}
+                  {/* Accurate Card Photo Header */}
                   {card.image && (
-                    <div 
-                      className={`relative w-full h-36 rounded-xl overflow-hidden mb-4 border border-white/10 group-hover:border-teal-400/50 transition-colors shadow-md ${card.hasVideo ? 'cursor-pointer' : ''}`}
-                      onClick={() => {
-                        if (card.hasVideo) setActiveVideoModal(card);
-                      }}
-                    >
+                    <div className="relative w-full h-36 rounded-xl overflow-hidden mb-4 border border-white/10 group-hover:border-amber-400/40 transition-colors shadow-md">
                       <img 
                         src={card.image} 
                         alt={card.title} 
@@ -263,18 +331,6 @@ export default function EcosystemCarousel() {
                         referrerPolicy="no-referrer"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-gray-950/85 via-gray-950/20 to-transparent" />
-                      
-                      {card.hasVideo && (
-                        <div className="absolute inset-0 flex items-center justify-center">
-                          <div className="h-11 w-11 rounded-full bg-teal-500/90 hover:bg-teal-400 text-gray-950 flex items-center justify-center shadow-lg transition-transform duration-300 transform group-hover:scale-110 border border-white/40">
-                            <Play className="h-5 w-5 fill-current ml-0.5" />
-                          </div>
-                          <span className="absolute bottom-2 right-2 bg-black/75 backdrop-blur-md border border-teal-500/40 text-teal-300 font-mono text-[9px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full flex items-center space-x-1">
-                            <Sparkles className="h-2.5 w-2.5 animate-pulse" />
-                            <span>VIDEO DEMO</span>
-                          </span>
-                        </div>
-                      )}
                     </div>
                   )}
 
@@ -325,104 +381,6 @@ export default function EcosystemCarousel() {
         </div>
 
       </div>
-
-      {/* Interactive Workshop Video Demo Modal */}
-      <AnimatePresence>
-        {activeVideoModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md">
-            <motion.div
-              initial={{ opacity: 0, scale: 0.95, y: 20 }}
-              animate={{ opacity: 1, scale: 1, y: 0 }}
-              exit={{ opacity: 0, scale: 0.95, y: 20 }}
-              className="bg-[#111419] border border-teal-500/30 rounded-2xl overflow-hidden max-w-2xl w-full relative shadow-2xl"
-            >
-              {/* Header */}
-              <div className="p-4 bg-gray-900/90 border-b border-white/10 flex items-center justify-between">
-                <div className="flex items-center space-x-3">
-                  <div className="h-8 w-8 rounded-lg bg-teal-500/20 border border-teal-500/40 text-teal-400 flex items-center justify-center">
-                    <Wrench className="h-4 w-4" />
-                  </div>
-                  <div>
-                    <h3 className="font-display text-sm font-bold text-white uppercase tracking-wider">
-                      {activeVideoModal.title} — Video Demo
-                    </h3>
-                    <span className="font-mono text-[10px] text-teal-400 uppercase tracking-widest block">
-                      mCarFix Certified Garage Operations • Nairobi
-                    </span>
-                  </div>
-                </div>
-                <button
-                  onClick={() => setActiveVideoModal(null)}
-                  className="p-1.5 rounded-full bg-white/5 hover:bg-white/15 text-gray-400 hover:text-white transition-colors cursor-pointer"
-                >
-                  <X className="h-5 w-5" />
-                </button>
-              </div>
-
-              {/* Video Player Display Container */}
-              <div className="relative aspect-video bg-black w-full overflow-hidden flex items-center justify-center group">
-                <img
-                  src={activeVideoModal.image}
-                  alt={activeVideoModal.title}
-                  className="w-full h-full object-cover filter brightness-90"
-                />
-                
-                {/* Simulated live scanner overlay animation */}
-                <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-transparent to-black/40" />
-
-                <div className="absolute top-4 left-4 bg-black/75 border border-emerald-500/40 px-3 py-1 rounded-full text-emerald-400 font-mono text-xs flex items-center space-x-2 backdrop-blur-md">
-                  <span className="h-2 w-2 rounded-full bg-emerald-400 animate-ping" />
-                  <span className="font-bold uppercase tracking-wider">LIVE WORKSHOP REEL</span>
-                </div>
-
-                {/* Center play icon overlay */}
-                <div className="absolute inset-0 flex flex-col items-center justify-center text-center p-6 bg-black/30 backdrop-blur-[1px]">
-                  <div className="h-16 w-16 rounded-full bg-teal-500 text-gray-950 flex items-center justify-center shadow-2xl ring-4 ring-teal-500/30 animate-pulse mb-3">
-                    <Play className="h-8 w-8 fill-current ml-1" />
-                  </div>
-                  <h4 className="font-display font-bold text-lg text-white uppercase tracking-wide">
-                    Certified Garage Workshop Bay
-                  </h4>
-                  <p className="font-sans text-xs text-gray-300 font-light max-w-md mt-1">
-                    OBD-II diagnostic inspection & verified technician servicing for Toyota SUV vehicle in Nairobi.
-                  </p>
-                </div>
-
-                {/* Video controls bar simulation */}
-                <div className="absolute bottom-0 inset-x-0 bg-gradient-to-t from-black/90 via-black/60 to-transparent p-4 flex items-center justify-between font-mono text-xs text-gray-300">
-                  <div className="flex items-center space-x-3">
-                    <button className="text-teal-400 hover:text-teal-300">
-                      <Play className="h-4 w-4 fill-current" />
-                    </button>
-                    <span className="text-[10px] text-gray-400">0:14 / 1:30</span>
-                  </div>
-                  <div className="flex-1 mx-4 h-1 bg-white/20 rounded-full overflow-hidden">
-                    <div className="h-full w-1/3 bg-teal-400 rounded-full" />
-                  </div>
-                  <span className="text-[10px] text-teal-400 font-bold uppercase tracking-wider">1080p HD</span>
-                </div>
-              </div>
-
-              {/* Modal Footer */}
-              <div className="p-4 bg-[#0d0f14] border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs">
-                <p className="font-sans text-gray-400 font-light">
-                  Want to feature your garage in the mCarFix Partner Directory?
-                </p>
-                <button
-                  onClick={() => {
-                    setActiveVideoModal(null);
-                    const el = document.getElementById("become-partner");
-                    if (el) el.scrollIntoView({ behavior: "smooth" });
-                  }}
-                  className="bg-teal-500 hover:bg-teal-400 text-gray-950 font-display font-bold text-xs uppercase tracking-wider px-4 py-2 rounded-xl transition-all whitespace-nowrap"
-                >
-                  Join Partner Network &rarr;
-                </button>
-              </div>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
     </section>
   );
 }
