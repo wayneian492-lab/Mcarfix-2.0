@@ -100,6 +100,22 @@ export default function BookingModal({ isOpen, onClose, garage, preselectedServi
     onClose();
   };
 
+  // Handle Escape key to close modal
+  React.useEffect(() => {
+    if (!isOpen) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        resetAndClose();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen]);
+
   const timeSlots = [
     "08:30 AM - 10:30 AM",
     "10:30 AM - 12:30 PM",
@@ -108,10 +124,16 @@ export default function BookingModal({ isOpen, onClose, garage, preselectedServi
   ];
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto flex items-end md:items-center justify-center p-0 md:p-6 bg-black/75 backdrop-blur-sm animate-fade-in">
+    <div 
+      className="fixed inset-0 z-50 overflow-y-auto flex items-end md:items-center justify-center p-0 md:p-6 bg-black/75 backdrop-blur-sm animate-fade-in"
+      onClick={resetAndClose}
+    >
       
       {/* Modal / Bottom-sheet Container */}
-      <div className="relative bg-steel border-t md:border border-steel-light rounded-t-3xl md:rounded-2xl w-full max-w-xl shadow-2xl overflow-hidden text-white flex flex-col max-h-[90vh] animate-slide-up-mobile md:animate-none pb-[env(safe-area-inset-bottom,0px)] md:pb-0">
+      <div 
+        className="relative bg-steel border-t md:border border-steel-light rounded-t-3xl md:rounded-2xl w-full max-w-xl shadow-2xl overflow-hidden text-white flex flex-col max-h-[90vh] animate-slide-up-mobile md:animate-none pb-[env(safe-area-inset-bottom,0px)] md:pb-0"
+        onClick={(e) => e.stopPropagation()}
+      >
         
         {/* Mobile Sheet Drag Handle */}
         <div className="w-12 h-1.5 bg-gray-500/40 rounded-full mx-auto my-2.5 md:hidden shrink-0" />

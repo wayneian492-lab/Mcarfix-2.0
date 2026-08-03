@@ -102,6 +102,22 @@ export default function SosModal({ isOpen, onClose, onSosRequested }: SosModalPr
     onClose();
   };
 
+  // Handle Escape key to close modal
+  React.useEffect(() => {
+    if (!isOpen) return;
+
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") {
+        resetAndClose();
+      }
+    };
+
+    window.addEventListener("keydown", handleKeyDown);
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isOpen]);
+
   const emergencies = [
     { id: "mechanical-stall", label: "Engine Trouble or Stall", icon: "⚙️" },
     { id: "flat-tyre", label: "Flat Tyre or Puncture", icon: "🚘" },
@@ -112,10 +128,16 @@ export default function SosModal({ isOpen, onClose, onSosRequested }: SosModalPr
   const districts = ["Westlands", "Nairobi CBD", "Mombasa Road", "Karen", "Kilimani", "Kiambu"];
 
   return (
-    <div className="fixed inset-0 z-50 overflow-y-auto flex items-end md:items-center justify-center p-0 md:p-6 bg-black/85 backdrop-blur-sm animate-fade-in">
+    <div 
+      className="fixed inset-0 z-50 overflow-y-auto flex items-end md:items-center justify-center p-0 md:p-6 bg-black/85 backdrop-blur-sm animate-fade-in"
+      onClick={resetAndClose}
+    >
       
       {/* Alert Modal / Bottom-sheet Panel */}
-      <div className="relative bg-slate-900 border-t-2 md:border-2 border-signal/40 rounded-t-3xl md:rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden text-white flex flex-col max-h-[90vh] animate-slide-up-mobile md:animate-none pb-[env(safe-area-inset-bottom,0px)] md:pb-0">
+      <div 
+        className="relative bg-slate-900 border-t-2 md:border-2 border-signal/40 rounded-t-3xl md:rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden text-white flex flex-col max-h-[90vh] animate-slide-up-mobile md:animate-none pb-[env(safe-area-inset-bottom,0px)] md:pb-0"
+        onClick={(e) => e.stopPropagation()}
+      >
         
         {/* Mobile Sheet Drag Handle */}
         <div className="w-12 h-1.5 bg-gray-500/40 rounded-full mx-auto my-2.5 md:hidden shrink-0" />

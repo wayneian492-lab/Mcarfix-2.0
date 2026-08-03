@@ -8,6 +8,7 @@ import * as Icons from "lucide-react";
 import { SERVICES_DATA, ServiceItem } from "../types";
 import { motion } from "motion/react";
 import { TiltCard } from "./TiltCard";
+import servicesLiftBgImg from "../assets/images/services_lift_bg_1785671995621.jpg";
 
 const serviceDiagnosticsImg = "https://raw.githubusercontent.com/wayneian492-lab/Mcarfix-2.0/11b7dae/src/assets/images/service_diagnostics_new_1784617553637.jpg";
 const serviceRoadsideImg = "https://raw.githubusercontent.com/wayneian492-lab/Mcarfix-2.0/11b7dae/src/assets/images/service_roadside_1784615967497.jpg";
@@ -51,10 +52,17 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
   };
 
   return (
-    <section id="services" className="relative bg-[#0c0e12] py-20 text-white border-t border-gray-800/80 overflow-hidden">
+    <section 
+      id="services" 
+      className="relative py-20 text-white border-t border-gray-800/80 overflow-hidden bg-cover bg-center"
+      style={{ backgroundImage: `url(${servicesLiftBgImg})` }}
+    >
+      {/* Dark gradient overlay for text legibility and aesthetic contrast */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0c0e12]/92 via-[#0c0e12]/85 to-[#0c0e12]/95 pointer-events-none z-0" />
+
       {/* Background radial glow & dark texture matching hero */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-orange-500/5 blur-[120px] rounded-full" />
+        <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-whitegold/5 blur-[120px] rounded-full" />
         <div className="absolute bottom-0 left-0 right-0 h-40 bg-gradient-to-t from-[#0a0c0e] to-transparent" />
       </div>
 
@@ -68,8 +76,8 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
           transition={{ duration: 0.6 }}
           className="text-center max-w-3xl mx-auto mb-16 overflow-hidden"
         >
-          <span className="font-mono text-xs text-orange-400 font-bold uppercase tracking-widest bg-white/5 border border-white/10 px-4 py-1.5 rounded-full inline-flex items-center space-x-2 mb-4 backdrop-blur-md">
-            <span className="h-1.5 w-1.5 rounded-full bg-orange-400 animate-pulse" />
+          <span className="font-mono text-xs text-whitegold font-bold uppercase tracking-widest bg-whitegold/10 border border-whitegold/30 px-4 py-1.5 rounded-full inline-flex items-center space-x-2 mb-4 backdrop-blur-md shadow-sm">
+            <span className="h-1.5 w-1.5 rounded-full bg-whitegold animate-pulse" />
             <span>SYS.OFFERINGS</span>
           </span>
           <motion.h2 
@@ -81,7 +89,7 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
           >
             Comprehensive Car Services in Nairobi
           </motion.h2>
-          <div className="h-1 w-12 bg-orange-500 mx-auto mt-4 rounded-full" />
+          <div className="h-1 w-12 bg-gradient-to-r from-whitegold via-amber-400 to-whitegold mx-auto mt-4 rounded-full" />
           <motion.p 
             initial={{ opacity: 0, x: 60 }}
             whileInView={{ opacity: 1, x: 0 }}
@@ -338,13 +346,13 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
                 <TiltCard
                   maxTilt={4}
                   onClick={() => handleServiceClick(service.title)}
-                  className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:border-orange-500/50 hover:bg-white/[0.08] hover:shadow-xl hover:-translate-y-1 cursor-pointer flex flex-col justify-between h-full group"
+                  className="bg-white/5 backdrop-blur-md border border-white/10 rounded-2xl p-6 transition-all duration-300 hover:border-whitegold/50 hover:bg-white/[0.08] hover:shadow-xl hover:-translate-y-1 cursor-pointer flex flex-col justify-between h-full group"
                 >
                   <div>
                     {/* Header Code and Icon row */}
                     <div className="flex justify-between items-start mb-5">
                       <div className="bg-white/10 border border-white/15 p-3 rounded-2xl transition-transform duration-300 group-hover:scale-110">
-                        {renderIcon(service.iconName, "h-6 w-6 text-orange-400")}
+                        {renderIcon(service.iconName, "h-6 w-6 text-whitegold")}
                       </div>
                       <span className="font-mono text-2xs text-gray-400 border border-white/10 bg-white/5 px-2.5 py-1 rounded-full font-semibold tracking-wider">
                         {meta.code}
@@ -368,7 +376,7 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
                     transition={{ duration: 0.6, ease: "easeOut", delay: index * 0.05 }}
-                    className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono font-medium text-gray-400 group-hover:text-orange-400 transition-colors"
+                    className="mt-6 pt-4 border-t border-white/10 flex items-center justify-between text-xs font-mono font-medium text-gray-400 group-hover:text-whitegold transition-colors"
                   >
                     <span>Explore Garages</span>
                     <span>&rarr;</span>

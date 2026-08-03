@@ -5,8 +5,10 @@
 
 import React from "react";
 import { Star } from "lucide-react";
+import groundedHeroBgImg from "../assets/images/grounded_garage_hero_bg_1785734927505.jpg";
+
 const workshopImage = "https://raw.githubusercontent.com/wayneian492-lab/Mcarfix-2.0/11b7dae/src/assets/images/car_service_lift_1784614889346.jpg";
-const heroBgImage = "https://raw.githubusercontent.com/wayneian492-lab/Mcarfix-2.0/11b7dae/src/assets/images/hero_garage_bg_1784614872137.jpg";
+const heroBgImage = groundedHeroBgImg;
 
 interface HeroProps {
   onOpenSos: () => void;
@@ -69,14 +71,14 @@ export default function Hero({ onOpenSos, onOpenDiagnostics, onScrollToSection }
         <img 
           src={heroBgImage} 
           alt="Luxury Automotive Studio Background" 
-          className="w-full h-full object-cover object-center opacity-70 filter brightness-90 contrast-105 transition-all duration-1000"
+          className="w-full h-full object-cover object-center opacity-[0.93] filter brightness-85 contrast-[1.05] transition-all duration-1000"
         />
-        {/* Deep luxury radial spotlight gradient */}
-        <div className="absolute inset-0 bg-radial from-transparent via-[#0a0c0e]/70 to-[#0a0c0e] z-10" />
-        {/* Smooth horizontal gradient from rich dark left to transparent right */}
-        <div className="absolute inset-0 bg-gradient-to-r from-[#0a0c0e] via-[#0a0c0e]/85 to-transparent z-10" />
-        {/* Subtle top & bottom shadow vignettes for framing */}
-        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0c0e]/80 via-transparent to-[#0a0c0e] z-10" />
+        {/* Sleek radial spotlight & vignette in elegant shades of black */}
+        <div className="absolute inset-0 bg-radial from-transparent via-[#0a0c0e]/40 to-[#0a0c0e]/75 z-10" />
+        {/* Subtle horizontal gradient for text legibility on the left */}
+        <div className="absolute inset-0 bg-gradient-to-r from-[#0a0c0e]/80 via-[#0a0c0e]/45 to-transparent z-10" />
+        {/* Gentle top & bottom black vignette framing */}
+        <div className="absolute inset-0 bg-gradient-to-b from-[#0a0c0e]/60 via-transparent to-[#0a0c0e]/80 z-10" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20 w-full">

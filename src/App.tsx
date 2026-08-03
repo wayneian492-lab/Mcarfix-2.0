@@ -217,8 +217,13 @@ export default function App() {
         <FaqAccordion />
 
         {/* 11. Final Urgency SOS Call-to-Action Bar (Dark) */}
-        <section className="bg-asphalt py-16 text-center border-t border-steel/60 relative overflow-hidden">
-          <div className="absolute inset-0 opacity-[0.02] pointer-events-none" 
+        <section 
+          className="relative py-16 text-center border-t border-steel/60 overflow-hidden bg-cover bg-center text-white"
+          style={{ backgroundImage: "url('https://raw.githubusercontent.com/wayneian492-lab/Mcarfix-2.0/11b7dae/src/assets/images/garage_experts_1784615923238.jpg')" }}
+        >
+          {/* Dark gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/90 via-black/80 to-black/95 z-0" />
+          <div className="absolute inset-0 opacity-[0.03] pointer-events-none z-0" 
                style={{ backgroundImage: "radial-gradient(#eceef2 1px, transparent 1px)", backgroundSize: "24px 24px" }} />
           <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10 space-y-8">
             

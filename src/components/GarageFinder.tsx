@@ -8,6 +8,7 @@ import { Search, MapPin, Star, ShieldCheck, X, Phone } from "lucide-react";
 import { MOCK_GARAGES, Garage } from "../types";
 import { motion } from "motion/react";
 import { TiltCard } from "./TiltCard";
+import garageBgClassicImg from "../assets/images/garage_bg_classic_1785671455542.jpg";
 
 const NairobiMap = React.lazy(() => import("./NairobiMap"));
 
@@ -104,9 +105,16 @@ export default function GarageFinder({ onBookGarage, selectedServiceFilter, onCl
   });
 
   return (
-    <section id="garages" className="relative bg-[#0a0c0e] py-24 text-white border-t border-b border-white/10 overflow-hidden">
+    <section 
+      id="garages" 
+      className="relative py-24 text-white border-t border-b border-white/10 overflow-hidden bg-cover bg-center"
+      style={{ backgroundImage: `url(${garageBgClassicImg})` }}
+    >
+      {/* Dark gradient overlay */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#0a0c0e]/95 via-[#0a0c0e]/85 to-[#0a0c0e]/95 pointer-events-none z-0" />
+
       {/* Background Radial Glow */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+      <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
         <div className="absolute top-1/3 left-1/4 w-[600px] h-[400px] bg-orange-500/5 blur-[140px] rounded-full" />
       </div>
 

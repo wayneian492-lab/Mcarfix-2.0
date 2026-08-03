@@ -63,22 +63,31 @@ export default function FloatingDock({ onOpenSos, onScrollToSection }: FloatingD
             /* Expanded State: Highly polished centered control window with premium animation states */
             <motion.div
               layoutId="dock-container"
-              className="bg-gray-950/98 backdrop-blur-md border border-white/20 shadow-[0_12px_48px_rgba(0,0,0,0.6)] rounded-2xl p-4 w-72 md:w-24 transition-all duration-300 flex flex-col items-stretch"
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ type: "spring", damping: 20 }}
+              className="relative bg-gray-950/95 backdrop-blur-xl border border-white/20 shadow-[0_20px_50px_rgba(0,0,0,0.8)] rounded-2xl p-4 w-[280px] sm:w-[320px] md:w-36 transition-all duration-300 flex flex-col items-stretch overflow-hidden"
+              initial={{ scale: 0.88, opacity: 0, y: 15 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.88, opacity: 0, y: 15 }}
+              transition={{ type: "spring", stiffness: 350, damping: 26 }}
             >
-              {/* Header with a premium close button */}
-              <div className="flex items-center justify-between border-b border-white/10 pb-2.5 mb-3.5">
-                <span className="font-mono text-[9px] text-gray-400 uppercase tracking-widest font-extrabold">
-                  Quick Panel
-                </span>
+              {/* Ambient background glows inside the panel */}
+              <div className="absolute -top-10 -right-10 w-24 h-24 bg-signal/15 blur-2xl rounded-full pointer-events-none" />
+              <div className="absolute -bottom-10 -left-10 w-24 h-24 bg-teal-500/10 blur-2xl rounded-full pointer-events-none" />
+
+              {/* Header with a premium close button that fits perfectly */}
+              <div className="flex items-center justify-between border-b border-white/10 pb-2.5 mb-3.5 relative z-10 gap-2">
+                <div className="flex items-center space-x-1.5 min-w-0">
+                  <span className="h-2 w-2 rounded-full bg-signal animate-pulse shrink-0" />
+                  <span className="font-mono text-[10px] text-gray-200 uppercase tracking-widest font-extrabold truncate">
+                    Quick Panel
+                  </span>
+                </div>
                 <button
                   onClick={() => setIsExpanded(false)}
-                  className="p-2 rounded-full bg-white/5 border border-white/10 text-gray-400 hover:text-white hover:bg-white/15 hover:border-white/25 transition-all duration-300 cursor-pointer focus:outline-none flex items-center justify-center min-w-[44px] min-h-[44px] shrink-0 group/close"
+                  className="w-7 h-7 rounded-full bg-white/5 hover:bg-white/15 border border-white/10 hover:border-white/30 text-gray-300 hover:text-white transition-all duration-200 cursor-pointer focus:outline-none flex items-center justify-center shrink-0 group/close"
                   title="Close Tools Panel"
+                  aria-label="Close Quick Panel"
                 >
-                  <X className="h-4 w-4 transform group-hover/close:rotate-90 transition-transform duration-300" />
+                  <X className="h-3.5 w-3.5 transform group-hover/close:rotate-90 transition-transform duration-300" />
                 </button>
               </div>
 
@@ -98,7 +107,7 @@ export default function FloatingDock({ onOpenSos, onScrollToSection }: FloatingD
                   <div className="bg-amber-500/10 hover:bg-amber-500/20 text-amber-500 p-2.5 rounded-full transition-all duration-300 border border-amber-500/20 group-hover:border-amber-500/50 shrink-0 shadow-sm group-hover:shadow-amber-500/10">
                     <Calendar className="h-4.5 w-4.5" />
                   </div>
-                  <span className="text-[10px] font-sans text-gray-300 group-hover:text-amber-500 transition-colors uppercase tracking-wider font-bold mt-1.5">
+                  <span className="text-[10px] font-sans text-gray-300 group-hover:text-amber-500 transition-colors uppercase tracking-wide font-bold mt-1.5 whitespace-nowrap text-center px-1">
                     Book
                   </span>
                 </motion.button>
@@ -121,7 +130,7 @@ export default function FloatingDock({ onOpenSos, onScrollToSection }: FloatingD
                   <div className="bg-signal/15 hover:bg-signal/25 text-signal p-2.5 rounded-full transition-all duration-300 border border-signal/25 group-hover:border-signal/65 shrink-0 shadow-md group-hover:shadow-signal/15">
                     <Truck className="h-4.5 w-4.5" />
                   </div>
-                  <span className="text-[10px] font-sans text-gray-300 group-hover:text-signal transition-colors uppercase tracking-wider font-extrabold mt-2">
+                  <span className="text-[10px] font-sans text-gray-300 group-hover:text-signal transition-colors uppercase tracking-wide font-extrabold mt-1.5 whitespace-nowrap text-center px-1">
                     Help
                   </span>
                 </motion.button>
@@ -144,7 +153,7 @@ export default function FloatingDock({ onOpenSos, onScrollToSection }: FloatingD
                   <div className="bg-teal-500/10 hover:bg-teal-500/20 text-teal-400 p-2.5 rounded-full transition-all duration-300 border border-teal-500/20 group-hover:border-teal-500/50 shrink-0 shadow-sm group-hover:shadow-teal-400/10">
                     <Cpu className="h-4.5 w-4.5" />
                   </div>
-                  <span className="text-[10px] font-sans text-gray-300 group-hover:text-teal-400 transition-colors uppercase tracking-wider font-bold mt-2">
+                  <span className="text-[10px] font-sans text-gray-300 group-hover:text-teal-400 transition-colors uppercase tracking-wide font-bold mt-1.5 whitespace-nowrap text-center px-1">
                     Diag
                   </span>
                 </motion.button>
