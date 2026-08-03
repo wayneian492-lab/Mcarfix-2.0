@@ -44,11 +44,11 @@ export default function HowItWorks() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5 }}
-            className="bg-slate-50 hover:bg-white border border-slate-200 hover:border-orange-500/50 rounded-2xl p-5 relative z-10 flex flex-col justify-between shadow-md hover:shadow-xl transition-all duration-500 group overflow-hidden"
+            className="bg-slate-50 hover:bg-white border border-slate-200 hover:border-amber-500/50 rounded-2xl p-5 relative z-10 flex flex-col justify-between shadow-md hover:shadow-xl transition-all duration-500 group overflow-hidden"
           >
             <div>
               {/* Step Image Thumbnail with Badge Overlay */}
-              <div className="relative h-44 w-full rounded-xl overflow-hidden mb-5 border border-slate-200 group-hover:border-orange-500/40 transition-all duration-500 bg-gray-950">
+              <div className="relative h-44 w-full rounded-xl overflow-hidden mb-5 border border-slate-200 group-hover:border-amber-500/40 transition-all duration-500 bg-gray-950">
                 <img
                   src="https://raw.githubusercontent.com/wayneian492-lab/Mcarfix-2.0/11b7dae/src/assets/images/service_diagnostics_new_1784617553637.jpg"
                   alt="Mechanic performing computerized engine fault scan in workshop"
@@ -66,7 +66,7 @@ export default function HowItWorks() {
 
                 {/* Step Number over image */}
                 <div className="absolute top-2 right-3">
-                  <span className="font-mono text-3xl font-black text-white/50 group-hover:text-orange-400 transition-colors duration-300 drop-shadow-md">
+                  <span className="font-mono text-3xl font-black text-white/50 group-hover:text-amber-400 transition-colors duration-300 drop-shadow-md">
                     01
                   </span>
                 </div>
@@ -74,10 +74,10 @@ export default function HowItWorks() {
 
               {/* Icon & Title Row */}
               <div className="flex items-center space-x-3 mb-2">
-                <div className="h-9 w-9 rounded-xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center shrink-0 group-hover:bg-orange-500 group-hover:border-orange-400 transition-all">
-                  <Search className="h-4 w-4 text-orange-600 group-hover:text-white" />
+                <div className="h-9 w-9 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center shrink-0 group-hover:bg-amber-500 group-hover:border-amber-400 transition-all">
+                  <Search className="h-4 w-4 text-amber-600 group-hover:text-white" />
                 </div>
-                <h3 className="font-display font-bold text-base uppercase tracking-wide text-slate-900 group-hover:text-orange-600 transition-colors">
+                <h3 className="font-display font-bold text-base uppercase tracking-wide text-slate-900 group-hover:text-amber-600 transition-colors">
                   Search & Describe
                 </h3>
               </div>
@@ -93,11 +93,11 @@ export default function HowItWorks() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.1 }}
-            className="bg-slate-50 hover:bg-white border border-slate-200 hover:border-orange-500/50 rounded-2xl p-5 relative z-10 flex flex-col justify-between shadow-md hover:shadow-xl transition-all duration-500 group overflow-hidden"
+            className="bg-slate-50 hover:bg-white border border-slate-200 hover:border-amber-500/50 rounded-2xl p-5 relative z-10 flex flex-col justify-between shadow-md hover:shadow-xl transition-all duration-500 group overflow-hidden"
           >
             <div>
               {/* Step Image Thumbnail with Badge Overlay */}
-              <div className="relative h-44 w-full rounded-xl overflow-hidden mb-5 border border-slate-200 group-hover:border-orange-500/40 transition-all duration-500 bg-gray-950">
+              <div className="relative h-44 w-full rounded-xl overflow-hidden mb-5 border border-slate-200 group-hover:border-amber-500/40 transition-all duration-500 bg-gray-950">
                 <img
                   src="https://raw.githubusercontent.com/wayneian492-lab/Mcarfix-2.0/11b7dae/src/assets/images/garage_westlands_1784615895344.jpg"
                   alt="Organized auto repair garage workshop in Westlands Nairobi"
@@ -115,7 +115,7 @@ export default function HowItWorks() {
 
                 {/* Step Number over image */}
                 <div className="absolute top-2 right-3">
-                  <span className="font-mono text-3xl font-black text-white/50 group-hover:text-orange-400 transition-colors duration-300 drop-shadow-md">
+                  <span className="font-mono text-3xl font-black text-white/50 group-hover:text-amber-400 transition-colors duration-300 drop-shadow-md">
                     02
                   </span>
                 </div>
@@ -123,10 +123,10 @@ export default function HowItWorks() {
 
               {/* Icon & Title Row */}
               <div className="flex items-center space-x-3 mb-2">
-                <div className="h-9 w-9 rounded-xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center shrink-0 group-hover:bg-orange-500 group-hover:border-orange-400 transition-all">
-                  <Scale className="h-4 w-4 text-orange-600 group-hover:text-white" />
+                <div className="h-9 w-9 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center shrink-0 group-hover:bg-amber-500 group-hover:border-amber-400 transition-all">
+                  <Scale className="h-4 w-4 text-amber-600 group-hover:text-white" />
                 </div>
-                <h3 className="font-display font-bold text-base uppercase tracking-wide text-slate-900 group-hover:text-orange-600 transition-colors">
+                <h3 className="font-display font-bold text-base uppercase tracking-wide text-slate-900 group-hover:text-amber-600 transition-colors">
                   Compare Garages
                 </h3>
               </div>
@@ -142,11 +142,11 @@ export default function HowItWorks() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}
-            className="bg-slate-50 hover:bg-white border border-slate-200 hover:border-orange-500/50 rounded-2xl p-5 relative z-10 flex flex-col justify-between shadow-md hover:shadow-xl transition-all duration-500 group overflow-hidden"
+            className="bg-slate-50 hover:bg-white border border-slate-200 hover:border-amber-500/50 rounded-2xl p-5 relative z-10 flex flex-col justify-between shadow-md hover:shadow-xl transition-all duration-500 group overflow-hidden"
           >
             <div>
               {/* Step Image Thumbnail with Badge Overlay */}
-              <div className="relative h-44 w-full rounded-xl overflow-hidden mb-5 border border-slate-200 group-hover:border-orange-500/40 transition-all duration-500 bg-gray-950">
+              <div className="relative h-44 w-full rounded-xl overflow-hidden mb-5 border border-slate-200 group-hover:border-amber-500/40 transition-all duration-500 bg-gray-950">
                 <img
                   src="https://raw.githubusercontent.com/wayneian492-lab/Mcarfix-2.0/11b7dae/src/assets/images/car_service_lift_1784614889346.jpg"
                   alt="Mechanic working on car suspension under hydraulic lift"
@@ -164,7 +164,7 @@ export default function HowItWorks() {
 
                 {/* Step Number over image */}
                 <div className="absolute top-2 right-3">
-                  <span className="font-mono text-3xl font-black text-white/50 group-hover:text-orange-400 transition-colors duration-300 drop-shadow-md">
+                  <span className="font-mono text-3xl font-black text-white/50 group-hover:text-amber-400 transition-colors duration-300 drop-shadow-md">
                     03
                   </span>
                 </div>
@@ -172,10 +172,10 @@ export default function HowItWorks() {
 
               {/* Icon & Title Row */}
               <div className="flex items-center space-x-3 mb-2">
-                <div className="h-9 w-9 rounded-xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center shrink-0 group-hover:bg-orange-500 group-hover:border-orange-400 transition-all">
-                  <CalendarCheck className="h-4 w-4 text-orange-600 group-hover:text-white" />
+                <div className="h-9 w-9 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center shrink-0 group-hover:bg-amber-500 group-hover:border-amber-400 transition-all">
+                  <CalendarCheck className="h-4 w-4 text-amber-600 group-hover:text-white" />
                 </div>
-                <h3 className="font-display font-bold text-base uppercase tracking-wide text-slate-900 group-hover:text-orange-600 transition-colors">
+                <h3 className="font-display font-bold text-base uppercase tracking-wide text-slate-900 group-hover:text-amber-600 transition-colors">
                   Book & Secure
                 </h3>
               </div>
@@ -191,11 +191,11 @@ export default function HowItWorks() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.3 }}
-            className="bg-slate-50 hover:bg-white border border-slate-200 hover:border-orange-500/50 rounded-2xl p-5 relative z-10 flex flex-col justify-between shadow-md hover:shadow-xl transition-all duration-500 group overflow-hidden"
+            className="bg-slate-50 hover:bg-white border border-slate-200 hover:border-amber-500/50 rounded-2xl p-5 relative z-10 flex flex-col justify-between shadow-md hover:shadow-xl transition-all duration-500 group overflow-hidden"
           >
             <div>
               {/* Step Image Thumbnail with Badge Overlay */}
-              <div className="relative h-44 w-full rounded-xl overflow-hidden mb-5 border border-slate-200 group-hover:border-orange-500/40 transition-all duration-500 bg-gray-950">
+              <div className="relative h-44 w-full rounded-xl overflow-hidden mb-5 border border-slate-200 group-hover:border-amber-500/40 transition-all duration-500 bg-gray-950">
                 <img
                   src="https://raw.githubusercontent.com/wayneian492-lab/Mcarfix-2.0/11b7dae/src/assets/images/garage_experts_1784615923238.jpg"
                   alt="Auto repair workshop interior with mechanic team"
@@ -213,7 +213,7 @@ export default function HowItWorks() {
 
                 {/* Step Number over image */}
                 <div className="absolute top-2 right-3">
-                  <span className="font-mono text-3xl font-black text-white/50 group-hover:text-orange-400 transition-colors duration-300 drop-shadow-md">
+                  <span className="font-mono text-3xl font-black text-white/50 group-hover:text-amber-400 transition-colors duration-300 drop-shadow-md">
                     04
                   </span>
                 </div>
@@ -221,10 +221,10 @@ export default function HowItWorks() {
 
               {/* Icon & Title Row */}
               <div className="flex items-center space-x-3 mb-2">
-                <div className="h-9 w-9 rounded-xl bg-orange-500/10 border border-orange-500/30 flex items-center justify-center shrink-0 group-hover:bg-orange-500 group-hover:border-orange-400 transition-all">
-                  <History className="h-4 w-4 text-orange-600 group-hover:text-white" />
+                <div className="h-9 w-9 rounded-xl bg-amber-500/10 border border-amber-500/30 flex items-center justify-center shrink-0 group-hover:bg-amber-500 group-hover:border-amber-400 transition-all">
+                  <History className="h-4 w-4 text-amber-600 group-hover:text-white" />
                 </div>
-                <h3 className="font-display font-bold text-base uppercase tracking-wide text-slate-900 group-hover:text-orange-600 transition-colors">
+                <h3 className="font-display font-bold text-base uppercase tracking-wide text-slate-900 group-hover:text-amber-600 transition-colors">
                   Get Digital History
                 </h3>
               </div>
@@ -246,12 +246,12 @@ export default function HowItWorks() {
             transition={{ duration: 0.6 }}
             className="bg-slate-50 border border-slate-200 rounded-2xl p-6 sm:p-8 flex flex-col justify-between shadow-xl relative overflow-hidden"
           >
-            <div className="absolute top-0 right-0 w-48 h-48 bg-orange-500/10 blur-3xl rounded-full pointer-events-none" />
+            <div className="absolute top-0 right-0 w-48 h-48 bg-amber-500/10 blur-3xl rounded-full pointer-events-none" />
 
             <div>
               <div className="flex items-center justify-between mb-6">
-                <span className="font-mono text-xs text-orange-700 font-bold uppercase tracking-wider bg-orange-500/10 border border-orange-500/20 px-3 py-1 rounded-full flex items-center gap-1.5">
-                  <Cpu className="h-3.5 w-3.5 text-orange-600" />
+                <span className="font-mono text-xs text-amber-700 font-bold uppercase tracking-wider bg-amber-500/10 border border-amber-500/20 px-3 py-1 rounded-full flex items-center gap-1.5">
+                  <Cpu className="h-3.5 w-3.5 text-amber-600" />
                   <span>DIAGNOSTIC TELEMETRY SIMULATOR</span>
                 </span>
                 <span className="font-mono text-3xs text-teal-700 font-semibold">mCarFix OS v4.2</span>
@@ -276,11 +276,11 @@ export default function HowItWorks() {
                     onClick={() => setActiveFault(item.code)}
                     className={`p-3 rounded-xl border font-mono text-left transition-all cursor-pointer ${
                       activeFault === item.code
-                        ? "bg-orange-500/10 border-orange-500 text-slate-900 shadow-md shadow-orange-500/5 font-semibold"
+                        ? "bg-amber-500/10 border-amber-500 text-slate-900 shadow-md shadow-amber-500/5 font-semibold"
                         : "bg-white border-slate-200 text-slate-600 hover:border-slate-300 hover:text-slate-900"
                     }`}
                   >
-                    <span className="block font-bold text-xs text-orange-600">{item.code}</span>
+                    <span className="block font-bold text-xs text-amber-600">{item.code}</span>
                     <span className="block text-[10px] text-slate-500 truncate mt-0.5">{item.label}</span>
                   </button>
                 ))}
@@ -290,7 +290,7 @@ export default function HowItWorks() {
               <div className="mt-6 bg-slate-900 border border-slate-800 rounded-xl p-4 font-mono text-xs space-y-2 text-white">
                 <div className="flex items-center justify-between border-b border-slate-800 pb-2">
                   <span className="text-gray-400">ANALYSIS FOR CODE:</span>
-                  <span className="text-orange-400 font-bold">{activeFault}</span>
+                  <span className="text-amber-400 font-bold">{activeFault}</span>
                 </div>
                 {activeFault === "P0300" && (
                   <div className="space-y-1 text-gray-300">
@@ -376,7 +376,7 @@ export default function HowItWorks() {
           </div>
           <a
             href="#garages"
-            className="bg-orange-500 hover:bg-orange-400 text-white font-display font-bold text-xs uppercase tracking-wider px-6 py-3.5 rounded-xl transition-all shadow-xl hover:shadow-orange-500/25 active:scale-95 whitespace-nowrap flex items-center space-x-2"
+            className="bg-amber-500 hover:bg-amber-400 text-white font-display font-bold text-xs uppercase tracking-wider px-6 py-3.5 rounded-xl transition-all shadow-xl hover:shadow-amber-500/25 active:scale-95 whitespace-nowrap flex items-center space-x-2"
           >
             <span>Find a Garage Now</span>
             <ChevronRight className="h-4 w-4" />

@@ -17,9 +17,9 @@ export default function Navbar({ onOpenSos, onScrollToSection, activeBookingsCou
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   return (
-    <nav id="app-navbar" className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b-2 border-orange-500 shadow-[0_4px_25px_rgba(255,107,0,0.45)] text-gray-900 transition-all duration-300">
-      {/* Shiny Glowing Orange Top Accent Strip */}
-      <div className="h-1 w-full bg-gradient-to-r from-orange-600 via-amber-400 to-orange-500 shadow-[0_0_15px_rgba(255,107,0,0.9)]" />
+    <nav id="app-navbar" className="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b-2 border-amber-500 shadow-[0_4px_25px_rgba(245,158,11,0.3)] text-gray-900 transition-all duration-300">
+      {/* Shiny Glowing Amber Top Accent Strip */}
+      <div className="h-1 w-full bg-gradient-to-r from-amber-600 via-amber-400 to-amber-500 shadow-[0_0_15px_rgba(245,158,11,0.8)]" />
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}

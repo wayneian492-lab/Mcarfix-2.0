@@ -149,7 +149,7 @@ export default function EcosystemCarousel() {
           badgeBg: "bg-signal/15 text-signal border-signal/30",
           iconBg: "bg-signal/15 text-signal border-signal/30 group-hover:bg-signal group-hover:text-black group-hover:border-signal",
           hoverBorder: "hover:border-signal/60",
-          accentLine: "from-signal via-red-500 to-orange-500",
+          accentLine: "from-signal via-red-500 to-amber-500",
           glow: "bg-signal/15"
         };
       case "amber":
@@ -158,7 +158,7 @@ export default function EcosystemCarousel() {
           badgeBg: "bg-amber-500/10 text-amber-400 border-amber-500/30",
           iconBg: "bg-amber-500/10 text-amber-400 border-amber-500/30 group-hover:bg-amber-500 group-hover:text-black group-hover:border-amber-400",
           hoverBorder: "hover:border-amber-500/50",
-          accentLine: "from-amber-500 to-orange-400",
+          accentLine: "from-amber-500 to-amber-400",
           glow: "bg-amber-500/10"
         };
     }
@@ -237,7 +237,7 @@ export default function EcosystemCarousel() {
               <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9" />
               <path d="M13.73 21a2 2 0 0 1-3.46 0" />
             </g>
-            <g transform="translate(130, 130)" stroke="currentColor" fill="none" strokeWidth="1.2" className="text-orange-400">
+            <g transform="translate(130, 130)" stroke="currentColor" fill="none" strokeWidth="1.2" className="text-amber-400">
               <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
               <path d="M7 11V7a5 5 0 0 1 10 0v4" />
             </g>

@@ -96,7 +96,7 @@ export default function Hero({ onOpenSos, onOpenDiagnostics, onScrollToSection }
 
             <div className="space-y-3">
               <h1 className="font-serif font-medium text-4xl sm:text-6xl lg:text-6xl text-white tracking-tight leading-[1.15] drop-shadow-md">
-                The World’s 1<sup className="text-2xl sm:text-3xl font-normal text-orange-400">st</sup> Operating System
+                The World’s 1<sup className="text-2xl sm:text-3xl font-normal text-amber-400">st</sup> Operating System
               </h1>
               <p className="font-serif text-2xl sm:text-3xl text-gray-300 font-normal tracking-wide">
                 For the Motor Vehicle Sector
@@ -126,9 +126,9 @@ export default function Hero({ onOpenSos, onOpenDiagnostics, onScrollToSection }
 
           {/* Right Column: High-Res Glassmorphic mCarFix Shield Logo Banner */}
           <div className="lg:col-span-5 relative flex justify-center items-center">
-            <div className="relative w-full max-w-lg aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-b from-white/10 via-black/40 to-black/80 border border-white/15 backdrop-blur-xl flex items-center justify-center p-6 group hover:border-orange-500/40 transition-all duration-500">
+            <div className="relative w-full max-w-lg aspect-[4/3] rounded-3xl overflow-hidden shadow-2xl bg-gradient-to-b from-white/10 via-black/40 to-black/80 border border-white/15 backdrop-blur-xl flex items-center justify-center p-6 group hover:border-amber-500/40 transition-all duration-500">
               {/* Subtle background glow */}
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-500/10 via-transparent to-black/60 opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
+              <div className="absolute inset-0 bg-gradient-to-br from-amber-500/10 via-transparent to-black/60 opacity-60 group-hover:opacity-100 transition-opacity duration-500" />
 
               {/* Official mCarFix Shield Logo Graphic */}
               <div className="relative z-10 w-full max-w-md p-2 flex flex-col items-center transform group-hover:scale-[1.02] transition-transform duration-500">

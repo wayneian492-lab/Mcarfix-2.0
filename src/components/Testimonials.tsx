@@ -9,7 +9,7 @@ import { MOCK_TESTIMONIALS } from "../types";
 import { motion, AnimatePresence } from "motion/react";
 
 const AVATAR_GRADIENTS = [
-  "from-orange-500 to-amber-600 shadow-orange-500/30",
+  "from-amber-500 to-amber-600 shadow-amber-500/30",
   "from-emerald-500 to-teal-600 shadow-emerald-500/30",
   "from-blue-500 to-indigo-600 shadow-blue-500/30",
   "from-purple-500 to-pink-600 shadow-purple-500/30",
@@ -41,7 +41,7 @@ export default function Testimonials() {
     <section id="testimonials" className="relative bg-[#08090b] py-24 text-white border-t border-white/10 overflow-hidden">
       {/* Dynamic Ambient Background Glows */}
       <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-        <div className="absolute top-1/3 left-1/4 -translate-x-1/2 w-[600px] h-[400px] bg-orange-500/10 blur-[140px] rounded-full animate-pulse" />
+        <div className="absolute top-1/3 left-1/4 -translate-x-1/2 w-[600px] h-[400px] bg-amber-500/10 blur-[140px] rounded-full animate-pulse" />
         <div className="absolute bottom-1/4 right-1/4 translate-x-1/2 w-[500px] h-[400px] bg-teal-500/10 blur-[130px] rounded-full" />
         <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_0%,rgba(8,9,11,0.8)_100%)]" />
       </div>
@@ -63,7 +63,7 @@ export default function Testimonials() {
           <h2 className="font-serif font-medium text-3xl sm:text-5xl tracking-tight text-white mt-2">
             What Nairobi Drivers Say
           </h2>
-          <div className="h-1 w-16 bg-gradient-to-r from-orange-500 to-amber-400 mx-auto mt-4 rounded-full" />
+          <div className="h-1 w-16 bg-gradient-to-r from-amber-500 to-amber-400 mx-auto mt-4 rounded-full" />
           <p className="font-sans text-gray-300 mt-5 leading-relaxed font-light text-base sm:text-lg">
             From emergency roadside dispatches to complex cylinder misfire fixes, hear from real motorists who saved time and money using mCarFix.
           </p>
@@ -78,13 +78,13 @@ export default function Testimonials() {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.96, y: -20 }}
               transition={{ duration: 0.5, ease: "easeOut" }}
-              className="relative bg-gradient-to-b from-white/10 via-white/[0.03] to-transparent backdrop-blur-2xl border border-white/15 rounded-3xl p-8 sm:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.6)] group hover:border-orange-500/50 transition-all duration-500 overflow-hidden"
+              className="relative bg-gradient-to-b from-white/10 via-white/[0.03] to-transparent backdrop-blur-2xl border border-white/15 rounded-3xl p-8 sm:p-12 shadow-[0_20px_50px_rgba(0,0,0,0.6)] group hover:border-amber-500/50 transition-all duration-500 overflow-hidden"
             >
               {/* Subtle Ambient Card Glow */}
-              <div className="absolute top-0 right-0 w-80 h-80 bg-orange-500/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20 group-hover:bg-orange-500/20 transition-all duration-700" />
+              <div className="absolute top-0 right-0 w-80 h-80 bg-amber-500/10 rounded-full blur-3xl pointer-events-none -mr-20 -mt-20 group-hover:bg-amber-500/20 transition-all duration-700" />
 
               {/* Glowing Quote Watermark */}
-              <div className="absolute right-6 top-6 text-orange-500/15 group-hover:text-orange-500/25 transition-colors duration-500">
+              <div className="absolute right-6 top-6 text-amber-500/15 group-hover:text-amber-500/25 transition-colors duration-500">
                 <MessageSquareQuote className="h-24 w-24 stroke-1" />
               </div>
 
@@ -137,7 +137,7 @@ export default function Testimonials() {
 
                   {/* Vehicle Model Tag */}
                   <div className="bg-white/10 border border-white/20 backdrop-blur-md px-4 py-2 rounded-xl shrink-0">
-                    <span className="font-mono text-xs font-bold text-orange-400 tracking-wider">
+                    <span className="font-mono text-xs font-bold text-amber-400 tracking-wider">
                       🚗 {MOCK_TESTIMONIALS[activeIndex].vehicle}
                     </span>
                   </div>
@@ -157,7 +157,7 @@ export default function Testimonials() {
                     setActiveIndex(idx);
                   }}
                   className={`h-2.5 rounded-full transition-all duration-300 cursor-pointer ${
-                    activeIndex === idx ? "w-10 bg-orange-500 shadow-[0_0_12px_rgba(255,107,0,0.8)]" : "w-2.5 bg-white/20 hover:bg-white/40"
+                    activeIndex === idx ? "w-10 bg-amber-500 shadow-[0_0_12px_rgba(245,158,11,0.8)]" : "w-2.5 bg-white/20 hover:bg-white/40"
                   }`}
                   aria-label={`Go to testimonial ${idx + 1}`}
                 />
@@ -197,7 +197,7 @@ export default function Testimonials() {
                 }}
                 className={`p-6 rounded-2xl border transition-all duration-300 cursor-pointer relative flex flex-col justify-between ${
                   isCurrent
-                    ? "bg-gradient-to-b from-orange-500/20 via-white/10 to-transparent border-orange-500/60 shadow-[0_10px_30px_rgba(255,107,0,0.2)]"
+                    ? "bg-gradient-to-b from-amber-500/20 via-white/10 to-transparent border-amber-500/60 shadow-[0_10px_30px_rgba(245,158,11,0.2)]"
                     : "bg-white/5 border-white/10 hover:border-white/30 hover:bg-white/[0.08]"
                 }`}
               >
@@ -219,7 +219,7 @@ export default function Testimonials() {
                   <h4 className="font-display font-bold text-sm uppercase text-white tracking-wide">
                     {t.name}
                   </h4>
-                  <span className="text-[10px] text-orange-400 font-mono block mt-0.5">
+                  <span className="text-[10px] text-amber-400 font-mono block mt-0.5">
                     {t.vehicle}
                   </span>
                 </div>
@@ -232,7 +232,7 @@ export default function Testimonials() {
         <div className="mt-16 text-center max-w-xl mx-auto">
           <p className="font-sans text-xs text-gray-400 leading-normal">
             Are you a certified mechanic or own an independent garage in Nairobi? Connect with thousands of car owners.{" "}
-            <a href="#partner" className="text-orange-400 hover:text-orange-300 hover:underline font-semibold font-mono">
+            <a href="#partner" className="text-amber-400 hover:text-amber-300 hover:underline font-semibold font-mono">
               Join mCarFix Partner Network &rarr;
             </a>
           </p>

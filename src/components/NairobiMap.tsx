@@ -117,7 +117,7 @@ export default function NairobiMap({
             onClick={() => setActiveTab("radar")}
             className={`px-3.5 py-1.5 rounded-lg transition-all duration-300 ${
               activeTab === "radar"
-                ? "bg-orange-500 text-white shadow-lg"
+                ? "bg-amber-500 text-white shadow-lg"
                 : "text-gray-400 hover:text-white"
             }`}
           >
@@ -127,7 +127,7 @@ export default function NairobiMap({
             onClick={() => setActiveTab("telemetry")}
             className={`px-3.5 py-1.5 rounded-lg transition-all duration-300 ${
               activeTab === "telemetry"
-                ? "bg-orange-500 text-white shadow-lg"
+                ? "bg-amber-500 text-white shadow-lg"
                 : "text-gray-400 hover:text-white"
             }`}
           >
@@ -279,7 +279,7 @@ export default function NairobiMap({
                   onMouseLeave={() => setHoveredGarageId?.(null)}
                   className={`border rounded-xl p-3.5 transition-all duration-300 cursor-pointer flex flex-col justify-between ${
                     isSelected || isHovered
-                      ? "bg-orange-500/10 border-orange-500/60 shadow-lg ring-1 ring-orange-500/30"
+                      ? "bg-amber-500/10 border-amber-500/60 shadow-lg ring-1 ring-amber-500/30"
                       : "bg-white/5 border-white/10 hover:bg-white/10 hover:border-white/20"
                   }`}
                 >
@@ -320,7 +320,7 @@ export default function NairobiMap({
                     <div className="h-1.5 w-full bg-white/10 rounded-full overflow-hidden">
                       <div
                         className={`h-full rounded-full transition-all duration-500 ${
-                          hub.load > 80 ? "bg-orange-500" : hub.load > 50 ? "bg-amber-400" : "bg-teal-400"
+                          hub.load > 80 ? "bg-amber-500" : hub.load > 50 ? "bg-amber-400" : "bg-teal-400"
                         }`}
                         style={{ width: `${hub.load}%` }}
                       />
@@ -353,7 +353,7 @@ export default function NairobiMap({
       <div className="mt-4 border-t border-white/10 pt-3 flex items-center justify-between gap-2">
         <div className="flex flex-wrap items-center gap-x-4 gap-y-1.5">
           <div className="flex items-center space-x-1.5">
-            <span className="h-2 w-2 rounded-full bg-orange-500 inline-block animate-pulse" />
+            <span className="h-2 w-2 rounded-full bg-amber-500 inline-block animate-pulse" />
             <span className="text-3xs text-gray-300 font-sans font-medium uppercase tracking-wider">
               Vetted Partner
             </span>

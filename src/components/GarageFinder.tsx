@@ -16,8 +16,8 @@ function MapSkeleton() {
   return (
     <div className="bg-white/5 backdrop-blur-xl border border-white/10 rounded-2xl p-5 h-[480px] lg:h-[620px] flex flex-col justify-center items-center shadow-2xl w-full">
       <div className="flex flex-col items-center space-y-4">
-        <div className="h-10 w-10 border-4 border-orange-500 border-t-transparent rounded-full animate-spin"></div>
-        <span className="font-mono text-xs text-orange-400 uppercase tracking-widest font-bold">LOADING GPS RADAR SYSTEM...</span>
+        <div className="h-10 w-10 border-4 border-amber-500 border-t-transparent rounded-full animate-spin"></div>
+        <span className="font-mono text-xs text-amber-400 uppercase tracking-widest font-bold">LOADING GPS RADAR SYSTEM...</span>
       </div>
     </div>
   );
@@ -115,7 +115,7 @@ export default function GarageFinder({ onBookGarage, selectedServiceFilter, onCl
 
       {/* Background Radial Glow */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden z-0">
-        <div className="absolute top-1/3 left-1/4 w-[600px] h-[400px] bg-orange-500/5 blur-[140px] rounded-full" />
+        <div className="absolute top-1/3 left-1/4 w-[600px] h-[400px] bg-amber-500/5 blur-[140px] rounded-full" />
       </div>
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -129,14 +129,14 @@ export default function GarageFinder({ onBookGarage, selectedServiceFilter, onCl
           className="flex flex-col md:flex-row md:items-end justify-between mb-12"
         >
           <div>
-            <span className="font-mono text-xs text-orange-400 font-bold uppercase tracking-widest bg-white/5 border border-white/10 px-4 py-1.5 rounded-full inline-flex items-center space-x-2 backdrop-blur-md">
-              <span className="h-1.5 w-1.5 rounded-full bg-orange-400 animate-pulse" />
+            <span className="font-mono text-xs text-amber-400 font-bold uppercase tracking-widest bg-white/5 border border-white/10 px-4 py-1.5 rounded-full inline-flex items-center space-x-2 backdrop-blur-md">
+              <span className="h-1.5 w-1.5 rounded-full bg-amber-400 animate-pulse" />
               <span>SYS.PARTNERS</span>
             </span>
             <h2 className="font-serif font-medium text-3xl sm:text-5xl tracking-tight text-white mt-3">
               Nairobi Garage Finder
             </h2>
-            <div className="h-1 w-16 bg-gradient-to-r from-orange-500 to-amber-400 mt-4 rounded-full" />
+            <div className="h-1 w-16 bg-gradient-to-r from-amber-500 to-amber-400 mt-4 rounded-full" />
             <p className="font-sans text-gray-300 mt-4 leading-relaxed max-w-2xl font-light text-base sm:text-lg">
               Connect directly with mCarFix authorized service centers. All garages are fully vetted for diagnostic equipment quality, parts integrity, and fair labor pricing.
             </p>
@@ -169,7 +169,7 @@ export default function GarageFinder({ onBookGarage, selectedServiceFilter, onCl
               placeholder="Search garage name, location, or tag..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-white/5 border border-white/10 hover:border-white/25 focus:border-orange-500 text-white placeholder-gray-400 pl-10 pr-4 py-3 rounded-xl font-sans text-sm outline-none transition-all shadow-inner"
+              className="w-full bg-white/5 border border-white/10 hover:border-white/25 focus:border-amber-500 text-white placeholder-gray-400 pl-10 pr-4 py-3 rounded-xl font-sans text-sm outline-none transition-all shadow-inner"
             />
             {searchQuery && (
               <button 
@@ -187,7 +187,7 @@ export default function GarageFinder({ onBookGarage, selectedServiceFilter, onCl
             <select
               value={selectedLocation}
               onChange={(e) => setSelectedLocation(e.target.value)}
-              className="w-full bg-white/5 border border-white/10 hover:border-white/25 focus:border-orange-500 text-white px-4 py-3 rounded-xl font-sans text-sm outline-none transition-all cursor-pointer [&>option]:bg-gray-900 [&>option]:text-white"
+              className="w-full bg-white/5 border border-white/10 hover:border-white/25 focus:border-amber-500 text-white px-4 py-3 rounded-xl font-sans text-sm outline-none transition-all cursor-pointer [&>option]:bg-gray-900 [&>option]:text-white"
             >
               <option value="" disabled>Select Location</option>
               {locations.map((loc) => (
@@ -201,11 +201,11 @@ export default function GarageFinder({ onBookGarage, selectedServiceFilter, onCl
           {/* Active Specialty Filter Info */}
           <div className="md:col-span-4 flex items-center justify-between md:justify-end space-x-3">
             {selectedServiceFilter ? (
-              <div className="flex items-center space-x-2 bg-orange-500/10 border border-orange-500/30 px-3.5 py-2.5 rounded-full text-xs font-mono">
-                <span className="text-orange-400 uppercase font-bold">Specialty: {selectedServiceFilter}</span>
+              <div className="flex items-center space-x-2 bg-amber-500/10 border border-amber-500/30 px-3.5 py-2.5 rounded-full text-xs font-mono">
+                <span className="text-amber-400 uppercase font-bold">Specialty: {selectedServiceFilter}</span>
                 <button 
                   onClick={onClearServiceFilter}
-                  className="text-gray-400 hover:text-orange-400 transition-colors ml-1 min-w-[44px] min-h-[44px] flex items-center justify-center p-1"
+                  className="text-gray-400 hover:text-amber-400 transition-colors ml-1 min-w-[44px] min-h-[44px] flex items-center justify-center p-1"
                   title="Clear filter"
                 >
                   <X className="h-3.5 w-3.5" />
@@ -265,8 +265,8 @@ export default function GarageFinder({ onBookGarage, selectedServiceFilter, onCl
                         maxTilt={4}
                         className={`bg-white/5 backdrop-blur-xl border rounded-2xl overflow-hidden transition-all duration-500 flex flex-col justify-between group h-full shadow-2xl ${
                           isHovered 
-                            ? "border-orange-500 ring-2 ring-orange-500/40 shadow-[0_20px_50px_rgba(255,107,0,0.2)] scale-[1.01]" 
-                            : "border-white/10 hover:border-orange-500/50 hover:shadow-[0_15px_35px_rgba(0,0,0,0.5)]"
+                            ? "border-amber-500 ring-2 ring-amber-500/40 shadow-[0_20px_50px_rgba(245,158,11,0.2)] scale-[1.01]" 
+                            : "border-white/10 hover:border-amber-500/50 hover:shadow-[0_15px_35px_rgba(0,0,0,0.5)]"
                         }`}
                       >
                       <div>
@@ -304,7 +304,7 @@ export default function GarageFinder({ onBookGarage, selectedServiceFilter, onCl
                           )}
 
                           <div className="absolute bottom-3 left-3 bg-gray-950/80 backdrop-blur-md text-white px-3 py-1 rounded-full text-[9px] font-mono border border-white/15 flex items-center gap-1.5 shadow-md">
-                            <MapPin className="h-3 w-3 text-orange-400" />
+                            <MapPin className="h-3 w-3 text-amber-400" />
                             <span>{distanceText}</span>
                           </div>
                         </div>
@@ -312,7 +312,7 @@ export default function GarageFinder({ onBookGarage, selectedServiceFilter, onCl
                         {/* Card Content body */}
                         <div className="p-6">
                           <div className="flex justify-between items-start gap-4">
-                            <h3 className="font-display font-bold text-xl uppercase tracking-wide text-white group-hover:text-orange-300 transition-colors duration-300">
+                            <h3 className="font-display font-bold text-xl uppercase tracking-wide text-white group-hover:text-amber-300 transition-colors duration-300">
                               {garage.name}
                             </h3>
                           </div>
@@ -340,7 +340,7 @@ export default function GarageFinder({ onBookGarage, selectedServiceFilter, onCl
                                   key={tag}
                                   className={`font-mono text-[10px] px-3 py-1 rounded-full border transition-all duration-300 ${
                                     selectedServiceFilter.toLowerCase() === tag.toLowerCase()
-                                      ? "bg-orange-500/20 border-orange-400 text-orange-300 font-bold shadow-sm"
+                                      ? "bg-amber-500/20 border-amber-400 text-amber-300 font-bold shadow-sm"
                                       : "border-white/10 bg-white/5 text-gray-300 hover:border-white/20 font-medium"
                                   }`}
                                 >
@@ -358,7 +358,7 @@ export default function GarageFinder({ onBookGarage, selectedServiceFilter, onCl
                           <span className="block text-4xs text-gray-400 uppercase tracking-widest font-mono font-bold">CONTACT SYNC</span>
                           <a 
                             href={`tel:${garage.phone}`}
-                            className="text-2xs text-gray-300 font-mono hover:text-orange-400 transition-colors flex items-center gap-1 mt-1"
+                            className="text-2xs text-gray-300 font-mono hover:text-amber-400 transition-colors flex items-center gap-1 mt-1"
                           >
                             <Phone className="h-3 w-3" />
                             <span>{garage.phone}</span>
@@ -367,7 +367,7 @@ export default function GarageFinder({ onBookGarage, selectedServiceFilter, onCl
                         
                         <button
                           onClick={() => onBookGarage(garage)}
-                          className="bg-orange-500 hover:bg-orange-400 text-white font-display font-bold text-xs uppercase tracking-wider px-5 py-3 rounded-xl transition-all duration-300 transform active:scale-95 cursor-pointer shadow-lg shadow-orange-500/20 hover:shadow-orange-500/40"
+                          className="bg-amber-500 hover:bg-amber-400 text-white font-display font-bold text-xs uppercase tracking-wider px-5 py-3 rounded-xl transition-all duration-300 transform active:scale-95 cursor-pointer shadow-lg shadow-amber-500/20 hover:shadow-amber-500/40"
                         >
                           Book a Mechanic
                         </button>

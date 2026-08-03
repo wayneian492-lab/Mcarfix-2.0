@@ -120,7 +120,7 @@ export default function ServicesGrid({ onSelectServiceFilter, onScrollToSection 
                   <TiltCard
                     maxTilt={4}
                     onClick={() => handleServiceClick(service.title)}
-                    className="h-[340px] md:h-[380px] relative overflow-hidden rounded-2xl group cursor-pointer border border-white/15 hover:border-orange-500/60 hover:shadow-2xl transition-all duration-500 w-full bg-gray-900"
+                    className="h-[340px] md:h-[380px] relative overflow-hidden rounded-2xl group cursor-pointer border border-white/15 hover:border-amber-500/60 hover:shadow-2xl transition-all duration-500 w-full bg-gray-900"
                   >
                   {/* Photo Background */}
                   <img

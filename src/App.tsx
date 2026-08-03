@@ -236,7 +236,7 @@ export default function App() {
           <div className="max-w-5xl mx-auto px-4 sm:px-6 relative z-10 space-y-8">
             
             {/* Realistic mCarFix Emergency SOS Image Showcase Banner */}
-            <div className="relative rounded-2xl overflow-hidden border-2 border-orange-500/40 shadow-[0_10px_35px_rgba(255,107,0,0.25)] group text-left max-w-4xl mx-auto">
+            <div className="relative rounded-2xl overflow-hidden border-2 border-amber-500/40 shadow-[0_10px_35px_rgba(245,158,11,0.25)] group text-left max-w-4xl mx-auto">
               <img 
                 src={mcarfixSosRescueImg} 
                 alt="mCarFix Emergency Rescue Services - Motorist holding phone with mCarFix active beacon" 
@@ -272,7 +272,7 @@ export default function App() {
                 
                 <button
                   onClick={() => setIsSosOpen(true)}
-                  className="shrink-0 bg-signal text-white hover:bg-orange-600 font-display font-extrabold text-xs sm:text-sm uppercase tracking-wider px-6 py-3.5 rounded-xl shadow-xl shadow-signal/30 flex items-center justify-center space-x-2 transition-all cursor-pointer border border-orange-400"
+                  className="shrink-0 bg-signal text-white hover:bg-amber-600 font-display font-extrabold text-xs sm:text-sm uppercase tracking-wider px-6 py-3.5 rounded-xl shadow-xl shadow-signal/30 flex items-center justify-center space-x-2 transition-all cursor-pointer border border-amber-400"
                 >
                   <Truck className="h-5 w-5" />
                   <span>Launch SOS Rescue</span>
